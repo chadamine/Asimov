@@ -109,10 +109,9 @@ public class MainActivity extends ActionBarActivity implements
 	
 	@Override
 	public void onBackPressed() {
-		Fragment fragment = (Fragment) getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.pager + ":" + mViewPager.getCurrentItem());
-		
-		if(!fragment.getChildFragmentManager().popBackStackImmediate()) {
-			finish();
+		if (mSectionsPagerAdapter.swapFragment instanceof ItemDetailsFragment) {
+
+			mSectionsPagerAdapter.listener.onShowFragment();
 		}
 	}
 
@@ -211,7 +210,8 @@ public class MainActivity extends ActionBarActivity implements
 		
 		@Override
 		public int getItemPosition(Object object) {
-			if ((object instanceof ItemListFragment && swapFragment instanceof ItemDetailsFragment) || (object instanceof ItemDetailsFragment && swapFragment instanceof ItemListFragment) {
+			if ((object instanceof ItemListFragment && swapFragment instanceof ItemDetailsFragment) 
+				|| (object instanceof ItemDetailsFragment && swapFragment instanceof ItemListFragment) {
 				return POSITION_NONE;
 			}
 
