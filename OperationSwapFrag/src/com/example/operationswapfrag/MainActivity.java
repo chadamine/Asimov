@@ -211,9 +211,10 @@ public class MainActivity extends ActionBarActivity implements
 		
 		@Override
 		public int getItemPosition(Object object) {
-			if (object instanceof ItemListFragment && swapFragment instanceof ItemDetailsFragment) {
+			if ((object instanceof ItemListFragment && swapFragment instanceof ItemDetailsFragment) || (object instanceof ItemDetailsFragment && swapFragment instanceof ItemListFragment) {
 				return POSITION_NONE;
 			}
+
 			return POSITION_UNCHANGED;
 		}
 
