@@ -1,4 +1,9 @@
-package com.example.operationswapfrag;
+package com.example.operationswapfrag.journals;
+
+import com.example.operationswapfrag.R;
+import com.example.operationswapfrag.R.id;
+import com.example.operationswapfrag.R.layout;
+import com.example.operationswapfrag.database.ItemContract;
 
 import android.database.Cursor;
 import android.os.Bundle;

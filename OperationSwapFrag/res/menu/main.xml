@@ -3,17 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.operationswapfrag.MainActivity" >
 
-    <item 
-        android:id="@+id/new_item"
-        android:title="Add New Item"
-        android:orderInCategory="100"
-        app:showAsAction="always"
-        
-        />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/new_item"
+        android:orderInCategory="200"
+        android:title="btnNewItem"
+        app:showAsAction="always" />
 
 </menu>

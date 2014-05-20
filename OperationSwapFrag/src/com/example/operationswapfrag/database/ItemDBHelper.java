@@ -1,4 +1,4 @@
-package com.example.operationswapfrag;
+package com.example.operationswapfrag.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
