@@ -1,15 +1,18 @@
 package com.example.operationswapfrag;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
+import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Spinner;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -22,6 +25,7 @@ public class MainActivity extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+
 	}
 
 	@Override
@@ -57,8 +61,30 @@ public class MainActivity extends ActionBarActivity {
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_main, container,
 					false);
+			
+			rootView.setBackgroundColor(Color.LTGRAY);
+			
+			Activity activity = getActivity();
+			
+			Spinner spNavOptions = (Spinner) rootView.findViewById(R.id.spNavOptions);
+			ListView lvNav = (ListView) rootView.findViewById(R.id.lvNavigation);
+			lvNav.setBackgroundColor(Color.WHITE);
+			spNavOptions.setBackgroundColor(Color.BLUE);
+			ListView lvNews = (ListView) rootView.findViewById(R.id.lvNews);
+			lvNews.setBackgroundColor(Color.WHITE);
+			
+			String[] navs = new String[] {"Journals", "Management", "Analysis" };
+			
+			ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(activity, android.R.layout.simple_spinner_item);
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, navs);
+			
+			lvNav.setAdapter(adapter);
+			adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			spNavOptions.setAdapter(spinnerAdapter);
 			return rootView;
 		}
+		
+		
 	}
 
 }
