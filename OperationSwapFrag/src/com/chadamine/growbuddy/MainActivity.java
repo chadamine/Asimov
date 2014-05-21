@@ -15,8 +15,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.chadamine.growbuddy.analysis.AnalysisActivity;
+import com.chadamine.growbuddy.cultivation.CultivationActivity;
 import com.chadamine.growbuddy.journal.JournalsActivity;
+import com.chadamine.growbuddy.schedule.ScheduleActivity;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -66,27 +70,52 @@ public class MainActivity extends ActionBarActivity {
 			View rootView = inflater.inflate(R.layout.fragment_main, container,
 					false);
 			
-			Activity activity = getActivity();
+			setUp(rootView);
+		
+			return rootView;
+		}
+		
+		private void setUp(View r) {
 			
-			Spinner spNavOptions = (Spinner) rootView.findViewById(R.id.spNewsFilter);
-			ListView lvNav = (ListView) rootView.findViewById(R.id.lvNavigation);
+			final Activity activity = getActivity();
+			
+			Spinner spNavOptions = (Spinner) r.findViewById(R.id.spNewsFilter);
+			ListView lvNav = (ListView) r.findViewById(R.id.lvNavigation);
 			lvNav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
+					
+					Toast.makeText(activity, "position: " + position, Toast.LENGTH_LONG).show();
+					
 					Intent intent;
 					
 					switch(position) {
 					case 0:
-						intent = new Intent(getActivity(), JournalsActivity.class);
+						intent = new Intent(activity, JournalsActivity.class);
+						startActivity(intent);
+					case 1:
+						intent = new Intent(activity, ScheduleActivity.class);
+						startActivity(intent);
+					case 2: 
+						intent = new Intent(activity, CultivationActivity.class);
+						startActivity(intent);
+					case 3:
+						intent = new Intent(activity, AnalysisActivity.class);
+						startActivity(intent);
+					default:
+						intent = new Intent(activity, MainActivity.class);
 						startActivity(intent);
 					}
+					
+					//startActivity(intent);
 				}
 				
 			});
-				
-			ListView lvNews = (ListView) rootView.findViewById(R.id.lvNews);
+			
+			
+			ListView lvNews = (ListView) r.findViewById(R.id.lvNews);
 			lvNews.setBackgroundColor(Color.WHITE);
 			
 			String[] navs = new String[] {"Journals",  "Schedule", "Cultivation", "Analysis" };
@@ -97,7 +126,6 @@ public class MainActivity extends ActionBarActivity {
 			lvNav.setAdapter(adapter);
 			adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			spNavOptions.setAdapter(spinnerAdapter);
-			return rootView;
 		}
 		
 		
