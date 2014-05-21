@@ -1,17 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.chadamine.growbuddy.MainActivity" >
+    tools:context="com.chadamine.growbuddy.cultivation.CultivationActivity" >
 
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never"/>
-    <item
-        android:id="@+id/new_item"
-        android:orderInCategory="200"
-        android:title="btnNewItem"
-        app:showAsAction="always" />
 
 </menu>

@@ -6,19 +6,21 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/listTitle"
+        android:id="@+id/tvListTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
+        android:layout_alignParentTop="true" 
+       
+        >
     </TextView>
 
     <TextView
-        android:id="@+id/listDetails"
+        android:id="@+id/tvListDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/listTitle" >
+        android:layout_below="@+id/tvListTitle" >
     </TextView>
 "
 

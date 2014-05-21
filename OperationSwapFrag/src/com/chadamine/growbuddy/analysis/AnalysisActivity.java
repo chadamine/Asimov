@@ -1,6 +1,12 @@
-package com.chadamine.growbuddy.journal;
+package com.chadamine.growbuddy.analysis;
 
 import java.util.Locale;
+
+import com.chadamine.growbuddy.R;
+import com.chadamine.growbuddy.R.id;
+import com.chadamine.growbuddy.R.layout;
+import com.chadamine.growbuddy.R.menu;
+import com.chadamine.growbuddy.R.string;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,9 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.chadamine.growbuddy.R;
-
-public class JournalsActivity extends ActionBarActivity implements
+public class AnalysisActivity extends ActionBarActivity implements
 		ActionBar.TabListener {
 
 	/**
@@ -36,19 +40,14 @@ public class JournalsActivity extends ActionBarActivity implements
 	 */
 	ViewPager mViewPager;
 
-	ManagementTabsFragmentListener listener;
-	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_journals);
-		
+		setContentView(R.layout.activity_analysis);
+
 		// Set up the action bar.
 		final ActionBar actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		actionBar.setTitle("Swap That Frag!");
-		actionBar.setSubtitle("Provider Cursor Loader Content");
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the activity.
@@ -64,12 +63,9 @@ public class JournalsActivity extends ActionBarActivity implements
 		// a reference to the Tab.
 		mViewPager
 				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-					
 					@Override
 					public void onPageSelected(int position) {
-						// put the good tab
 						actionBar.setSelectedNavigationItem(position);
-						
 					}
 				});
 
@@ -87,9 +83,9 @@ public class JournalsActivity extends ActionBarActivity implements
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		
+		getMenuInflater().inflate(R.menu.analysis, menu);
 		return true;
 	}
 
@@ -98,26 +94,11 @@ public class JournalsActivity extends ActionBarActivity implements
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		
 		int id = item.getItemId();
-
-		if (id == R.id.new_item) {
-			if(mSectionsPagerAdapter.swapFragment instanceof ItemListFragment)
-				mSectionsPagerAdapter.listener.onShowFragment();
-
-
+		if (id == R.id.action_settings) {
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}
-	
-	@Override
-	public void onBackPressed() {
-		if (mSectionsPagerAdapter.swapFragment instanceof JournalDetailsFragment) {
-
-			mSectionsPagerAdapter.listener.onShowFragment();
-		}
-		else
-			this.finish();
 	}
 
 	@Override
@@ -137,44 +118,15 @@ public class JournalsActivity extends ActionBarActivity implements
 	public void onTabReselected(ActionBar.Tab tab,
 			FragmentTransaction fragmentTransaction) {
 	}
-	
-	
-	public interface ManagementTabsFragmentListener {
-		public void onShowFragment();
-	}
 
-	/****************************************************************************
-	 * 																			*
-	 * 	A {@link FragmentPagerAdapter} that returns a fragment corresponding to	*
-	 * 	one of the sections/tabs/pages.											*
-	 * 																			*
-	 ****************************************************************************/
+	/**
+	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+	 * one of the sections/tabs/pages.
+	 */
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-		Fragment swapFragment;
-		FragmentManager manager;
-		
-		private final class ManagementTabsListener implements ManagementTabsFragmentListener {
-
-			@Override
-			public void onShowFragment() {
-				manager.beginTransaction().remove(swapFragment).commit();
-				
-				if (swapFragment instanceof ItemListFragment)
-					swapFragment = JournalDetailsFragment.newInstance(listener);
-				else
-					swapFragment = ItemListFragment.newInstance(listener);
-				
-				notifyDataSetChanged();
-			}
-			
-		}
-		
-		public ManagementTabsListener listener = new ManagementTabsListener();
-		
 		public SectionsPagerAdapter(FragmentManager fm) {
 			super(fm);
-			manager = fm;
 		}
 
 		@Override
@@ -182,50 +134,7 @@ public class JournalsActivity extends ActionBarActivity implements
 			// getItem is called to instantiate the fragment for the given page.
 			// Return a PlaceholderFragment (defined as a static inner class
 			// below).
-			//return PlaceholderFragment.newInstance(position + 1);
-			
-			switch (position) {
-			case 0:
-				if(swapFragment == null) {
-					swapFragment = ItemListFragment.newInstance(listener);
-//							new ManagementTabsFragmentListener() {
-//
-//						@Override
-//						public void onShowFragment() {
-//							
-//							manager.beginTransaction().remove(swapFragment).commit();
-//							//manager.beginTransaction().addToBackStack(null);
-////							if (swapFragment instanceof ItemListFragment)
-//								swapFragment = new JournalDetailsFragment();
-////							else
-////								swapFragment = new ItemListFragment();
-//							notifyDataSetChanged();
-//						}
-//						
-//					});
-			
-				}
-				return swapFragment;
-			
-				//return ItemListFragment.newInstance(position + 1);
-			case 1:
-				return PlaceholderFragment.newInstance(position + 1);
-			case 2: 
-				return new JournalDetailsFragment();//.newInstance(position + 1);
-			default:
-				return PlaceholderFragment.newInstance(position + 1);
-			}
-			
-		}
-		
-		@Override
-		public int getItemPosition(Object object) {
-			if ((object instanceof ItemListFragment && swapFragment instanceof JournalDetailsFragment) 
-				|| (object instanceof JournalDetailsFragment && swapFragment instanceof ItemListFragment)) {
-				return POSITION_NONE;
-			}
-
-			return POSITION_UNCHANGED;
+			return PlaceholderFragment.newInstance(position + 1);
 		}
 
 		@Override
@@ -276,8 +185,8 @@ public class JournalsActivity extends ActionBarActivity implements
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_journals, container,
-					false);
+			View rootView = inflater.inflate(R.layout.fragment_analysis,
+					container, false);
 			TextView textView = (TextView) rootView
 					.findViewById(R.id.section_label);
 			textView.setText(Integer.toString(getArguments().getInt(
