@@ -1,4 +1,4 @@
-package com.example.operationswapfrag.database;
+package com.chadamine.growbuddy.database;
 
 import android.content.ContentResolver;
 import android.content.UriMatcher;
@@ -16,7 +16,7 @@ import android.provider.SyncStateContract.Columns;
 public class ItemContract {
 
 	public static final String BASE_PATH = "items";
-	public static final String AUTHORITY = "com.example.operationswapfrag.provider";
+	public static final String AUTHORITY = "com.chadamine.growbuddy.provider";
 	public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
 	
 	public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/items";

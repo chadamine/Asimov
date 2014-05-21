@@ -1,4 +1,4 @@
-package com.example.operationswapfrag.database;
+package com.chadamine.growbuddy.database;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;

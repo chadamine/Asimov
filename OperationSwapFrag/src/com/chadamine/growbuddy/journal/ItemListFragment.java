@@ -1,9 +1,4 @@
-package com.example.operationswapfrag.journals;
-
-import com.example.operationswapfrag.R;
-import com.example.operationswapfrag.R.id;
-import com.example.operationswapfrag.R.layout;
-import com.example.operationswapfrag.database.ItemContract;
+package com.chadamine.growbuddy.journal;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -14,15 +9,15 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+
+import com.chadamine.growbuddy.R;
+import com.chadamine.growbuddy.database.ItemContract;
 
 public class ItemListFragment extends ListFragment 
 	implements LoaderManager.LoaderCallbacks<Cursor> {
 
 	private static final String ARG_SECT_NUM = "section_number";
-	private static ManagementTabsFragmentListener mShowFragment;
+	private static JournalsActivity.ManagementTabsFragmentListener mShowFragment;
 	
 	private CursorAdapter adapter;
 	
@@ -41,7 +36,7 @@ public class ItemListFragment extends ListFragment
 		return fragment;
 	}
 	
-	public static Fragment newInstance(ManagementTabsFragmentListener listener) {
+	public static Fragment newInstance(JournalsActivity.ManagementTabsFragmentListener listener) {
 		ItemListFragment fragment = new ItemListFragment();
 		//ManagementTabsFragmentListener.onShowFragment();
 		mShowFragment = listener;
@@ -66,7 +61,7 @@ public class ItemListFragment extends ListFragment
 	
 	private void fillData() {
 			String[] from = new String[] { ItemContract.COL_NAME, ItemContract.COL_DETAILS };
-			int[] to = new int[] { R.id.listTitle, R.id.listDetails };
+			int[] to = new int[] { R.id.tvListTitle, R.id.tvListDetails };
 		
 			getLoaderManager().initLoader(0, null, this);
 			adapter = new SimpleCursorAdapter(getActivity(), R.layout.item_row, null, from, to, 0);

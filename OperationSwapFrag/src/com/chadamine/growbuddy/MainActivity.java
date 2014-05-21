@@ -1,6 +1,7 @@
-package com.example.operationswapfrag;
+package com.chadamine.growbuddy;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,9 +11,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+
+import com.chadamine.growbuddy.journal.JournalsActivity;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -62,21 +66,33 @@ public class MainActivity extends ActionBarActivity {
 			View rootView = inflater.inflate(R.layout.fragment_main, container,
 					false);
 			
-			rootView.setBackgroundColor(Color.LTGRAY);
-			
 			Activity activity = getActivity();
 			
-			Spinner spNavOptions = (Spinner) rootView.findViewById(R.id.spNavOptions);
+			Spinner spNavOptions = (Spinner) rootView.findViewById(R.id.spNewsFilter);
 			ListView lvNav = (ListView) rootView.findViewById(R.id.lvNavigation);
-			lvNav.setBackgroundColor(Color.WHITE);
-			spNavOptions.setBackgroundColor(Color.BLUE);
+			lvNav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+				@Override
+				public void onItemClick(AdapterView<?> parent, View view,
+						int position, long id) {
+					Intent intent;
+					
+					switch(position) {
+					case 0:
+						intent = new Intent(getActivity(), JournalsActivity.class);
+						startActivity(intent);
+					}
+				}
+				
+			});
+				
 			ListView lvNews = (ListView) rootView.findViewById(R.id.lvNews);
 			lvNews.setBackgroundColor(Color.WHITE);
 			
-			String[] navs = new String[] {"Journals", "Management", "Analysis" };
+			String[] navs = new String[] {"Journals",  "Schedule", "Cultivation", "Analysis" };
 			
 			ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(activity, android.R.layout.simple_spinner_item);
-			ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, navs);
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity, R.layout.nav_row, R.id.tvNavItemTitle, navs);
 			
 			lvNav.setAdapter(adapter);
 			adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

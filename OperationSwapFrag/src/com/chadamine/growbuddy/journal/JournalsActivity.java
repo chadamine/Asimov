@@ -1,12 +1,6 @@
-package com.example.operationswapfrag.journals;
+package com.chadamine.growbuddy.journal;
 
 import java.util.Locale;
-
-import com.example.operationswapfrag.R;
-import com.example.operationswapfrag.R.id;
-import com.example.operationswapfrag.R.layout;
-import com.example.operationswapfrag.R.menu;
-import com.example.operationswapfrag.R.string;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,6 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.chadamine.growbuddy.R;
 
 public class JournalsActivity extends ActionBarActivity implements
 		ActionBar.TabListener {
@@ -116,7 +112,7 @@ public class JournalsActivity extends ActionBarActivity implements
 	
 	@Override
 	public void onBackPressed() {
-		if (mSectionsPagerAdapter.swapFragment instanceof ItemDetailsFragment) {
+		if (mSectionsPagerAdapter.swapFragment instanceof JournalDetailsFragment) {
 
 			mSectionsPagerAdapter.listener.onShowFragment();
 		}
@@ -142,6 +138,11 @@ public class JournalsActivity extends ActionBarActivity implements
 			FragmentTransaction fragmentTransaction) {
 	}
 	
+	
+	public interface ManagementTabsFragmentListener {
+		public void onShowFragment();
+	}
+
 	/****************************************************************************
 	 * 																			*
 	 * 	A {@link FragmentPagerAdapter} that returns a fragment corresponding to	*
@@ -160,7 +161,7 @@ public class JournalsActivity extends ActionBarActivity implements
 				manager.beginTransaction().remove(swapFragment).commit();
 				
 				if (swapFragment instanceof ItemListFragment)
-					swapFragment = ItemDetailsFragment.newInstance(listener);
+					swapFragment = JournalDetailsFragment.newInstance(listener);
 				else
 					swapFragment = ItemListFragment.newInstance(listener);
 				
@@ -195,7 +196,7 @@ public class JournalsActivity extends ActionBarActivity implements
 //							manager.beginTransaction().remove(swapFragment).commit();
 //							//manager.beginTransaction().addToBackStack(null);
 ////							if (swapFragment instanceof ItemListFragment)
-//								swapFragment = new ItemDetailsFragment();
+//								swapFragment = new JournalDetailsFragment();
 ////							else
 ////								swapFragment = new ItemListFragment();
 //							notifyDataSetChanged();
@@ -210,7 +211,7 @@ public class JournalsActivity extends ActionBarActivity implements
 			case 1:
 				return PlaceholderFragment.newInstance(position + 1);
 			case 2: 
-				return new ItemDetailsFragment();//.newInstance(position + 1);
+				return new JournalDetailsFragment();//.newInstance(position + 1);
 			default:
 				return PlaceholderFragment.newInstance(position + 1);
 			}
@@ -219,8 +220,8 @@ public class JournalsActivity extends ActionBarActivity implements
 		
 		@Override
 		public int getItemPosition(Object object) {
-			if ((object instanceof ItemListFragment && swapFragment instanceof ItemDetailsFragment) 
-				|| (object instanceof ItemDetailsFragment && swapFragment instanceof ItemListFragment)) {
+			if ((object instanceof ItemListFragment && swapFragment instanceof JournalDetailsFragment) 
+				|| (object instanceof JournalDetailsFragment && swapFragment instanceof ItemListFragment)) {
 				return POSITION_NONE;
 			}
 

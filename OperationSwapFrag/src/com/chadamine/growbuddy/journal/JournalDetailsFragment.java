@@ -1,12 +1,6 @@
-package com.example.operationswapfrag.journals;
-
-import com.example.operationswapfrag.R;
-import com.example.operationswapfrag.R.id;
-import com.example.operationswapfrag.R.layout;
-import com.example.operationswapfrag.database.ItemContract;
+package com.chadamine.growbuddy.journal;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,10 +10,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class ItemDetailsFragment extends Fragment {
+import com.chadamine.growbuddy.R;
+import com.chadamine.growbuddy.database.ItemContract;
+
+public class JournalDetailsFragment extends Fragment {
 	
-	private static ItemDetailsFragment fragment;
-	private static ManagementTabsFragmentListener mShowFragment;
+	private static JournalDetailsFragment fragment;
+	private static JournalsActivity.ManagementTabsFragmentListener mShowFragment;
 	private static EditText itemName;
 	private static EditText itemDetails;
 	private static Uri itemUri;
@@ -54,8 +51,8 @@ public class ItemDetailsFragment extends Fragment {
 
 	}
 	
-	public static ItemDetailsFragment newInstance(Bundle bundle) {
-		fragment = new ItemDetailsFragment();
+	public static JournalDetailsFragment newInstance(Bundle bundle) {
+		fragment = new JournalDetailsFragment();
 		
 		itemUri = (Uri) bundle.getParcelable(ItemContract.CONTENT_ITEM_TYPE);
 		// fillData(itemUri);
@@ -63,12 +60,12 @@ public class ItemDetailsFragment extends Fragment {
 		return fragment;
 	}
 	
-	public static ItemDetailsFragment newInstance() {
-		return new ItemDetailsFragment();
+	public static JournalDetailsFragment newInstance() {
+		return new JournalDetailsFragment();
 	}
 	
-	public static ItemDetailsFragment newInstance(ManagementTabsFragmentListener listener) {
-		fragment = new ItemDetailsFragment();
+	public static JournalDetailsFragment newInstance(JournalsActivity.ManagementTabsFragmentListener listener) {
+		fragment = new JournalDetailsFragment();
 		
 		mShowFragment = listener;
 		return fragment;
