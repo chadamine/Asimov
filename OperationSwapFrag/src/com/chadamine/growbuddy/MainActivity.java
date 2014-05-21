@@ -15,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.chadamine.growbuddy.analysis.AnalysisActivity;
 import com.chadamine.growbuddy.cultivation.CultivationActivity;
@@ -87,26 +86,29 @@ public class MainActivity extends ActionBarActivity {
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
 					
-					Toast.makeText(activity, "position: " + position, Toast.LENGTH_LONG).show();
-					
 					Intent intent;
 					
 					switch(position) {
 					case 0:
 						intent = new Intent(activity, JournalsActivity.class);
 						startActivity(intent);
+						break;
 					case 1:
 						intent = new Intent(activity, ScheduleActivity.class);
 						startActivity(intent);
+						break;
 					case 2: 
 						intent = new Intent(activity, CultivationActivity.class);
 						startActivity(intent);
+						break;
 					case 3:
 						intent = new Intent(activity, AnalysisActivity.class);
 						startActivity(intent);
+						break;
 					default:
 						intent = new Intent(activity, MainActivity.class);
 						startActivity(intent);
+						break;
 					}
 					
 					//startActivity(intent);
