@@ -109,6 +109,7 @@ public class JournalsActivity extends ActionBarActivity implements
 			if(mSectionsPagerAdapter.swapFragment instanceof ItemListFragment)
 				mSectionsPagerAdapter.listener.onShowFragment();
 
+
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -119,6 +120,8 @@ public class JournalsActivity extends ActionBarActivity implements
 
 			mSectionsPagerAdapter.listener.onShowFragment();
 		}
+		else
+			this.finish();
 	}
 
 	@Override
