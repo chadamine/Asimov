@@ -23,6 +23,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:uiOptions="splitActionBarWhenNarrow">
+            <meta-data android:name="android.support.UI_OPTIONS"
+                android:value="splitActionBarWhenNarrow" />
+            
             android:name="com.chadamine.growbuddy.journal.JournalsActivity"
             android:label="@string/title_activity_main" >
         </activity>
