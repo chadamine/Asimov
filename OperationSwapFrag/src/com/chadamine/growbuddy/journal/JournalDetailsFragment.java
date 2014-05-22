@@ -91,7 +91,7 @@ public class JournalDetailsFragment extends Fragment {
 			values.put(ItemContract.COL_DETAILS, details);
 		
 			itemUri = getActivity().getContentResolver().insert(ItemContract.CONTENT_URI, values);
-			//itemUri.notify();
+			
 		}
 		
 		
