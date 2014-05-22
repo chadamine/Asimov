@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 import com.chadamine.growbuddy.R;
 
-public class JournalsActivity extends ActionBarActivity implements
+public class JournalDetailsActivity extends ActionBarActivity implements
 		ActionBar.TabListener {
 
 	/**

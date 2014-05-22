@@ -16,7 +16,7 @@ import com.chadamine.growbuddy.database.ItemContract;
 public class JournalDetailsFragment extends Fragment {
 	
 	private static JournalDetailsFragment fragment;
-	private static JournalsActivity.ManagementTabsFragmentListener mShowFragment;
+	private static JournalDetailsActivity.ManagementTabsFragmentListener mShowFragment;
 	private static EditText itemName;
 	private static EditText itemDetails;
 	private static Uri itemUri;
@@ -64,7 +64,7 @@ public class JournalDetailsFragment extends Fragment {
 		return new JournalDetailsFragment();
 	}
 	
-	public static JournalDetailsFragment newInstance(JournalsActivity.ManagementTabsFragmentListener listener) {
+	public static JournalDetailsFragment newInstance(JournalDetailsActivity.ManagementTabsFragmentListener listener) {
 		fragment = new JournalDetailsFragment();
 		
 		mShowFragment = listener;

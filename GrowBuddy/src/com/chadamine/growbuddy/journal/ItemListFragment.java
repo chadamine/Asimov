@@ -17,7 +17,7 @@ public class ItemListFragment extends ListFragment
 	implements LoaderManager.LoaderCallbacks<Cursor> {
 
 	private static final String ARG_SECT_NUM = "section_number";
-	private static JournalsActivity.ManagementTabsFragmentListener mShowFragment;
+	private static JournalDetailsActivity.ManagementTabsFragmentListener mShowFragment;
 	
 	private CursorAdapter adapter;
 	
@@ -36,7 +36,7 @@ public class ItemListFragment extends ListFragment
 		return fragment;
 	}
 	
-	public static Fragment newInstance(JournalsActivity.ManagementTabsFragmentListener listener) {
+	public static Fragment newInstance(JournalDetailsActivity.ManagementTabsFragmentListener listener) {
 		ItemListFragment fragment = new ItemListFragment();
 		//ManagementTabsFragmentListener.onShowFragment();
 		mShowFragment = listener;
