@@ -11,9 +11,9 @@ import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
 
 import com.chadamine.growbuddy.R;
-import com.chadamine.growbuddy.database.ItemContract;
+import com.chadamine.growbuddy.database.JournalContract;
 
-public class ItemListFragment extends ListFragment 
+public class JournalListFragment extends ListFragment 
 	implements LoaderManager.LoaderCallbacks<Cursor> {
 
 	private static final String ARG_SECT_NUM = "section_number";
@@ -21,8 +21,8 @@ public class ItemListFragment extends ListFragment
 	
 	private CursorAdapter adapter;
 	
-	public static ItemListFragment newInstance(int sectionNumber) {
-			ItemListFragment fragment = new ItemListFragment();
+	public static JournalListFragment newInstance(int sectionNumber) {
+			JournalListFragment fragment = new JournalListFragment();
 			
 			Bundle args = new Bundle();
 			args.putInt(ARG_SECT_NUM, sectionNumber);
@@ -31,13 +31,13 @@ public class ItemListFragment extends ListFragment
 			return fragment;
 	}
 	
-	public static ItemListFragment newInstance(int sectionNumber, Bundle args) {
-		ItemListFragment fragment = new ItemListFragment();
+	public static JournalListFragment newInstance(int sectionNumber, Bundle args) {
+		JournalListFragment fragment = new JournalListFragment();
 		return fragment;
 	}
 	
 	public static Fragment newInstance(JournalDetailsActivity.ManagementTabsFragmentListener listener) {
-		ItemListFragment fragment = new ItemListFragment();
+		JournalListFragment fragment = new JournalListFragment();
 		//ManagementTabsFragmentListener.onShowFragment();
 		mShowFragment = listener;
 		return fragment;
@@ -60,7 +60,7 @@ public class ItemListFragment extends ListFragment
 
 	
 	private void fillData() {
-			String[] from = new String[] { ItemContract.COL_NAME, ItemContract.COL_DETAILS };
+			String[] from = new String[] { JournalContract.COL_NAME, JournalContract.COL_DETAILS };
 			int[] to = new int[] { R.id.tvListTitle, R.id.tvListDetails };
 		
 			getLoaderManager().initLoader(0, null, this);
@@ -73,9 +73,9 @@ public class ItemListFragment extends ListFragment
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
-		String[] projection = ItemContract.projectionFull;
+		String[] projection = JournalContract.projectionFull;
 		
-		CursorLoader loader = new CursorLoader(getActivity(), ItemContract.CONTENT_URI, projection, null, null, null);
+		CursorLoader loader = new CursorLoader(getActivity(), JournalContract.CONTENT_URI, projection, null, null, null);
 		
 		return loader;
 	}

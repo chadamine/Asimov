@@ -47,8 +47,8 @@ public class JournalDetailsActivity extends ActionBarActivity implements
 		// Set up the action bar.
 		final ActionBar actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		actionBar.setTitle("Swap That Frag!");
-		actionBar.setSubtitle("Provider Cursor Loader Content");
+		actionBar.setTitle("Grow Buddy");
+		actionBar.setSubtitle("Grow Journal Manager and More!");
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the activity.
@@ -102,7 +102,7 @@ public class JournalDetailsActivity extends ActionBarActivity implements
 		int id = item.getItemId();
 
 		if (id == R.id.new_item) {
-			if(mSectionsPagerAdapter.swapFragment instanceof ItemListFragment)
+			if(mSectionsPagerAdapter.swapFragment instanceof JournalListFragment)
 				mSectionsPagerAdapter.listener.onShowFragment();
 
 
@@ -160,10 +160,10 @@ public class JournalDetailsActivity extends ActionBarActivity implements
 			public void onShowFragment() {
 				manager.beginTransaction().remove(swapFragment).commit();
 				
-				if (swapFragment instanceof ItemListFragment)
+				if (swapFragment instanceof JournalListFragment)
 					swapFragment = JournalDetailsFragment.newInstance(listener);
 				else
-					swapFragment = ItemListFragment.newInstance(listener);
+					swapFragment = JournalListFragment.newInstance(listener);
 				
 				notifyDataSetChanged();
 			}
@@ -187,7 +187,7 @@ public class JournalDetailsActivity extends ActionBarActivity implements
 			switch (position) {
 			case 0:
 				if(swapFragment == null) {
-					swapFragment = ItemListFragment.newInstance(listener);
+					swapFragment = JournalListFragment.newInstance(listener);
 //							new ManagementTabsFragmentListener() {
 //
 //						@Override
@@ -220,8 +220,8 @@ public class JournalDetailsActivity extends ActionBarActivity implements
 		
 		@Override
 		public int getItemPosition(Object object) {
-			if ((object instanceof ItemListFragment && swapFragment instanceof JournalDetailsFragment) 
-				|| (object instanceof JournalDetailsFragment && swapFragment instanceof ItemListFragment)) {
+			if ((object instanceof JournalListFragment && swapFragment instanceof JournalDetailsFragment) 
+				|| (object instanceof JournalDetailsFragment && swapFragment instanceof JournalListFragment)) {
 				return POSITION_NONE;
 			}
 

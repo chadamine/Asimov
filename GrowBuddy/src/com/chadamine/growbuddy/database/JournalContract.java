@@ -13,7 +13,7 @@ import android.provider.SyncStateContract.Columns;
  *
  */
 
-public class ItemContract {
+public class JournalContract {
 
 	public static final String BASE_PATH = "items";
 	public static final String AUTHORITY = "com.chadamine.growbuddy.provider";
@@ -54,12 +54,12 @@ public class ItemContract {
 		uriMatcher.addURI(AUTHORITY, BASE_PATH + "/#", ITEM_ID);
 	}
 	
-	public ItemContract() {
+	public JournalContract() {
 		
 	}
 	
 	public static final class Items implements Columns {
 		public static final Uri contentUri = Uri.withAppendedPath(
-				ItemContract.CONTENT_URI, BASE_PATH);
+				JournalContract.CONTENT_URI, BASE_PATH);
 	}
 }

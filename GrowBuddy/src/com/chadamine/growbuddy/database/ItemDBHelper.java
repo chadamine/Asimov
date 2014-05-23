@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class ItemDBHelper extends SQLiteOpenHelper {
 
 	public ItemDBHelper(Context context) {
-		super(context, ItemContract.DATABASE_NAME, null, ItemContract.DB_VERSION);
+		super(context, JournalContract.DATABASE_NAME, null, JournalContract.DB_VERSION);
 		// TODO Auto-generated constructor stub
 	}
 

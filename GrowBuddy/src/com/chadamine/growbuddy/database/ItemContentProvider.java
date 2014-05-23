@@ -26,15 +26,15 @@ public class ItemContentProvider extends ContentProvider {
 		
 		// checkColumns(projection);
 		
-		queryBuilder.setTables(ItemContract.TABLE_ITEM);
+		queryBuilder.setTables(JournalContract.TABLE_ITEM);
 		
-		int uriType = ItemContract.uriMatcher.match(uri);
+		int uriType = JournalContract.uriMatcher.match(uri);
 		
 		switch(uriType) {
-		case ItemContract.ITEMS:
+		case JournalContract.ITEMS:
 			break;
-		case ItemContract.ITEM_ID:
-			queryBuilder.appendWhere(ItemContract.COL_ID + "=" + uri.getLastPathSegment());
+		case JournalContract.ITEM_ID:
+			queryBuilder.appendWhere(JournalContract.COL_ID + "=" + uri.getLastPathSegment());
 			break;
 		default:
 			throw new IllegalArgumentException("Unknown URI: " + uri);
@@ -54,21 +54,21 @@ public class ItemContentProvider extends ContentProvider {
 
 	@Override
 	public Uri insert(Uri uri, ContentValues values) {
-		int uriType = ItemContract.uriMatcher.match(uri);
+		int uriType = JournalContract.uriMatcher.match(uri);
 		
 		SQLiteDatabase db = helper.getWritableDatabase();
 		long id = 0;
 		
 		switch(uriType) {
-		case ItemContract.ITEMS:
-			id = db.insert(ItemContract.TABLE_ITEM, null, values);
+		case JournalContract.ITEMS:
+			id = db.insert(JournalContract.TABLE_ITEM, null, values);
 			break;
 		default:
 			throw new IllegalArgumentException("Unknown URI: " + uri);
 		}
 		getContext().getContentResolver().notifyChange(uri, null);
 		
-		return Uri.parse(ItemContract.BASE_PATH + "/" + id);
+		return Uri.parse(JournalContract.BASE_PATH + "/" + id);
 	}
 
 	@Override
