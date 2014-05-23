@@ -951,9 +951,9 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f070015;
         public static final int action_menu_presenter=0x7f070016;
         public static final int action_mode_close_button=0x7f070024;
-        public static final int action_settings=0x7f070058;
+        public static final int action_settings=0x7f070059;
         public static final int activity_chooser_view_content=0x7f070025;
-        public static final int addJournal=0x7f070059;
+        public static final int addJournal=0x7f07005a;
         public static final int always=0x7f07000f;
         public static final int beginning=0x7f07000a;
         public static final int btnSubmit=0x7f070050;
@@ -962,7 +962,7 @@ containing a value of this type.
         public static final int container=0x7f07003f;
         public static final int cultivationListContainer=0x7f07003d;
         public static final int default_activity_button=0x7f070028;
-        public static final int delJournal=0x7f07005a;
+        public static final int delJournal=0x7f07005b;
         public static final int dialog=0x7f070012;
         public static final int disableHome=0x7f070008;
         public static final int dropdown=0x7f070013;
@@ -996,7 +996,7 @@ containing a value of this type.
         public static final int lvNews=0x7f070054;
         public static final int middle=0x7f07000b;
         public static final int never=0x7f07000d;
-        public static final int new_item=0x7f07005b;
+        public static final int new_item=0x7f07005c;
         public static final int none=0x7f070009;
         public static final int normal=0x7f070000;
         public static final int pager=0x7f07003c;
@@ -1026,6 +1026,7 @@ containing a value of this type.
         public static final int top_action_bar=0x7f070020;
         public static final int tvListDetails=0x7f070056;
         public static final int tvListTitle=0x7f070055;
+        public static final int tvNavItemDetails=0x7f070058;
         public static final int tvNavItemTitle=0x7f070057;
         public static final int tvNavTitle=0x7f070051;
         public static final int up=0x7f070021;
@@ -1138,7 +1139,7 @@ containing a value of this type.
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f0b008c;
+        public static final int AppTheme=0x7f0b0091;
         public static final int TextAppearance_AppCompat_Base_CompactMenu_Dialog=0x7f0b0000;
         public static final int TextAppearance_AppCompat_Base_SearchResult=0x7f0b0001;
         public static final int TextAppearance_AppCompat_Base_SearchResult_Subtitle=0x7f0b0002;
@@ -1278,6 +1279,11 @@ containing a value of this type.
         public static final int Widget_AppCompat_ProgressBar=0x7f0b0086;
         public static final int Widget_AppCompat_ProgressBar_Horizontal=0x7f0b0087;
         public static final int Widget_AppCompat_Spinner_DropDown_ActionBar=0x7f0b0088;
+        public static final int list_box=0x7f0b008e;
+        public static final int list_box_title_strip=0x7f0b008d;
+        public static final int list_item=0x7f0b008c;
+        public static final int nav_list_title=0x7f0b0090;
+        public static final int nav_row_title=0x7f0b008f;
     }
     public static final class styleable {
         /** Attributes that can be used with a ActionBar.

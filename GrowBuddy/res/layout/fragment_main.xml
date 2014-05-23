@@ -19,37 +19,20 @@
         >-->
 
       <TextView 
-            android:id="@+id/tvNavTitle"
-            
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            
-            android:background="#0191c8"
-            
-            android:layout_margin="0dp"
-            android:paddingLeft="5dp"
-            
-            android:text="@string/nav_title"
-            android:textColor="#ffffff"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textAlignment="0"
-            />
+        android:id="@+id/tvNavTitle"
+        style="@style/nav_list_title"
+	  	android:text="@string/nav_title"
+        />
        
-         <ListView
-        	android:id="@+id/lvNavigation"
-        	android:layout_width="match_parent"
-        	android:layout_height="221dp"
-        
-        	android:layout_below="@id/tvNavTitle"
-        	android:background="#74c2e1"
-
-            android:layout_marginTop="1dp"
+     <ListView
+        android:id="@+id/lvNavigation"
+		style="@style/list_box"
+        android:layout_width="match_parent"
+        android:layout_height="221dp"
+       	android:layout_below="@id/tvNavTitle"	
+        android:layout_marginTop="1dp"
             
-        	/>
+      	/>
           <Spinner 
             android:id="@+id/spNewsFilter"
             

@@ -11,7 +11,7 @@ public class CultivationListFragment extends ListFragment {
 		View root = inflater.inflate(R.layout.fragment_cultivation, container, false);
 		
 		String[] values = new String[] { "Plants", "Nutrients", "Irrigation", "Genetics", "Pest & Disease" };
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.nav_row, R.id.tvNavItemTitle, values);
 		
 		setListAdapter(adapter);
 		return root;

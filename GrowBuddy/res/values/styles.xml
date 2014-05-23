@@ -11,7 +11,35 @@
             backward-compatibility can go here.
         -->
     </style>
-
+	<style name="list_item">
+		<item name="android:background">#000000</item>
+	</style>
+	<style name="list_box_title_strip">
+	</style>
+	<style name="list_box">
+		<item name="android:background">#74c2e1</item>
+	</style>
+	<style name="nav_row_title">
+		<item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">30dp</item>
+        <item name="android:textStyle">bold</item>
+	</style>
+	<style name="nav_list_title">
+		<item name="android:layout_height">30dp</item>
+		<item name="android:layout_width">match_parent</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:paddingLeft">5dp</item>
+		<item name="android:background">#0191c8</item>
+		<item name="android:textColor">#ffffff</item>
+		<item name="android:textSize">24sp</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textAlignment">0</item>
+	</style>
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->

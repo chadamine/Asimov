@@ -8,15 +8,16 @@
         android:id="@+id/tvNavItemTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        
+        style="@style/nav_row_title"
         android:layout_alignParentTop="true"
-        
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:paddingLeft="20dp"
-        android:paddingTop="2dp"
-        android:paddingBottom="30dp"
-        android:textStyle="bold"
         />
+	
+	<TextView
+		android:id="@+id/tvNavItemDetails"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		style="@style/nav_row_title"
+		android:layout_below="@+id/tvNavItemTitle"
+		/>
 
 </RelativeLayout>

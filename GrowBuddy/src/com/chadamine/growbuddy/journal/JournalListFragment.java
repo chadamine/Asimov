@@ -61,10 +61,10 @@ public class JournalListFragment extends ListFragment
 	
 	private void fillData() {
 			String[] from = new String[] { DatabaseContract.COL_NAME, DatabaseContract.COL_DETAILS };
-			int[] to = new int[] { R.id.tvListTitle, R.id.tvListDetails };
+			int[] to = new int[] { R.id.tvNavItemTitle, R.id.tvNavItemDetails };
 		
 			getLoaderManager().initLoader(0, null, this);
-			adapter = new SimpleCursorAdapter(getActivity(), R.layout.item_row, null, from, to, 0);
+			adapter = new SimpleCursorAdapter(getActivity(), R.layout.nav_row, null, from, to, 0);
 			setListAdapter(adapter);
 	}
 	
