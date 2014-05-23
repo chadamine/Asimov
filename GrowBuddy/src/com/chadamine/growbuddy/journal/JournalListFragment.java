@@ -11,7 +11,7 @@ import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
 
 import com.chadamine.growbuddy.R;
-import com.chadamine.growbuddy.database.JournalContract;
+import com.chadamine.growbuddy.database.DatabaseContract;
 
 public class JournalListFragment extends ListFragment 
 	implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -60,7 +60,7 @@ public class JournalListFragment extends ListFragment
 
 	
 	private void fillData() {
-			String[] from = new String[] { JournalContract.COL_NAME, JournalContract.COL_DETAILS };
+			String[] from = new String[] { DatabaseContract.COL_NAME, DatabaseContract.COL_DETAILS };
 			int[] to = new int[] { R.id.tvListTitle, R.id.tvListDetails };
 		
 			getLoaderManager().initLoader(0, null, this);
@@ -73,9 +73,9 @@ public class JournalListFragment extends ListFragment
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
-		String[] projection = JournalContract.projectionFull;
+		String[] projection = DatabaseContract.projectionFull;
 		
-		CursorLoader loader = new CursorLoader(getActivity(), JournalContract.CONTENT_URI, projection, null, null, null);
+		CursorLoader loader = new CursorLoader(getActivity(), DatabaseContract.JOURNAL_CONTENT_URI, projection, null, null, null);
 		
 		return loader;
 	}

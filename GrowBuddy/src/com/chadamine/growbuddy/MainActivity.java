@@ -17,7 +17,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.chadamine.growbuddy.analysis.AnalysisActivity;
-import com.chadamine.growbuddy.cultivation.CultivationActivity;
+import com.chadamine.growbuddy.cultivation.CultivationListActivity;
 import com.chadamine.growbuddy.journal.*;
 import com.chadamine.growbuddy.schedule.ScheduleActivity;
 
@@ -98,7 +98,7 @@ public class MainActivity extends ActionBarActivity {
 						startActivity(intent);
 						break;
 					case 2: 
-						intent = new Intent(activity, CultivationActivity.class);
+						intent = new Intent(activity, CultivationListActivity.class);
 						startActivity(intent);
 						break;
 					case 3:

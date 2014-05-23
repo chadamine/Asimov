@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.chadamine.growbuddy.R;
-import com.chadamine.growbuddy.database.JournalContract;
+import com.chadamine.growbuddy.database.DatabaseContract;
 
 public class JournalDetailsFragment extends Fragment {
 	
@@ -25,7 +25,7 @@ public class JournalDetailsFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle args) {
 
 		Bundle extras = getActivity().getIntent().getExtras();
-		itemUri = JournalContract.CONTENT_URI;
+		itemUri = DatabaseContract.JOURNAL_CONTENT_URI;
 		
 		View rootView = inflater.inflate(R.layout.fragment_item_details, container, false);
 		
@@ -54,7 +54,7 @@ public class JournalDetailsFragment extends Fragment {
 	public static JournalDetailsFragment newInstance(Bundle bundle) {
 		fragment = new JournalDetailsFragment();
 		
-		itemUri = (Uri) bundle.getParcelable(JournalContract.CONTENT_ITEM_TYPE);
+		itemUri = (Uri) bundle.getParcelable(DatabaseContract.JOURNAL_CONTENT_ITEM_TYPE);
 		// fillData(itemUri);
 		
 		return fragment;
@@ -87,10 +87,10 @@ public class JournalDetailsFragment extends Fragment {
 		
 		if(name.length() > 0 || details.length() > 0) {
 			ContentValues values = new ContentValues();
-			values.put(JournalContract.COL_NAME, name);
-			values.put(JournalContract.COL_DETAILS, details);
+			values.put(DatabaseContract.COL_NAME, name);
+			values.put(DatabaseContract.COL_DETAILS, details);
 		
-			itemUri = getActivity().getContentResolver().insert(JournalContract.CONTENT_URI, values);
+			itemUri = getActivity().getContentResolver().insert(DatabaseContract.JOURNAL_CONTENT_URI, values);
 			
 		}
 		

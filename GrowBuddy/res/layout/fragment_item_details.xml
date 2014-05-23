@@ -91,7 +91,6 @@
 		android:layout_height="wrap_content"
 		android:layout_toRightOf="@+id/lblLocation"
 		android:layout_alignBaseline="@+id/lblLocation"
-		android:layout_alignBottom="@+id/lblLocation"
 		android:ems="10"
 		android:layout_below="@+id/etDetails"
 		/>
@@ -132,6 +131,7 @@
 		android:layout_below="@+id/etRecipes"
 		android:ems="10"
 		android:layout_toRightOf="@+id/lblRecipes"
+		android:layout_alignBottom="@+id/lblRecipes"
 		/>
 	
 	<Button

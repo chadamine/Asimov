@@ -6,14 +6,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
+import android.database.sqlite.*;
+import android.content.*;
 
 public class ItemContentProvider extends ContentProvider {
 	
-	private ItemDBHelper helper;
+	private JournalDBHelper helper;
 
 	@Override
 	public boolean onCreate() {
-		helper = new ItemDBHelper(getContext());
+		helper = new JournalDBHelper(getContext());
 		
 		return false;
 	}
@@ -26,16 +28,22 @@ public class ItemContentProvider extends ContentProvider {
 		
 		// checkColumns(projection);
 		
-		queryBuilder.setTables(JournalContract.TABLE_ITEM);
+		queryBuilder.setTables(DatabaseContract.TABLE_JOURNAL);
 		
-		int uriType = JournalContract.uriMatcher.match(uri);
+		int uriType = DatabaseContract.uriMatcher.match(uri);
 		
 		switch(uriType) {
-		case JournalContract.ITEMS:
-			break;
-		case JournalContract.ITEM_ID:
-			queryBuilder.appendWhere(JournalContract.COL_ID + "=" + uri.getLastPathSegment());
-			break;
+			
+			case DatabaseContract.JOURNALS:
+				break;
+			case DatabaseContract.JOURNAL_ID:
+				queryBuilder.appendWhere(DatabaseContract.COL_ID + "=" + uri.getLastPathSegment());
+				break;
+			case DatabaseContract.NUTRIENTS:
+				break;
+			case DatabaseContract.NUTRIENT_ID:
+				queryBuilder.appendWhere(DatabaseContract.COL_ID + "=" + uri.getLastPathSegment());
+				break;
 		default:
 			throw new IllegalArgumentException("Unknown URI: " + uri);
 		}
@@ -54,21 +62,21 @@ public class ItemContentProvider extends ContentProvider {
 
 	@Override
 	public Uri insert(Uri uri, ContentValues values) {
-		int uriType = JournalContract.uriMatcher.match(uri);
+		int uriType = DatabaseContract.uriMatcher.match(uri);
 		
 		SQLiteDatabase db = helper.getWritableDatabase();
 		long id = 0;
 		
 		switch(uriType) {
-		case JournalContract.ITEMS:
-			id = db.insert(JournalContract.TABLE_ITEM, null, values);
+		case DatabaseContract.JOURNALS:
+			id = db.insert(DatabaseContract.TABLE_JOURNAL, null, values);
 			break;
 		default:
 			throw new IllegalArgumentException("Unknown URI: " + uri);
 		}
 		getContext().getContentResolver().notifyChange(uri, null);
 		
-		return Uri.parse(JournalContract.BASE_PATH + "/" + id);
+		return Uri.parse(DatabaseContract.JOURNAL_BASE_PATH + "/" + id);
 	}
 
 	@Override
@@ -83,5 +91,47 @@ public class ItemContentProvider extends ContentProvider {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	
+	/** Journal DB Helper **/
+	
+	public static class JournalDBHelper extends SQLiteOpenHelper {
 
+		public JournalDBHelper(Context context) {
+			super(context, DatabaseContract.JOURNAL_DATABASE_NAME, null, DatabaseContract.JOURNAL_DB_VERSION);
+			// TODO Auto-generated constructor stub
+		}
+
+		@Override
+		public void onCreate(SQLiteDatabase db) {
+			JournalTable.onCreate(db);
+		}
+
+		@Override
+		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+			// TODO Auto-generated method stub
+
+		}
+	}
+	
+	
+	/** Nutrient Table **/
+	public static class NutrientDBHelper extends SQLiteOpenHelper {
+		
+		public NutrientDBHelper(Context c) {
+			super(c, DatabaseContract.JOURNAL_DATABASE_NAME, null, DatabaseContract.JOURNAL_DB_VERSION);
+			
+		}
+		
+		@Override
+		public void onCreate(SQLiteDatabase db) {
+			NutrientTable.onCreate(db);
+		}
+		
+		@Override
+		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+			
+		}
+	}
+		
 }
