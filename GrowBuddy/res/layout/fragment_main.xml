@@ -9,54 +9,78 @@
     android:background="#dee7ef"
     tools:context="com.chadamine.growbuddy.MainActivity$PlaceholderFragment" >
 
-    <!-- <RelativeLayout
-        android:id="@+id/llNavigationTitle"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#727b84"
-        android:orientation="vertical"
-        android:scrollbars="horizontal"
-        >-->
-
+<RelativeLayout 
+    android:id="@+id/llNavList"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
       <TextView 
         android:id="@+id/tvNavTitle"
+        android:layout_height="30dp"
+		android:layout_width="match_parent"
         style="@style/nav_list_title"
 	  	android:text="@string/nav_title"
         />
        
      <ListView
-        android:id="@+id/lvNavigation"
-		style="@style/list_box"
-        android:layout_width="match_parent"
-        android:layout_height="221dp"
-       	android:layout_below="@id/tvNavTitle"	
-        android:layout_marginTop="1dp"
-            
-      	/>
-          <Spinner 
-            android:id="@+id/spNewsFilter"
-            
-            android:background="#0191c8"
-            
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-        	android:layout_marginRight="1dp"
-        	android:layout_marginTop="20dp"
-        	
-        	android:layout_below="@id/lvNavigation"
-            />
+         android:id="@+id/lvNavigation"
+         style="@style/list_box"
+         android:layout_width="match_parent"
+         android:layout_height="221dp"
+         android:layout_below="@+id/tvNavTitle"
+         android:layout_marginTop="1dp" />
+
+     </RelativeLayout>       
+      
+     <RelativeLayout
+         android:id="@+id/rlNews"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"   
+         android:layout_below="@+id/llNavList"  
+           
+         >
+     	<RelativeLayout
+         	android:id="@+id/llListGroup"
+         	android:layout_width="match_parent"
+         	android:layout_height="wrap_content"
+         	android:layout_marginTop="30dp"
+         	android:background="#0191c8"
+         	android:layout_marginBottom="1dp"
+         	>
+         	
+       		<TextView
+       		    android:id="@+id/tvNewsTitle"
+       		    android:layout_width="wrap_content"
+       		    android:layout_height="wrap_content"
+       		    android:layout_alignParentTop="true"
+       		    android:layout_marginBottom="1dp"
+       		    android:text="RECENT ACTIVITY"
+        		style="@style/nav_list_title"
+       		    />
+       		
+     		<Spinner 
+            	android:id="@+id/spNewsFilter"
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:layout_alignTop="@+id/tvNewsTitle"
+            	android:layout_alignBottom="@+id/tvNewsTitle"
+        		android:layout_marginRight="1dp"
+        		android:layout_marginLeft="15dp"
+        		android:layout_toRightOf="@+id/tvNewsTitle"
+        		android:layout_alignParentTop="true"
+        		android:layout_alignParentRight="true"
+            	/>
+           </RelativeLayout>
+           
            <ListView
-       		android:layout_width="match_parent"
-			android:layout_height="223dp"
-			android:id="@+id/lvNews"
-			android:layout_below="@id/spNewsFilter" 
-			android:background="#74c2e1"
-		
-			/>
-        
-   <!-- </RelativeLayout>-->
-   
-    
-   
+               android:id="@+id/lvNews"
+               android:layout_width="match_parent"
+               android:layout_height="221dp"
+               android:layout_below="@id/llListGroup"
+               android:background="#74c2e1" />
+          
+     </RelativeLayout>
         
 </RelativeLayout>

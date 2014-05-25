@@ -98,7 +98,7 @@ public class ItemContentProvider extends ContentProvider {
 	public static class JournalDBHelper extends SQLiteOpenHelper {
 
 		public JournalDBHelper(Context context) {
-			super(context, DatabaseContract.JOURNAL_DATABASE_NAME, null, DatabaseContract.JOURNAL_DB_VERSION);
+			super(context, DatabaseContract.DATABASE_NAME, null, DatabaseContract.DB_VERSION);
 			// TODO Auto-generated constructor stub
 		}
 
@@ -119,7 +119,7 @@ public class ItemContentProvider extends ContentProvider {
 	public static class NutrientDBHelper extends SQLiteOpenHelper {
 		
 		public NutrientDBHelper(Context c) {
-			super(c, DatabaseContract.JOURNAL_DATABASE_NAME, null, DatabaseContract.JOURNAL_DB_VERSION);
+			super(c, DatabaseContract.DATABASE_NAME, null, DatabaseContract.DB_VERSION);
 			
 		}
 		

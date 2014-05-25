@@ -78,7 +78,7 @@ public class MainActivity extends ActionBarActivity {
 			
 			final Activity activity = getActivity();
 			
-			Spinner spNavOptions = (Spinner) r.findViewById(R.id.spNewsFilter);
+			
 			ListView lvNav = (ListView) r.findViewById(R.id.lvNavigation);
 			lvNav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -116,18 +116,23 @@ public class MainActivity extends ActionBarActivity {
 				
 			});
 			
-			
+			Spinner spNavOptions = (Spinner) r.findViewById(R.id.spNewsFilter);
 			ListView lvNews = (ListView) r.findViewById(R.id.lvNews);
 			lvNews.setBackgroundColor(Color.WHITE);
 			
+			String[] newsSort = { "Date Due", "Name" };
+
 			String[] navs = new String[] {"Journals",  "Schedule", "Cultivation", "Analysis" };
 			
-			ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(activity, android.R.layout.simple_spinner_item);
+			ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.navSort, android.R.layout.simple_spinner_item);	
 			ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity, R.layout.nav_row, R.id.tvNavItemTitle, navs);
 			
 			lvNav.setAdapter(adapter);
-			adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			
+			spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			spNavOptions.setAdapter(spinnerAdapter);
+			
+			
 		}
 		
 		

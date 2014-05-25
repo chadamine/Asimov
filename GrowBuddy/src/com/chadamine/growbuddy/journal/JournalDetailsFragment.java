@@ -27,7 +27,7 @@ public class JournalDetailsFragment extends Fragment {
 		Bundle extras = getActivity().getIntent().getExtras();
 		itemUri = DatabaseContract.JOURNAL_CONTENT_URI;
 		
-		View rootView = inflater.inflate(R.layout.fragment_item_details, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_add_journal, container, false);
 		
 		Button btnSubmit = (Button) rootView.findViewById(R.id.btnSubmit);
 		btnSubmit.setOnClickListener(new View.OnClickListener() {

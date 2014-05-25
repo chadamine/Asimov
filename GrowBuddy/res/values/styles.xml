@@ -12,6 +12,23 @@
             backward-compatibility can go here.
         -->
     </style>
+    
+    <!-- Detail View Styles -->
+    <style name="detail_text">
+        <item name="android:layout_marginTop">30dp</item>
+		<item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+    <style name="detail_edit_text">
+        <item name="android:layout_marginRight">15dp</item>
+		<item name="android:layout_marginLeft">15dp</item>
+		<item name="android:ems">10</item>
+    </style>
+    <style name="detail_title_text">
+        
+    </style>
+    
+    
+    <!-- Sortable List Box Styles -->
 	<style name="list_item">
 		<item name="android:background">#000000</item>
 	</style>
@@ -28,9 +45,16 @@
         <item name="android:paddingBottom">30dp</item>
         <item name="android:textStyle">bold</item>
 	</style>
+	<style name="nav_row_detail">
+	    <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">30dp</item>
+        <item name="android:textStyle">bold</item>
+	</style>
 	<style name="nav_list_title">
-		<item name="android:layout_height">30dp</item>
-		<item name="android:layout_width">match_parent</item>
+		
         <item name="android:layout_alignParentTop">true</item>
         <item name="android:layout_alignParentLeft">true</item>
         <item name="android:layout_margin">0dp</item>
@@ -39,7 +63,6 @@
 		<item name="android:textColor">#ffffff</item>
 		<item name="android:textSize">24sp</item>
 		<item name="android:textStyle">bold</item>
-		<item name="android:textAlignment">0</item>
 	</style>
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">

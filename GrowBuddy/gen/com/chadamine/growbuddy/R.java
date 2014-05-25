@@ -16,6 +16,9 @@ public final class R {
         public static final int abc_slide_out_bottom=0x7f040004;
         public static final int abc_slide_out_top=0x7f040005;
     }
+    public static final class array {
+        public static final int navSort=0x7f0c0000;
+    }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -1082,7 +1085,7 @@ containing a value of this type.
         public static final int livejournal_256=0x7f020059;
     }
     public static final class id {
-        public static final int RelativeLayout1=0x7f050041;
+        public static final int RelativeLayout1=0x7f050040;
         public static final int action_bar=0x7f05001c;
         public static final int action_bar_activity_content=0x7f050015;
         public static final int action_bar_container=0x7f05001b;
@@ -1094,30 +1097,29 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050059;
+        public static final int action_settings=0x7f05005c;
         public static final int activity_chooser_view_content=0x7f050025;
-        public static final int addJournal=0x7f05005a;
+        public static final int addJournal=0x7f05005d;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
-        public static final int btnSubmit=0x7f050050;
+        public static final int btnSubmit=0x7f05004e;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
         public static final int container=0x7f05003f;
         public static final int cultivationListContainer=0x7f05003d;
         public static final int default_activity_button=0x7f050028;
-        public static final int delJournal=0x7f05005b;
+        public static final int delJournal=0x7f05005e;
         public static final int dialog=0x7f05000e;
         public static final int disableHome=0x7f050008;
         public static final int dropdown=0x7f05000f;
         public static final int edit_query=0x7f050030;
         public static final int end=0x7f050013;
-        public static final int etBatch=0x7f05004c;
-        public static final int etDateCreated=0x7f050046;
+        public static final int etBatch=0x7f05004b;
+        public static final int etDateCreated=0x7f050045;
         public static final int etDetails=0x7f050047;
-        public static final int etLocation=0x7f05004a;
-        public static final int etName=0x7f050045;
-        public static final int etRecipes=0x7f05004f;
-        public static final int etRecips=0x7f05004e;
+        public static final int etLocation=0x7f050049;
+        public static final int etName=0x7f050044;
+        public static final int etRecips=0x7f05004d;
         public static final int expand_activities_button=0x7f050026;
         public static final int expanded_menu=0x7f05002c;
         public static final int home=0x7f050014;
@@ -1126,26 +1128,29 @@ containing a value of this type.
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050027;
         public static final int journalListContainer=0x7f05003e;
-        public static final int lblBatch=0x7f05004b;
-        public static final int lblDateCreated=0x7f050044;
-        public static final int lblDetails=0x7f050048;
-        public static final int lblDetailsTitle=0x7f050042;
-        public static final int lblLocation=0x7f050049;
-        public static final int lblName=0x7f050043;
-        public static final int lblRecipes=0x7f05004d;
+        public static final int lblBatch=0x7f05004a;
+        public static final int lblDateCreated=0x7f050043;
+        public static final int lblDetails=0x7f050046;
+        public static final int lblDetailsTitle=0x7f050041;
+        public static final int lblLocation=0x7f050048;
+        public static final int lblName=0x7f050042;
+        public static final int lblRecipes=0x7f05004c;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
+        public static final int llListGroup=0x7f050054;
+        public static final int llNavList=0x7f050050;
         public static final int lvNavigation=0x7f050052;
-        public static final int lvNews=0x7f050054;
+        public static final int lvNews=0x7f050057;
         public static final int middle=0x7f050012;
         public static final int never=0x7f050009;
-        public static final int new_item=0x7f05005c;
+        public static final int new_item=0x7f05005f;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
         public static final int pager=0x7f05003c;
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
+        public static final int rlNews=0x7f050053;
         public static final int search_badge=0x7f050032;
         public static final int search_bar=0x7f050031;
         public static final int search_button=0x7f050033;
@@ -1156,22 +1161,23 @@ containing a value of this type.
         public static final int search_plate=0x7f050036;
         public static final int search_src_text=0x7f050037;
         public static final int search_voice_btn=0x7f05003b;
-        public static final int section_label=0x7f050040;
+        public static final int section_label=0x7f05004f;
         public static final int shortcut=0x7f05002e;
         public static final int showCustom=0x7f050007;
         public static final int showHome=0x7f050004;
         public static final int showTitle=0x7f050006;
-        public static final int spNewsFilter=0x7f050053;
+        public static final int spNewsFilter=0x7f050056;
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f050039;
         public static final int tabMode=0x7f050002;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
-        public static final int tvListDetails=0x7f050056;
-        public static final int tvListTitle=0x7f050055;
-        public static final int tvNavItemDetails=0x7f050058;
-        public static final int tvNavItemTitle=0x7f050057;
+        public static final int tvListDetails=0x7f050059;
+        public static final int tvListTitle=0x7f050058;
+        public static final int tvNavItemDetails=0x7f05005b;
+        public static final int tvNavItemTitle=0x7f05005a;
         public static final int tvNavTitle=0x7f050051;
+        public static final int tvNewsTitle=0x7f050055;
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
         public static final int withText=0x7f05000c;
@@ -1232,9 +1238,9 @@ containing a value of this type.
         public static final int activity_journals=0x7f03001b;
         public static final int activity_main=0x7f03001c;
         public static final int activity_schedule=0x7f03001d;
-        public static final int fragment_analysis=0x7f03001e;
-        public static final int fragment_cultivation=0x7f03001f;
-        public static final int fragment_item_details=0x7f030020;
+        public static final int fragment_add_journal=0x7f03001e;
+        public static final int fragment_analysis=0x7f03001f;
+        public static final int fragment_cultivation=0x7f030020;
         public static final int fragment_item_list=0x7f030021;
         public static final int fragment_journals=0x7f030022;
         public static final int fragment_main=0x7f030023;
@@ -1245,11 +1251,11 @@ containing a value of this type.
         public static final int support_simple_spinner_dropdown_item=0x7f030028;
     }
     public static final class menu {
-        public static final int analysis=0x7f0c0000;
-        public static final int cultivation=0x7f0c0001;
-        public static final int journal_list=0x7f0c0002;
-        public static final int main=0x7f0c0003;
-        public static final int schedule=0x7f0c0004;
+        public static final int analysis=0x7f0d0000;
+        public static final int cultivation=0x7f0d0001;
+        public static final int journal_list=0x7f0d0002;
+        public static final int main=0x7f0d0003;
+        public static final int schedule=0x7f0d0004;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1332,7 +1338,7 @@ containing a value of this type.
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f0b0091;
+        public static final int AppTheme=0x7f0b0095;
         /**  Mimic text appearance in select_dialog_item.xml 
          */
         public static final int TextAppearance_AppCompat_Base_CompactMenu_Dialog=0x7f0b0063;
@@ -1535,11 +1541,19 @@ containing a value of this type.
         public static final int Widget_AppCompat_ProgressBar=0x7f0b000a;
         public static final int Widget_AppCompat_ProgressBar_Horizontal=0x7f0b0009;
         public static final int Widget_AppCompat_Spinner_DropDown_ActionBar=0x7f0b0022;
-        public static final int list_box=0x7f0b008e;
-        public static final int list_box_title_strip=0x7f0b008d;
-        public static final int list_item=0x7f0b008c;
-        public static final int nav_list_title=0x7f0b0090;
-        public static final int nav_row_title=0x7f0b008f;
+        public static final int detail_edit_text=0x7f0b008d;
+        /**  Detail View Styles 
+         */
+        public static final int detail_text=0x7f0b008c;
+        public static final int detail_title_text=0x7f0b008e;
+        public static final int list_box=0x7f0b0091;
+        public static final int list_box_title_strip=0x7f0b0090;
+        /**  Sortable List Box Styles 
+         */
+        public static final int list_item=0x7f0b008f;
+        public static final int nav_list_title=0x7f0b0094;
+        public static final int nav_row_detail=0x7f0b0093;
+        public static final int nav_row_title=0x7f0b0092;
     }
     public static final class styleable {
         /**  ============================================ 

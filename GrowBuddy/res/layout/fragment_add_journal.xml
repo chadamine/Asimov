@@ -14,9 +14,9 @@
 		android:layout_centerHorizontal="true"
 		android:layout_marginTop="18dp"
 		android:text="Journal Details"
-		android:textAppearance="?android:attr/textAppearanceLarge"/>
-	
-	
+		style="@style/detail_text"
+		/>
+
 	<TextView
 		android:id="@+id/lblName"
 		android:layout_width="wrap_content"
@@ -25,16 +25,18 @@
 		android:layout_alignRight="@+id/lblDateCreated"
 		android:layout_marginTop="34dp"
 		android:text="Name:"
-		android:textAppearance="?android:attr/textAppearanceMedium"/>
+		style="@style/detail_text"
+		/>
 	<EditText
+	    android:inputType="text"
 		android:id="@+id/etName"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_alignBaseline="@+id/lblName"
 		android:layout_toRightOf="@+id/lblName"
-		android:ems="10"
 		android:layout_below="@id/lblDetailsTitle"
-		android:layout_alignBottom="@id/lblName"/>
+		style="@style/detail_edit_text"
+		/>
 	
 
 	<TextView
@@ -42,57 +44,58 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Date Created:"
-		android:textAppearance="?android:attr/textAppearanceMedium"
-		android:layout_below="@+id/lblName"/>
+		android:layout_below="@+id/lblName"
+		style="@style/detail_text"
+		/>
 	<EditText
+	    android:inputType="date"
 		android:id="@+id/etDateCreated"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_alignBaseline="@+id/lblDateCreated"
-		android:layout_alignBottom="@+id/lblDateCreated"
 		android:layout_toRightOf="@+id/lblDateCreated"
-		android:ems="10"
-		android:layout_alignLeft="@+id/etName"
-		android:layout_below="@+id/etName"/>
+		android:layout_below="@+id/etName"
+		style="@style/detail_edit_text"
+		/>
 	
-	
+	<TextView
+		android:id="@+id/lblDetails"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/lblDateCreated"
+		android:layout_alignRight="@+id/lblDateCreated"
+		android:text="Details:"
+		style="@style/detail_text"
+		/>
 	<EditText
 		android:id="@+id/etDetails"
+		android:inputType="text"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_alignBaseline="@+id/lblDetails"
 		android:layout_toRightOf="@+id/lblDetails"
 		android:layout_below="@+id/etDateCreated"
-		android:ems="10"/>
-	<TextView
-		android:id="@+id/lblDetails"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_alignParentLeft="true"
-		android:layout_below="@+id/etDateCreated"
-		android:layout_alignRight="@+id/lblDateCreated"
-		android:layout_marginTop="22dp"
-		android:text="Details:"
-		android:textAppearance="?android:attr/textAppearanceMedium"/>
-
+		style="@style/detail_edit_text"
+		/>	
 	
 	<TextView
 		android:id="@+id/lblLocation"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/lblDetails"
-		android:layout_marginTop="20dp"
 		android:text="Location:"
 		android:layout_alignRight="@+id/lblDetails"
+		style="@style/detail_text"
 		/>
 	<EditText
+	    android:inputType="text"
 		android:id="@+id/etLocation"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_toRightOf="@+id/lblLocation"
 		android:layout_alignBaseline="@+id/lblLocation"
-		android:ems="10"
 		android:layout_below="@+id/etDetails"
+		style="@style/detail_edit_text"
 		/>
 	
 	
@@ -102,18 +105,18 @@
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/lblLocation"
 		android:text="Batch:"
-		android:layout_marginTop="20dp"
 		android:layout_alignRight="@+id/lblDetails"
+		style="@style/detail_text"
 		/>
 	<EditText
+	    android:inputType="text"
 		android:id="@+id/etBatch"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/etLocation"
 		android:layout_alignBaseline="@+id/lblBatch"
-		android:ems="10"
 		android:layout_toRightOf="@+id/lblBatch"
-		android:layout_alignBottom="@+id/lblBatch"
+		style="@style/detail_edit_text"
 		/>
 	
 	<TextView
@@ -123,15 +126,17 @@
 		android:layout_below="@+id/lblBatch"
 		android:text="Recipes:"
 		android:layout_alignRight="@+id/lblDetails"
+		style="@style/detail_text"
 		/>
 	<EditText
+	    android:inputType="text"
 		android:id="@+id/etRecips"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/etRecipes"
-		android:ems="10"
+		android:layout_below="@+id/etBatch"
 		android:layout_toRightOf="@+id/lblRecipes"
-		android:layout_alignBottom="@+id/lblRecipes"
+		android:layout_alignBaseline="@+id/lblRecipes"
+		style="@style/detail_edit_text"
 		/>
 	
 	<Button
