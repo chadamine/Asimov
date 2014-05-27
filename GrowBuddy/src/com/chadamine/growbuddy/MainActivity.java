@@ -125,7 +125,7 @@ public class MainActivity extends ActionBarActivity {
 			String[] navs = new String[] {"Journals",  "Schedule", "Cultivation", "Analysis" };
 			
 			//ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.navSort, android.R.layout.simple_spinner_item);	
-			ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity, R.layout.nav_row, R.id.tvNavItemTitle, navs);
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity, R.layout.row_nav, R.id.tvNavItemTitle, navs);
 			
 			lvNav.setAdapter(adapter);
 			

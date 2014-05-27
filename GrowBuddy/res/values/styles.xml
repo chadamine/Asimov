@@ -32,7 +32,8 @@
 	<style name="list_item">
 		<item name="android:background">#000000</item>
 	</style>
-	<style name="list_box_title_strip">
+	<style name="list_box_header_strip">
+	    <item name="android:background">#0191c8</item>
 	</style>
 	<style name="list_box">
 		<item name="android:background">#74c2e1</item>

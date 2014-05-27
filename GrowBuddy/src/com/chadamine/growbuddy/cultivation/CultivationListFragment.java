@@ -11,32 +11,37 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.chadamine.growbuddy.R;
+import com.chadamine.growbuddy.cultivation.environment.EnvironmentActivity;
+import com.chadamine.growbuddy.cultivation.irrigation.IrrigationActivity;
+import com.chadamine.growbuddy.cultivation.pestdisease.PestDiseaseActivity;
 import com.chadamine.growbuddy.cultivation.plants.PlantsActivity;
+import com.chadamine.growbuddy.cultivation.recipes.RecipesActivity;
 
 public class CultivationListFragment extends ListFragment {
 	
-
+	View root;
 	@Override 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View root = inflater.inflate(R.layout.fragment_cultivation_list, container, false);
+		root = inflater.inflate(R.layout.fragment_cultivation_nav_list, container, false);
 		
-		String[] values = new String[] { "Plants", "Nutrients", "Irrigation", "Genetics", "Pest & Disease" };
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.nav_row, R.id.tvNavItemTitle, values);
-		
+		String[] values = new String[] { "Plants", "Nutrients", "Irrigation", "Pest & Disease", "Environment" };
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.row_nav, R.id.tvNavItemTitle, values);
 	
 		setListAdapter(adapter);
+	
 		return root;
-		
-		
+	}
+	
+	@Override
+	public void onViewCreated(View view, Bundle savedInstanceState) {
+		populateList(view);
 	}
 			
-			private void setUp(View r) {
+			private void populateList(View r) {
 				
 				final Activity activity = getActivity();
 				
-				
 				ListView lvCultivation = getListView();
-						/*(ListView) r.findViewById(R.id.lvCultivation);*/
 				lvCultivation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 					@Override
@@ -48,23 +53,33 @@ public class CultivationListFragment extends ListFragment {
 						switch(position) {
 						case 0:
 							intent = new Intent(activity, PlantsActivity.class);
+							startActivity(intent);
 							break;
 						case 1:
+							intent = new Intent(activity, RecipesActivity.class);
+							startActivity(intent);
 							break;
 						case 2:
+							intent = new Intent(activity, IrrigationActivity.class);
+							startActivity(intent);
 							break;
 						case 3:
+							intent = new Intent(activity, PestDiseaseActivity.class);
+							startActivity(intent);
 							break;
 						case 4:
+							intent = new Intent(activity, EnvironmentActivity.class);
+							startActivity(intent);
 							break;
 						case 5:
 							break;
+						default:
+							intent = new Intent(activity, CultivationListActivity.class);
+							startActivity(intent);
+							break;
 						}
-					
-						
 					}
 				});
-			}
 				
-				
+			}		
 }

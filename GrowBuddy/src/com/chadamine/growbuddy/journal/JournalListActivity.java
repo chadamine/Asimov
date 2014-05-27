@@ -40,7 +40,7 @@ public class JournalListActivity extends ActionBarActivity {
 		int del = R.id.delJournal;
 		
 		//if (id == add) {
-			getSupportFragmentManager().beginTransaction().replace(R.id.journalListContainer, new JournalTempDetailsFragment()).commit();
+			getSupportFragmentManager().beginTransaction().replace(R.id.journalListContainer, new JournalDetailsFragment()).commit();
 		//Toast.makeText(this, "second frag added", Toast.LENGTH_SHORT).show();
 			//return true;
 		//}

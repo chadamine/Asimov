@@ -83,12 +83,12 @@ public class JournalDetailsFragment extends Fragment {
 	
 	private void saveState() {
 		String name = ((EditText) getActivity().findViewById(R.id.etName)).getText().toString();
-		String details = ((EditText) getActivity().findViewById(R.id.etDetails)).getText().toString();
+		//String details = ((EditText) getActivity().findViewById(R.id.etDetails)).getText().toString();
 		
-		if(name.length() > 0 || details.length() > 0) {
+		if(name.length() > 0 ) {
 			ContentValues values = new ContentValues();
 			values.put(DatabaseContract.COL_NAME, name);
-			values.put(DatabaseContract.COL_DETAILS, details);
+			//values.put(DatabaseContract.COL_DETAILS, details);
 		
 			itemUri = getActivity().getContentResolver().insert(DatabaseContract.JOURNAL_CONTENT_URI, values);
 			
