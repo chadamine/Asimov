@@ -20,15 +20,25 @@ public class DatabaseContract {
 	
 	public static final String JOURNAL_BASE_PATH = "journals";
 	public static final String NUTRIENT_BASE_PATH = "nutrients";
+	public static final String BATCH_BASE_PATH = "batches";
+	public static final String TASK_BASE_PATH = "tasks";
 
 	public static final Uri JOURNAL_CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + JOURNAL_BASE_PATH);
 	public static final Uri NUTRIENT_CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + NUTRIENT_BASE_PATH);
+	public static final Uri BATCH_CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BATCH_BASE_PATH);
+	public static final Uri TASK_CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TASK_BASE_PATH);
 	
 	public static final String JOURNAL_CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/journals";
 	public static final String JOURNAL_CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/journal";
 	
 	public static final String NUTRIENT_CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/nutrients";
 	public static final String NUTRIENT_CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/nutrient";
+	
+	public static final String BATCH_CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/batches";
+	public static final String BATCH_CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/batch";
+	
+	public static final String TASK_CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/tasks";
+	public static final String TASK_CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/task";
 	
 	public static final String TABLE_JOURNAL = "journal";
 	public static final String TABLE_JOURNAL_HISTORY = "journalHistory";
@@ -43,6 +53,10 @@ public class DatabaseContract {
 	public static final String TABLE_BATCH_HISTORY = "batches_history";
 	public static final String TABLE_BATCH_NUTRIENTS = "batch_nutrients";
 	
+	public static final String TABLE_TASK = "task";
+	public static final String TABLE_TASK_HISTORY = "task_history";
+	public static final String TTABLE_TASK_NEW = "task_new";
+	
 	// Journal Columns
 	public static final String COL_ID = "_id";
 	public static final String COL_NAME = "name";
@@ -51,6 +65,7 @@ public class DatabaseContract {
 	public static final String COL_DATE_CREATED = "dateCreated";
 	
 	public static final String COL_LOCATION = "location";
+	
 	
 	
 	/**	Create Tables	**/
@@ -90,6 +105,11 @@ public class DatabaseContract {
 	static {
 		uriMatcher.addURI(AUTHORITY, JOURNAL_BASE_PATH, JOURNALS);
 		uriMatcher.addURI(AUTHORITY, JOURNAL_BASE_PATH + "/#", JOURNAL_ID);
+		
+		uriMatcher.addURI(AUTHORITY, NUTRIENT_BASE_PATH, NUTRIENTS);
+		uriMatcher.addURI(AUTHORITY, NUTRIENT_BASE_PATH + "/#", NUTRIENT_ID);
+		
+		
 	}
 	
 	public DatabaseContract() {

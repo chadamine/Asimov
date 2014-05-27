@@ -1,152 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/RelativeLayout1"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:orientation="vertical">
+			android:id="@+id/RelativeLayout1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
 
-	<TextView
-		android:id="@+id/lblDetailsTitle"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_alignParentTop="true"
-		android:layout_centerHorizontal="true"
-		android:layout_marginTop="18dp"
-		android:text="Journal Details"
-		style="@style/detail_text"
-		/>
+			<TextView
+				android:id="@+id/lblDetailsTitle"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentTop="true"
+				android:layout_centerHorizontal="true"
+				android:layout_marginTop="18dp"
+				android:text="Journal Details"
+				style="@style/detail_text"/>
 
-	<TextView
-		android:id="@+id/lblName"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_below="@+id/lblDetailsTitle"
-		android:layout_alignRight="@+id/lblDateCreated"
-		android:layout_marginTop="34dp"
-		android:text="Name:"
-		style="@style/detail_text"
-		/>
-	<EditText
-	    android:inputType="text"
-		android:id="@+id/etName"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_alignBaseline="@+id/lblName"
-		android:layout_toRightOf="@+id/lblName"
-		android:layout_below="@id/lblDetailsTitle"
-		style="@style/detail_edit_text"
-		/>
-	
+			<TextView
+				android:id="@+id/lblName"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/lblDetailsTitle"
+				android:layout_alignRight="@+id/lblDateCreated"
+				android:layout_marginTop="34dp"
+				android:text="Name:"
+				style="@style/detail_text"/>
 
-	<TextView
-		android:id="@+id/lblDateCreated"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="Date Created:"
-		android:layout_below="@+id/lblName"
-		style="@style/detail_text"
-		/>
-	<EditText
-	    android:inputType="date"
-		android:id="@+id/etDateCreated"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_alignBaseline="@+id/lblDateCreated"
-		android:layout_toRightOf="@+id/lblDateCreated"
-		android:layout_below="@+id/etName"
-		style="@style/detail_edit_text"
-		/>
-	
-	<TextView
-		android:id="@+id/lblDetails"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_below="@+id/lblDateCreated"
-		android:layout_alignRight="@+id/lblDateCreated"
-		android:text="Details:"
-		style="@style/detail_text"
-		/>
-	<EditText
-		android:id="@+id/etDetails"
-		android:inputType="text"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_alignBaseline="@+id/lblDetails"
-		android:layout_toRightOf="@+id/lblDetails"
-		android:layout_below="@+id/etDateCreated"
-		style="@style/detail_edit_text"
-		/>	
-	
-	<TextView
-		android:id="@+id/lblLocation"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_below="@+id/lblDetails"
-		android:text="Location:"
-		android:layout_alignRight="@+id/lblDetails"
-		style="@style/detail_text"
-		/>
-	<EditText
-	    android:inputType="text"
-		android:id="@+id/etLocation"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_toRightOf="@+id/lblLocation"
-		android:layout_alignBaseline="@+id/lblLocation"
-		android:layout_below="@+id/etDetails"
-		style="@style/detail_edit_text"
-		/>
-	
-	
-	<TextView
-		android:id="@+id/lblBatch"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_below="@+id/lblLocation"
-		android:text="Batch:"
-		android:layout_alignRight="@+id/lblDetails"
-		style="@style/detail_text"
-		/>
-	<EditText
-	    android:inputType="text"
-		android:id="@+id/etBatch"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_below="@+id/etLocation"
-		android:layout_alignBaseline="@+id/lblBatch"
-		android:layout_toRightOf="@+id/lblBatch"
-		style="@style/detail_edit_text"
-		/>
-	
-	<TextView
-		android:id="@+id/lblRecipes"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_below="@+id/lblBatch"
-		android:text="Recipes:"
-		android:layout_alignRight="@+id/lblDetails"
-		style="@style/detail_text"
-		/>
-	<EditText
-	    android:inputType="text"
-		android:id="@+id/etRecips"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_below="@+id/etBatch"
-		android:layout_toRightOf="@+id/lblRecipes"
-		android:layout_alignBaseline="@+id/lblRecipes"
-		style="@style/detail_edit_text"
-		/>
-	
-	<Button
-		android:id="@+id/btnSubmit"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_alignRight="@+id/etDetails"
-		android:layout_alignParentBottom="true"
-		android:layout_marginBottom="50dp"
-		android:text="Save Item"/>
-	
-</RelativeLayout>
+			<EditText
+				android:inputType="text"
+				android:id="@+id/etName"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignBaseline="@+id/lblName"
+				android:layout_toRightOf="@+id/lblName"
+				android:layout_below="@id/lblDetailsTitle"
+				style="@style/detail_edit_text"/>
+
+			<TextView
+				android:id="@+id/lblDateCreated"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Date Created:"
+				android:layout_below="@+id/lblName"
+				style="@style/detail_text"/>
+
+			<EditText
+				android:inputType="date"
+				android:id="@+id/etDateCreated"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignBaseline="@+id/lblDateCreated"
+				android:layout_toRightOf="@+id/lblDateCreated"
+				android:layout_below="@+id/etName"
+				style="@style/detail_edit_text"/>
+
+			<TextView
+				android:id="@+id/lblDetails"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/lblDateCreated"
+				android:layout_alignRight="@+id/lblDateCreated"
+				android:text="Details:"
+				style="@style/detail_text"/>
+
+			<EditText
+				android:id="@+id/etDetails"
+				android:inputType="text"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignBaseline="@+id/lblDetails"
+				android:layout_toRightOf="@+id/lblDetails"
+				android:layout_below="@+id/etDateCreated"
+				style="@style/detail_edit_text"/>
+
+			<TextView
+				android:id="@+id/lblLocation"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/lblDetails"
+				android:text="Location:"
+				android:layout_alignRight="@+id/lblDetails"
+				style="@style/detail_text"/>
+
+			<Button
+				android:text="Select Location"
+				android:id="@+id/etLocation"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toRightOf="@+id/lblLocation"
+				android:layout_alignBaseline="@+id/lblLocation"
+				android:layout_below="@+id/etDetails"
+				style="@style/detail_edit_text"/>
+
+			<TextView
+				android:id="@+id/lblBatch"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/lblLocation"
+				android:text="Batches:"
+				android:layout_alignRight="@+id/lblDetails"
+				style="@style/detail_text"/>
+
+			<Button
+				android:id="@+id/btnBatch"
+				android:text="Select Batches"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/etLocation"
+				android:layout_alignBaseline="@+id/lblBatch"
+				android:layout_toRightOf="@+id/lblBatch"
+				style="@style/detail_edit_text"/>
+
+			<TextView
+				android:id="@+id/lblRecipes"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/lblBatch"
+				android:text="Recipes:"
+				android:layout_alignRight="@+id/lblDetails"
+				style="@style/detail_text"/>
+
+			<Button
+				android:text="Select Recipes"
+				android:id="@+id/btnRecipes"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/btnBatch"
+				android:layout_toRightOf="@+id/lblRecipes"
+				android:layout_alignBaseline="@+id/lblRecipes"
+				style="@style/detail_edit_text"/>
+
+			<Button
+				android:id="@+id/btnSubmit"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignRight="@+id/etDetails"
+				android:layout_below="@+id/btnRecipes"
+				android:layout_marginLeft="100dp"
+				android:layout_alignParentBottom="true"
+				android:text="Save Journal"/>
+
+		</RelativeLayout>
 
