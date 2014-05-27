@@ -13,7 +13,7 @@
 				android:layout_alignParentTop="true"
 				android:layout_centerHorizontal="true"
 				android:layout_marginTop="18dp"
-				android:text="Journal Details"
+				android:text="@string/journal_details_title"
 				style="@style/detail_text"/>
 
 			<TextView
@@ -23,7 +23,7 @@
 				android:layout_below="@+id/lblDetailsTitle"
 				android:layout_alignRight="@+id/lblDateCreated"
 				android:layout_marginTop="34dp"
-				android:text="Name:"
+				android:text="@string/name"
 				style="@style/detail_text"/>
 
 			<EditText
@@ -40,7 +40,7 @@
 				android:id="@+id/lblDateCreated"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="Date Created:"
+				android:text="@string/date_created"
 				android:layout_below="@+id/lblName"
 				style="@style/detail_text"/>
 
@@ -60,7 +60,7 @@
 				android:layout_height="wrap_content"
 				android:layout_below="@+id/lblDateCreated"
 				android:layout_alignRight="@+id/lblDateCreated"
-				android:text="Details:"
+				android:text="@string/details"
 				style="@style/detail_text"/>
 
 			<EditText
@@ -78,12 +78,12 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_below="@+id/lblDetails"
-				android:text="Location:"
+				android:text="@string/location"
 				android:layout_alignRight="@+id/lblDetails"
 				style="@style/detail_text"/>
 
 			<Button
-				android:text="Select Location"
+				android:text="@string/select_location"
 				android:id="@+id/etLocation"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
@@ -97,13 +97,13 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_below="@+id/lblLocation"
-				android:text="Batches:"
+				android:text="@string/batches"
 				android:layout_alignRight="@+id/lblDetails"
 				style="@style/detail_text"/>
 
 			<Button
 				android:id="@+id/btnBatch"
-				android:text="Select Batches"
+				android:text="@string/select_batches"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_below="@+id/etLocation"
@@ -116,12 +116,12 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_below="@+id/lblBatch"
-				android:text="Recipes:"
+				android:text="@string/recipes"
 				android:layout_alignRight="@+id/lblDetails"
 				style="@style/detail_text"/>
 
 			<Button
-				android:text="Select Recipes"
+				android:text="@string/select_recipes"
 				android:id="@+id/btnRecipes"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
@@ -138,7 +138,8 @@
 				android:layout_below="@+id/btnRecipes"
 				android:layout_marginLeft="100dp"
 				android:layout_alignParentBottom="true"
-				android:text="Save Journal"/>
+				android:text="@string/save_journal" 
+				/>
 
 		</RelativeLayout>
 
