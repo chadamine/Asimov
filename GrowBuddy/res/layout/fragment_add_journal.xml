@@ -23,19 +23,42 @@
 			    android:layout_height="wrap_content"
 			    style="@style/list_box"
 			    android:layout_margin="20dp"
+			    android:paddingBottom="10dp"
+			    android:layout_below="@+id/lblDetailsTitle"
 			    >
-			<TextView
+			    <TextView
+			        android:id="@+id/tvBasicInfo"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:text="Basic Info"
+			        android:gravity="left"
+			        style="@style/nav_list_title"
+			        android:layout_marginBottom="1dp"
+			        />
+			</RelativeLayout>
+			<RelativeLayout
+			        android:id="@+id/rlBasicInfoContent"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_below="@+id/rlBasicInfoHeader"
+			        >
+				<TextView
 				android:id="@+id/tvImage"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_margin="10dp"
+				
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="20dp"
+				android:layout_marginBottom="10dp"
+				android:layout_marginTop="10dp"
+				
 				android:padding="20dp"
 				android:contentDescription="@string/journal_image"
 				android:background="@drawable/dashed"
 				android:text="  ADD\nIMAGE"
 				/>
 
-			<TextView
+				<TextView
 				android:id="@+id/lblName"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
@@ -47,7 +70,7 @@
 				android:layout_marginLeft="20dp"
 				style="@style/detail_text"/>
 
-			<EditText
+				<EditText
 				android:inputType="text"
 				android:id="@+id/etName"
 				android:layout_width="wrap_content"
@@ -61,7 +84,7 @@
 			    android:id="@+id/rlJournalLocations"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
-			    android:layout_below="@+id/rlBasicInfoHeader"
+			    android:layout_below="@+id/rlBasicInfoContent"
 			    android:layout_marginLeft="20dp"
 			    android:layout_marginRight="20dp"
 			    >
@@ -70,6 +93,7 @@
 			        android:id="@+id/rlJournalLocationsTitleHeader"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
+			        android:layout_marginBottom="1dp"
 			        style="@style/list_box_header_strip"
 			        >
 			    <TextView 
