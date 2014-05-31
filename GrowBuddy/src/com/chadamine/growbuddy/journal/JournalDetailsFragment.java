@@ -25,7 +25,9 @@ public class JournalDetailsFragment extends Fragment {
 	private static Activity activity;
 	private static View view;
 	static final int REQUEST_IMAGE_CAPTURE = 1;
-	static final int RESULT_OK = 0;
+	private Uri imageUri;
+	final int PIC_CROP = 2;
+	private static FrameLayout frame;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle args) {
@@ -46,6 +48,12 @@ public class JournalDetailsFragment extends Fragment {
 		});
 		
 		registerForContextMenu(rootView.findViewById(R.id.flImage));
+		
+		frame = (FrameLayout) rootView.findViewById(R.id.flImage);
+		
+		TextView addImage = new TextView(activity);
+		addImage.setText("ADD IMAGE");
+		frame.addView(addImage);
 	
 		/* MUST HAVE THE FALSE FOR THIS FRAGMENT TO LOAD */
 		return rootView;//inflater.inflate(R.layout.fragment_item_details, container, false);
@@ -53,10 +61,10 @@ public class JournalDetailsFragment extends Fragment {
 	
 	@Override 
 	public void onViewCreated(View view, Bundle savedInstanceState) {
-		FrameLayout picBox = (FrameLayout) view.findViewById(R.id.flImage);
+		
 		//ImageView picture = new ImageView();
 		
-		picBox.setOnClickListener(new View.OnClickListener() {
+		frame.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				activity.openContextMenu(v);
@@ -98,18 +106,39 @@ public class JournalDetailsFragment extends Fragment {
 	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		Toast.makeText(activity, Integer.toString(resultCode), Toast.LENGTH_LONG);
 		
 		if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
-			FrameLayout frame = (FrameLayout) activity.findViewById(R.id.flImage);
+			imageUri = data.getData();
+			cropImage();
+		}
+		
+		if (requestCode == PIC_CROP) {
 			ImageView image = new ImageView(activity);
-			
+
 			Bundle extras = data.getExtras();
 			Bitmap imageBitmap = (Bitmap) extras.get("data");
 			image.setImageBitmap(imageBitmap);
-			frame.addView(image);
+			frame.addView(image);			
+		}
+	}
+	
+	private void cropImage() {
+		
+		try {
+			Intent cropIntent = new Intent("com.android.camera.action.CROP");
+			cropIntent
+				.setDataAndType(imageUri, "image/*")
+				.putExtra("aspectX", 1).putExtra("aspectY", 1)
+				.putExtra("outputX", 256)
+				.putExtra("outputY", 256)
+				.putExtra("return-data", true);
+			startActivityForResult(cropIntent, PIC_CROP);
 			
-			
+		}
+		
+		catch(ActivityNotFoundException exception) {
+			String error = "Image capture not supported on this device";
+			Toast.makeText(activity, error, Toast.LENGTH_SHORT).show();
 		}
 	}
 
