@@ -18,14 +18,19 @@
 			
 
 			<RelativeLayout
+				android:id="@+id/rlBasicInfo"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				style="@style/list_box_container"
+				android:layout_below="@+id/lblDetailsTitle"
+				>
+			<RelativeLayout
 			    android:id="@+id/rlBasicInfoHeader"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
-			    style="@style/list_box"
-			    android:layout_margin="20dp"
-			    android:paddingBottom="10dp"
-			    android:layout_below="@+id/lblDetailsTitle"
-			    >
+			    
+			    style="@style/list_box_header_strip"
+				>
 			    <TextView
 			        android:id="@+id/tvBasicInfo"
 			        android:layout_width="match_parent"
@@ -41,9 +46,10 @@
 			        android:layout_width="match_parent"
 			        android:layout_height="wrap_content"
 			        android:layout_below="@+id/rlBasicInfoHeader"
+					style="@style/list_box"
 			        >
-				<TextView
-				android:id="@+id/tvImage"
+				<FrameLayout
+				android:id="@+id/flImage"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				
@@ -52,48 +58,56 @@
 				android:layout_marginBottom="10dp"
 				android:layout_marginTop="10dp"
 				
-				android:padding="20dp"
+				
 				android:contentDescription="@string/journal_image"
 				android:background="@drawable/dashed"
 				android:text="  ADD\nIMAGE"
 				/>
 
-				<TextView
+			
+				<!--<TextView
 				android:id="@+id/lblName"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				
-				android:layout_toRightOf="@+id/tvImage"
-				android:layout_alignTop="@+id/tvImage"
+				android:layout_toRightOf="@+id/flImage"
+				android:layout_alignTop="@+id/flImage"
 				android:text="@string/name"
 				android:layout_marginTop="0dp"
 				android:layout_marginLeft="20dp"
-				style="@style/detail_text"/>
+				style="@style/detail_text"/>-->
 
 				<EditText
 				android:inputType="text"
 				android:id="@+id/etName"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_below="@+id/lblName"
-				android:layout_toRightOf="@+id/tvImage"
+				
+					android:layout_toRightOf="@+id/flImage"
+					android:layout_alignTop="@+id/flImage"
+					android:text="@string/name"
+					android:layout_marginTop="0dp"
+					android:layout_marginLeft="20dp"
+					style="@style/detail_text"/>
 				style="@style/detail_edit_text"/>
+			</RelativeLayout>
 			</RelativeLayout>
 
 			<RelativeLayout
 			    android:id="@+id/rlJournalLocations"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
-			    android:layout_below="@+id/rlBasicInfoContent"
+			    android:layout_below="@+id/rlBasicInfo"
 			    android:layout_marginLeft="20dp"
 			    android:layout_marginRight="20dp"
+				style="@style/list_box_container"
 			    >
 
 			    <RelativeLayout
 			        android:id="@+id/rlJournalLocationsTitleHeader"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
-			        android:layout_marginBottom="1dp"
+			        
 			        style="@style/list_box_header_strip"
 			        >
 			    <TextView 

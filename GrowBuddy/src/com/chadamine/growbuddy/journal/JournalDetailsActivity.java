@@ -1,23 +1,14 @@
 package com.chadamine.growbuddy.journal;
 
-import java.util.Locale;
-
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
-import com.chadamine.growbuddy.R;
+import android.content.*;
+import android.os.*;
+import android.support.v4.app.*;
+import android.support.v4.view.*;
+import android.support.v7.app.*;
+import android.view.*;
+import android.widget.*;
+import com.chadamine.growbuddy.*;
+import java.util.*;
 
 public class JournalDetailsActivity extends ActionBarActivity implements
 		ActionBar.TabListener {
@@ -247,6 +238,11 @@ public class JournalDetailsActivity extends ActionBarActivity implements
 			}
 			return null;
 		}
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 
 	/**

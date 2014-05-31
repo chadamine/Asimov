@@ -18,6 +18,7 @@
         <item name="android:layout_marginTop">30dp</item>
 		<item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
     </style>
+	
     <style name="detail_edit_text">
         <item name="android:layout_marginRight">15dp</item>
 		<item name="android:layout_marginLeft">15dp</item>
@@ -32,12 +33,24 @@
 	<style name="list_item">
 		<item name="android:background">#000000</item>
 	</style>
+	
 	<style name="list_box_header_strip">
 	    <item name="android:background">#0191c8</item>
+		<item name="android:layout_marginBottom">1dp</item>
 	</style>
+	
 	<style name="list_box">
 		<item name="android:background">#74c2e1</item>
 	</style>
+	
+	<style name="list_box_container">
+		<!--<item name="android:background">#74c2e1</item>-->
+		
+		<item name="android:layout_marginLeft">20dp</item>
+		<item name="android:layout_marginRight">20dp</item>
+		<item name="android:layout_marginBottom">20dp</item>
+	</style>
+	
 	<style name="nav_row_title">
 		<item name="android:textColor">#ffffff</item>
         <item name="android:textSize">20sp</item>
@@ -46,6 +59,7 @@
         <item name="android:paddingBottom">30dp</item>
         <item name="android:textStyle">bold</item>
 	</style>
+	
 	<style name="nav_row_detail">
 	    <item name="android:textColor">#ffffff</item>
         <item name="android:textSize">10sp</item>
@@ -54,8 +68,8 @@
         <item name="android:paddingBottom">30dp</item>
         <item name="android:textStyle">bold</item>
 	</style>
-	<style name="nav_list_title">
-		
+	
+	<style name="nav_list_title">	
         <item name="android:layout_alignParentTop">true</item>
         <item name="android:layout_alignParentLeft">true</item>
         <item name="android:layout_margin">0dp</item>
