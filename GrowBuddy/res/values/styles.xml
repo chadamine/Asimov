@@ -39,6 +39,10 @@
 		<item name="android:layout_marginBottom">1dp</item>
 	</style>
 	
+	<style name="button">
+		<item name="android:background">#0191c8</item>
+	</style>
+	
 	<style name="list_box">
 		<item name="android:background">#74c2e1</item>
 	</style>

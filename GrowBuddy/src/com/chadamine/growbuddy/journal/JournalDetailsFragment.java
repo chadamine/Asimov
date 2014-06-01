@@ -14,6 +14,7 @@ import com.chadamine.growbuddy.*;
 import com.chadamine.growbuddy.database.*;
 
 import android.support.v4.app.Fragment;
+import android.widget.LinearLayout.*;
 
 public class JournalDetailsFragment extends Fragment {
 	
@@ -36,6 +37,7 @@ public class JournalDetailsFragment extends Fragment {
 		Bundle extras = getActivity().getIntent().getExtras();
 		itemUri = DatabaseContract.JOURNAL_CONTENT_URI;
 		
+		/* MUST HAVE THE FALSE FOR THIS FRAGMENT TO LOAD */
 		View rootView = inflater.inflate(R.layout.fragment_add_journal, container, false);
 		
 		Button btnSubmit = (Button) rootView.findViewById(R.id.btnSubmit);
@@ -52,17 +54,26 @@ public class JournalDetailsFragment extends Fragment {
 		frame = (FrameLayout) rootView.findViewById(R.id.flImage);
 		
 		TextView addImage = new TextView(activity);
-		addImage.setText("ADD IMAGE");
+		
+		int left = 0;
+		int top = 35;
+		int right = 0;
+		int bottom = 0;
+		
+		//LinearLayout.LayoutParams textParams = new LinearLayout.LayoutParams(
+			//LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		frame.setPadding(left, top, right, bottom);
+		
+		addImage.setText("ADD\nIMAGE");
+		addImage.setGravity(Gravity.CENTER);
+		
 		frame.addView(addImage);
 	
-		/* MUST HAVE THE FALSE FOR THIS FRAGMENT TO LOAD */
-		return rootView;//inflater.inflate(R.layout.fragment_item_details, container, false);
+		return rootView;
 	}
 	
 	@Override 
 	public void onViewCreated(View view, Bundle savedInstanceState) {
-		
-		//ImageView picture = new ImageView();
 		
 		frame.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -89,6 +100,7 @@ public class JournalDetailsFragment extends Fragment {
 				return true;
 				
 			case R.id.file:
+				//openFile();
 				return true;
 			default:
 				return super.onContextItemSelected(item);
@@ -128,7 +140,8 @@ public class JournalDetailsFragment extends Fragment {
 			Intent cropIntent = new Intent("com.android.camera.action.CROP");
 			cropIntent
 				.setDataAndType(imageUri, "image/*")
-				.putExtra("aspectX", 1).putExtra("aspectY", 1)
+				.putExtra("aspectX", 1)
+				.putExtra("aspectY", 1)
 				.putExtra("outputX", 256)
 				.putExtra("outputY", 256)
 				.putExtra("return-data", true);

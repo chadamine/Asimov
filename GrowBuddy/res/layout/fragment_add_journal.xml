@@ -1,211 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-			android:id="@+id/RelativeLayout1"
+	android:id="@+id/RelativeLayout1"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<TextView
+		android:id="@+id/lblDetailsTitle"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="18dp"
+		android:text="@string/journal_details_title"
+		style="@style/detail_text"/>
+
+	<RelativeLayout
+		android:id="@+id/rlBasicInfo"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		style="@style/list_box_container"
+		android:layout_below="@+id/lblDetailsTitle">
+
+		<RelativeLayout
+			android:id="@+id/rlBasicInfoHeader"
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:orientation="vertical">
+			android:layout_height="wrap_content"
+			style="@style/list_box_header_strip">
 
 			<TextView
-				android:id="@+id/lblDetailsTitle"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_alignParentTop="true"
-				android:layout_centerHorizontal="true"
-				android:layout_marginTop="18dp"
-				android:text="@string/journal_details_title"
-				style="@style/detail_text"/>
-			
-
-			<RelativeLayout
-				android:id="@+id/rlBasicInfo"
+				android:id="@+id/tvBasicInfo"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				style="@style/list_box_container"
-				android:layout_below="@+id/lblDetailsTitle"
-				>
-			<RelativeLayout
-			    android:id="@+id/rlBasicInfoHeader"
-			    android:layout_width="match_parent"
-			    android:layout_height="wrap_content"
-			    
-			    style="@style/list_box_header_strip"
-				>
-			    <TextView
-			        android:id="@+id/tvBasicInfo"
-			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
-			        android:text="Basic Info"
-			        android:gravity="left"
-			        style="@style/nav_list_title"
-			        android:layout_marginBottom="1dp"
-			        />
-			</RelativeLayout>
-			<RelativeLayout
-			        android:id="@+id/rlBasicInfoContent"
-			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
-			        android:layout_below="@+id/rlBasicInfoHeader"
-					style="@style/list_box"
-			        >
-				<FrameLayout
+				android:text="Basic Info"
+				android:gravity="left"
+				style="@style/nav_list_title"
+				android:layout_marginBottom="1dp"/>
+
+		</RelativeLayout>
+
+		<RelativeLayout
+			android:id="@+id/rlBasicInfoContent"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/rlBasicInfoHeader"
+			style="@style/list_box">
+
+			<FrameLayout
 				android:id="@+id/flImage"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				
 				android:layout_marginLeft="10dp"
 				android:layout_marginRight="20dp"
 				android:layout_marginBottom="10dp"
 				android:layout_marginTop="10dp"
-				
-				
 				android:contentDescription="@string/journal_image"
 				android:background="@drawable/dashed"
-				android:text="  ADD\nIMAGE"
-				/>
+				android:text="  ADD\nIMAGE"/>
 
-			
-				<!--<TextView
-				android:id="@+id/lblName"
+			<TextView
+				android:id="@+id/textName"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				
+				android:text="Name:"
 				android:layout_toRightOf="@+id/flImage"
-				android:layout_alignTop="@+id/flImage"
-				android:text="@string/name"
-				android:layout_marginTop="0dp"
+				android:layout_marginTop="20dp"
 				android:layout_marginLeft="20dp"
-				style="@style/detail_text"/>-->
+				android:layout_marginBottom="10dp"/>
 
-				<EditText
+			<EditText
 				android:inputType="text"
 				android:id="@+id/etName"
-				android:layout_width="wrap_content"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				
-					android:layout_toRightOf="@+id/flImage"
-					android:layout_alignTop="@+id/flImage"
-					android:text="@string/name"
-					android:layout_marginTop="0dp"
-					android:layout_marginLeft="20dp"
-					style="@style/detail_text"/>
-				style="@style/detail_edit_text"/>
-			</RelativeLayout>
-			</RelativeLayout>
-
-			<RelativeLayout
-			    android:id="@+id/rlJournalLocations"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_below="@+id/rlBasicInfo"
-			    android:layout_marginLeft="20dp"
-			    android:layout_marginRight="20dp"
-				style="@style/list_box_container"
-			    >
-
-			    <RelativeLayout
-			        android:id="@+id/rlJournalLocationsTitleHeader"
-			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"
-			        
-			        style="@style/list_box_header_strip"
-			        >
-			    <TextView 
-			        android:id="@+id/tvJournalLocationsTitle"
-			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"
-			        android:layout_alignParentTop="true"
-			        android:layout_alignParentLeft="true"
-			        android:text="Location"
-			        style="@style/nav_list_title"
-			        />
-			    <Button
-			        android:id="@+id/btnChangeJournalLocation"
-			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"
-			        android:layout_alignParentRight="true"
-			        android:layout_alignTop="@+id/tvJournalLocationsTitle"
-			        android:layout_alignBottom="@+id/tvJournalLocationsTitle"
-			        android:text="Change Location"
-			        android:textSize="12sp"
-			        />
-			    </RelativeLayout>
-			        
-			<ListView
-			    android:id="@+id/lvJournalLocations"
-			    android:layout_width="match_parent"
-			    android:layout_height="50dp"
-			   android:layout_below="@+id/rlJournalLocationsTitleHeader"
-			    style="@style/list_box"
-			    />
-			</RelativeLayout>
-			
-<!-- 
-			<TextView
-				android:id="@+id/lblLocation"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_below="@+id/tvImage"
-				android:text="@string/location"
-				android:layout_alignLeft="@+id/tvImage"
-				style="@style/detail_text"/>
-
-			<Button
-				android:text="@string/select_location"
-				android:id="@+id/etLocation"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_toRightOf="@+id/lblLocation"
-				android:layout_alignBaseline="@+id/lblLocation"
-				android:layout_below="@+id/etName"
-				style="@style/detail_edit_text"/>
+				android:layout_toRightOf="@+id/textName"
+				android:layout_marginTop="0dp"
+				style="@style/detail_text"
+				android:hint="Name"
+				android:layout_alignLeft="@+id/spinnerLocation"
+				android:textSize="12sp"
+				android:textAlignment="gravity"
+				android:layout_alignBaseline="@id/textName"
+				android:layout_marginRight="10dp"/>
 
 			<TextView
-				android:id="@+id/lblBatch"
+				android:id="@+id/textLocation"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_below="@+id/lblLocation"
-				android:text="@string/batches"
-				android:layout_alignRight="@+id/lblLocation"
-				style="@style/detail_text"/>
+				android:text="Location:"
+				android:layout_below="@+id/textName"
+				android:layout_alignLeft="@+id/textName"
+				android:layout_marginBottom="10dp"/>
 
-			<Button
-				android:id="@+id/btnBatch"
-				android:text="@string/select_batches"
-				android:layout_width="wrap_content"
+			<Spinner
+				android:id="@+id/spinnerLocation"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_below="@+id/etLocation"
-				android:layout_alignBaseline="@+id/lblBatch"
-				android:layout_toRightOf="@+id/lblBatch"
-				style="@style/detail_edit_text"/>
-
-			<TextView
-				android:id="@+id/lblRecipes"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_below="@+id/lblBatch"
-				android:text="@string/recipes"
-				android:layout_alignRight="@+id/lblLocation"
-				style="@style/detail_text"/>
-
-			<Button
-				android:text="@string/select_recipes"
-				android:id="@+id/btnRecipes"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_below="@+id/btnBatch"
-				android:layout_toRightOf="@+id/lblRecipes"
-				android:layout_alignBaseline="@+id/lblRecipes"
-				style="@style/detail_edit_text"/>
--->
-			<Button
-				android:id="@+id/btnSubmit"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_alignParentBottom="true"
-				android:layout_alignParentRight="true"	
-				android:text="@string/save_journal" 
-				/>
+				android:layout_alignTop="@+id/textLocation"
+				android:layout_toRightOf="@+id/textLocation"
+				android:layout_alignBottom="@+id/textLocation"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"/>
 
 		</RelativeLayout>
+
+	</RelativeLayout>
+
+	<RelativeLayout
+		android:id="@+id/rlJournalLocations"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/rlBasicInfo"
+		style="@style/list_box_container">
+
+		<RelativeLayout
+			android:id="@+id/rlJournalLocationsTitleHeader"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			style="@style/list_box_header_strip">
+
+			<TextView
+				android:id="@+id/tvJournalLocationsTitle"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentTop="true"
+				android:layout_alignParentLeft="true"
+				android:text="Batches"
+				style="@style/nav_list_title"/>
+
+			<Button
+				android:id="@+id/btnChangeJournalLocation"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
+				android:layout_alignTop="@+id/tvJournalLocationsTitle"
+				android:layout_alignBottom="@+id/tvJournalLocationsTitle"
+				android:text="Edit Batches"
+				android:textSize="12sp"
+				android:background="@drawable/button_background" />
+
+		</RelativeLayout>
+
+		<ListView
+			android:id="@+id/lvJournalLocations"
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			android:layout_below="@+id/rlJournalLocationsTitleHeader"
+			style="@style/list_box"/>
+
+	</RelativeLayout>
+
+	<Button
+		android:id="@+id/btnSubmit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentRight="true"
+		android:text="@string/save_journal"/>
+
+</RelativeLayout>
 

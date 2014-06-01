@@ -937,10 +937,14 @@ containing a value of this type.
         public static final int abc_textfield_searchview_holo_light=0x7f020054;
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
-        public static final int calendar_ice_256=0x7f020057;
-        public static final int dashed=0x7f020058;
-        public static final int ic_launcher=0x7f020059;
-        public static final int livejournal_256=0x7f02005a;
+        public static final int button=0x7f020057;
+        public static final int button_background=0x7f020058;
+        public static final int button_focused=0x7f020059;
+        public static final int button_pressed=0x7f02005a;
+        public static final int calendar_ice_256=0x7f02005b;
+        public static final int dashed=0x7f02005c;
+        public static final int ic_launcher=0x7f02005d;
+        public static final int livejournal_256=0x7f02005e;
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f070040;
@@ -955,29 +959,29 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f070015;
         public static final int action_menu_presenter=0x7f070016;
         public static final int action_mode_close_button=0x7f070024;
-        public static final int action_settings=0x7f07005b;
+        public static final int action_settings=0x7f07005e;
         public static final int activity_chooser_view_content=0x7f070025;
-        public static final int addJournal=0x7f07005e;
+        public static final int addJournal=0x7f070061;
         public static final int always=0x7f07000f;
         public static final int beginning=0x7f07000a;
-        public static final int btnChangeJournalLocation=0x7f07004b;
-        public static final int btnSubmit=0x7f07004d;
-        public static final int camera=0x7f07005c;
+        public static final int btnChangeJournalLocation=0x7f07004e;
+        public static final int btnSubmit=0x7f070050;
+        public static final int camera=0x7f07005f;
         public static final int checkbox=0x7f07002d;
         public static final int collapseActionView=0x7f070011;
         public static final int container=0x7f07003f;
         public static final int cultivationListContainer=0x7f07003d;
         public static final int default_activity_button=0x7f070028;
-        public static final int delJournal=0x7f07005f;
+        public static final int delJournal=0x7f070062;
         public static final int dialog=0x7f070012;
         public static final int disableHome=0x7f070008;
         public static final int dropdown=0x7f070013;
         public static final int edit_query=0x7f070030;
         public static final int end=0x7f07000c;
-        public static final int etName=0x7f070047;
+        public static final int etName=0x7f070048;
         public static final int expand_activities_button=0x7f070026;
         public static final int expanded_menu=0x7f07002c;
-        public static final int file=0x7f07005d;
+        public static final int file=0x7f070060;
         public static final int flImage=0x7f070046;
         public static final int home=0x7f070017;
         public static final int homeAsUp=0x7f070005;
@@ -988,14 +992,14 @@ containing a value of this type.
         public static final int lblDetailsTitle=0x7f070041;
         public static final int listMode=0x7f070001;
         public static final int list_item=0x7f070029;
-        public static final int llListGroup=0x7f070053;
-        public static final int llNavList=0x7f07004f;
-        public static final int lvJournalLocations=0x7f07004c;
-        public static final int lvNavigation=0x7f070051;
-        public static final int lvNews=0x7f070056;
+        public static final int llListGroup=0x7f070056;
+        public static final int llNavList=0x7f070052;
+        public static final int lvJournalLocations=0x7f07004f;
+        public static final int lvNavigation=0x7f070054;
+        public static final int lvNews=0x7f070059;
         public static final int middle=0x7f07000b;
         public static final int never=0x7f07000d;
-        public static final int new_item=0x7f070060;
+        public static final int new_item=0x7f070063;
         public static final int none=0x7f070009;
         public static final int normal=0x7f070000;
         public static final int pager=0x7f07003c;
@@ -1005,9 +1009,9 @@ containing a value of this type.
         public static final int rlBasicInfo=0x7f070042;
         public static final int rlBasicInfoContent=0x7f070045;
         public static final int rlBasicInfoHeader=0x7f070043;
-        public static final int rlJournalLocations=0x7f070048;
-        public static final int rlJournalLocationsTitleHeader=0x7f070049;
-        public static final int rlNews=0x7f070052;
+        public static final int rlJournalLocations=0x7f07004b;
+        public static final int rlJournalLocationsTitleHeader=0x7f07004c;
+        public static final int rlNews=0x7f070055;
         public static final int search_badge=0x7f070032;
         public static final int search_bar=0x7f070031;
         public static final int search_button=0x7f070033;
@@ -1018,25 +1022,28 @@ containing a value of this type.
         public static final int search_plate=0x7f070036;
         public static final int search_src_text=0x7f070037;
         public static final int search_voice_btn=0x7f07003b;
-        public static final int section_label=0x7f07004e;
+        public static final int section_label=0x7f070051;
         public static final int shortcut=0x7f07002e;
         public static final int showCustom=0x7f070007;
         public static final int showHome=0x7f070004;
         public static final int showTitle=0x7f070006;
-        public static final int spNewsFilter=0x7f070055;
+        public static final int spNewsFilter=0x7f070058;
+        public static final int spinnerLocation=0x7f070049;
         public static final int split_action_bar=0x7f07001e;
         public static final int submit_area=0x7f070039;
         public static final int tabMode=0x7f070002;
+        public static final int textLocation=0x7f07004a;
+        public static final int textName=0x7f070047;
         public static final int title=0x7f07002b;
         public static final int top_action_bar=0x7f070020;
         public static final int tvBasicInfo=0x7f070044;
-        public static final int tvJournalLocationsTitle=0x7f07004a;
-        public static final int tvListDetails=0x7f070058;
-        public static final int tvListTitle=0x7f070057;
-        public static final int tvNavItemDetails=0x7f07005a;
-        public static final int tvNavItemTitle=0x7f070059;
-        public static final int tvNavTitle=0x7f070050;
-        public static final int tvNewsTitle=0x7f070054;
+        public static final int tvJournalLocationsTitle=0x7f07004d;
+        public static final int tvListDetails=0x7f07005b;
+        public static final int tvListTitle=0x7f07005a;
+        public static final int tvNavItemDetails=0x7f07005d;
+        public static final int tvNavItemTitle=0x7f07005c;
+        public static final int tvNavTitle=0x7f070053;
+        public static final int tvNewsTitle=0x7f070057;
         public static final int up=0x7f070021;
         public static final int useLogo=0x7f070003;
         public static final int withText=0x7f070010;
@@ -1196,7 +1203,7 @@ containing a value of this type.
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f0b0096;
+        public static final int AppTheme=0x7f0b0097;
         public static final int TextAppearance_AppCompat_Base_CompactMenu_Dialog=0x7f0b0000;
         public static final int TextAppearance_AppCompat_Base_SearchResult=0x7f0b0001;
         public static final int TextAppearance_AppCompat_Base_SearchResult_Subtitle=0x7f0b0002;
@@ -1336,20 +1343,21 @@ containing a value of this type.
         public static final int Widget_AppCompat_ProgressBar=0x7f0b0086;
         public static final int Widget_AppCompat_ProgressBar_Horizontal=0x7f0b0087;
         public static final int Widget_AppCompat_Spinner_DropDown_ActionBar=0x7f0b0088;
+        public static final int button=0x7f0b0091;
         public static final int detail_edit_text=0x7f0b008d;
         /**  Detail View Styles 
          */
         public static final int detail_text=0x7f0b008c;
         public static final int detail_title_text=0x7f0b008e;
-        public static final int list_box=0x7f0b0091;
-        public static final int list_box_container=0x7f0b0092;
+        public static final int list_box=0x7f0b0092;
+        public static final int list_box_container=0x7f0b0093;
         public static final int list_box_header_strip=0x7f0b0090;
         /**  Sortable List Box Styles 
          */
         public static final int list_item=0x7f0b008f;
-        public static final int nav_list_title=0x7f0b0095;
-        public static final int nav_row_detail=0x7f0b0094;
-        public static final int nav_row_title=0x7f0b0093;
+        public static final int nav_list_title=0x7f0b0096;
+        public static final int nav_row_detail=0x7f0b0095;
+        public static final int nav_row_title=0x7f0b0094;
     }
     public static final class styleable {
         /** Attributes that can be used with a ActionBar.
