@@ -943,8 +943,9 @@ containing a value of this type.
         public static final int button_pressed=0x7f02005a;
         public static final int calendar_ice_256=0x7f02005b;
         public static final int dashed=0x7f02005c;
-        public static final int ic_launcher=0x7f02005d;
-        public static final int livejournal_256=0x7f02005e;
+        public static final int edit_text=0x7f02005d;
+        public static final int ic_launcher=0x7f02005e;
+        public static final int livejournal_256=0x7f02005f;
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f070040;
@@ -1203,7 +1204,7 @@ containing a value of this type.
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f0b0097;
+        public static final int AppTheme=0x7f0b0098;
         public static final int TextAppearance_AppCompat_Base_CompactMenu_Dialog=0x7f0b0000;
         public static final int TextAppearance_AppCompat_Base_SearchResult=0x7f0b0001;
         public static final int TextAppearance_AppCompat_Base_SearchResult_Subtitle=0x7f0b0002;
@@ -1343,21 +1344,22 @@ containing a value of this type.
         public static final int Widget_AppCompat_ProgressBar=0x7f0b0086;
         public static final int Widget_AppCompat_ProgressBar_Horizontal=0x7f0b0087;
         public static final int Widget_AppCompat_Spinner_DropDown_ActionBar=0x7f0b0088;
-        public static final int button=0x7f0b0091;
+        public static final int button=0x7f0b0092;
         public static final int detail_edit_text=0x7f0b008d;
         /**  Detail View Styles 
          */
         public static final int detail_text=0x7f0b008c;
         public static final int detail_title_text=0x7f0b008e;
-        public static final int list_box=0x7f0b0092;
-        public static final int list_box_container=0x7f0b0093;
-        public static final int list_box_header_strip=0x7f0b0090;
+        public static final int list_box=0x7f0b0093;
+        public static final int list_box_container=0x7f0b0094;
+        public static final int list_box_header_strip=0x7f0b0091;
+        public static final int list_item=0x7f0b0090;
+        public static final int nav_list_title=0x7f0b0097;
+        public static final int nav_row_detail=0x7f0b0096;
+        public static final int nav_row_title=0x7f0b0095;
         /**  Sortable List Box Styles 
          */
-        public static final int list_item=0x7f0b008f;
-        public static final int nav_list_title=0x7f0b0096;
-        public static final int nav_row_detail=0x7f0b0095;
-        public static final int nav_row_title=0x7f0b0094;
+        public static final int title_text=0x7f0b008f;
     }
     public static final class styleable {
         /** Attributes that can be used with a ActionBar.

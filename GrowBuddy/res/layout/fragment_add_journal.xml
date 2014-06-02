@@ -67,7 +67,8 @@
 				android:layout_toRightOf="@+id/flImage"
 				android:layout_marginTop="20dp"
 				android:layout_marginLeft="20dp"
-				android:layout_marginBottom="10dp"/>
+				android:layout_marginBottom="10dp"
+				style="@style/title_text"/>
 
 			<EditText
 				android:inputType="text"
@@ -76,11 +77,9 @@
 				android:layout_height="wrap_content"
 				android:layout_toRightOf="@+id/textName"
 				android:layout_marginTop="0dp"
-				style="@style/detail_text"
+				style="@style/detail_edit_text"
 				android:hint="Name"
 				android:layout_alignLeft="@+id/spinnerLocation"
-				android:textSize="12sp"
-				android:textAlignment="gravity"
 				android:layout_alignBaseline="@id/textName"
 				android:layout_marginRight="10dp"/>
 
@@ -91,7 +90,8 @@
 				android:text="Location:"
 				android:layout_below="@+id/textName"
 				android:layout_alignLeft="@+id/textName"
-				android:layout_marginBottom="10dp"/>
+				android:layout_marginBottom="10dp"
+				style="@style/title_text"/>
 
 			<Spinner
 				android:id="@+id/spinnerLocation"
@@ -116,7 +116,7 @@
 
 		<RelativeLayout
 			android:id="@+id/rlJournalLocationsTitleHeader"
-			android:layout_width="wrap_content"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			style="@style/list_box_header_strip">
 
@@ -133,12 +133,14 @@
 				android:id="@+id/btnChangeJournalLocation"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_alignParentRight="true"
 				android:layout_alignTop="@+id/tvJournalLocationsTitle"
 				android:layout_alignBottom="@+id/tvJournalLocationsTitle"
+				android:layout_marginLeft="20dp"
 				android:text="Edit Batches"
-				android:textSize="12sp"
-				android:background="@drawable/button_background" />
+				android:background="@drawable/button_background"
+				style="@style/title_text"
+				android:layout_alignParentRight="true"
+				/>
 
 		</RelativeLayout>
 
