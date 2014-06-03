@@ -20,9 +20,12 @@
     </style>
 	
     <style name="detail_edit_text">
+		<!--
         <item name="android:layout_marginRight">15dp</item>
-		<item name="android:layout_marginLeft">15dp</item>
+		<item name="android:layout_marginLeft">15dp</item>-->
 		<item name="android:ems">10</item>
+		<item name="android:background">@drawable/edit_text</item>
+		<item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
     </style>
     <style name="detail_title_text">
         
@@ -30,6 +33,13 @@
     
     
     <!-- Sortable List Box Styles -->
+		<style name="title_text">
+			<item name="android:textColor">#ffffff</item>
+			<item name="android:textStyle">bold</item>
+			<item name="android:textSize">14sp</item>
+			<item name="android:paddingLeft">10dp</item>
+			<item name="android:paddingRight">10dp</item>
+		</style>
 	<style name="list_item">
 		<item name="android:background">#000000</item>
 	</style>
@@ -37,6 +47,10 @@
 	<style name="list_box_header_strip">
 	    <item name="android:background">#0191c8</item>
 		<item name="android:layout_marginBottom">1dp</item>
+	</style>
+	
+	<style name="button">
+		<item name="android:background">#0191c8</item>
 	</style>
 	
 	<style name="list_box">

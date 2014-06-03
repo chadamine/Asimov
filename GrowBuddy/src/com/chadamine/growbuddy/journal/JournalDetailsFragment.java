@@ -14,6 +14,9 @@ import com.chadamine.growbuddy.*;
 import com.chadamine.growbuddy.database.*;
 
 import android.support.v4.app.Fragment;
+import android.widget.LinearLayout.*;
+import java.util.*;
+import android.database.*;
 
 public class JournalDetailsFragment extends Fragment {
 	
@@ -24,6 +27,7 @@ public class JournalDetailsFragment extends Fragment {
 	private static Uri itemUri;
 	private static Activity activity;
 	private static View view;
+	
 	static final int REQUEST_IMAGE_CAPTURE = 1;
 	private Uri imageUri;
 	final int PIC_CROP = 2;
@@ -36,6 +40,7 @@ public class JournalDetailsFragment extends Fragment {
 		Bundle extras = getActivity().getIntent().getExtras();
 		itemUri = DatabaseContract.JOURNAL_CONTENT_URI;
 		
+		/* MUST HAVE THE FALSE FOR THIS FRAGMENT TO LOAD */
 		View rootView = inflater.inflate(R.layout.fragment_add_journal, container, false);
 		
 		Button btnSubmit = (Button) rootView.findViewById(R.id.btnSubmit);
@@ -52,17 +57,35 @@ public class JournalDetailsFragment extends Fragment {
 		frame = (FrameLayout) rootView.findViewById(R.id.flImage);
 		
 		TextView addImage = new TextView(activity);
-		addImage.setText("ADD IMAGE");
+		
+		int left = 0;
+		int top = 35;
+		int right = 0;
+		int bottom = 0;
+		
+		frame.setPadding(left, top, right, bottom);
+		
+		addImage.setText("ADD\nIMAGE");
+		addImage.setGravity(Gravity.CENTER);
+		
 		frame.addView(addImage);
 	
-		/* MUST HAVE THE FALSE FOR THIS FRAGMENT TO LOAD */
-		return rootView;//inflater.inflate(R.layout.fragment_item_details, container, false);
+		return rootView;
+	}
+	
+	private void populateSpinner(View v) {
+		Spinner sprLocations = (Spinner) v.findViewById(R.id.spinnerLocation);
+		
+		Uri uri = DatabaseContract.JOURNAL_LOCATIONS_CONTENT_URI;
+		String[] from = { DatabaseContract.COL_NAME, DatabaseContract.COL_LOCATION, };
+		int[] to = new int[] { android.R.id.text1 };
+		//Cursor cursor = activity.getContentResolver().query(uri, from, null, null, null);
+		SimpleCursorAdapter adapter = new SimpleCursorAdapter(activity, android.R.layout.simple_spinner_item, null, from, to);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 	}
 	
 	@Override 
 	public void onViewCreated(View view, Bundle savedInstanceState) {
-		
-		//ImageView picture = new ImageView();
 		
 		frame.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -89,6 +112,7 @@ public class JournalDetailsFragment extends Fragment {
 				return true;
 				
 			case R.id.file:
+				//openFile();
 				return true;
 			default:
 				return super.onContextItemSelected(item);
@@ -128,7 +152,8 @@ public class JournalDetailsFragment extends Fragment {
 			Intent cropIntent = new Intent("com.android.camera.action.CROP");
 			cropIntent
 				.setDataAndType(imageUri, "image/*")
-				.putExtra("aspectX", 1).putExtra("aspectY", 1)
+				.putExtra("aspectX", 1)
+				.putExtra("aspectY", 1)
 				.putExtra("outputX", 256)
 				.putExtra("outputY", 256)
 				.putExtra("return-data", true);

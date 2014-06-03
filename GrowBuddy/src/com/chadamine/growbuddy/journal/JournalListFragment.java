@@ -1,17 +1,19 @@
 package com.chadamine.growbuddy.journal;
 
-import android.database.Cursor;
-import android.os.Bundle;
+import android.app.*;
+import android.database.*;
+import android.os.*;
+import android.support.v4.app.*;
+import android.support.v4.content.*;
+import android.support.v4.widget.*;
+import android.view.*;
+import com.chadamine.growbuddy.*;
+import com.chadamine.growbuddy.database.*;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v4.widget.CursorAdapter;
-import android.support.v4.widget.SimpleCursorAdapter;
-
-import com.chadamine.growbuddy.R;
-import com.chadamine.growbuddy.database.DatabaseContract;
+import android.view.ContextMenu.*;
 
 public class JournalListFragment extends ListFragment 
 	implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -20,6 +22,8 @@ public class JournalListFragment extends ListFragment
 	private static JournalDetailsActivity.ManagementTabsFragmentListener mShowFragment;
 	
 	private CursorAdapter adapter;
+	
+	private View view;
 	
 	public static JournalListFragment newInstance(int sectionNumber) {
 			JournalListFragment fragment = new JournalListFragment();
@@ -42,13 +46,21 @@ public class JournalListFragment extends ListFragment
 		mShowFragment = listener;
 		return fragment;
 	}
-	
+
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState)
+	{
+		// TODO: Implement this method
+		//registerForContextMenu(this.getView());
+		setHasOptionsMenu(true);
+		super.onActivityCreated(savedInstanceState);
+	}
 	
 	@Override 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);;
 		
-		//getActivity().setContentView(R.layout.fragment_item_list);
+		//getActivity().setContentView(R.layout.fragment_item_list);	
 		
 		fillData();
 	}
@@ -67,9 +79,36 @@ public class JournalListFragment extends ListFragment
 			adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_nav, null, from, to, 0);
 			setListAdapter(adapter);
 	}
-	
-	
 
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		super.onCreateOptionsMenu(menu, inflater);
+		inflater.inflate(R.menu.journal_list, menu);
+		
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem i) {
+
+		int id = i.getItemId();
+
+		int add = R.id.addJournal;
+		int del = R.id.delJournal;
+
+		if (id == add) 
+			getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.journalListContainer, new JournalDetailsFragment()).commit();
+		//Toast.makeText(this, "second frag added", Toast.LENGTH_SHORT).show();
+		//return true;
+		//}
+
+		//if (id == del) {
+
+		//}
+
+
+		return super.onOptionsItemSelected(i);
+	}
+	
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
