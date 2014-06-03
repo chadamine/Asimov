@@ -38,10 +38,8 @@ public class DatabaseContentProvider extends ContentProvider {
 		int uriType = DatabaseContract.uriMatcher.match(uri);
 		
 		switch(uriType) {
-			
+				
 			case DatabaseContract.JOURNALS:
-				break;
-			case DatabaseContract.JOURNALS_ID:
 				queryBuilder.appendWhere(Journals.COL_ID + "=" + uri.getLastPathSegment());
 				break;
 			case DatabaseContract.NUTRIENTS:
@@ -62,6 +60,9 @@ public class DatabaseContentProvider extends ContentProvider {
 
 	@Override
 	public String getType(Uri uri) {
+		switch(URI_MATCHER.match(uri)) {
+			
+		}
 		return null;
 	}
 

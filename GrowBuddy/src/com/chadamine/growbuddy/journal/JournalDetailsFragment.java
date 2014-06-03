@@ -182,7 +182,7 @@ public class JournalDetailsFragment extends Fragment {
 	public static JournalDetailsFragment newInstance(Bundle bundle) {
 		fragment = new JournalDetailsFragment();
 		
-		itemUri = (Uri) bundle.getParcelable(Journals.CONTENT_ITEM_TYPE);
+		itemUri = bundle.getParcelable(Journals.CONTENT_TYPE);
 		// fillData(itemUri);
 		
 		return fragment;

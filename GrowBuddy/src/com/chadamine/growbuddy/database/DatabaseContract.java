@@ -35,8 +35,12 @@ public class DatabaseContract {
 		
 		public static final String BASE_PATH = "journals";
 		public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
+		
+		// mime type of directory of items
 		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/journals";
-		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/journal";
+		
+		// mime type of single item
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/journals";
 		
 		public static final String TABLE_NAME = "journals";
 		public static final String COL_ID = "_id";
@@ -283,7 +287,7 @@ public class DatabaseContract {
 	
 	public static final String TABLE_BATCH_NUTRIENTS = "batch_nutrients";
 	
-	public static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+	
 	
 	public static final int JOURNALS = 1;
 	public static final int JOURNALS_ID = 2;
@@ -305,6 +309,8 @@ public class DatabaseContract {
 	public static final int TASKS_ID = 18;
 	// static initialization ("class constructor")
 	static {
+		
+		UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 		uriMatcher.addURI(AUTHORITY, Journals.BASE_PATH, JOURNALS);
 		uriMatcher.addURI(AUTHORITY, Journals.BASE_PATH + "/#", JOURNALS_ID);
 		uriMatcher.addURI(AUTHORITY, JournalLocations.TABLE_NAME, JOURNAL_LOCATIONS);
