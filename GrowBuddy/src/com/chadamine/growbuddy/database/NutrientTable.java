@@ -6,11 +6,11 @@ import android.database.SQLException.*;
 public class NutrientTable
 {
 	public static void onCreate(SQLiteDatabase db) throws SQLException {
-		db.execSQL(DatabaseContract.DATABASE_CREATE_JOURNAL);
+		db.execSQL(DatabaseContract.DATABASE_CREATE_JOURNALS);
 	}
 
 	public static void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) throws SQLException {
-		db.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.TABLE_NUTRIENT);
+		db.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.TABLE_NUTRIENTS);
 		onCreate(db);
 	}
 }

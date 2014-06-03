@@ -15,6 +15,8 @@ import com.chadamine.growbuddy.database.*;
 
 import android.support.v4.app.Fragment;
 import android.widget.LinearLayout.*;
+import java.util.*;
+import android.database.*;
 
 public class JournalDetailsFragment extends Fragment {
 	
@@ -25,6 +27,7 @@ public class JournalDetailsFragment extends Fragment {
 	private static Uri itemUri;
 	private static Activity activity;
 	private static View view;
+	
 	static final int REQUEST_IMAGE_CAPTURE = 1;
 	private Uri imageUri;
 	final int PIC_CROP = 2;
@@ -60,8 +63,6 @@ public class JournalDetailsFragment extends Fragment {
 		int right = 0;
 		int bottom = 0;
 		
-		//LinearLayout.LayoutParams textParams = new LinearLayout.LayoutParams(
-			//LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 		frame.setPadding(left, top, right, bottom);
 		
 		addImage.setText("ADD\nIMAGE");
@@ -70,6 +71,17 @@ public class JournalDetailsFragment extends Fragment {
 		frame.addView(addImage);
 	
 		return rootView;
+	}
+	
+	private void populateSpinner(View v) {
+		Spinner sprLocations = (Spinner) v.findViewById(R.id.spinnerLocation);
+		
+		Uri uri = DatabaseContract.JOURNAL_LOCATIONS_CONTENT_URI;
+		String[] from = { DatabaseContract.COL_NAME, DatabaseContract.COL_LOCATION, };
+		int[] to = new int[] { android.R.id.text1 };
+		//Cursor cursor = activity.getContentResolver().query(uri, from, null, null, null);
+		SimpleCursorAdapter adapter = new SimpleCursorAdapter(activity, android.R.layout.simple_spinner_item, null, from, to);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 	}
 	
 	@Override 

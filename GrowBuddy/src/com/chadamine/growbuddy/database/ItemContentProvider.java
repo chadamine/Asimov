@@ -28,7 +28,7 @@ public class ItemContentProvider extends ContentProvider {
 		
 		// checkColumns(projection);
 		
-		queryBuilder.setTables(DatabaseContract.TABLE_JOURNAL);
+		queryBuilder.setTables(DatabaseContract.TABLE_JOURNALS);
 		
 		int uriType = DatabaseContract.uriMatcher.match(uri);
 		
@@ -69,7 +69,7 @@ public class ItemContentProvider extends ContentProvider {
 		
 		switch(uriType) {
 		case DatabaseContract.JOURNALS:
-			id = db.insert(DatabaseContract.TABLE_JOURNAL, null, values);
+			id = db.insert(DatabaseContract.TABLE_JOURNALS, null, values);
 			break;
 		default:
 			throw new IllegalArgumentException("Unknown URI: " + uri);
