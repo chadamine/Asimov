@@ -1261,7 +1261,7 @@ containing a value of this type.
         public static final int fragment_environment=0x7f030028;
         public static final int fragment_environment_list=0x7f030029;
         public static final int fragment_irrigation=0x7f03002a;
-        public static final int fragment_item_list=0x7f03002b;
+        public static final int fragment_journal_list=0x7f03002b;
         public static final int fragment_journals=0x7f03002c;
         public static final int fragment_locations_main=0x7f03002d;
         public static final int fragment_main=0x7f03002e;

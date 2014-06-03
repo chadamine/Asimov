@@ -388,7 +388,7 @@ int layout fragment_cultivation_nav_list 0x7f030027
 int layout fragment_environment 0x7f030028
 int layout fragment_environment_list 0x7f030029
 int layout fragment_irrigation 0x7f03002a
-int layout fragment_item_list 0x7f03002b
+int layout fragment_journal_list 0x7f03002b
 int layout fragment_journals 0x7f03002c
 int layout fragment_locations_main 0x7f03002d
 int layout fragment_main 0x7f03002e
