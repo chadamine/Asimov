@@ -53,7 +53,7 @@
         </activity>
 
         <provider
-            android:name="com.chadamine.growbuddy.database.ItemContentProvider"
+            android:name="com.chadamine.growbuddy.database.DatabaseContentProvider"
             android:authorities="com.chadamine.growbuddy.provider" />
 
         <activity
@@ -64,10 +64,12 @@
             android:name="com.chadamine.growbuddy.cultivation.plants.PlantsActivity"
             android:label="@string/title_activity_plants" >
         </activity>
-        <!--<activity
+        <!--
+        <activity
             android:name="com.chadamine.growbuddy.cultivation.nutrients.NutrientsActivity"
             android:label="@string/title_activity_nutrients" >
-        </activity>-->
+        </activity>
+        -->
         <activity
             android:name="com.chadamine.growbuddy.cultivation.irrigation.IrrigationActivity"
             android:label="@string/title_activity_irrigation" >
@@ -80,10 +82,14 @@
             android:name="com.chadamine.growbuddy.cultivation.environment.EnvironmentActivity"
             android:label="@string/title_activity_environment" >
         </activity>
-		<activity
-			android:name="com.chadamine.growbuddy.cultivation.recipes.RecipesActivity"
-			android:label="recipes activity"
-		></activity>
+        <activity
+            android:name="com.chadamine.growbuddy.cultivation.recipes.RecipesActivity"
+            android:label="recipes activity" >
+        </activity>
+        <activity
+            android:name="com.chadamine.growbuddy.locations.LocationsMainActivity"
+            android:label="@string/title_activity_locations_main" >
+        </activity>
     </application>
 
 </manifest>

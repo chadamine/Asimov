@@ -1,22 +1,33 @@
 package com.chadamine.growbuddy.journal;
 
-import android.app.*;
-import android.content.*;
-import android.graphics.*;
-import android.net.*;
-import android.os.*;
-import android.provider.*;
-import android.support.v4.app.*;
-import android.view.*;
-import android.view.ContextMenu.*;
-import android.widget.*;
-import com.chadamine.growbuddy.*;
-import com.chadamine.growbuddy.database.*;
-
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.ContentValues;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
-import android.widget.LinearLayout.*;
-import java.util.*;
-import android.database.*;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.SimpleCursorAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.chadamine.growbuddy.R;
+import com.chadamine.growbuddy.database.DatabaseContract.Journals;
 
 public class JournalDetailsFragment extends Fragment {
 	
@@ -38,7 +49,7 @@ public class JournalDetailsFragment extends Fragment {
 
 		activity = getActivity();
 		Bundle extras = getActivity().getIntent().getExtras();
-		itemUri = DatabaseContract.JOURNAL_CONTENT_URI;
+		itemUri = Journals.CONTENT_URI;
 		
 		/* MUST HAVE THE FALSE FOR THIS FRAGMENT TO LOAD */
 		View rootView = inflater.inflate(R.layout.fragment_add_journal, container, false);
@@ -76,8 +87,8 @@ public class JournalDetailsFragment extends Fragment {
 	private void populateSpinner(View v) {
 		Spinner sprLocations = (Spinner) v.findViewById(R.id.spinnerLocation);
 		
-		Uri uri = DatabaseContract.JOURNAL_LOCATIONS_CONTENT_URI;
-		String[] from = { DatabaseContract.COL_NAME, DatabaseContract.COL_LOCATION, };
+		Uri uri = Journals.CONTENT_URI;
+		String[] from = { Journals.COL_NAME, Journals.COL_LOCATION, };
 		int[] to = new int[] { android.R.id.text1 };
 		//Cursor cursor = activity.getContentResolver().query(uri, from, null, null, null);
 		SimpleCursorAdapter adapter = new SimpleCursorAdapter(activity, android.R.layout.simple_spinner_item, null, from, to);
@@ -167,14 +178,11 @@ public class JournalDetailsFragment extends Fragment {
 		}
 	}
 
-	private void fillData(Uri uri) {
-
-	}
 	
 	public static JournalDetailsFragment newInstance(Bundle bundle) {
 		fragment = new JournalDetailsFragment();
 		
-		itemUri = (Uri) bundle.getParcelable(DatabaseContract.JOURNAL_CONTENT_ITEM_TYPE);
+		itemUri = (Uri) bundle.getParcelable(Journals.CONTENT_ITEM_TYPE);
 		// fillData(itemUri);
 		
 		return fragment;
@@ -207,13 +215,12 @@ public class JournalDetailsFragment extends Fragment {
 		
 		if(name.length() > 0 ) {
 			ContentValues values = new ContentValues();
-			values.put(DatabaseContract.COL_NAME, name);
+			values.put(Journals.COL_NAME, name);
 			//values.put(DatabaseContract.COL_DETAILS, details);
 		
-			itemUri = getActivity().getContentResolver().insert(DatabaseContract.JOURNAL_CONTENT_URI, values);
+			itemUri = getActivity().getContentResolver().insert(Journals.CONTENT_URI, values);
 			
 		}
-		
 		
 	}
 

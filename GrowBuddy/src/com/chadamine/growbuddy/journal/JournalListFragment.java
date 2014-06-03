@@ -1,19 +1,22 @@
 package com.chadamine.growbuddy.journal;
 
-import android.app.*;
-import android.database.*;
-import android.os.*;
-import android.support.v4.app.*;
-import android.support.v4.content.*;
-import android.support.v4.widget.*;
-import android.view.*;
-import com.chadamine.growbuddy.*;
-import com.chadamine.growbuddy.database.*;
-
+import android.database.Cursor;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
-import android.view.ContextMenu.*;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.support.v4.widget.CursorAdapter;
+import android.support.v4.widget.SimpleCursorAdapter;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+
+import com.chadamine.growbuddy.R;
+import com.chadamine.growbuddy.database.DatabaseContract;
+import com.chadamine.growbuddy.database.DatabaseContract.Journals;
 
 public class JournalListFragment extends ListFragment 
 	implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -72,7 +75,7 @@ public class JournalListFragment extends ListFragment
 
 	
 	private void fillData() {
-			String[] from = new String[] { DatabaseContract.COL_NAME, DatabaseContract.COL_DETAILS };
+			String[] from = new String[] { Journals.COL_NAME, Journals.COL_LOCATION };
 			int[] to = new int[] { R.id.tvNavItemTitle, R.id.tvNavItemDetails };
 		
 			getLoaderManager().initLoader(0, null, this);
@@ -112,17 +115,16 @@ public class JournalListFragment extends ListFragment
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
-		String[] projection = DatabaseContract.projectionFull;
 		
-		CursorLoader loader = new CursorLoader(getActivity(), DatabaseContract.JOURNAL_CONTENT_URI, projection, null, null, null);
+		String[] projection = { Journals.COL_ID, Journals.COL_NAME, Journals.COL_LOCATION };
 		
+		CursorLoader loader = new CursorLoader(getActivity(), Journals.CONTENT_URI, projection, null, null, null);
 		return loader;
 	}
 
 	@Override
 	public void onLoadFinished(Loader<Cursor> l, Cursor c) {
 		adapter.swapCursor(c);
-		
 	}
 
 	@Override

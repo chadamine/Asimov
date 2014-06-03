@@ -2,14 +2,19 @@ package com.chadamine.growbuddy.database;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
-import android.database.sqlite.*;
-import android.content.*;
 
-public class ItemContentProvider extends ContentProvider {
+import com.chadamine.growbuddy.database.DatabaseContract.Journals;
+import com.chadamine.growbuddy.database.DatabaseContract.Nutrients;
+import com.chadamine.growbuddy.database.tables.TableJournals;
+import com.chadamine.growbuddy.database.tables.TableNutrients;
+
+public class DatabaseContentProvider extends ContentProvider {
 	
 	private JournalDBHelper helper;
 
@@ -28,7 +33,7 @@ public class ItemContentProvider extends ContentProvider {
 		
 		// checkColumns(projection);
 		
-		queryBuilder.setTables(DatabaseContract.TABLE_JOURNALS);
+		queryBuilder.setTables(Journals.TABLE_NAME);
 		
 		int uriType = DatabaseContract.uriMatcher.match(uri);
 		
@@ -36,13 +41,13 @@ public class ItemContentProvider extends ContentProvider {
 			
 			case DatabaseContract.JOURNALS:
 				break;
-			case DatabaseContract.JOURNAL_ID:
-				queryBuilder.appendWhere(DatabaseContract.COL_ID + "=" + uri.getLastPathSegment());
+			case DatabaseContract.JOURNALS_ID:
+				queryBuilder.appendWhere(Journals.COL_ID + "=" + uri.getLastPathSegment());
 				break;
 			case DatabaseContract.NUTRIENTS:
 				break;
-			case DatabaseContract.NUTRIENT_ID:
-				queryBuilder.appendWhere(DatabaseContract.COL_ID + "=" + uri.getLastPathSegment());
+			case DatabaseContract.NUTRIENTS_ID:
+				queryBuilder.appendWhere(Nutrients.COL_ID + "=" + uri.getLastPathSegment());
 				break;
 		default:
 			throw new IllegalArgumentException("Unknown URI: " + uri);
@@ -69,14 +74,14 @@ public class ItemContentProvider extends ContentProvider {
 		
 		switch(uriType) {
 		case DatabaseContract.JOURNALS:
-			id = db.insert(DatabaseContract.TABLE_JOURNALS, null, values);
+			id = db.insert(Journals.TABLE_NAME, null, values);
 			break;
 		default:
 			throw new IllegalArgumentException("Unknown URI: " + uri);
 		}
 		getContext().getContentResolver().notifyChange(uri, null);
 		
-		return Uri.parse(DatabaseContract.JOURNAL_BASE_PATH + "/" + id);
+		return Uri.parse(Journals.TABLE_NAME + "/" + id);
 	}
 
 	@Override
@@ -104,7 +109,7 @@ public class ItemContentProvider extends ContentProvider {
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
-			JournalTable.onCreate(db);
+			TableJournals.onCreate(db);
 		}
 
 		@Override
@@ -125,7 +130,7 @@ public class ItemContentProvider extends ContentProvider {
 		
 		@Override
 		public void onCreate(SQLiteDatabase db) {
-			NutrientTable.onCreate(db);
+			TableNutrients.onCreate(db);
 		}
 		
 		@Override

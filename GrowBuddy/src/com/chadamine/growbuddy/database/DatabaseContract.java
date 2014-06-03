@@ -14,159 +14,308 @@ import android.provider.SyncStateContract.Columns;
  */
 
 public class DatabaseContract {
+	
+	public DatabaseContract() {}
+
 	public static final String DATABASE_NAME = "growbuddy.db";
 	public static final int DB_VERSION = 1;
 	public static final String AUTHORITY = "com.chadamine.growbuddy.provider";
 	
 	// 	Columns
-	public static final String COL_ID = "_id";
-	public static final String COL_NAME = "name";
-	public static final String COL_DETAILS = "details";
-
-	public static final String COL_DATE_CREATED = "date_created";
-
-	public static final String COL_LOCATION = "location";
-	public static final String COL_BATCH = "batch";
+//	public static final String COL_ID = "_id";
+//	public static final String COL_NAME = "name";
+//	public static final String COL_DETAILS = "details";
+//	public static final String COL_DATE_CREATED = "date_created";
+//	public static final String COL_LOCATION = "location";
+//	public static final String COL_BATCH = "batch";
+//	public static final String COL_TYPE = "type";
 	
 	//	Journals
+	public static final class Journals implements Columns { 
+		
+		public static final String BASE_PATH = "journals";
+		public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
+		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/journals";
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/journal";
+		
+		public static final String TABLE_NAME = "journals";
+		public static final String COL_ID = "_id";
+		public static final String COL_NAME = "name";
+		public static final String COL_LOCATION = "location";
 	
-	public static final String JOURNAL_BASE_PATH = "journals";
-	public static final Uri JOURNAL_CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + JOURNAL_BASE_PATH);
-	public static final String JOURNAL_CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/journals";
-	public static final String JOURNAL_CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/journal";
-	public static final String TABLE_JOURNALS = "journal";
+		public static final Uri uri = Uri.withAppendedPath(
+				Journals.CONTENT_URI, 
+				Journals.BASE_PATH);
+	}
 	
-	// Create Journal Table
-	public static final String DATABASE_CREATE_JOURNALS = "create table "
-	+ TABLE_JOURNALS + "("
-	+ COL_ID + " integer primary key autoincrement, "
-	+ COL_NAME + " text not null, "
-	+ COL_DETAILS + " text not null)";
+	//	Locations
+	public static final class Locations implements Columns {
+		
+		public static final String BASE_PATH = "locations";
+		public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
+		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + BASE_PATH;
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/location";
+		public static final String TABLE_NAME = "locations";
+		
+		public static final String COL_ID = "_id";
+		public static final String COL_NAME = "name";
+		public static final String COL_DETAILS = "details";
+		public static final String COL_DATE_CREATED = "date_created";
+		public static final String COL_LOCATION = "location";
+		public static final String COL_BATCH = "batch";
+		public static final String COL_TYPE = "type";
+		
+		public static final Uri contentUri = Uri.withAppendedPath(
+				Locations.CONTENT_URI, 
+				Locations.BASE_PATH);
+	}
 	
 	
-	
-	// Journal Constants
-	public static final int JOURNALS = 1;
-	public static final int JOURNAL_ID = 2;
+	//	Journal Locations
+	public static final class JournalLocations implements Columns {
+		
+		public static final String TABLE_NAME = "journal_locations";
+		public static final Uri CONTENT_URI = Uri.parse("content://" +AUTHORITY + "/" + TABLE_NAME);
+		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + TABLE_NAME;
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/journal_location";
+		
+		public static final String COL_ID = "_id";
+		public static final String COL_NAME = "name";
+		public static final String COL_DETAILS = "details";
+		public static final String COL_DATE_CREATED = "date_created";
+		public static final String COL_LOCATION = "location";
+		public static final String COL_BATCH = "batch";
+		public static final String COL_TYPE = "type";
+		
+		public static final Uri contentUri = Uri.withAppendedPath(
+				JournalLocations.CONTENT_URI, 
+				JournalLocations.TABLE_NAME); 
+		}
 	
 	
 	//	Nutrients
+	public static final class Nutrients implements Columns {
+		
+		public static final String BASE_PATH = "nutrients";
+		public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
+		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/nutrients";
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/nutrient";
+		public static final String TABLE_NAME = "nutrients";
+		
+		public static final String COL_ID = "_id";
+		public static final String COL_NAME = "name";
+		public static final String COL_DETAILS = "details";
+		public static final String COL_DATE_CREATED = "date_created";
+		public static final String COL_LOCATION = "location";
+		public static final String COL_BATCH = "batch";
+		public static final String COL_TYPE = "type";
 	
-	public static final String NUTRIENT_BASE_PATH = "nutrients";
+		public static final Uri contentUri = Uri.withAppendedPath(
+				CONTENT_URI, 
+				BASE_PATH);
+	}
 	
-	public static final String BATCH_BASE_PATH = "batches";
 	
-	public static final String TASK_BASE_PATH = "tasks";
+	// Nutrient Components
+		public static final class NutrientComponents implements Columns {
+			
+			public static final String BASE_PATH = "nutrients";
+			public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
+			public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/nutrients";
+			public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/nutrient";
+			public static final String TABLE_NAME = "nutrient_compoments";
+			
+			public static final String COL_ID = "_id";
+			public static final String COL_NAME = "name";
+			public static final String COL_DETAILS = "details";
+			public static final String COL_DATE_CREATED = "date_created";
+			public static final String COL_LOCATION = "location";
+			public static final String COL_BATCH = "batch";
+			public static final String COL_TYPE = "type";
+			
+			public static final String DATABASE_CREATE_NUTRIENT_COMPONENTS = "create table "
+					+ TABLE_NAME + "("
+					+ COL_ID + " integer primary key autoincrement, "
+					+ COL_NAME + " text not null, "
+					+ COL_DETAILS + " text not null)";
+			
+			public static final Uri contentUri = Uri.withAppendedPath(
+					CONTENT_URI, 
+					BASE_PATH);
+		}
+
+	//	Batches
+	public static final class Batches implements Columns {
+		
+		public static final String BASE_PATH = "batches";
+		public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
+		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/batches";
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/batch";
+		
+		public static final String COL_ID = "_id";
+		public static final String COL_NAME = "name";
+		public static final String COL_DETAILS = "details";
+		public static final String COL_DATE_CREATED = "date_created";
+		public static final String COL_LOCATION = "location";
+		public static final String COL_BATCH = "batch";
+		public static final String COL_TYPE = "type";
+		
+		public static final String TABLE_NAME = "batches";
+		
+		
+		public static final Uri contentUri = Uri.withAppendedPath(
+				CONTENT_URI, 
+				BASE_PATH);
+	}
 	
-	public static final String JOURNAL_LOCATIONS_BASE_PATH = "journal_locations";
-	
-	public static final String LOCATION_BASE_PATH = "location";
 
 	
-	public static final Uri NUTRIENT_CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + NUTRIENT_BASE_PATH);
+	//	Plants
+	public static final class Plants implements Columns {
+		
+		public static final String BASE_PATH = "plants";
+		public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
+		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/plants";
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/plant";
+		public static final String TABLE_NAME = "plants";
+		
+		public static final String COL_ID = "_id";
+		public static final String COL_NAME = "name";
+		public static final String COL_DETAILS = "details";
+		public static final String COL_DATE_CREATED = "date_created";
+		public static final String COL_LOCATION = "location";
+		public static final String COL_BATCH = "batch";
+		public static final String COL_TYPE = "type";
+		
+		public static final Uri contentUri = Uri.withAppendedPath(
+				CONTENT_URI, 
+				BASE_PATH);
+	}
 	
-	public static final Uri BATCH_CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BATCH_BASE_PATH);
+	// Batch Plants
+
 	
-	public static final Uri TASK_CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TASK_BASE_PATH);
+	public static final class BatchPlants implements Columns {
+		
+		public static final String BASE_PATH = "batch_plants";
+		public static final Uri  CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" +  BASE_PATH);
+		public static final String  CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/batch_plants";
+		public static final String  CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/batch_plant";
+		public static final String  TABLE_NAME = "batch_plants";
+		
+		public static final String COL_ID = "_id";
+		public static final String COL_NAME = "name";
+		public static final String COL_DETAILS = "details";
+		public static final String COL_DATE_CREATED = "date_created";
+		public static final String COL_LOCATION = "location";
+		public static final String COL_BATCH = "batch";
+		public static final String COL_TYPE = "type";
+		
+		public static final String DATABASE_CREATE_BATCH_PLANTS = "create table "
+				+ TABLE_NAME + "("
+				+ COL_ID + " integer primary key autincrement, "
+				+ COL_NAME + " text not null)";
+		
+		public static final Uri contentUri = Uri.withAppendedPath(
+				CONTENT_URI, 
+				BASE_PATH);
+	}
+			
 	
-	public static final Uri LOCATION_CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + LOCATION_BASE_PATH);
+	// 	Tasks
+	public static final class Tasks implements Columns {
+		
+		public static final String BASE_PATH = "tasks";
+		public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
+		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/tasks";
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/task";
+		public static final String TABLE_NAME = "task";
+		
+		public static final String COL_ID = "_id";
+		public static final String COL_NAME = "name";
+		public static final String COL_DETAILS = "details";
+		public static final String COL_DATE_CREATED = "date_created";
+		public static final String COL_LOCATION = "location";
+		public static final String COL_BATCH = "batch";
+		public static final String COL_TYPE = "type";
+		
+		public static final String DATABASE_CREATE_TASK = "create table "
+				+ TABLE_NAME + "("
+				+ COL_ID + " integer primary key autoincrement, "
+				+ COL_NAME + " text not null)";
+		
+		public static final Uri contentUri = Uri.withAppendedPath(
+				CONTENT_URI, 
+				BASE_PATH);
+	}
 	
-	public static final Uri JOURNAL_LOCATIONS_CONTENT_URI = Uri.parse("content://" +AUTHORITY + "/" + JOURNAL_LOCATIONS_BASE_PATH);
+	public static final class Measurements implements Columns {
+		
+		public static final String BASE_PATH = "measurements";
+		public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
+		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/measurements";
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/measurement";
+		public static final String TABLE_NAME = "task";
+		
+		public static final String COL_ID = "_id";
+		public static final String COL_NAME = "name";
+		public static final String COL_DETAILS = "details";
+		public static final String COL_DATE_CREATED = "date_created";
+		public static final String COL_LOCATION = "location";
+		public static final String COL_BATCH = "batch";
+		public static final String COL_TYPE = "type";
+		public static final String COL_VALUE = "value";
+		
+		public static final String DATABASE_CREATE_TASK = "create table "
+				+ TABLE_NAME + "("
+				+ COL_ID + " integer primary key autoincrement, "
+				+ COL_NAME + " text not null)";
+		
+		public static final Uri contentUri = Uri.withAppendedPath(
+				CONTENT_URI, 
+				BASE_PATH);
+	}
 	
 	
-	
-	public static final String LOCATION_CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/locations";
-	public static final String LOCATION_CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/location";
-	
-	public static final String JOUNRAL_LOCATIONS_CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/journal_locations";
-	public static final String JOURNAL_LOCATIONS_CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/journal_location";
-	
-	public static final String NUTRIENT_CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/nutrients";
-	public static final String NUTRIENT_CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/nutrient";
-	
-	public static final String BATCH_CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/batches";
-	public static final String BATCH_CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/batch";
-	
-	public static final String TASK_CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/tasks";
-	public static final String TASK_CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/task";
-	
-	
-	public static final String TABLE_JOURNAL_HISTORY = "journal_history";
 	public static final String TABLE_JOURNAL_BATCHES = "journal_batches";
 	public static final String TABLE_JOURNAL_TASKS = "journal_tasks";
-	public static final String TABLE_JOURNAL_LOCATIONS = "journal_locations";
 	public static final String TABLE_JOURNAL_ENTRIES = "journal_entries";
 	
-	public static final String TABLE_LOCATIONS = "location";
-	public static final String TABLE_LOCATION_HISTORY = "location_history";
-	
-	public static final String TABLE_NUTRIENTS = "nutrient";
-	public static final String TABLE_NUTRIENT_HISTORY = "nutrient_history";
-	public static final String TABLE_NUTRIENT_COMPONENTS = "nutrient_compoments";
-	
-	public static final String TABLE_BATCHES = "batch";
-	public static final String TABLE_BATCH_HISTORY = "batches_history";
 	public static final String TABLE_BATCH_NUTRIENTS = "batch_nutrients";
-	
-	public static final String TABLE_TASKS = "task";
-	public static final String TABLE_TASK_HISTORY = "task_history";
-	public static final String TABLE_TASK_NEW = "task_new";
-	
-	
-	
-	
-	/**	Create Tables	**/
-	
-				
-	public static final String DATABASE_CREATE_JOURNAL_LOCATIONS = "create table "
-		+ TABLE_JOURNAL_LOCATIONS + "("
-		+ COL_ID + " integer primary key autoincrement, "
-		+ COL_NAME + " text not null, "
-		+ COL_LOCATION + " text not null)";
-		
-	// Create Nutrient Table
-	public static final String DATABASE_CREATE_NUTRIENT = "create table "
-		+ TABLE_NUTRIENTS + "("
-		+ COL_ID + " integer primary key autoincrement, "
-		+ COL_NAME + " text not null, "
-		+ COL_DETAILS + " text not null)";
-	
-	public static final String DATABASE_DELETE = "drop table if exists item";
-	
-	
-	// Nutrient Constants
-	public static final int NUTRIENTS = 3;
-	public static final int NUTRIENT_ID = 4;
-	
 	
 	public static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 	
-	// Journal Projections
-	public static final String[] projectionSummary = { COL_NAME, COL_DETAILS };
-	public static final String[] projectionFull = { COL_ID, COL_NAME, COL_DETAILS };
-	
+	public static final int JOURNALS = 1;
+	public static final int JOURNALS_ID = 2;
+	public static final int JOURNAL_LOCATIONS = 5;
+	public static final int JOURNAL_LOCATIONS_ID = 6;
+	public static final int LOCATIONS = 3;
+	public static final int LOCATIONS_ID = 4;
+	public static final int NUTRIENTS = 7;
+	public static final int NUTRIENTS_ID = 8;
+	public static final int NUTRIENT_COMPONENTS = 9;
+	public static final int NUTRIENT_COMPONENTS_ID = 10;
+	public static final int BATCHES = 11;
+	public static final int BATCHES_ID = 12;
+	public static final int BATCH_PLANTS = 15;
+	public static final int BATCH_PLANTS_ID = 16;
+	public static final int PLANTS = 13;
+	public static final int PLANTS_ID = 14;
+	public static final int TASKS = 17;
+	public static final int TASKS_ID = 18;
 	// static initialization ("class constructor")
 	static {
-		uriMatcher.addURI(AUTHORITY, JOURNAL_BASE_PATH, JOURNALS);
-		uriMatcher.addURI(AUTHORITY, JOURNAL_BASE_PATH + "/#", JOURNAL_ID);
-		
-		uriMatcher.addURI(AUTHORITY, NUTRIENT_BASE_PATH, NUTRIENTS);
-		uriMatcher.addURI(AUTHORITY, NUTRIENT_BASE_PATH + "/#", NUTRIENT_ID);
-		
-		
-	}
-	
-	public DatabaseContract() {
+		uriMatcher.addURI(AUTHORITY, Journals.BASE_PATH, JOURNALS);
+		uriMatcher.addURI(AUTHORITY, Journals.BASE_PATH + "/#", JOURNALS_ID);
+		uriMatcher.addURI(AUTHORITY, JournalLocations.TABLE_NAME, JOURNAL_LOCATIONS);
+		uriMatcher.addURI(AUTHORITY, Nutrients.BASE_PATH, NUTRIENTS);
+		uriMatcher.addURI(AUTHORITY, Nutrients.BASE_PATH + "/#", NUTRIENTS_ID);	
 		
 	}
 	
-	public static final class Journals implements Columns { 
-		public static final Uri contentUri = Uri.withAppendedPath(
-				DatabaseContract.JOURNAL_CONTENT_URI, JOURNAL_BASE_PATH);
-	}
 	
-	public static final class Nutrients implements Columns {
-		public static final Uri contentUri = Uri.withAppendedPath(
-				DatabaseContract.NUTRIENT_CONTENT_URI, NUTRIENT_BASE_PATH);
-	}
+	
+	
+	
+
 }
