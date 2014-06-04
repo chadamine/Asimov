@@ -310,6 +310,8 @@ public class DatabaseContract {
 		URI_MATCHER.addURI(AUTHORITY, Nutrients.BASE_PATH, NUTRIENTS);
 		URI_MATCHER.addURI(AUTHORITY, Nutrients.BASE_PATH + "/#", NUTRIENTS_ID);	
 		
+		URI_MATCHER.addURI(AUTHORITY, Locations.BASE_PATH, LOCATIONS);
+		URI_MATCHER.addURI(AUTHORITY, Locations.BASE_PATH + "/#", LOCATIONS_ID);
 	}
 	
 	

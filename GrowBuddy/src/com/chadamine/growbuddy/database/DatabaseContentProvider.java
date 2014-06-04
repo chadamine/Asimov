@@ -39,6 +39,11 @@ public class DatabaseContentProvider extends ContentProvider {
 			case DatabaseContract.JOURNALS_ID:
 				queryBuilder.appendWhere(Journals.COL_ID + "=" + uri.getLastPathSegment());
 				break;
+			case DatabaseContract.LOCATIONS:
+				break;
+			case DatabaseContract.LOCATIONS_ID:
+				queryBuilder.appendWhere(Locations.COL_ID + "=" + uri.getLastPathSegment());
+				break;
 			case DatabaseContract.NUTRIENTS:
 				break;
 			case DatabaseContract.NUTRIENTS_ID:
@@ -87,6 +92,9 @@ public class DatabaseContentProvider extends ContentProvider {
 		switch(uriType) {
 		case DatabaseContract.JOURNALS:
 			id = db.insert(Journals.TABLE_NAME, null, values);
+			break;
+		case DatabaseContract.LOCATIONS:
+			id = db.insert(Locations.TABLE_NAME, null, values);
 			break;
 		default:
 			throw new IllegalArgumentException("Unknown URI: " + uri);
@@ -150,5 +158,20 @@ public class DatabaseContentProvider extends ContentProvider {
 			
 		}
 	}
+	
+	public static class LocationsDBHelper extends SQLiteOpenHelper {
+		public LocationsDBHelper(Context c) {
+			super(c, DatabaseContract.DATABASE_NAME, null, DatabaseContract.DB_VERSION);
+		}
 		
+		@Override
+		public void onCreate(SQLiteDatabase db) {
+			LocationsTable.onCreate(db);	
+		}	
+		
+		@Override
+		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+			
+		}
+	}		
 }

@@ -16,10 +16,7 @@ public class JournalListActivity extends ActionBarActivity {
 			getSupportFragmentManager()
 			.beginTransaction()
 			.add(R.id.journalListContainer, new JournalListFragment())
-			.commit();
-			
-			//Toast.makeText(this, "first frag added", Toast.LENGTH_SHORT).show();
-			
+			.commit();	
 		}
 		
 		

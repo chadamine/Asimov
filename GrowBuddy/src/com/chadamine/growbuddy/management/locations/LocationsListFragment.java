@@ -17,11 +17,23 @@ import android.view.View;
 import com.chadamine.growbuddy.R;
 import com.chadamine.growbuddy.database.DatabaseContract;
 import com.chadamine.growbuddy.database.DatabaseContract.Locations;
+import android.view.*;
 
 public class LocationsListFragment extends ListFragment 
 implements LoaderManager.LoaderCallbacks<Cursor> {
 	
 	private CursorAdapter adapter;
+	
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+							 Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.fragment_locations_list, container,
+										 false);
+
+		//setUp(view);
+
+		return view;
+	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)

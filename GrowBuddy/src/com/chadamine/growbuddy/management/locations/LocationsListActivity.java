@@ -22,7 +22,7 @@ public class LocationsListActivity extends ActionBarActivity
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_cultivation);
+		setContentView(R.layout.activity_locations);
 
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
