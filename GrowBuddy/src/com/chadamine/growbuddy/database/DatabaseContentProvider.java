@@ -35,7 +35,7 @@ public class DatabaseContentProvider extends ContentProvider {
 		
 		queryBuilder.setTables(Journals.TABLE_NAME);
 		
-		int uriType = DatabaseContract.uriMatcher.match(uri);
+		int uriType = DatabaseContract.URI_MATCHER.match(uri);
 		
 		switch(uriType) {
 				
@@ -60,7 +60,7 @@ public class DatabaseContentProvider extends ContentProvider {
 
 	@Override
 	public String getType(Uri uri) {
-		switch(URI_MATCHER.match(uri)) {
+		switch(DatabaseContract.URI_MATCHER.match(uri)) {
 			
 		}
 		return null;
@@ -68,7 +68,7 @@ public class DatabaseContentProvider extends ContentProvider {
 
 	@Override
 	public Uri insert(Uri uri, ContentValues values) {
-		int uriType = DatabaseContract.uriMatcher.match(uri);
+		int uriType = DatabaseContract.URI_MATCHER.match(uri);
 		
 		SQLiteDatabase db = helper.getWritableDatabase();
 		long id = 0;

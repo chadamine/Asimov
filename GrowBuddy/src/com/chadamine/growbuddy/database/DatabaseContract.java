@@ -307,15 +307,16 @@ public class DatabaseContract {
 	public static final int PLANTS_ID = 14;
 	public static final int TASKS = 17;
 	public static final int TASKS_ID = 18;
+	
+	public static final UriMatcher URI_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
 	// static initialization ("class constructor")
 	static {
 		
-		UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-		uriMatcher.addURI(AUTHORITY, Journals.BASE_PATH, JOURNALS);
-		uriMatcher.addURI(AUTHORITY, Journals.BASE_PATH + "/#", JOURNALS_ID);
-		uriMatcher.addURI(AUTHORITY, JournalLocations.TABLE_NAME, JOURNAL_LOCATIONS);
-		uriMatcher.addURI(AUTHORITY, Nutrients.BASE_PATH, NUTRIENTS);
-		uriMatcher.addURI(AUTHORITY, Nutrients.BASE_PATH + "/#", NUTRIENTS_ID);	
+		URI_MATCHER.addURI(AUTHORITY, Journals.BASE_PATH, JOURNALS);
+		URI_MATCHER.addURI(AUTHORITY, Journals.BASE_PATH + "/#", JOURNALS_ID);
+		URI_MATCHER.addURI(AUTHORITY, JournalLocations.TABLE_NAME, JOURNAL_LOCATIONS);
+		URI_MATCHER.addURI(AUTHORITY, Nutrients.BASE_PATH, NUTRIENTS);
+		URI_MATCHER.addURI(AUTHORITY, Nutrients.BASE_PATH + "/#", NUTRIENTS_ID);	
 		
 	}
 	

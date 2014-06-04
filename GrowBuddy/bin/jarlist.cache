@@ -1,7 +1,5 @@
 # cache for current jar dependency. DO NOT EDIT.
 # format is <lastModified> <length> <SHA-1> <path>
 # Encoding is UTF-8
-1398384126215 349134 21297ae2bf22a0ce81c9b59992cf0693eec45d5b C:\code\eclipseWorkspace\appcompat_v7\libs\android-support-v7-appcompat.jar
-1398384126215 349134 21297ae2bf22a0ce81c9b59992cf0693eec45d5b C:\Users\chadwick\Documents\GitHub\Asimov\GrowBuddy\libs\android-support-v7-appcompat.jar
-1400946333588 621451 5896b0a4e377ac4242eb2bc785220c1c4fc052f4 C:\Users\chadwick\Documents\GitHub\Asimov\GrowBuddy\libs\android-support-v4.jar
-1398384124452 648327 ded9acc6a9792b8f1afc470f0c9cd36d178914cd C:\code\eclipseWorkspace\appcompat_v7\libs\android-support-v4.jar
+1401839001000 349134 21297ae2bf22a0ce81c9b59992cf0693eec45d5b /home/chadamine/git/Asimov/GrowBuddy/libs/android-support-v7-appcompat.jar
+1401697891000 349134 21297ae2bf22a0ce81c9b59992cf0693eec45d5b /home/chadamine/dev/sdk/android/extras/android/support/v7/appcompat/libs/android-support-v7-appcompat.jar
