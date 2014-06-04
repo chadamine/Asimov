@@ -1,4 +1,4 @@
-package com.chadamine.growbuddy.cultivation;
+package com.chadamine.growbuddy.management.locations;
 
 import android.database.Cursor;
 import android.os.Bundle;

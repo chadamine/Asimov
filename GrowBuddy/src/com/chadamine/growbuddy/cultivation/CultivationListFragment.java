@@ -16,6 +16,7 @@ import com.chadamine.growbuddy.cultivation.irrigation.IrrigationActivity;
 import com.chadamine.growbuddy.cultivation.pestdisease.PestDiseaseActivity;
 import com.chadamine.growbuddy.cultivation.plants.PlantsActivity;
 import com.chadamine.growbuddy.cultivation.recipes.RecipesActivity;
+import com.chadamine.growbuddy.management.locations.LocationsListActivity;
 
 public class CultivationListFragment extends ListFragment {
 	
@@ -24,7 +25,7 @@ public class CultivationListFragment extends ListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		root = inflater.inflate(R.layout.fragment_cultivation_nav_list, container, false);
 		
-		String[] values = new String[] { "Plants", "Nutrients", "Irrigation", "Pest & Disease", "Environment" };
+		String[] values = new String[] { "Plants", "Nutrients", "Irrigation", "Pest & Disease", "Environment", "Locations" };
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.row_nav, R.id.tvNavItemTitle, values);
 	
 		setListAdapter(adapter);
@@ -72,6 +73,8 @@ public class CultivationListFragment extends ListFragment {
 							startActivity(intent);
 							break;
 						case 5:
+							intent = new Intent(activity, LocationsListActivity.class);
+							startActivity(intent);
 							break;
 						default:
 							intent = new Intent(activity, CultivationListActivity.class);

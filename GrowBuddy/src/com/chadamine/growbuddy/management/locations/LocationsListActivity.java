@@ -1,4 +1,4 @@
-package com.chadamine.growbuddy.cultivation;
+package com.chadamine.growbuddy.management.locations;
 
 import com.chadamine.growbuddy.R;
 import com.chadamine.growbuddy.R.id;
