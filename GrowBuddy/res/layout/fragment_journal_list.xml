@@ -4,13 +4,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
     >
-    
-    <ListView
-    	android:layout_width="match_parent"
-    	android:layout_height="match_parent" 
-    	android:id="@android:id/list"
-		style="@style/list_box">
-	</ListView>
+	<RelativeLayout 
+		android:id="@+id/llJournalList"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		style="@style/list_box_container"
+    >
+		<TextView 
+			android:id="@+id/tvJournalTitle"
+			android:layout_height="30dp"
+			android:layout_width="match_parent"
+			style="@style/nav_list_title"
+			android:text="Journals"
+        />
+
+		<ListView
+			android:id="@android:id/list"
+			style="@style/list_box"
+			android:layout_width="match_parent"
+			android:layout_height="221dp"
+			android:layout_below="@id/tvJournalTitle"
+			android:layout_marginTop="1dp" />
+	</RelativeLayout>       
         
 </RelativeLayout>
 
