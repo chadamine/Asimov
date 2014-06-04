@@ -79,8 +79,11 @@ public class JournalListFragment extends ListFragment
 			int[] to = new int[] { R.id.tvNavItemTitle, R.id.tvNavItemDetails };
 		
 			getLoaderManager().initLoader(0, null, this);
+			
 			adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_nav, null, from, to, 0);
 			setListAdapter(adapter);
+			
+			if(adapter == null) throw new IllegalArgumentException("Error Adapting Database");
 	}
 
 	@Override

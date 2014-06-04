@@ -20,21 +20,13 @@ public class DatabaseContract {
 	public static final String DATABASE_NAME = "growbuddy.db";
 	public static final int DB_VERSION = 1;
 	public static final String AUTHORITY = "com.chadamine.growbuddy.provider";
-	
-	// 	Columns
-//	public static final String COL_ID = "_id";
-//	public static final String COL_NAME = "name";
-//	public static final String COL_DETAILS = "details";
-//	public static final String COL_DATE_CREATED = "date_created";
-//	public static final String COL_LOCATION = "location";
-//	public static final String COL_BATCH = "batch";
-//	public static final String COL_TYPE = "type";
+	public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY);
 	
 	//	Journals
 	public static final class Journals implements Columns { 
 		
 		public static final String BASE_PATH = "journals";
-		public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
+		//public static final Uri CONTENT_URI = Uri.parse(DatabaseContract.CONTENT_URI + "/" + BASE_PATH);
 		
 		// mime type of directory of items
 		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/journals";
@@ -47,8 +39,8 @@ public class DatabaseContract {
 		public static final String COL_NAME = "name";
 		public static final String COL_LOCATION = "location";
 	
-		public static final Uri uri = Uri.withAppendedPath(
-				Journals.CONTENT_URI, 
+		public static final Uri CONTENT_URI = Uri.withAppendedPath(
+				DatabaseContract.CONTENT_URI, 
 				Journals.BASE_PATH);
 	}
 	

@@ -1,18 +1,12 @@
 package com.chadamine.growbuddy.database;
 
-import android.content.ContentProvider;
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteQueryBuilder;
-import android.net.Uri;
-
-import com.chadamine.growbuddy.database.DatabaseContract.Journals;
-import com.chadamine.growbuddy.database.DatabaseContract.Nutrients;
-import com.chadamine.growbuddy.database.tables.TableJournals;
-import com.chadamine.growbuddy.database.tables.TableNutrients;
+import android.content.*;
+import android.database.*;
+import android.database.sqlite.*;
+import android.net.*;
+import com.chadamine.growbuddy.database.DatabaseContract.*;
+import com.chadamine.growbuddy.database.tables.*;
+import android.widget.*;
 
 public class DatabaseContentProvider extends ContentProvider {
 	
@@ -40,6 +34,9 @@ public class DatabaseContentProvider extends ContentProvider {
 		switch(uriType) {
 				
 			case DatabaseContract.JOURNALS:
+				//queryBuilder.appendWhere(Journals.COL_ID + "=" + uri.getLastPathSegment());
+				break;
+			case DatabaseContract.JOURNALS_ID:
 				queryBuilder.appendWhere(Journals.COL_ID + "=" + uri.getLastPathSegment());
 				break;
 			case DatabaseContract.NUTRIENTS:
@@ -51,18 +48,32 @@ public class DatabaseContentProvider extends ContentProvider {
 			throw new IllegalArgumentException("Unknown URI: " + uri);
 		}
 		
-		SQLiteDatabase database = helper.getWritableDatabase();
-		Cursor cursor = queryBuilder.query(database, projection, selection, selectionArgs, null, null, sortOrder);
-		cursor.setNotificationUri(getContext().getContentResolver(), uri);
+		Cursor cursor = null;
 		
-		return cursor;
+		try {
+			SQLiteDatabase database = helper.getWritableDatabase();
+			cursor = queryBuilder.query(database, projection, selection, selectionArgs, null, null, sortOrder);
+			cursor.setNotificationUri(getContext().getContentResolver(), uri);	
+			
+			return cursor;
+		} catch (SQLiteException e) {
+			throw new SQLException("Database not created");
+		}
+		
+		
+		
 	}
 
 	@Override
 	public String getType(Uri uri) {
-		switch(DatabaseContract.URI_MATCHER.match(uri)) {
-			
-		}
+		/*switch(DatabaseContract.URI_MATCHER.match(uri)) {
+			case DatabaseContract.JOURNALS:
+				return Journals.CONTENT_TYPE;
+			case DatabaseContract.JOURNAL_LOCATIONS_ID:
+				return Journals.CONTENT_ITEM_TYPE;
+			default:
+				throw new IllegalArgumentException("Unsupported URI: " + uri);
+		}*/
 		return null;
 	}
 
