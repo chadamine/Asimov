@@ -12,6 +12,6 @@
         android:id="@+id/new_item"
         android:orderInCategory="200"
         android:title="New Item"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
 
 </menu>

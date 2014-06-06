@@ -3,14 +3,14 @@
     android:layout_height="fill_parent"
     >
     <RelativeLayout 
-		android:id="@+id/llLocationsList"
+		android:id="@+id/llNutrientsList"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:orientation="horizontal"
 		style="@style/list_box_container"
     >
 		<TextView 
-			android:id="@+id/tvLocationsTitle"
+			android:id="@+id/tvNutrientsTitle"
 			android:layout_height="30dp"
 			android:layout_width="match_parent"
 			style="@style/nav_list_title"
@@ -22,7 +22,7 @@
 			style="@style/list_box"
 			android:layout_width="match_parent"
 			android:layout_height="221dp"
-			android:layout_below="@id/tvJournalTitle"
+			android:layout_below="@id/tvNutrientsTitle"
 			android:layout_marginTop="1dp" />
-	</RelativeLayout>   
+	</RelativeLayout> 
 </RelativeLayout>

@@ -25,7 +25,7 @@ public class CultivationListFragment extends ListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		root = inflater.inflate(R.layout.fragment_cultivation_nav_list, container, false);
 		
-		String[] values = new String[] { "Plants", "Nutrients", "Irrigation", "Pest & Disease", "Environment", "Locations" };
+		String[] values = new String[] { "Plants", "Nutrients", "Recipes", "Irrigation", "Pest & Disease", "Environment", "Locations" };
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.row_nav, R.id.tvNavItemTitle, values);
 	
 		setListAdapter(adapter);
@@ -56,23 +56,29 @@ public class CultivationListFragment extends ListFragment {
 					intent = new Intent(activity, PlantsActivity.class);
 					startActivity(intent);
 					break;
-				case 1:
-					intent = new Intent(activity, RecipesActivity.class);
+				case 1: 
+					//	mgmt
+					intent = new Intent(activity, NutrientsListActivity.class);
 					startActivity(intent);
 					break;
 				case 2:
-					intent = new Intent(activity, IrrigationActivity.class);
+					intent = new Intent(activity, RecipesActivity.class);
 					startActivity(intent);
 					break;
 				case 3:
-					intent = new Intent(activity, PestDiseaseActivity.class);
+					intent = new Intent(activity, IrrigationActivity.class);
 					startActivity(intent);
 					break;
 				case 4:
-					intent = new Intent(activity, EnvironmentActivity.class);
+					intent = new Intent(activity, PestDiseaseActivity.class);
 					startActivity(intent);
 					break;
 				case 5:
+					intent = new Intent(activity, EnvironmentActivity.class);
+					startActivity(intent);
+					break;
+				case 6:
+					//	mgmt
 					intent = new Intent(activity, LocationsListActivity.class);
 					startActivity(intent);
 					break;
