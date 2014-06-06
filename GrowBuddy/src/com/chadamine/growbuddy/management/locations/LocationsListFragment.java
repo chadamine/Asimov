@@ -76,8 +76,8 @@ implements LoaderManager.LoaderCallbacks<Cursor> {
 		int add = R.id.addJournal;
 		int del = R.id.delJournal;
 
-		//if (id == add) 
-			//getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.journalListContainer, new LocationDetailsFragment()).commit();
+		if (id == add) 
+			getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.locationsListContainer, new LocationDetailsFragment()).commit();
 
 		return super.onOptionsItemSelected(i);
 	}

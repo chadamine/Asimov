@@ -6,15 +6,29 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-	android:background="#000000"
     tools:context="com.chadamine.growbuddy.CultivationActivity$PlaceholderFragment" 
 	>
+	<RelativeLayout 
+		android:id="@+id/llNavList"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		style="@style/list_box_container"
+    >
+		<TextView 
+			android:id="@+id/tvNavTitle"
+			android:layout_height="30dp"
+			android:layout_width="match_parent"
+			style="CULTIVATION ACTIVITIES"
+			android:text="@string/nav_title"
+        />
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@android:id/list"
-		style="@style/list_box"
-		/>
-
+		<ListView
+			android:id="@android:id/list"
+			style="@style/list_box"
+			android:layout_width="match_parent"
+			android:layout_height="221dp"
+			android:layout_below="@+id/tvNavTitle"
+			android:layout_marginTop="1dp" />
+	</RelativeLayout>       
 </RelativeLayout>

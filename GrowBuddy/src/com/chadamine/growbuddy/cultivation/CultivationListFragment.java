@@ -38,51 +38,51 @@ public class CultivationListFragment extends ListFragment {
 		populateList(view);
 	}
 			
-			private void populateList(View r) {
+	private void populateList(View r) {
 				
-				final Activity activity = getActivity();
+		final Activity activity = getActivity();
 				
-				ListView lvCultivation = getListView();
-				lvCultivation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		ListView lvCultivation = getListView();
+		lvCultivation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-					@Override
-					public void onItemClick(AdapterView<?> parent, View view,
-							int position, long id) {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
 						
-						Intent intent;
+			Intent intent;
 						
-						switch(position) {
-						case 0:
-							intent = new Intent(activity, PlantsActivity.class);
-							startActivity(intent);
-							break;
-						case 1:
-							intent = new Intent(activity, RecipesActivity.class);
-							startActivity(intent);
-							break;
-						case 2:
-							intent = new Intent(activity, IrrigationActivity.class);
-							startActivity(intent);
-							break;
-						case 3:
-							intent = new Intent(activity, PestDiseaseActivity.class);
-							startActivity(intent);
-							break;
-						case 4:
-							intent = new Intent(activity, EnvironmentActivity.class);
-							startActivity(intent);
-							break;
-						case 5:
-							intent = new Intent(activity, LocationsListActivity.class);
-							startActivity(intent);
-							break;
-						default:
-							intent = new Intent(activity, CultivationListActivity.class);
-							startActivity(intent);
-							break;
-						}
-					}
-				});
+			switch(position) {
+				case 0:
+					intent = new Intent(activity, PlantsActivity.class);
+					startActivity(intent);
+					break;
+				case 1:
+					intent = new Intent(activity, RecipesActivity.class);
+					startActivity(intent);
+					break;
+				case 2:
+					intent = new Intent(activity, IrrigationActivity.class);
+					startActivity(intent);
+					break;
+				case 3:
+					intent = new Intent(activity, PestDiseaseActivity.class);
+					startActivity(intent);
+					break;
+				case 4:
+					intent = new Intent(activity, EnvironmentActivity.class);
+					startActivity(intent);
+					break;
+				case 5:
+					intent = new Intent(activity, LocationsListActivity.class);
+					startActivity(intent);
+					break;
+				default:
+					intent = new Intent(activity, CultivationListActivity.class);
+					startActivity(intent);
+					break;
+				}
+			}
+		});
 				
-			}		
+	}		
 }
