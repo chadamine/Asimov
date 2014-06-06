@@ -13,7 +13,7 @@
 		android:layout_alignParentTop="true"
 		android:layout_centerHorizontal="true"
 		android:layout_marginTop="18dp"
-		android:text="@string/journal_details_title"
+		android:text="Location Details"
 		style="@style/detail_text"/>
 
 	<RelativeLayout

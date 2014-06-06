@@ -1109,20 +1109,19 @@ containing a value of this type.
         public static final int fragment_environment_list=0x7f03002a;
         public static final int fragment_irrigation=0x7f03002b;
         public static final int fragment_journal_list=0x7f03002c;
-        public static final int fragment_journals=0x7f03002d;
-        public static final int fragment_locations_list=0x7f03002e;
-        public static final int fragment_main=0x7f03002f;
-        public static final int fragment_nutrients=0x7f030030;
-        public static final int fragment_pest_disease=0x7f030031;
-        public static final int fragment_pest_disease_list=0x7f030032;
-        public static final int fragment_plants=0x7f030033;
-        public static final int fragment_recipe_details=0x7f030034;
-        public static final int fragment_recipes=0x7f030035;
-        public static final int fragment_recipes_list=0x7f030036;
-        public static final int fragment_schedule=0x7f030037;
-        public static final int row_item=0x7f030038;
-        public static final int row_nav=0x7f030039;
-        public static final int support_simple_spinner_dropdown_item=0x7f03003a;
+        public static final int fragment_locations_list=0x7f03002d;
+        public static final int fragment_main=0x7f03002e;
+        public static final int fragment_nutrients=0x7f03002f;
+        public static final int fragment_pest_disease=0x7f030030;
+        public static final int fragment_pest_disease_list=0x7f030031;
+        public static final int fragment_plants=0x7f030032;
+        public static final int fragment_recipe_details=0x7f030033;
+        public static final int fragment_recipes=0x7f030034;
+        public static final int fragment_recipes_list=0x7f030035;
+        public static final int fragment_schedule=0x7f030036;
+        public static final int row_item=0x7f030037;
+        public static final int row_nav=0x7f030038;
+        public static final int support_simple_spinner_dropdown_item=0x7f030039;
     }
     public static final class menu {
         public static final int analysis=0x7f0d0000;

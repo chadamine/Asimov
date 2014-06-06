@@ -46,7 +46,6 @@ public class LocationDetailsFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle args) {
 
 		activity = getActivity();
-		Bundle extras = getActivity().getIntent().getExtras();
 		uri = Locations.CONTENT_URI;
 
 		/* MUST HAVE THE FALSE FOR THIS FRAGMENT TO LOAD */

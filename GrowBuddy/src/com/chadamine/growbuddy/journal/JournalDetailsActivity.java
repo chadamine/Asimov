@@ -272,7 +272,7 @@ public class JournalDetailsActivity extends ActionBarActivity implements
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_journals, container,
+			View rootView = inflater.inflate(R.layout.fragment_add_journal, container,
 					false);
 			TextView textView = (TextView) rootView
 					.findViewById(R.id.section_label);

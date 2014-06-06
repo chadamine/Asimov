@@ -19,8 +19,8 @@
 			android:id="@+id/tvNavTitle"
 			android:layout_height="30dp"
 			android:layout_width="match_parent"
-			style="CULTIVATION ACTIVITIES"
-			android:text="@string/nav_title"
+			style="@style/nav_list_title"
+			android:text="CULTIVATION ACTIVITIES"
         />
 
 		<ListView

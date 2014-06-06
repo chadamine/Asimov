@@ -73,8 +73,8 @@ implements LoaderManager.LoaderCallbacks<Cursor> {
 
 		int id = i.getItemId();
 
-		int add = R.id.addJournal;
-		int del = R.id.delJournal;
+		int add = R.id.addLocation;
+		int del = R.id.delLocation;
 
 		if (id == add) 
 			getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.locationsListContainer, new LocationDetailsFragment()).commit();

@@ -1,6 +1,7 @@
 package com.chadamine.growbuddy.journal;
 
 import android.app.Activity;
+import android.support.v7.app.ActionBar;
 import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -28,6 +29,7 @@ import android.widget.Toast;
 
 import com.chadamine.growbuddy.R;
 import com.chadamine.growbuddy.database.DatabaseContract.Journals;
+import android.support.v7.app.*;
 
 public class JournalDetailsFragment extends Fragment {
 	
@@ -48,6 +50,7 @@ public class JournalDetailsFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle args) {
 
 		activity = getActivity();
+		activity.getActionBar().setTitle("Add New Journal");
 		Bundle extras = getActivity().getIntent().getExtras();
 		itemUri = Journals.CONTENT_URI;
 		
