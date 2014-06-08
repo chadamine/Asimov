@@ -1,10 +1,11 @@
 package com.chadamine.growbuddy.journal;
 
 import android.app.Activity;
-import android.support.v7.app.ActionBar;
 import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,13 +30,6 @@ import android.widget.Toast;
 
 import com.chadamine.growbuddy.R;
 import com.chadamine.growbuddy.database.DatabaseContract.Journals;
-import android.support.v7.app.*;
-import android.content.pm.*;
-import java.io.*;
-import android.os.*;
-import java.text.*;
-import java.util.*;
-import android.database.*;
 
 public class JournalDetailsFragment extends Fragment {
 
@@ -132,6 +126,19 @@ public class JournalDetailsFragment extends Fragment {
 
 	}
 	
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		
+		//	onRestoreInstanceState
+		if (savedInstanceState.containsKey(CAPTURED_PHOTO_PATH_KEY)) {
+			currentPhotoPath = savedInstanceState.getString(CAPTURED_PHOTO_PATH_KEY);
+		}
+		
+		if (savedInstanceState.containsKey(CAPTURED_PHOTO_URI_KEY)) {
+			capturedImageUri = Uri.parse(savedInstanceState.getString(CAPTURED_PHOTO_URI_KEY));
+		}
+	}
+	
 	
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
@@ -226,18 +233,12 @@ public class JournalDetailsFragment extends Fragment {
 		super.onSaveInstanceState(outState);
 	}
 	
-	@Override
-	protected void onRestoreInstanceState (Bundle savedInstanceState) {
-		if (savedInstanceState.containsKey(CAPTURED_PHOTO_PATH_KEY)) {
-			currentPhotoPath = savedInstanceState.getString(CAPTURED_PHOTO_PATH_KEY);
-		}
+	//@Override
+	//protected void onRestoreInstanceState (Bundle savedInstanceState) {
 		
-		if (savedInstanceState.containsKey(CAPTURED_PHOTO_URI_KEY)) {
-			capturedImageUri = Uri.parse(savedInstanceState.getString(CAPTURED_PHOTO_URI_KEY));
-		}
 		
 		//super.onRestoreInstanceState(savedInstanceState);
-	}
+	//}
 	
 	private void cropImage() {
 		
