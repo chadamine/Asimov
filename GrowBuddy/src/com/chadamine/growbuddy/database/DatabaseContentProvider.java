@@ -46,7 +46,7 @@ public class DatabaseContentProvider extends ContentProvider {
 			
 			return cursor;
 		} catch (SQLiteException e) {
-			throw new SQLException("Database Creation Failed. UriType = " + Integer.toString(uriType));
+			throw new SQLException("Database Creation Failed. UriType = " + Integer.toString(uriType) + " Column name: " /*+ columnName*/);
 		}
 	}
 	

@@ -1,0 +1,8 @@
+<ListView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@android:id/list"
+	style="@style/list_box"
+	android:layout_width="match_parent"
+	android:layout_height="221dp"
+	android:layout_below="@id/tvJournalTitle"
+	android:layout_marginTop="1dp"/>

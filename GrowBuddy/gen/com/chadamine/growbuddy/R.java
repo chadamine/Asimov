@@ -943,9 +943,11 @@ containing a value of this type.
         public static final int button_pressed=0x7f02005a;
         public static final int calendar_ice_256=0x7f02005b;
         public static final int dashed=0x7f02005c;
-        public static final int edit_text=0x7f02005d;
-        public static final int ic_launcher=0x7f02005e;
-        public static final int livejournal_256=0x7f02005f;
+        public static final int delete_box=0x7f02005d;
+        public static final int edit_text=0x7f02005e;
+        public static final int ic_launcher=0x7f02005f;
+        public static final int innerglow=0x7f020060;
+        public static final int livejournal_256=0x7f020061;
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f070042;
@@ -1125,9 +1127,12 @@ containing a value of this type.
         public static final int fragment_recipes=0x7f030035;
         public static final int fragment_recipes_list=0x7f030036;
         public static final int fragment_schedule=0x7f030037;
-        public static final int row_item=0x7f030038;
-        public static final int row_nav=0x7f030039;
-        public static final int support_simple_spinner_dropdown_item=0x7f03003a;
+        public static final int list_view=0x7f030038;
+        public static final int list_view_delete=0x7f030039;
+        public static final int row_item=0x7f03003a;
+        public static final int row_item_delete=0x7f03003b;
+        public static final int row_nav=0x7f03003c;
+        public static final int support_simple_spinner_dropdown_item=0x7f03003d;
     }
     public static final class menu {
         public static final int analysis=0x7f0d0000;
@@ -1225,7 +1230,7 @@ containing a value of this type.
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f0b0099;
+        public static final int AppTheme=0x7f0b009a;
         public static final int TextAppearance_AppCompat_Base_CompactMenu_Dialog=0x7f0b0000;
         public static final int TextAppearance_AppCompat_Base_SearchResult=0x7f0b0001;
         public static final int TextAppearance_AppCompat_Base_SearchResult_Subtitle=0x7f0b0002;
@@ -1373,12 +1378,13 @@ containing a value of this type.
         public static final int detail_title_text=0x7f0b008e;
         public static final int image_box=0x7f0b0093;
         public static final int list_box=0x7f0b0094;
-        public static final int list_box_container=0x7f0b0095;
+        public static final int list_box_container=0x7f0b0096;
+        public static final int list_box_deleted=0x7f0b0095;
         public static final int list_box_header_strip=0x7f0b0091;
         public static final int list_item=0x7f0b0090;
-        public static final int nav_list_title=0x7f0b0098;
-        public static final int nav_row_detail=0x7f0b0097;
-        public static final int nav_row_title=0x7f0b0096;
+        public static final int nav_list_title=0x7f0b0099;
+        public static final int nav_row_detail=0x7f0b0098;
+        public static final int nav_row_title=0x7f0b0097;
         /**  Sortable List Box Styles 
          */
         public static final int title_text=0x7f0b008f;

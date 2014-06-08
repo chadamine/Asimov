@@ -61,6 +61,9 @@
 		<item name="android:background">#74c2e1</item>
 		<item name="android:popupBackground">@style/button</item>
 	</style>
+	<style name="list_box_deleted">
+		<item name="android:background">@drawable/innerglow</item>
+	</style>
 	
 	<style name="list_box_container">
 		<!--<item name="android:background">#74c2e1</item>-->

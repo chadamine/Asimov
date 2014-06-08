@@ -18,6 +18,8 @@ import com.chadamine.growbuddy.R;
 import com.chadamine.growbuddy.database.DatabaseContract;
 import com.chadamine.growbuddy.database.DatabaseContract.Journals;
 import android.view.*;
+import android.widget.*;
+import android.widget.RadioGroup.*;
 
 public class JournalListFragment extends ListFragment 
 	implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -89,7 +91,8 @@ public class JournalListFragment extends ListFragment
 	}
 	
 	private void makeDeleteStyle() {
-		
+		//this.getListView().setLayoutParams();
+		//this.getListView().setBackground();
 	}
 
 	@Override
