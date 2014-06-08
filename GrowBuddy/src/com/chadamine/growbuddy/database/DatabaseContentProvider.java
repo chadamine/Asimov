@@ -8,6 +8,7 @@ import com.chadamine.growbuddy.database.DatabaseContract.*;
 import com.chadamine.growbuddy.database.tables.*;
 import android.widget.*;
 import com.chadamine.growbuddy.journal.*;
+import android.text.*;
 
 public class DatabaseContentProvider extends ContentProvider {
 	
@@ -57,19 +58,19 @@ public class DatabaseContentProvider extends ContentProvider {
 		switch(type) {
 
 			case DatabaseContract.JOURNALS:
-				break;
-			case DatabaseContract.JOURNALS_ID:
 				col = Journals.COL_ID;
 				break;
-			case DatabaseContract.LOCATIONS:
+			case DatabaseContract.JOURNALS_ID:
 				break;
-			case DatabaseContract.LOCATIONS_ID:
+			case DatabaseContract.LOCATIONS:
 				col = Locations.COL_ID;
 				break;
+			case DatabaseContract.LOCATIONS_ID:
+				break;
 			case DatabaseContract.NUTRIENTS:
+				col = Nutrients.COL_ID;
 				break;
 			case DatabaseContract.NUTRIENTS_ID:
-				col = Nutrients.COL_ID;
 				break;
 			default:
 				throw new IllegalArgumentException("Unknown URI: " + uri);
@@ -105,12 +106,42 @@ public class DatabaseContentProvider extends ContentProvider {
 	
 	@Override
 	public int delete(Uri uri, String selection, String[] selectionArgs) {
+		
 		SQLiteDatabase db = helper.getWritableDatabase();
+		int uriType = DatabaseContract.URI_MATCHER.match(uri);
+		int rowsDeleted = 0;
+		
+		String columnName = getColumnName(uri, uriType);
+		String tableName = getTableName(uri);
+		
+		String id = uri.getLastPathSegment();
+
+		if(isId(uriType)) {
+		
+			if(TextUtils.isEmpty(selection)) {
+				rowsDeleted = db.delete(tableName, columnName + "=" + id, null);
+			} else {
+				rowsDeleted = db.delete(tableName, columnName + "=" + id + " and " + selection, selectionArgs);
+			}
+			
+		} else {
+			rowsDeleted = db.delete(tableName, selection, selectionArgs);
+		}
+		
+		getContext().getContentResolver().notifyChange(uri, null);
 		
 		db.execSQL("vacuum");
-		return 0;
+		return rowsDeleted;
 	}
-
+	
+	private boolean isId(int type) {
+		
+		if(type % 2 == 0)
+			return true;
+		else
+			return false;
+	}
+	
 	@Override
 	public int update(Uri uri, ContentValues values, String selection,
 			String[] selectionArgs) {

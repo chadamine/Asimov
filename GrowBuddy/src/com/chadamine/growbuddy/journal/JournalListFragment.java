@@ -82,10 +82,15 @@ public class JournalListFragment extends ListFragment
 
 		if (id == add) 
 			getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.journalListContainer, new JournalDetailsFragment()).commit();
-		
+		if (id == del)
+			makeDeleteStyle();
+			
 		return super.onOptionsItemSelected(i);
 	}
 	
+	private void makeDeleteStyle() {
+		
+	}
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {

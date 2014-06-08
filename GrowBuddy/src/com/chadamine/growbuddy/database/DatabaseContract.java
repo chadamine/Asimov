@@ -25,8 +25,8 @@ public class DatabaseContract {
 	//	Journals
 	public static final class Journals implements Columns { 
 		
-		public static final String BASE_PATH = "journals";
-		public static final Uri CONTENT_URI = Uri.parse(DatabaseContract.CONTENT_URI + "/" + BASE_PATH);
+		public static final String TABLE_NAME = "journals";
+		public static final Uri CONTENT_URI = Uri.withAppendedPath(DatabaseContract.CONTENT_URI, TABLE_NAME);
 		
 		// mime type of directory of items
 		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/journals";
@@ -34,49 +34,36 @@ public class DatabaseContract {
 		// mime type of single item
 		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/journals";
 		
-		public static final String TABLE_NAME = "journals";
 		public static final String COL_ID = "_id";
 		public static final String COL_NAME = "name";	
 		public static final String COL_LOCATION = "location";
-	
-		public static final Uri contentUri = 
-		Uri.withAppendedPath(
-				DatabaseContract.CONTENT_URI, 
-				Journals.BASE_PATH);
 	}
 	
 	public static final class JournalsHistory implements Columns { 
-
-		public static final String BASE_PATH = "journals_history";
-		public static final Uri CONTENT_URI = Uri.parse(DatabaseContract.CONTENT_URI + "/" + BASE_PATH);
+	
+		public static final String TABLE_NAME = "journals_history";
+		public static final Uri CONTENT_URI = Uri.withAppendedPath(DatabaseContract.CONTENT_URI, TABLE_NAME);
 
 		// mime type of directory of items
 		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/journals_history";
 
 		// mime type of single item
 		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/journals_history";
-
-		public static final String TABLE_NAME = "journals_history";
+		
 		public static final String COL_ID = "_id";
 		public static final String COL_NAME = "name";
 		public static final String COL_DATE = "date";
 		public static final String COL_ACTION = "action";
 		public static final String COL_ACTION_DETAILS = "action_details";
-
-		//public static final Uri CONTENT_URI = 
-		/*Uri.withAppendedPath(
-		 DatabaseContract.CONTENT_URI, 
-		 Journals.BASE_PATH);*/
 	}
 	
 	//	Locations
 	public static final class Locations implements Columns {
 		
-		public static final String BASE_PATH = "locations";
-		public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
-		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + BASE_PATH;
-		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/location";
 		public static final String TABLE_NAME = "locations";
+		public static final Uri CONTENT_URI = Uri.withAppendedPath(DatabaseContract.CONTENT_URI, TABLE_NAME);
+		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + TABLE_NAME;
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/location";
 		
 		public static final String COL_ID = "_id";
 		public static final String COL_NAME = "name";
@@ -88,15 +75,16 @@ public class DatabaseContract {
 		
 		public static final Uri contentUri = Uri.withAppendedPath(
 				Locations.CONTENT_URI, 
-				Locations.BASE_PATH);
+				Locations.TABLE_NAME);
 	}
 	
 	
 	//	Journal Locations
 	public static final class JournalLocations implements Columns {
 		
+		
 		public static final String TABLE_NAME = "journal_locations";
-		public static final Uri CONTENT_URI = Uri.parse("content://" +AUTHORITY + "/" + TABLE_NAME);
+		public static final Uri CONTENT_URI = Uri.withAppendedPath(DatabaseContract.CONTENT_URI, TABLE_NAME);
 		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + TABLE_NAME;
 		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/journal_location";
 		
@@ -117,11 +105,10 @@ public class DatabaseContract {
 	//	Nutrients
 	public static final class Nutrients implements Columns {
 		
-		public static final String BASE_PATH = "nutrients";
-		public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
+		public static final String TABLE_NAME = "nutrients";
+		public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TABLE_NAME);
 		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/nutrients";
 		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/nutrient";
-		public static final String TABLE_NAME = "nutrients";
 		
 		public static final String COL_ID = "_id";
 		public static final String COL_NAME = "name";
@@ -131,9 +118,7 @@ public class DatabaseContract {
 		public static final String COL_BATCH = "batch";
 		public static final String COL_TYPE = "type";
 	
-		public static final Uri contentUri = Uri.withAppendedPath(
-				CONTENT_URI, 
-				BASE_PATH);
+		public static final Uri contentUri = Uri.withAppendedPath(CONTENT_URI, TABLE_NAME);
 	}
 	
 	
@@ -304,8 +289,7 @@ public class DatabaseContract {
 	
 	public static final String TABLE_BATCH_NUTRIENTS = "batch_nutrients";
 	
-	
-	
+	// _ID's MUST be EVEN (and nothing can be 0) !!! -- see ContentProvider delete() method 
 	public static final int JOURNALS = 1;
 	public static final int JOURNALS_ID = 2;
 	public static final int JOURNALS_HISTORY = 19;
@@ -331,16 +315,16 @@ public class DatabaseContract {
 	// static initialization ("class constructor")
 	static {
 		
-		URI_MATCHER.addURI(AUTHORITY, Journals.BASE_PATH, JOURNALS);
-		URI_MATCHER.addURI(AUTHORITY, Journals.BASE_PATH + "/#", JOURNALS_ID);
-		URI_MATCHER.addURI(AUTHORITY, JournalsHistory.BASE_PATH, JOURNALS_HISTORY);
-		URI_MATCHER.addURI(AUTHORITY, JournalsHistory.BASE_PATH + "#", JOURNALS_HISTORY);
+		URI_MATCHER.addURI(AUTHORITY, Journals.TABLE_NAME, JOURNALS);
+		URI_MATCHER.addURI(AUTHORITY, Journals.TABLE_NAME + "/#", JOURNALS_ID);
+		URI_MATCHER.addURI(AUTHORITY, JournalsHistory.TABLE_NAME, JOURNALS_HISTORY);
+		URI_MATCHER.addURI(AUTHORITY, JournalsHistory.TABLE_NAME + "#", JOURNALS_HISTORY);
 		URI_MATCHER.addURI(AUTHORITY, JournalLocations.TABLE_NAME, JOURNAL_LOCATIONS);
-		URI_MATCHER.addURI(AUTHORITY, Nutrients.BASE_PATH, NUTRIENTS);
-		URI_MATCHER.addURI(AUTHORITY, Nutrients.BASE_PATH + "/#", NUTRIENTS_ID);	
+		URI_MATCHER.addURI(AUTHORITY, Nutrients.TABLE_NAME, NUTRIENTS);
+		URI_MATCHER.addURI(AUTHORITY, Nutrients.TABLE_NAME + "/#", NUTRIENTS_ID);	
 		
-		URI_MATCHER.addURI(AUTHORITY, Locations.BASE_PATH, LOCATIONS);
-		URI_MATCHER.addURI(AUTHORITY, Locations.BASE_PATH + "/#", LOCATIONS_ID);
+		URI_MATCHER.addURI(AUTHORITY, Locations.TABLE_NAME, LOCATIONS);
+		URI_MATCHER.addURI(AUTHORITY, Locations.TABLE_NAME + "/#", LOCATIONS_ID);
 	}
 	
 	
