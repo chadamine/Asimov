@@ -30,28 +30,39 @@ import android.widget.Toast;
 import com.chadamine.growbuddy.R;
 import com.chadamine.growbuddy.database.DatabaseContract.Journals;
 import android.support.v7.app.*;
+import android.content.pm.*;
+import java.io.*;
+import android.os.*;
+import java.text.*;
+import java.util.*;
+import android.database.*;
 
 public class JournalDetailsFragment extends Fragment {
-	
-	private static JournalDetailsFragment fragment;
-	private static JournalDetailsActivity.ManagementTabsFragmentListener mShowFragment;
-	private static EditText itemName;
-	private static EditText itemDetails;
+
 	private static Uri itemUri;
 	private static Activity activity;
-	private static View view;
 	
-	static final int REQUEST_IMAGE_CAPTURE = 1;
+	private static final int REQUEST_IMAGE_CAPTURE = 1;
+	
 	private Uri imageUri;
-	final int PIC_CROP = 2;
+	private final int PIC_CROP = 2;
 	private static FrameLayout frame;
+	
+	private Intent takePictureIntent;
+	private PackageManager pManager;
+	
+	private String currentPhotoPath;
+	private Uri capturedImageUri;
+
+	private final static String CAPTURED_PHOTO_PATH_KEY = "currentPhotoPath";
+	private final static String CAPTURED_PHOTO_URI_KEY = "capturedImageUri";
+	
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle args) {
 
 		activity = getActivity();
 		activity.getActionBar().setTitle("Add New Journal");
-		Bundle extras = getActivity().getIntent().getExtras();
 		itemUri = Journals.CONTENT_URI;
 		
 		/* MUST HAVE THE FALSE FOR THIS FRAGMENT TO LOAD */
@@ -62,7 +73,8 @@ public class JournalDetailsFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
-				JournalListFragment.callShowFragment();
+				getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.journalListContainer, new JournalListFragment()).commit();
+				
 			}
 		});
 		
@@ -90,10 +102,9 @@ public class JournalDetailsFragment extends Fragment {
 	private void populateSpinner(View v) {
 		Spinner sprLocations = (Spinner) v.findViewById(R.id.spinnerLocation);
 		
-		Uri uri = Journals.CONTENT_URI;
-		String[] from = { Journals.COL_NAME, Journals.COL_LOCATION, };
+		String[] from = { Journals.COL_NAME };
 		int[] to = new int[] { android.R.id.text1 };
-		//Cursor cursor = activity.getContentResolver().query(uri, from, null, null, null);
+		
 		SimpleCursorAdapter adapter = new SimpleCursorAdapter(activity, android.R.layout.simple_spinner_item, null, from, to);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 	}
@@ -107,7 +118,20 @@ public class JournalDetailsFragment extends Fragment {
 				activity.openContextMenu(v);
 			}
 		});
+		
+		if(activity.getPackageManager() == null) 
+			throw new NullPointerException("no pckg mgr!");
+		else {
+			pManager = activity.getPackageManager();
+			Toast.makeText(activity, "pm not null", Toast.LENGTH_SHORT).show();
+		
+		}
+		
+		takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+		checkHardware();
+
 	}
+	
 	
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
@@ -119,34 +143,57 @@ public class JournalDetailsFragment extends Fragment {
 	
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
-			
+
 		switch(item.getItemId()) {
 			case R.id.camera:
 				startCamera();
 				return true;
-				
+
 			case R.id.file:
 				//openFile();
 				return true;
 			default:
 				return super.onContextItemSelected(item);
-			
 		}
 	}
 	
-	private void startCamera() { 
-		Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-		
-		if (takePictureIntent.resolveActivity(activity.getPackageManager()) != null) {
-			startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+	/*****************	TAKE PICTURE 	*************************************/
+	
+	private void checkHardware() {
+		if(pManager.hasSystemFeature(PackageManager.FEATURE_CAMERA) == false) {
+			//	set icons for all images
+
+			//	disable camera menu
+			activity.findViewById(R.id.camera).setEnabled(false);
 		}
 	}
 	
+
+	public void startCamera() { 
+		ContentValues values = new ContentValues();
+				
+		String fileName = "temp.jpg";
+
+		values.put(MediaStore.Images.Media.TITLE, fileName);
+		imageUri = activity.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+				
+		takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+		startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+	}
+
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		
 		if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
-			imageUri = data.getData();
+			
+			//	Get the name of the file
+			String[] projection = { MediaStore.Images.Media.DATA };
+			Cursor cursor = activity.managedQuery(imageUri, projection, null, null, null);
+			int column_index_data = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+			cursor.moveToFirst();
+			String filePath = cursor.getString(column_index_data);
+			Toast.makeText(activity, filePath, Toast.LENGTH_SHORT).show();
+			
 			cropImage();
 		}
 		
@@ -158,6 +205,38 @@ public class JournalDetailsFragment extends Fragment {
 			image.setImageBitmap(imageBitmap);
 			frame.addView(image);			
 		}
+		
+	}
+
+	
+	
+	/************ save and restore overridables ************************/
+	
+	@Override
+	public void onSaveInstanceState(Bundle outState)
+	{
+		if (currentPhotoPath != null) {
+			outState.putString(CAPTURED_PHOTO_PATH_KEY, currentPhotoPath);
+		}
+		
+		if (capturedImageUri != null) {
+			outState.putString(CAPTURED_PHOTO_URI_KEY, capturedImageUri.toString());
+		}
+		
+		super.onSaveInstanceState(outState);
+	}
+	
+	@Override
+	protected void onRestoreInstanceState (Bundle savedInstanceState) {
+		if (savedInstanceState.containsKey(CAPTURED_PHOTO_PATH_KEY)) {
+			currentPhotoPath = savedInstanceState.getString(CAPTURED_PHOTO_PATH_KEY);
+		}
+		
+		if (savedInstanceState.containsKey(CAPTURED_PHOTO_URI_KEY)) {
+			capturedImageUri = Uri.parse(savedInstanceState.getString(CAPTURED_PHOTO_URI_KEY));
+		}
+		
+		//super.onRestoreInstanceState(savedInstanceState);
 	}
 	
 	private void cropImage() {
@@ -176,34 +255,9 @@ public class JournalDetailsFragment extends Fragment {
 		}
 		
 		catch(ActivityNotFoundException exception) {
-			String error = "Image capture not supported on this device";
+			String error = "Cropping application not found";
 			Toast.makeText(activity, error, Toast.LENGTH_SHORT).show();
 		}
-	}
-
-	
-	public static JournalDetailsFragment newInstance(Bundle bundle) {
-		fragment = new JournalDetailsFragment();
-		
-		itemUri = bundle.getParcelable(Journals.CONTENT_TYPE);
-		// fillData(itemUri);
-		
-		return fragment;
-	}
-	
-	public static JournalDetailsFragment newInstance() {
-		return new JournalDetailsFragment();
-	}
-	
-	public static JournalDetailsFragment newInstance(JournalDetailsActivity.ManagementTabsFragmentListener listener) {
-		fragment = new JournalDetailsFragment();
-		
-		mShowFragment = listener;
-		return fragment;
-	}
-	
-	public static void callShowFragment() {
-		mShowFragment.onShowFragment();
 	}
 	
 	@Override
@@ -219,10 +273,10 @@ public class JournalDetailsFragment extends Fragment {
 		if(name.length() > 0 ) {
 			ContentValues values = new ContentValues();
 			values.put(Journals.COL_NAME, name);
-			//values.put(DatabaseContract.COL_DETAILS, details);
+			values.put(Journals.COL_LOCATION, "location filler");
 		
 			itemUri = getActivity().getContentResolver().insert(Journals.CONTENT_URI, values);
-			
+			Toast.makeText(getActivity(), "Journal Added to Database", Toast.LENGTH_SHORT).show();
 		}
 		
 	}

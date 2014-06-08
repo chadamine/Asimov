@@ -2,9 +2,13 @@
     
     <item
         android:id="@+id/camera"
-        android:title="Camera"/>
+        android:title="Camera"
+		style="@style/list_box"
+		/>
 	<item
 		android:id="@+id/file"
-		android:title="File" />
+		android:title="File" 
+		style="@style/list_box"
+		/>
     
 </menu>

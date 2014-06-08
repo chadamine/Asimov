@@ -7,6 +7,7 @@ import android.net.*;
 import com.chadamine.growbuddy.database.DatabaseContract.*;
 import com.chadamine.growbuddy.database.tables.*;
 import android.widget.*;
+import com.chadamine.growbuddy.journal.*;
 
 public class DatabaseContentProvider extends ContentProvider {
 	
@@ -62,7 +63,7 @@ public class DatabaseContentProvider extends ContentProvider {
 			
 			return cursor;
 		} catch (SQLiteException e) {
-			throw new SQLException("Database not created");
+			throw new SQLException("Database no created. UriType = " + Integer.toString(uriType));
 		}
 		
 		
@@ -101,7 +102,7 @@ public class DatabaseContentProvider extends ContentProvider {
 		}
 		getContext().getContentResolver().notifyChange(uri, null);
 		
-		return Uri.parse(Journals.TABLE_NAME + "/" + id);
+		return Uri.parse(Journals.BASE_PATH + "/" + id);
 	}
 
 	@Override

@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/RelativeLayout1"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/RelativeLayout1"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+	
+	<FrameLayout
+		android:id="@+id/frameImage"
+		android:layout_height="50dp"
+		android:layout_width="50dp"
+		android:layout_alignParentLeft="true"
+		android:layout_marginRight="20dp"
+		style="@style/image_box"
+		/>
+	
+	<TextView
+		android:id="@+id/textTitle"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_toRightOf="@id/frameImage"
+		/>
 
-    <TextView
-        android:id="@+id/tvListTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" 
-       
-        >
-    </TextView>
-
-    <TextView
-        android:id="@+id/tvListDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tvListTitle" >
-    </TextView>
-"
-
+	<TextView
+		android:id="@+id/textDetails"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/textTitle"
+		android:layout_toRightOf="@id/frameImage"
+		/>
+	
 </RelativeLayout>
+
