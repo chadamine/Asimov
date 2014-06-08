@@ -9,8 +9,8 @@ public class TableJournals {
 	public static final String CREATE = "create table "
 			+ Journals.TABLE_NAME + "("
 			+ Journals.COL_ID + " integer primary key autoincrement, "
-			+ Journals.COL_NAME + " text not null)";
-			/*+ Journals.COL_LOCATION + " text not null)";*/
+			+ Journals.COL_NAME + " text not null, "
+			+ Journals.COL_LOCATION + " text not null)";
 	
 	public static void onCreate(SQLiteDatabase db) {
 		db.execSQL(CREATE);

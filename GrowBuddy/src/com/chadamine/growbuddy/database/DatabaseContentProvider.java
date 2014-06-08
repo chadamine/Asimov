@@ -12,6 +12,7 @@ import com.chadamine.growbuddy.journal.*;
 public class DatabaseContentProvider extends ContentProvider {
 	
 	private JournalDBHelper helper;
+	DatabaseContract dc;
 
 	@Override
 	public boolean onCreate() {
@@ -25,34 +26,15 @@ public class DatabaseContentProvider extends ContentProvider {
 			String[] selectionArgs, String sortOrder) {
 		
 		SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+		int uriType = DatabaseContract.URI_MATCHER.match(uri);
+		String columnName = getColumnName(uri, uriType);
 		
 		// checkColumns(projection);
 		
-		queryBuilder.setTables(Journals.TABLE_NAME);
+		queryBuilder.setTables(getTableName(uri));
 		
-		int uriType = DatabaseContract.URI_MATCHER.match(uri);
-		
-		switch(uriType) {
-				
-			case DatabaseContract.JOURNALS:
-				//queryBuilder.appendWhere(Journals.COL_ID + "=" + uri.getLastPathSegment());
-				break;
-			case DatabaseContract.JOURNALS_ID:
-				queryBuilder.appendWhere(Journals.COL_ID + "=" + uri.getLastPathSegment());
-				break;
-			case DatabaseContract.LOCATIONS:
-				break;
-			case DatabaseContract.LOCATIONS_ID:
-				queryBuilder.appendWhere(Locations.COL_ID + "=" + uri.getLastPathSegment());
-				break;
-			case DatabaseContract.NUTRIENTS:
-				break;
-			case DatabaseContract.NUTRIENTS_ID:
-				queryBuilder.appendWhere(Nutrients.COL_ID + "=" + uri.getLastPathSegment());
-				break;
-		default:
-			throw new IllegalArgumentException("Unknown URI: " + uri);
-		}
+		if(columnName != "")
+			queryBuilder.appendWhere(columnName + "=" + uri.getLastPathSegment());
 		
 		Cursor cursor = null;
 		
@@ -63,11 +45,37 @@ public class DatabaseContentProvider extends ContentProvider {
 			
 			return cursor;
 		} catch (SQLiteException e) {
-			throw new SQLException("Database no created. UriType = " + Integer.toString(uriType));
+			throw new SQLException("Database Creation Failed. UriType = " + Integer.toString(uriType));
+		}
+	}
+	
+	private String getColumnName(Uri uri, int type) {
+		
+		String col = "";
+		
+		
+		switch(type) {
+
+			case DatabaseContract.JOURNALS:
+				break;
+			case DatabaseContract.JOURNALS_ID:
+				col = Journals.COL_ID;
+				break;
+			case DatabaseContract.LOCATIONS:
+				break;
+			case DatabaseContract.LOCATIONS_ID:
+				col = Locations.COL_ID;
+				break;
+			case DatabaseContract.NUTRIENTS:
+				break;
+			case DatabaseContract.NUTRIENTS_ID:
+				col = Nutrients.COL_ID;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown URI: " + uri);
 		}
 		
-		
-		
+		return col;
 	}
 
 	@Override
@@ -85,29 +93,21 @@ public class DatabaseContentProvider extends ContentProvider {
 
 	@Override
 	public Uri insert(Uri uri, ContentValues values) {
-		int uriType = DatabaseContract.URI_MATCHER.match(uri);
 		
-		SQLiteDatabase db = helper.getWritableDatabase();
 		long id = 0;
+		SQLiteDatabase db = helper.getWritableDatabase();
 		
-		switch(uriType) {
-		case DatabaseContract.JOURNALS:
-			id = db.insert(Journals.TABLE_NAME, null, values);
-			break;
-		case DatabaseContract.LOCATIONS:
-			id = db.insert(Locations.TABLE_NAME, null, values);
-			break;
-		default:
-			throw new IllegalArgumentException("Unknown URI: " + uri);
-		}
+		id = db.insert(getTableName(uri), null, values);
 		getContext().getContentResolver().notifyChange(uri, null);
 		
-		return Uri.parse(Journals.BASE_PATH + "/" + id);
+		return Uri.parse(getTableName(uri)/*Journals.BASE_PATH*/ + "/" + id);
 	}
-
+	
 	@Override
 	public int delete(Uri uri, String selection, String[] selectionArgs) {
-		// TODO Auto-generated method stub
+		SQLiteDatabase db = helper.getWritableDatabase();
+		
+		db.execSQL("vacuum");
 		return 0;
 	}
 
@@ -118,6 +118,32 @@ public class DatabaseContentProvider extends ContentProvider {
 		return 0;
 	}
 	
+	private String getTableName(Uri uri) {
+		int uriType = DatabaseContract.URI_MATCHER.match(uri);
+
+		String name = "";
+
+		switch(uriType) {
+			case DatabaseContract.JOURNALS:
+				name = Journals.TABLE_NAME;
+				break;
+			case DatabaseContract.JOURNALS_HISTORY:
+				name = JournalsHistory.TABLE_NAME;
+				break;
+			case DatabaseContract.LOCATIONS:
+				name = Locations.TABLE_NAME;
+				break;
+			case DatabaseContract.BATCHES:
+				name = Batches.TABLE_NAME;
+				break;
+			case DatabaseContract.BATCH_PLANTS:
+				
+			default:
+				throw new IllegalArgumentException("Unknown URI: " + uri);
+		}
+
+		return name;
+	}
 	
 	/** Journal DB Helper **/
 	

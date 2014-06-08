@@ -90,7 +90,7 @@ public class JournalListFragment extends ListFragment
 	@Override
 	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
 		
-		String[] projection = { Journals.COL_ID, Journals.COL_NAME/*, Journals.COL_LOCATION*/ };
+		String[] projection = { Journals.COL_ID, Journals.COL_NAME, Journals.COL_LOCATION };
 		
 		CursorLoader loader = new CursorLoader(getActivity(), Journals.CONTENT_URI, projection, null, null, null);
 		return loader;
