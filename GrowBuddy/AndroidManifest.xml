@@ -7,16 +7,10 @@
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="19" />
-	
-	<uses-feature
-		android:name="android.hardware.camera"
-		
-		/>
-	
-	<uses-permission 
-		android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-		
-		/>
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -24,6 +18,10 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         android:vmSafeMode="false" >
+        <activity
+            android:name="com.chadamine.growbuddy.OverviewActivity"
+            android:label="@string/title_activity_overview" >
+        </activity>
         <activity
             android:name="com.chadamine.growbuddy.MainActivity"
             android:label="@string/app_name" >
@@ -78,8 +76,7 @@
         <activity
             android:name="com.chadamine.growbuddy.cultivation.nutrients.NutrientsActivity"
             android:label="@string/title_activity_nutrients" >
-        </activity>
-        -->
+        </activity>        -->
         <activity
             android:name="com.chadamine.growbuddy.cultivation.irrigation.IrrigationActivity"
             android:label="@string/title_activity_irrigation" >
@@ -100,11 +97,15 @@
             android:name="com.chadamine.growbuddy.management.locations.LocationsListActivity"
             android:label="@string/title_activity_locations_main" >
         </activity>
-		<activity
-			android:name="com.chadamine.growbuddy.cultivation.NutrientsListActivity"
-			android:label="nutrients activity" >
-		</activity>
-			
+        <activity
+            android:name="com.chadamine.growbuddy.cultivation.NutrientsListActivity"
+            android:label="nutrients activity" >
+        </activity>
+        <activity
+            android:name="com.chadamine.growbuddy.PrimaryActivity"
+            android:label="@string/title_activity_primary" >
+        </activity>
+       
     </application>
 
 </manifest>
