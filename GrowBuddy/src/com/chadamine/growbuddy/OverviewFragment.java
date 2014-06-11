@@ -39,13 +39,14 @@ public class OverviewFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_overview,
 				container, false);
 		
-		fragmentManager
+		/*fragmentManager
 			.beginTransaction()
 			.add(R.id.framePaneNavigation, new MainActivity.PlaceholderFragment())
 			.commit();
 		fragmentManager
 			.beginTransaction()
 			.add(R.id.framePaneDetails, new BlankFragment());
+			*/
 		return view;
 	}
 }
