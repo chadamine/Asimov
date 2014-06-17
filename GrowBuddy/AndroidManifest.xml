@@ -80,7 +80,8 @@
         <activity
             android:name="com.chadamine.growbuddy.cultivation.nutrients.NutrientsActivity"
             android:label="@string/title_activity_nutrients" >
-        </activity>        -->
+        </activity>
+        -->
         <activity
             android:name="com.chadamine.growbuddy.cultivation.irrigation.IrrigationActivity"
             android:label="@string/title_activity_irrigation" >
