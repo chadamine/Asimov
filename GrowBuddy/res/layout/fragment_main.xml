@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#dee7ef"
     tools:context="com.chadamine.growbuddy.MainActivity$PlaceholderFragment" >
-
+    
 <RelativeLayout 
     android:id="@+id/rlNavList"
     android:layout_width="match_parent"
@@ -38,7 +38,7 @@
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:orientation="horizontal"   
-         android:layout_below="@+id/rlNavList"  
+         android:layout_below="@+id/rNavList"  
          style="@style/list_box_container"
          >
      	<RelativeLayout

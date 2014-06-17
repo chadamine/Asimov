@@ -71,8 +71,10 @@ public class OverviewFragment extends Fragment {
 		FrameLayout frameNav = new FrameLayout(activity);
 		FrameLayout frameDetails = new FrameLayout(activity);
 		
-		RelativeLayout rlNavList = (RelativeLayout) activity.findViewById(R.id.rlNavList);
-		RelativeLayout rlNews = (RelativeLayout) activity.findViewById(R.id.rlNews);
+		//RelativeLayout rlMain = (RelativeLayout) activity.findViewById(R.layout.fragment_main);
+		
+		//RelativeLayout rlNavList = (RelativeLayout) activity.findViewById(R.id.rlNavList);
+		//RelativeLayout rlNews = (RelativeLayout) activity.findViewById(R.id.rlNews);
 		
 		frameNav.setId(100);
 		frameDetails.setId(101);
@@ -103,7 +105,7 @@ public class OverviewFragment extends Fragment {
 				frameDetWidth = frameNavWidth;
    				frameDetHeight = height - frameNavHeight;
 				
-				navBoxWidth = (int) (.3 * width);
+				navBoxWidth = (int) (.5 * frameNavWidth);
 				
 				detailsIntRules.put(RelativeLayout.BELOW, frameNav.getId());
 				
@@ -117,7 +119,7 @@ public class OverviewFragment extends Fragment {
    					frameDetWidth = frameNavWidth;
    					frameDetHeight = height - frameNavHeight;
    
-   					navBoxWidth = (int) (.3 * width);
+   					navBoxWidth = (int) (.5 * frameNavWidth);
    					detailsIntRules.put(RelativeLayout.BELOW, frameNav.getId());
 				}
 				
@@ -128,7 +130,7 @@ public class OverviewFragment extends Fragment {
    					frameDetWidth = frameNavWidth;
    					frameDetHeight = height - frameNavHeight;
 					
-   					navBoxWidth = (int) (.3 * width);
+   					navBoxWidth = (int) (.5 * frameNavWidth);
 					
   				 	detailsIntRules.put(RelativeLayout.BELOW, frameNav.getId());
 				}
@@ -150,7 +152,7 @@ public class OverviewFragment extends Fragment {
 				frameDetWidth = frameNavWidth;
    				frameDetHeight = height - frameNavHeight;
 				
-				navBoxWidth = (int) (.3 * width);
+				navBoxWidth = (int) (.5 * frameNavWidth);
 				
 				detailsIntRules.put(RelativeLayout.BELOW, frameNav.getId());
 				break;
@@ -184,14 +186,14 @@ public class OverviewFragment extends Fragment {
 		frameNavLayout.addRule(RelativeLayout.ALIGN_PARENT_TOP);
 		frameNavLayout.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
 		
-		Iterator itr;
+		Iterator<Map.Entry<Integer, Integer>> itr;
 
 		if( !navIntRules.isEmpty()) {
 			
 			itr = navIntRules.entrySet().iterator();
 		 
 			while(itr.hasNext()) {
-				Map.Entry pairs = (Map.Entry)itr.next();
+				Map.Entry<Integer, Integer> pairs = (Map.Entry<Integer, Integer>)itr.next();
 				frameNavLayout.addRule(pairs.getKey(), pairs.getValue());
 			}
 		}
@@ -201,7 +203,7 @@ public class OverviewFragment extends Fragment {
 			itr = detailsIntRules.entrySet().iterator();
 		 
 			while(itr.hasNext()) {
-				Map.Entry pairs = (Map.Entry)itr.next();
+				Map.Entry<Integer, Integer> pairs = (Map.Entry<Integer, Integer>)itr.next();
 				frameDetailsLayout.addRule(pairs.getKey(), pairs.getValue());
 			}
 		}
