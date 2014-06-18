@@ -1,5 +1,6 @@
 package com.chadamine.growbuddy;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -9,12 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import android.view.*;
+import android.annotation.TargetApi;
 import android.content.res.*;
 import java.util.*;
 import android.graphics.*;
 import android.support.v7.app.*;
 import javax.crypto.*;
 
+@TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
 public class OverviewFragment extends Fragment {
 	
 	private static final String ARG_SECTION_NUMBER = "section_number";
@@ -22,6 +25,7 @@ public class OverviewFragment extends Fragment {
 	private FragmentActivity activity;
 	private int width;
 	private int height;
+	int currentApi;
 	
 	public OverviewFragment() { 
 		
@@ -39,6 +43,7 @@ public class OverviewFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		currentApi = android.os.Build.VERSION.SDK_INT;
 				
 		super.onCreateView(inflater, container, savedInstanceState);
 		
@@ -47,10 +52,23 @@ public class OverviewFragment extends Fragment {
 		
 		fragmentManager = activity.getSupportFragmentManager();
 		
-		Display display = activity.getWindowManager().getDefaultDisplay();
-		width = display.getWidth();
-		height = display.getHeight();
+		// Use window manager and systemService to get display
+		WindowManager wm = (WindowManager) activity.getSystemService(activity.WINDOW_SERVICE);
+		Display display = wm.getDefaultDisplay();
+		//Display display = activity.getWindowManager().getDefaultDisplay();
 		
+		// Get display dimensions based on API 
+		if (currentApi <= android.os.Build.VERSION_CODES.HONEYCOMB) {
+			width = display.getWidth();
+			height = display.getHeight();
+		} else {
+			Point displaySize = new Point();
+			display.getSize(displaySize);
+			
+			width = displaySize.x;
+			height = displaySize.y;
+		}
+			
 		int rotation = display.getRotation();
 		
 		final int undefined = Configuration.ORIENTATION_UNDEFINED;
@@ -73,8 +91,8 @@ public class OverviewFragment extends Fragment {
 		
 		//RelativeLayout rlMain = (RelativeLayout) activity.findViewById(R.layout.fragment_main);
 		
-		//RelativeLayout rlNavList = (RelativeLayout) activity.findViewById(R.id.rlNavList);
-		//RelativeLayout rlNews = (RelativeLayout) activity.findViewById(R.id.rlNews);
+		RelativeLayout rlNavList = (RelativeLayout) activity.findViewById(R.id.rlNavList);
+		RelativeLayout rlNews = (RelativeLayout) activity.findViewById(R.id.rlNews);
 		
 		frameNav.setId(100);
 		frameDetails.setId(101);
