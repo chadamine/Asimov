@@ -89,10 +89,9 @@ public class OverviewFragment extends Fragment {
 		FrameLayout frameNav = new FrameLayout(activity);
 		FrameLayout frameDetails = new FrameLayout(activity);
 		
-		//RelativeLayout rlMain = (RelativeLayout) activity.findViewById(R.layout.fragment_main);
-		
-		RelativeLayout rlNavList = (RelativeLayout) activity.findViewById(R.id.rlNavList);
-		RelativeLayout rlNews = (RelativeLayout) activity.findViewById(R.id.rlNews);
+		RelativeLayout rlMain = (RelativeLayout) inflater.inflate(R.layout.fragment_main, container);
+		RelativeLayout rlNavList = (RelativeLayout) rlMain.findViewById(R.id.rlNavList);
+		RelativeLayout rlNews = (RelativeLayout) rlMain.findViewById(R.id.rlNews);
 		
 		frameNav.setId(100);
 		frameDetails.setId(101);
@@ -191,10 +190,16 @@ public class OverviewFragment extends Fragment {
 			navBoxHeight = 200;
 			navBoxWidth = 200;
 			newsBoxParams = new RelativeLayout.LayoutParams(
-				navBoxHeight, navBoxHeight);
+				navBoxWidth, navBoxHeight);
 			
-			//rlNavList.setLayoutParams(newsBoxParams);
-			//rlNews.setLayoutParams(newsBoxParams);
+				
+			try {
+			rlNavList.setLayoutParams(newsBoxParams);
+			rlNews.setLayoutParams(newsBoxParams);
+			
+			} catch (NullPointerException e) {
+				Toast.makeText(activity, "failed to set layoutParams", Toast.LENGTH_SHORT);
+			}
 		}
 			
 		for(int rule: rules) {
@@ -211,7 +216,7 @@ public class OverviewFragment extends Fragment {
 			itr = navIntRules.entrySet().iterator();
 		 
 			while(itr.hasNext()) {
-				Map.Entry<Integer, Integer> pairs = (Map.Entry<Integer, Integer>)itr.next();
+				Map.Entry<Integer, Integer> pairs = /*(Map.Entry<Integer, Integer>)*/itr.next();
 				frameNavLayout.addRule(pairs.getKey(), pairs.getValue());
 			}
 		}
@@ -221,7 +226,7 @@ public class OverviewFragment extends Fragment {
 			itr = detailsIntRules.entrySet().iterator();
 		 
 			while(itr.hasNext()) {
-				Map.Entry<Integer, Integer> pairs = (Map.Entry<Integer, Integer>)itr.next();
+				Map.Entry<Integer, Integer> pairs = /*(Map.Entry<Integer, Integer>)*/itr.next();
 				frameDetailsLayout.addRule(pairs.getKey(), pairs.getValue());
 			}
 		}

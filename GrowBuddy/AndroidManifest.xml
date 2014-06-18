@@ -64,10 +64,7 @@
             android:label="@string/title_activity_schedule" >
         </activity>
 
-        <provider
-            android:name="com.chadamine.growbuddy.database.DatabaseContentProvider"
-            android:authorities="com.chadamine.growbuddy.provider" />
-
+        
         <activity
             android:name="com.chadamine.growbuddy.cultivation.recipes.RecipesOverviewActivity"
             android:label="@string/title_activity_recipes" >
@@ -110,7 +107,10 @@
             android:name="com.chadamine.growbuddy.PrimaryActivity"
             android:label="@string/title_activity_primary" >
         </activity>
-       
+		<provider
+            android:name="com.chadamine.growbuddy.database.DatabaseContentProvider"
+            android:authorities="com.chadamine.growbuddy.provider" />
+		
     </application>
 
 </manifest>
