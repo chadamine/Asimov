@@ -1,21 +1,30 @@
 package com.chadamine.growbuddy;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import android.annotation.TargetApi;
+import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBar;
+import android.util.SparseIntArray;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
-import android.view.*;
-import android.annotation.TargetApi;
-import android.content.res.*;
-import java.util.*;
-import android.graphics.*;
-import android.support.v7.app.*;
-import javax.crypto.*;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
 public class OverviewFragment extends Fragment {
@@ -33,8 +42,8 @@ public class OverviewFragment extends Fragment {
 	
 	public static OverviewFragment newInstance(int displayWidth, int displayHeight) {
 		OverviewFragment fragment = new OverviewFragment();
-		//Bundle args = new Bundle();
 		
+		//Bundle args = new Bundle();
 		//fragment.setArguments(args);
 		
 		return fragment;
@@ -82,14 +91,11 @@ public class OverviewFragment extends Fragment {
 		int frameDetHeight = 100;
 		
 		int navBoxWidth = 0;
-		//int navBoxHeight = 0;
-		//int newsBoxHeight = 0;
-		//int newsBoxWidth = 0;
 		
 		FrameLayout frameNav = new FrameLayout(activity);
 		FrameLayout frameDetails = new FrameLayout(activity);
 		
-		RelativeLayout rlMain = (RelativeLayout) inflater.inflate(R.layout.fragment_main, container);
+		RelativeLayout rlMain = (RelativeLayout) inflater.inflate(R.layout.fragment_main, null);
 		RelativeLayout rlNavList = (RelativeLayout) rlMain.findViewById(R.id.rlNavList);
 		RelativeLayout rlNews = (RelativeLayout) rlMain.findViewById(R.id.rlNews);
 		
@@ -97,8 +103,12 @@ public class OverviewFragment extends Fragment {
 		frameDetails.setId(101);
 		
 		List<Integer> rules = new ArrayList<Integer>();
-		Map<Integer, Integer> navIntRules = new HashMap<Integer, Integer>();
-		Map<Integer, Integer> detailsIntRules = new HashMap<Integer, Integer>();
+		
+		SparseIntArray navIntRules = new SparseIntArray();
+		SparseIntArray detailsIntRules = new SparseIntArray();
+		
+		SparseIntArray navBoxRules = new SparseIntArray();
+		SparseIntArray newsBoxRules = new SparseIntArray();
 		
 		rules.add(RelativeLayout.ALIGN_PARENT_TOP);
 		rules.add(RelativeLayout.ALIGN_PARENT_LEFT);
@@ -122,8 +132,9 @@ public class OverviewFragment extends Fragment {
 				frameDetWidth = frameNavWidth;
    				frameDetHeight = height - frameNavHeight;
 				
-				navBoxWidth = (int) (.5 * frameNavWidth);
+				navBoxWidth = (int) (.5 * width);
 				
+   				Toast.makeText(activity, "portrait: navBox current width:" + navBoxWidth, Toast.LENGTH_SHORT).show();
 				detailsIntRules.put(RelativeLayout.BELOW, frameNav.getId());
 				
 				break;
@@ -136,7 +147,8 @@ public class OverviewFragment extends Fragment {
    					frameDetWidth = frameNavWidth;
    					frameDetHeight = height - frameNavHeight;
    
-   					navBoxWidth = (int) (.5 * frameNavWidth);
+   					Toast.makeText(activity, "undefined square: navBox current width:" + navBoxWidth, Toast.LENGTH_SHORT).show();
+   					navBoxWidth = (int) (.5 * width);
    					detailsIntRules.put(RelativeLayout.BELOW, frameNav.getId());
 				}
 				
@@ -147,8 +159,9 @@ public class OverviewFragment extends Fragment {
    					frameDetWidth = frameNavWidth;
    					frameDetHeight = height - frameNavHeight;
 					
-   					navBoxWidth = (int) (.5 * frameNavWidth);
+   					navBoxWidth = (int) (.5 * width);
 					
+   					Toast.makeText(activity, "undefined portrait: navBox current width:" + navBoxWidth, Toast.LENGTH_SHORT).show();
   				 	detailsIntRules.put(RelativeLayout.BELOW, frameNav.getId());
 				}
 				
@@ -169,11 +182,13 @@ public class OverviewFragment extends Fragment {
 				frameDetWidth = frameNavWidth;
    				frameDetHeight = height - frameNavHeight;
 				
-				navBoxWidth = (int) (.5 * frameNavWidth);
+				navBoxWidth = (int) (.5 * width);
+				newsBoxRules.put(RelativeLayout.BELOW, rlNavList.getId());
 				
 				detailsIntRules.put(RelativeLayout.BELOW, frameNav.getId());
 				break;
 		}
+		
 		
 		RelativeLayout.LayoutParams frameNavLayout = new RelativeLayout.LayoutParams(
 			frameNavWidth, frameNavHeight);
@@ -181,27 +196,31 @@ public class OverviewFragment extends Fragment {
 		RelativeLayout.LayoutParams frameDetailsLayout = new RelativeLayout.LayoutParams(
 			frameDetWidth, frameDetHeight);
 			
-		RelativeLayout.LayoutParams newsBoxParams;
+		RelativeLayout.LayoutParams newsBoxParams = (RelativeLayout.LayoutParams) rlNavList.getLayoutParams();
 		
 		if (navBoxWidth != 0) {
-			android.view.ViewGroup.LayoutParams navBoxParams;
+			//android.view.ViewGroup.LayoutParams navBoxParams;
+		
 			
 			int navBoxHeight = RelativeLayout.LayoutParams.MATCH_PARENT;
-			navBoxHeight = 200;
+			//navBoxHeight = 200;
 			navBoxWidth = 200;
-			newsBoxParams = new RelativeLayout.LayoutParams(
-				navBoxWidth, navBoxHeight);
-			
+			//newsBoxParams = new RelativeLayout.LayoutParams(navBoxWidth, navBoxHeight);
+			newsBoxParams.width = navBoxWidth;
+			newsBoxParams.height = navBoxHeight;
 				
 			try {
-			rlNavList.setLayoutParams(newsBoxParams);
-			rlNews.setLayoutParams(newsBoxParams);
+				//rlNavList.getLayoutParams().width = 200;
+				rlNavList.setLayoutParams(newsBoxParams);
+				rlNews.setLayoutParams(newsBoxParams);
 			
 			} catch (NullPointerException e) {
-				Toast.makeText(activity, "failed to set layoutParams", Toast.LENGTH_SHORT);
+				Toast.makeText(activity, "failed to set layoutParams", Toast.LENGTH_SHORT).show();
 			}
 		}
-			
+		
+		Toast.makeText(activity, "navBoxParamWidth:" + newsBoxParams.width, Toast.LENGTH_SHORT).show();
+		
 		for(int rule: rules) {
 			frameNavLayout.addRule(rule);
 		}
@@ -209,28 +228,20 @@ public class OverviewFragment extends Fragment {
 		frameNavLayout.addRule(RelativeLayout.ALIGN_PARENT_TOP);
 		frameNavLayout.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
 		
-		Iterator<Map.Entry<Integer, Integer>> itr;
-
-		if( !navIntRules.isEmpty()) {
-			
-			itr = navIntRules.entrySet().iterator();
-		 
-			while(itr.hasNext()) {
-				Map.Entry<Integer, Integer> pairs = /*(Map.Entry<Integer, Integer>)*/itr.next();
-				frameNavLayout.addRule(pairs.getKey(), pairs.getValue());
+		if(navIntRules.size() > 0) {
+			for(int i = 0; i < navIntRules.size(); i++) {
+				frameNavLayout.addRule(navIntRules.keyAt(i), navIntRules.valueAt(i));
 			}
 		}
 		
-		if( !detailsIntRules.isEmpty()) {
-			
-			itr = detailsIntRules.entrySet().iterator();
-		 
-			while(itr.hasNext()) {
-				Map.Entry<Integer, Integer> pairs = /*(Map.Entry<Integer, Integer>)*/itr.next();
-				frameDetailsLayout.addRule(pairs.getKey(), pairs.getValue());
+		if(detailsIntRules.size() > 0) {
+			for(int i = 0; i < detailsIntRules.size(); i++) {
+				frameDetailsLayout.addRule(detailsIntRules.keyAt(i), detailsIntRules.valueAt(i));
 			}
 		}
-
+		
+		
+		
 		RelativeLayout rlOverView = new RelativeLayout(activity);
 		
 		rlOverView.setLayoutParams(new RelativeLayout.LayoutParams(
