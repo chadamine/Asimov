@@ -196,7 +196,7 @@ public class OverviewFragment extends Fragment {
 		RelativeLayout.LayoutParams frameDetailsLayout = new RelativeLayout.LayoutParams(
 			frameDetWidth, frameDetHeight);
 			
-		RelativeLayout.LayoutParams newsBoxParams = (RelativeLayout.LayoutParams) rlNavList.getLayoutParams();
+		//RelativeLayout.LayoutParams newsBoxParams = (RelativeLayout.LayoutParams) rlNavList.getLayoutParams();
 		
 		if (navBoxWidth != 0) {
 			//android.view.ViewGroup.LayoutParams navBoxParams;
@@ -206,20 +206,20 @@ public class OverviewFragment extends Fragment {
 			//navBoxHeight = 200;
 			navBoxWidth = 200;
 			//newsBoxParams = new RelativeLayout.LayoutParams(navBoxWidth, navBoxHeight);
-			newsBoxParams.width = navBoxWidth;
-			newsBoxParams.height = navBoxHeight;
+			//newsBoxParams.width = navBoxWidth;
+			//newsBoxParams.height = navBoxHeight;
 				
 			try {
 				//rlNavList.getLayoutParams().width = 200;
-				rlNavList.setLayoutParams(newsBoxParams);
-				rlNews.setLayoutParams(newsBoxParams);
+				//rlNavList.setLayoutParams(newsBoxParams);
+				//rlNews.setLayoutParams(newsBoxParams);
 			
 			} catch (NullPointerException e) {
 				Toast.makeText(activity, "failed to set layoutParams", Toast.LENGTH_SHORT).show();
 			}
 		}
 		
-		Toast.makeText(activity, "navBoxParamWidth:" + newsBoxParams.width, Toast.LENGTH_SHORT).show();
+		//Toast.makeText(activity, "navBoxParamWidth:" + newsBoxParams.width, Toast.LENGTH_SHORT).show();
 		
 		for(int rule: rules) {
 			frameNavLayout.addRule(rule);
