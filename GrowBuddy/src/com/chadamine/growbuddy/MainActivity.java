@@ -77,8 +77,8 @@ public class MainActivity extends ActionBarActivity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			//View rootView = inflater.inflate(R.layout.fragment_main, container,
-			//		false);
+			View rootView = inflater.inflate(R.layout.fragment_main, container,
+					false);
 			activity = getActivity();
 			// Use window manager and systemService to get display
 			WindowManager wm = (WindowManager) activity.getSystemService(activity.WINDOW_SERVICE);
@@ -113,11 +113,11 @@ public class MainActivity extends ActionBarActivity {
 					navBoxWidth = (int) (.5 * width);
 			}
 			
-			RelativeLayout rlMain = (RelativeLayout) inflater.inflate(R.layout.fragment_main, null);
-			RelativeLayout rlNavList = (RelativeLayout) rlMain.findViewById(R.id.rlNavList);
-			RelativeLayout rlNews = (RelativeLayout) rlMain.findViewById(R.id.rlNews);
-			RelativeLayout.LayoutParams newsBoxParams = (RelativeLayout.LayoutParams) rlNavList.getLayoutParams();
-			
+			//RelativeLayout rlMain = (RelativeLayout) inflater.inflate(R.layout.fragment_main, null);
+			//RelativeLayout rlNavList = (RelativeLayout) rlMain.findViewById(R.id.rlNavList);
+			//RelativeLayout rlNews = (RelativeLayout) rlMain.findViewById(R.id.rlNews);
+			//RelativeLayout.LayoutParams newsBoxParams = (RelativeLayout.LayoutParams) rlNavList.getLayoutParams();
+			/*
 			if (navBoxWidth != 0) {
 				//android.view.ViewGroup.LayoutParams navBoxParams;
 			
@@ -141,10 +141,12 @@ public class MainActivity extends ActionBarActivity {
 			
 			Toast.makeText(activity, "navBoxParamWidth:" + newsBoxParams.width, Toast.LENGTH_SHORT).show();
 			
-		
-			setUp(rlMain);
+		*/
+			setUp(rootView);
 			//return rootView;
-			return rlMain;
+			
+			 
+			return rootView;
 		}
 		
 		@TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)

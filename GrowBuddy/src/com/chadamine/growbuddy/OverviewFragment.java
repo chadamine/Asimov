@@ -95,9 +95,9 @@ public class OverviewFragment extends Fragment {
 		FrameLayout frameNav = new FrameLayout(activity);
 		FrameLayout frameDetails = new FrameLayout(activity);
 		
-		RelativeLayout rlMain = (RelativeLayout) inflater.inflate(R.layout.fragment_main, null);
-		RelativeLayout rlNavList = (RelativeLayout) rlMain.findViewById(R.id.rlNavList);
-		RelativeLayout rlNews = (RelativeLayout) rlMain.findViewById(R.id.rlNews);
+		//RelativeLayout rlMain = (RelativeLayout) inflater.inflate(R.layout.fragment_main, null);
+		//RelativeLayout rlNavList = (RelativeLayout) rlMain.findViewById(R.id.rlNavList);
+		//RelativeLayout rlNews = (RelativeLayout) rlMain.findViewById(R.id.rlNews);
 		
 		frameNav.setId(100);
 		frameDetails.setId(101);
@@ -183,7 +183,7 @@ public class OverviewFragment extends Fragment {
    				frameDetHeight = height - frameNavHeight;
 				
 				navBoxWidth = (int) (.5 * width);
-				newsBoxRules.put(RelativeLayout.BELOW, rlNavList.getId());
+				//newsBoxRules.put(RelativeLayout.BELOW, rlNavList.getId());
 				
 				detailsIntRules.put(RelativeLayout.BELOW, frameNav.getId());
 				break;
