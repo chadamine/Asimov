@@ -255,6 +255,7 @@ public class OverviewFragment extends Fragment {
 			
 		fragmentManager
 			.beginTransaction()
+			//.add(frameNav.getId(), new NavigationFragment())
 			.add(frameNav.getId(), new MainActivity.PlaceholderFragment())
 			.commit();
 		fragmentManager
