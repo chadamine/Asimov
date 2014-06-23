@@ -17,6 +17,7 @@ public class DatabaseContentProvider extends ContentProvider {
 
 	@Override
 	public boolean onCreate() {
+		
 		helper = new JournalDBHelper(getContext());
 		
 		return false;
@@ -41,8 +42,8 @@ public class DatabaseContentProvider extends ContentProvider {
 		
 		try {
 			SQLiteDatabase database = helper.getWritableDatabase();
-			cursor = queryBuilder.query(database, projection, selection, selectionArgs, null, null, sortOrder);
-			cursor.setNotificationUri(getContext().getContentResolver(), uri);	
+			//cursor = queryBuilder.query(database, projection, selection, selectionArgs, null, null, sortOrder);
+			//cursor.setNotificationUri(getContext().getContentResolver(), uri);	
 			
 			return cursor;
 		} catch (SQLiteException e) {

@@ -65,13 +65,25 @@
 		<item name="android:background">@drawable/innerglow</item>
 	</style>
 	
-	<style name="list_box_container">
+	<style name="list_box_container_portrait">
 		<!--<item name="android:background">#74c2e1</item>-->
 		
 		<!--<item name="android:layout_marginLeft">20dp</item>-->
 		<!--<item name="android:layout_marginRight">20dp</item>-->
 		<!--<item name="android:layout_marginBottom">20dp</item>-->
-		<item name="android:layout_margin">20dp</item>
+		<item name="android:layout_margin">5dp</item>
+	</style>
+	<style name="list_box_container_right">
+	    <item name="android:layout_marginLeft">0dp</item>
+	    <item name="android:layout_marginRight">5dp</item>
+	    <item name="android:layout_marginTop">5dp</item>
+	    <item name="android:layout_marginBottom">5dp</item>
+	</style>
+	<style name="list_box_container_bottom">
+	    <item name="android:layout_marginLeft">5dp</item>
+	    <item name="android:layout_marginRight">5dp</item>
+	    <item name="android:layout_marginTop">5dp</item>
+	    <item name="android:layout_marginBottom">0dp</item>
 	</style>
 	
 	<style name="nav_row_title">

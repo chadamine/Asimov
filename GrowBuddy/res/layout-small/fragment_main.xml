@@ -14,7 +14,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-	style="@style/list_box_container"
+	style="@style/list_box_container_portrait"
     >
       <TextView 
         android:id="@+id/tvNavTitle"
@@ -39,7 +39,7 @@
          android:layout_height="wrap_content"
          android:orientation="horizontal"   
          android:layout_below="@+id/rlNavList"  
-         style="@style/list_box_container"
+         style="@style/list_box_container_portrait"
          >
      	<RelativeLayout
          	android:id="@+id/llListGroup"

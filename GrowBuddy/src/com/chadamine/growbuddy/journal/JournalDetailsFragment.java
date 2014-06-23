@@ -99,7 +99,7 @@ public class JournalDetailsFragment extends Fragment {
 		String[] from = { Journals.COL_NAME };
 		int[] to = new int[] { android.R.id.text1 };
 		
-		SimpleCursorAdapter adapter = new SimpleCursorAdapter(activity, android.R.layout.simple_spinner_item, null, from, to);
+		SimpleCursorAdapter adapter = new SimpleCursorAdapter(activity, android.R.layout.simple_spinner_item, null, from, to, 0);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 	}
 	
@@ -117,7 +117,7 @@ public class JournalDetailsFragment extends Fragment {
 			throw new NullPointerException("no pckg mgr!");
 		else {
 			pManager = activity.getPackageManager();
-			Toast.makeText(activity, "pm not null", Toast.LENGTH_SHORT).show();
+			//Toast.makeText(activity, "pm not null", Toast.LENGTH_SHORT).show();
 		
 		}
 		
@@ -128,14 +128,17 @@ public class JournalDetailsFragment extends Fragment {
 	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
 		
+		if (savedInstanceState != null) {
 		//	onRestoreInstanceState
-		if (savedInstanceState.containsKey(CAPTURED_PHOTO_PATH_KEY)) {
-			currentPhotoPath = savedInstanceState.getString(CAPTURED_PHOTO_PATH_KEY);
-		}
+			if (savedInstanceState.containsKey(CAPTURED_PHOTO_PATH_KEY)) {
+				currentPhotoPath = savedInstanceState.getString(CAPTURED_PHOTO_PATH_KEY);
+			}
 		
-		if (savedInstanceState.containsKey(CAPTURED_PHOTO_URI_KEY)) {
-			capturedImageUri = Uri.parse(savedInstanceState.getString(CAPTURED_PHOTO_URI_KEY));
+			if (savedInstanceState.containsKey(CAPTURED_PHOTO_URI_KEY)) {
+				capturedImageUri = Uri.parse(savedInstanceState.getString(CAPTURED_PHOTO_URI_KEY));
+			}
 		}
 	}
 	
@@ -195,7 +198,8 @@ public class JournalDetailsFragment extends Fragment {
 			
 			//	Get the name of the file
 			String[] projection = { MediaStore.Images.Media.DATA };
-			Cursor cursor = activity.managedQuery(imageUri, projection, null, null, null);
+			//Cursor cursor = activity.managedQuery(imageUri, projection, null, null, null);
+			Cursor cursor = activity.getContentResolver().query(imageUri, projection, null, null, null);
 			int column_index_data = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
 			cursor.moveToFirst();
 			String filePath = cursor.getString(column_index_data);
@@ -277,7 +281,7 @@ public class JournalDetailsFragment extends Fragment {
 			values.put(Journals.COL_LOCATION, "location filler");
 		
 			itemUri = getActivity().getContentResolver().insert(Journals.CONTENT_URI, values);
-			Toast.makeText(getActivity(), "Journal Added to Database", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), "Journal Added to Database: " + values.toString(), Toast.LENGTH_SHORT).show();
 		}
 		
 	}

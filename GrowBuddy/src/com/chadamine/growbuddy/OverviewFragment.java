@@ -95,10 +95,6 @@ public class OverviewFragment extends Fragment {
 		FrameLayout frameNav = new FrameLayout(activity);
 		FrameLayout frameDetails = new FrameLayout(activity);
 		
-		//RelativeLayout rlMain = (RelativeLayout) inflater.inflate(R.layout.fragment_main, null);
-		//RelativeLayout rlNavList = (RelativeLayout) rlMain.findViewById(R.id.rlNavList);
-		//RelativeLayout rlNews = (RelativeLayout) rlMain.findViewById(R.id.rlNews);
-		
 		frameNav.setId(100);
 		frameDetails.setId(101);
 		
@@ -255,8 +251,8 @@ public class OverviewFragment extends Fragment {
 			
 		fragmentManager
 			.beginTransaction()
-			//.add(frameNav.getId(), new NavigationFragment())
-			.add(frameNav.getId(), new MainActivity.PlaceholderFragment())
+			.add(frameNav.getId(), new NavigationFragment())
+			//.add(frameNav.getId(), new MainActivity.PlaceholderFragment())
 			.commit();
 		fragmentManager
 			.beginTransaction()

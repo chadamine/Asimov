@@ -1430,7 +1430,7 @@ containing a value of this type.
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f0b009a;
+        public static final int AppTheme=0x7f0b009c;
         /**  Mimic text appearance in select_dialog_item.xml 
          */
         public static final int TextAppearance_AppCompat_Base_CompactMenu_Dialog=0x7f0b0063;
@@ -1641,13 +1641,15 @@ containing a value of this type.
         public static final int detail_title_text=0x7f0b008e;
         public static final int image_box=0x7f0b0093;
         public static final int list_box=0x7f0b0094;
-        public static final int list_box_container=0x7f0b0096;
+        public static final int list_box_container_bottom=0x7f0b0098;
+        public static final int list_box_container_portrait=0x7f0b0096;
+        public static final int list_box_container_right=0x7f0b0097;
         public static final int list_box_deleted=0x7f0b0095;
         public static final int list_box_header_strip=0x7f0b0091;
         public static final int list_item=0x7f0b0090;
-        public static final int nav_list_title=0x7f0b0099;
-        public static final int nav_row_detail=0x7f0b0098;
-        public static final int nav_row_title=0x7f0b0097;
+        public static final int nav_list_title=0x7f0b009b;
+        public static final int nav_row_detail=0x7f0b009a;
+        public static final int nav_row_title=0x7f0b0099;
         /**  Sortable List Box Styles 
          */
         public static final int title_text=0x7f0b008f;
