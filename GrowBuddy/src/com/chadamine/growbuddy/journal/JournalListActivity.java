@@ -1,14 +1,9 @@
 package com.chadamine.growbuddy.journal;
-import android.content.*;
-import android.content.pm.*;
-import android.os.*;
-import android.provider.*;
-import android.support.v4.app.*;
-import android.support.v7.app.*;
-import android.widget.*;
-import com.chadamine.growbuddy.*;
-import java.io.*;
-import android.view.*;
+import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBarActivity;
+
+import com.chadamine.growbuddy.R;
 
 
 public class JournalListActivity extends ActionBarActivity {

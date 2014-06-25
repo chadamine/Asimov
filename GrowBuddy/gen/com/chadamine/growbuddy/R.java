@@ -1640,6 +1640,8 @@ containing a value of this type.
         public static final int detail_text=0x7f0b008c;
         public static final int detail_title_text=0x7f0b008e;
         public static final int image_box=0x7f0b0093;
+        /**  <item name="android:popupBackground">@style/button</item> 
+         */
         public static final int list_box=0x7f0b0094;
         public static final int list_box_container_bottom=0x7f0b0098;
         public static final int list_box_container_portrait=0x7f0b0096;

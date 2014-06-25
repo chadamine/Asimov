@@ -23,9 +23,11 @@
 			android:id="@android:id/list"
 			style="@style/list_box"
 			android:layout_width="match_parent"
-			android:layout_height="221dp"
+			android:layout_height="wrap_content"
 			android:layout_below="@id/tvJournalTitle"
-			android:layout_marginTop="1dp"/>
+			android:layout_marginTop="1dp"
+			android:dividerHeight="1dp"
+			/>
 
 	</RelativeLayout>
 

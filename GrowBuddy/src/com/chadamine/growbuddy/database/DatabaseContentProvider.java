@@ -40,15 +40,28 @@ public class DatabaseContentProvider extends ContentProvider {
 		
 		Cursor cursor = null;
 		
+		SQLiteDatabase database;
+		
 		try {
-			SQLiteDatabase database = helper.getWritableDatabase();
-			//cursor = queryBuilder.query(database, projection, selection, selectionArgs, null, null, sortOrder);
-			//cursor.setNotificationUri(getContext().getContentResolver(), uri);	
-			
-			return cursor;
+			database = helper.getWritableDatabase();
+		
 		} catch (SQLiteException e) {
-			throw new SQLException("Database Creation Failed. UriType = " + Integer.toString(uriType) + " Column name: " + columnName);
+			throw new SQLiteException("Database Creation Failed. UriType = " + Integer.toString(uriType) + " Column name: " + columnName);
 		}
+		
+		//try {
+			cursor = queryBuilder.query(database, projection, selection, selectionArgs, null, null, sortOrder);
+		/*} catch (SQLiteException e) {
+			throw new SQLiteException(
+					"Database Query failed; Database: " + database.toString() 
+					+ "; Projection: " + projection[0] 
+					+ "; ColumnName: " + columnName
+					+ "; queryBuilder: " + queryBuilder.getTables());
+		}
+	*/
+		cursor.setNotificationUri(getContext().getContentResolver(), uri);	
+		
+		return cursor;
 	}
 	
 	private String getColumnName(Uri uri, int type) {
@@ -59,9 +72,13 @@ public class DatabaseContentProvider extends ContentProvider {
 		switch(type) {
 
 			case DatabaseContract.JOURNALS:
-				col = Journals.COL_ID;
+				// what is this case for?
+				// the below assignment breaks prog:
+				
+				//col = Journals.COL_ID;
 				break;
 			case DatabaseContract.JOURNALS_ID:
+				col = Journals.COL_ID;
 				break;
 			case DatabaseContract.LOCATIONS:
 				col = Locations.COL_ID;
@@ -78,6 +95,33 @@ public class DatabaseContentProvider extends ContentProvider {
 		}
 		
 		return col;
+	}
+	
+	private String getTableName(Uri uri) {
+		int uriType = DatabaseContract.URI_MATCHER.match(uri);
+
+		String name = "";
+
+		switch(uriType) {
+			case DatabaseContract.JOURNALS:
+				name = Journals.TABLE_NAME;
+				break;
+			case DatabaseContract.JOURNALS_HISTORY:
+				name = JournalsHistory.TABLE_NAME;
+				break;
+			case DatabaseContract.LOCATIONS:
+				name = Locations.TABLE_NAME;
+				break;
+			case DatabaseContract.BATCHES:
+				name = Batches.TABLE_NAME;
+				break;
+			case DatabaseContract.BATCH_PLANTS:
+				
+			default:
+				throw new IllegalArgumentException("Unknown URI: " + uri);
+		}
+
+		return name;
 	}
 
 	@Override
@@ -150,32 +194,7 @@ public class DatabaseContentProvider extends ContentProvider {
 		return 0;
 	}
 	
-	private String getTableName(Uri uri) {
-		int uriType = DatabaseContract.URI_MATCHER.match(uri);
 
-		String name = "";
-
-		switch(uriType) {
-			case DatabaseContract.JOURNALS:
-				name = Journals.TABLE_NAME;
-				break;
-			case DatabaseContract.JOURNALS_HISTORY:
-				name = JournalsHistory.TABLE_NAME;
-				break;
-			case DatabaseContract.LOCATIONS:
-				name = Locations.TABLE_NAME;
-				break;
-			case DatabaseContract.BATCHES:
-				name = Batches.TABLE_NAME;
-				break;
-			case DatabaseContract.BATCH_PLANTS:
-				
-			default:
-				throw new IllegalArgumentException("Unknown URI: " + uri);
-		}
-
-		return name;
-	}
 	
 	/** Journal DB Helper **/
 	

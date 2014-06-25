@@ -65,6 +65,7 @@ public class JournalListFragment extends ListFragment
 			
 			adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_nav, null, from, to, 0);
 			setListAdapter(adapter);
+			Toast.makeText(getActivity(), "list adapter set", Toast.LENGTH_SHORT).show();;
 	}
 
 	@Override

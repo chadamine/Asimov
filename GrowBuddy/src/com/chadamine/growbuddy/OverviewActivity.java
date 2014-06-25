@@ -2,30 +2,25 @@ package com.chadamine.growbuddy;
 
 import java.util.Locale;
 
-import com.chadamine.growbuddy.R;
-import com.chadamine.growbuddy.R.id;
-import com.chadamine.growbuddy.R.layout;
-import com.chadamine.growbuddy.R.menu;
-import com.chadamine.growbuddy.R.string;
-
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
+import android.content.ContentValues;
+import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
-import android.view.LayoutInflater;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import android.content.res.*;
-import android.view.*;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.chadamine.growbuddy.database.DatabaseContract.Journals;
+import com.chadamine.growbuddy.journal.JournalListFragment;
 
 public class OverviewActivity extends ActionBarActivity implements
 ActionBar.TabListener {

@@ -265,6 +265,8 @@ public class JournalDetailsFragment extends Fragment {
 		}
 	}
 	
+	/* 	Save the data	*/
+	
 	@Override
 	public void onPause() {
 		super.onPause();
