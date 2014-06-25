@@ -259,7 +259,7 @@ public class OverviewFragment extends Fragment {
 			.commit();
 		fragmentManager
 			.beginTransaction()
-			.replace(R.id.frameDetails, new BlankFragment())
+			.replace(R.id.frameList, new BlankFragment())
 			.commit();
 			
 		return r;

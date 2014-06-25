@@ -2,8 +2,6 @@ package com.chadamine.growbuddy;
 
 import java.util.Locale;
 
-import android.content.ContentValues;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,12 +12,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import com.chadamine.growbuddy.database.DatabaseContract.Journals;
+import com.chadamine.growbuddy.journal.JournalDetailsFragment;
 import com.chadamine.growbuddy.journal.JournalListFragment;
 
 public class OverviewActivity extends ActionBarActivity implements
@@ -102,6 +96,16 @@ ActionBar.TabListener {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	@Override
+	public void onBackPressed() {
+		//swap();
+		FragmentManager manager = getSupportFragmentManager();
+		if(manager.findFragmentById(R.id.journalListContainer) instanceof JournalDetailsFragment)
+			manager.beginTransaction().replace(R.id.journalListContainer, new JournalListFragment()).commit();
+		else
+			finish();
+	}
 
 	@Override
 	public void onTabSelected(ActionBar.Tab tab,
@@ -141,9 +145,21 @@ ActionBar.TabListener {
 			switch(position) {
 				case 0:
 					fragment = OverviewFragment.newInstance(frameWidth, frameHeight);
+					break;
+				case 1:
+					fragment = new BlankFragment();
+					break;
+				case 2:
+					fragment =  new BlankFragment();
+					break;
+				default:
+					fragment =  new BlankFragment();
+					break;
+					
 			}
 			
 			return fragment;
+			
 			//PlaceholderFragment.newInstance(position + 1);
 		}
 

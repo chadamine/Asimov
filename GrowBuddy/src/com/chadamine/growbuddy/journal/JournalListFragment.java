@@ -84,7 +84,7 @@ public class JournalListFragment extends ListFragment
 		int del = R.id.delJournal;
 
 		if (id == add) 
-			getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.journalListContainer, new JournalDetailsFragment()).commit();
+			getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameList, new JournalDetailsFragment()).commit();
 		if (id == del)
 			makeDeleteStyle();
 			

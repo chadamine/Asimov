@@ -67,7 +67,7 @@ public class JournalDetailsFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
-				getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.journalListContainer, new JournalListFragment()).commit();
+				getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameList, new JournalListFragment()).commit();
 				
 			}
 		});

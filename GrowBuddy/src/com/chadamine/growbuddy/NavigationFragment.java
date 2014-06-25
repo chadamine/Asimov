@@ -21,8 +21,8 @@ import android.widget.Spinner;
 
 import com.chadamine.growbuddy.analysis.AnalysisActivity;
 import com.chadamine.growbuddy.cultivation.CultivationListActivity;
+import com.chadamine.growbuddy.cultivation.CultivationListFragment;
 import com.chadamine.growbuddy.journal.JournalListFragment;
-import com.chadamine.growbuddy.schedule.ScheduleActivity;
 
 public class NavigationFragment extends Fragment {
 	Activity activity;
@@ -125,15 +125,13 @@ public class NavigationFragment extends Fragment {
 				case 0:
 					//intent = new Intent(activity, JournalListActivity.class);
 					//startActivity(intent);
-					getFragmentManager().beginTransaction().replace(R.id.frameDetails, new JournalListFragment()).commit();
+					getFragmentManager().beginTransaction().replace(R.id.frameList, new JournalListFragment()).commit();
 					break;
 				case 1:
-					intent = new Intent(activity, ScheduleActivity.class);
-					startActivity(intent);
+					getFragmentManager().beginTransaction().replace(R.id.frameList, new BlankFragment()).commit();
 					break;
 				case 2: 
-					intent = new Intent(activity, CultivationListActivity.class);
-					startActivity(intent);
+					getFragmentManager().beginTransaction().replace(R.id.frameList, new CultivationListFragment()).commit();
 					break;
 				case 3:
 					intent = new Intent(activity, AnalysisActivity.class);
