@@ -43,25 +43,15 @@ public class MainFragment extends Fragment {
 					Intent intent;
 
 					switch(position) {
-						case 0:
-							intent = new Intent(activity, JournalListActivity.class);
-							startActivity(intent);
+						case 0:	// Journals
 							break;
-						case 1:
-							intent = new Intent(activity, ScheduleActivity.class);
-							startActivity(intent);
+						case 1:	// Schedule
 							break;
-						case 2: 
-							intent = new Intent(activity, CultivationListActivity.class);
-							startActivity(intent);
+						case 2: // Cultivation
 							break;
-						case 3:
-							intent = new Intent(activity, AnalysisActivity.class);
-							startActivity(intent);
+						case 3:	// Analysis
 							break;
 						default:
-							intent = new Intent(activity, MainActivity.class);
-							startActivity(intent);
 							break;
 					}
 

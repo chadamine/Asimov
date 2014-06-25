@@ -20,7 +20,6 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.chadamine.growbuddy.analysis.AnalysisActivity;
-import com.chadamine.growbuddy.cultivation.CultivationListActivity;
 import com.chadamine.growbuddy.cultivation.CultivationListFragment;
 import com.chadamine.growbuddy.journal.JournalListFragment;
 

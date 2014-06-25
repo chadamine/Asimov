@@ -1,7 +1,10 @@
 package com.chadamine.growbuddy.cultivation;
+
+
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,26 +13,25 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.chadamine.growbuddy.BlankFragment;
 import com.chadamine.growbuddy.R;
-import com.chadamine.growbuddy.cultivation.environment.EnvironmentActivity;
-import com.chadamine.growbuddy.cultivation.irrigation.IrrigationActivity;
-import com.chadamine.growbuddy.cultivation.pestdisease.PestDiseaseActivity;
-import com.chadamine.growbuddy.cultivation.plants.PlantsActivity;
-import com.chadamine.growbuddy.cultivation.recipes.RecipesActivity;
-import com.chadamine.growbuddy.management.locations.LocationsListActivity;
 
 public class CultivationListFragment extends ListFragment {
 	
+	FragmentManager manager;
+	Activity activity;
 	View root;
+	
 	@Override 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		root = inflater.inflate(R.layout.fragment_cultivation_nav_list, container, false);
+		activity = getActivity();
 		
 		String[] values = new String[] { "Plants", "Nutrients", "Recipes", "Irrigation", "Pest & Disease", "Environment", "Locations" };
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.row_nav, R.id.tvNavItemTitle, values);
 	
 		setListAdapter(adapter);
-	
+		
 		return root;
 	}
 	
@@ -41,6 +43,7 @@ public class CultivationListFragment extends ListFragment {
 	private void populateList(View r) {
 				
 		final Activity activity = getActivity();
+		final View theView = r;
 				
 		ListView lvCultivation = getListView();
 		lvCultivation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -48,43 +51,33 @@ public class CultivationListFragment extends ListFragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-						
-			Intent intent;
-						
-			switch(position) {
-				case 0:
-					intent = new Intent(activity, PlantsActivity.class);
-					startActivity(intent);
+			
+				//FrameLayout frameList = (FrameLayout) theView.findViewById(R.id.frameList);
+				//manager = activity.getFragmentManager();	
+				//BlankFragment blank = (BlankFragment) theView.findViewById(R.layout.fragment_blank);
+				switch(position) {
+				
+				case 0:	// Plants
+					/*
+					manager
+					.beginTransaction()
+				.replace(R.id.frameList, (Fragment) new BlankFragment())
+					.commit();
+					*/
 					break;
-				case 1: 
-					//	mgmt
-					intent = new Intent(activity, NutrientsListActivity.class);
-					startActivity(intent);
+				case 1: // Nutrients
 					break;
-				case 2:
-					intent = new Intent(activity, RecipesActivity.class);
-					startActivity(intent);
+				case 2:	// Recipes
 					break;
-				case 3:
-					intent = new Intent(activity, IrrigationActivity.class);
-					startActivity(intent);
+				case 3:	// Irrigation
 					break;
-				case 4:
-					intent = new Intent(activity, PestDiseaseActivity.class);
-					startActivity(intent);
+				case 4:	// Pest and Disease
 					break;
-				case 5:
-					intent = new Intent(activity, EnvironmentActivity.class);
-					startActivity(intent);
+				case 5:	// Environment
 					break;
-				case 6:
-					//	mgmt
-					intent = new Intent(activity, LocationsListActivity.class);
-					startActivity(intent);
+				case 6:	// Locations
 					break;
 				default:
-					intent = new Intent(activity, CultivationListActivity.class);
-					startActivity(intent);
 					break;
 				}
 			}
