@@ -112,7 +112,7 @@ ActionBar.TabListener {
 			manager.popBackStack("journalDetails",  FragmentManager.POP_BACK_STACK_INCLUSIVE); 
 		else if (listContainer instanceof JournalListFragment)
 			manager.popBackStack("journalList", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-		else 
+		else if (listContainer instanceof BlankFragment)
 			finish();
 	}
 
