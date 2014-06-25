@@ -58,9 +58,9 @@ public class OverviewFragment extends Fragment {
 		
 		activity = getActivity();
 		activity.getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-		
+	
 		fragmentManager = activity.getSupportFragmentManager();
-		
+/*		
 		// Use window manager and systemService to get display
 		WindowManager wm = (WindowManager) activity.getSystemService(activity.WINDOW_SERVICE);
 		Display display = wm.getDefaultDisplay();
@@ -248,16 +248,21 @@ public class OverviewFragment extends Fragment {
 		
 		rlOverView.addView(frameNav, frameNavLayout);
 		rlOverView.addView(frameDetails, frameDetailsLayout);
-			
+*/
+		
+		View r = inflater.inflate(R.layout.fragment_overview, null);
+		
 		fragmentManager
 			.beginTransaction()
-			.add(frameNav.getId(), new NavigationFragment())
+			.replace(R.id.frameNav, new NavigationFragment())
 			//.add(frameNav.getId(), new MainActivity.PlaceholderFragment())
 			.commit();
 		fragmentManager
 			.beginTransaction()
-			.add(frameDetails.getId(), new BlankFragment());
+			.replace(R.id.frameDetails, new BlankFragment())
+			.commit();
 			
-		return rlOverView;
+		return r;
+				//rlOverView;
 	}
 }

@@ -46,19 +46,19 @@ public class DatabaseContentProvider extends ContentProvider {
 			database = helper.getWritableDatabase();
 		
 		} catch (SQLiteException e) {
-			throw new SQLiteException("Database Creation Failed. UriType = " + Integer.toString(uriType) + " Column name: " + columnName);
+			throw new SQLiteException("Database Creation Failed."/* UriType = " + Integer.toString(uriType) + " Column name: " + columnName*/);
 		}
 		
-		//try {
+		try {
 			cursor = queryBuilder.query(database, projection, selection, selectionArgs, null, null, sortOrder);
-		/*} catch (SQLiteException e) {
+		} catch (SQLiteException e) {
 			throw new SQLiteException(
 					"Database Query failed; Database: " + database.toString() 
 					+ "; Projection: " + projection[0] 
 					+ "; ColumnName: " + columnName
 					+ "; queryBuilder: " + queryBuilder.getTables());
 		}
-	*/
+	
 		cursor.setNotificationUri(getContext().getContentResolver(), uri);	
 		
 		return cursor;
@@ -67,7 +67,6 @@ public class DatabaseContentProvider extends ContentProvider {
 	private String getColumnName(Uri uri, int type) {
 		
 		String col = "";
-		
 		
 		switch(type) {
 
@@ -81,14 +80,14 @@ public class DatabaseContentProvider extends ContentProvider {
 				col = Journals.COL_ID;
 				break;
 			case DatabaseContract.LOCATIONS:
-				col = Locations.COL_ID;
 				break;
 			case DatabaseContract.LOCATIONS_ID:
+				col = Locations.COL_ID;
 				break;
 			case DatabaseContract.NUTRIENTS:
-				col = Nutrients.COL_ID;
 				break;
 			case DatabaseContract.NUTRIENTS_ID:
+				col = Nutrients.COL_ID;
 				break;
 			default:
 				throw new IllegalArgumentException("Unknown URI: " + uri);

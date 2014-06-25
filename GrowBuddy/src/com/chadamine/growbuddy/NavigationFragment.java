@@ -1,10 +1,5 @@
 package com.chadamine.growbuddy;
 
-import com.chadamine.growbuddy.analysis.AnalysisActivity;
-import com.chadamine.growbuddy.cultivation.CultivationListActivity;
-import com.chadamine.growbuddy.journal.JournalListActivity;
-import com.chadamine.growbuddy.schedule.ScheduleActivity;
-
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -23,6 +18,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+
+import com.chadamine.growbuddy.analysis.AnalysisActivity;
+import com.chadamine.growbuddy.cultivation.CultivationListActivity;
+import com.chadamine.growbuddy.journal.JournalListFragment;
+import com.chadamine.growbuddy.schedule.ScheduleActivity;
 
 public class NavigationFragment extends Fragment {
 	Activity activity;
@@ -109,7 +109,7 @@ public class NavigationFragment extends Fragment {
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
 	private void setUp(View r) {
 		
-		activity = getActivity();
+		//activity = getActivity();
 		
 		
 		ListView lvNav = (ListView) r.findViewById(R.id.lvNavigation);
@@ -123,8 +123,9 @@ public class NavigationFragment extends Fragment {
 				
 				switch(position) {
 				case 0:
-					intent = new Intent(activity, JournalListActivity.class);
-					startActivity(intent);
+					//intent = new Intent(activity, JournalListActivity.class);
+					//startActivity(intent);
+					getFragmentManager().beginTransaction().replace(R.id.frameDetails, new JournalListFragment()).commit();
 					break;
 				case 1:
 					intent = new Intent(activity, ScheduleActivity.class);

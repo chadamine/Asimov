@@ -34,7 +34,6 @@ ActionBar.TabListener {
 	 */
 	SectionsPagerAdapter mSectionsPagerAdapter;
 	
-	
 	int frameWidth = 100;
 	int frameHeight = 100;
 	
