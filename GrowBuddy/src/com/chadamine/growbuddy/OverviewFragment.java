@@ -256,13 +256,23 @@ public class OverviewFragment extends Fragment {
 			.beginTransaction()
 			.replace(R.id.frameNav, new NavigationFragment())
 			//.add(frameNav.getId(), new MainActivity.PlaceholderFragment())
+			.addToBackStack("navigationFragment")
 			.commit();
 		fragmentManager
 			.beginTransaction()
 			.replace(R.id.frameList, new BlankFragment())
+			.addToBackStack("blankFragment")
 			.commit();
 			
 		return r;
 				//rlOverView;
+	}
+	
+	@Override
+	public void onSaveInstanceState(Bundle outState)
+	{
+		
+		
+		super.onSaveInstanceState(outState);
 	}
 }

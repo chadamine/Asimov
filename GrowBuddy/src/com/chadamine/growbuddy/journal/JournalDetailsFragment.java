@@ -1,6 +1,7 @@
 package com.chadamine.growbuddy.journal;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -67,7 +68,8 @@ public class JournalDetailsFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
-				getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameList, new JournalListFragment()).commit();
+				getActivity().getSupportFragmentManager().popBackStack("journalDetails", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+				//beginTransaction().remove(new JournalListFragment()).commit();
 				
 			}
 		});

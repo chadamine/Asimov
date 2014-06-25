@@ -125,13 +125,25 @@ public class NavigationFragment extends Fragment {
 				case 0:
 					//intent = new Intent(activity, JournalListActivity.class);
 					//startActivity(intent);
-					getFragmentManager().beginTransaction().replace(R.id.frameList, new JournalListFragment()).commit();
+					getFragmentManager()
+					.beginTransaction()
+					.replace(R.id.frameList, new JournalListFragment())
+					.addToBackStack("journalList")
+					.commit();
 					break;
 				case 1:
-					getFragmentManager().beginTransaction().replace(R.id.frameList, new BlankFragment()).commit();
+					getFragmentManager()
+					.beginTransaction()
+					.replace(R.id.frameList, new BlankFragment())
+					.addToBackStack("blankFragment")
+					.commit();
 					break;
 				case 2: 
-					getFragmentManager().beginTransaction().replace(R.id.frameList, new CultivationListFragment()).commit();
+					getFragmentManager()
+					.beginTransaction()
+					.replace(R.id.frameList, new CultivationListFragment())
+					.addToBackStack("cultivationList")
+					.commit();
 					break;
 				case 3:
 					intent = new Intent(activity, AnalysisActivity.class);

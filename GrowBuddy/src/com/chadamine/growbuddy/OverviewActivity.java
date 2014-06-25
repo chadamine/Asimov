@@ -100,10 +100,19 @@ ActionBar.TabListener {
 	@Override
 	public void onBackPressed() {
 		//swap();
+		int id;
+		Fragment listContainer = new Fragment();
+		Fragment detailsContainer = new Fragment();
+		
 		FragmentManager manager = getSupportFragmentManager();
-		if(manager.findFragmentById(R.id.journalListContainer) instanceof JournalDetailsFragment)
-			manager.beginTransaction().replace(R.id.journalListContainer, new JournalListFragment()).commit();
-		else
+		listContainer = manager.findFragmentById(R.id.frameList);
+		detailsContainer = manager.findFragmentById(R.id.frameDetails);
+		
+		if(detailsContainer instanceof JournalDetailsFragment)
+			manager.popBackStack("journalDetails",  FragmentManager.POP_BACK_STACK_INCLUSIVE); 
+		else if (listContainer instanceof JournalListFragment)
+			manager.popBackStack("journalList", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+		else 
 			finish();
 	}
 

@@ -1114,8 +1114,8 @@ containing a value of this type.
         public static final int btnChangeJournalLocation=0x7f050050;
         public static final int btnChangeLocation=0x7f050057;
         public static final int btnSubmit=0x7f050052;
-        public static final int buttonAddJournal=0x7f050060;
-        public static final int buttonDeleteJournal=0x7f050061;
+        public static final int buttonAddJournal=0x7f050061;
+        public static final int buttonDeleteJournal=0x7f050060;
         public static final int camera=0x7f050076;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
