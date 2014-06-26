@@ -1,26 +1,35 @@
 package com.chadamine.growbuddy.cultivation;
 
-
-import android.app.Activity;
+import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
-import android.view.LayoutInflater;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.support.v4.widget.CursorAdapter;
+import android.support.v4.widget.SimpleCursorAdapter;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
-import com.chadamine.growbuddy.BlankFragment;
 import com.chadamine.growbuddy.R;
+import com.chadamine.growbuddy.database.DatabaseContract;
+import com.chadamine.growbuddy.database.DatabaseContract.Journals;
+import android.view.*;
+import android.widget.*;
+import android.widget.RadioGroup.*;
+import android.support.v4.app.*;
+import android.app.*;
+import com.chadamine.growbuddy.cultivation.plants.*;
 
 public class CultivationListFragment extends ListFragment {
 	
-	FragmentManager manager;
+	android.support.v4.app.FragmentManager manager;
 	Activity activity;
 	View root;
+	
+	
 	
 	@Override 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -53,19 +62,24 @@ public class CultivationListFragment extends ListFragment {
 					int position, long id) {
 			
 				//FrameLayout frameList = (FrameLayout) theView.findViewById(R.id.frameList);
-				//manager = activity.getFragmentManager();	
+				manager = activity.getSupportFragmentManager();	
 				//BlankFragment blank = (BlankFragment) theView.findViewById(R.layout.fragment_blank);
 				switch(position) {
 				
 				case 0:	// Plants
-					/*
 					manager
-					.beginTransaction()
-				.replace(R.id.frameList, (Fragment) new BlankFragment())
-					.commit();
-					*/
+						.beginTransaction()
+						.replace(R.id.frameList, new PlantsListFragment())
+						.addToBackStack("plantsList")
+						.commit();
+					
 					break;
 				case 1: // Nutrients
+					manager
+						.beginTransaction()
+						.replace(R.id.frameList, new NutrientsListFragment())
+						.addToBackStack("nutrientsList")
+						.commit();
 					break;
 				case 2:	// Recipes
 					break;

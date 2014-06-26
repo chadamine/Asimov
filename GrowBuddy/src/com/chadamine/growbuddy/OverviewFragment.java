@@ -32,8 +32,6 @@ public class OverviewFragment extends Fragment {
 	private static final String ARG_SECTION_NUMBER = "section_number";
 	private FragmentManager fragmentManager;
 	private FragmentActivity activity;
-	private int width;
-	private int height;
 	int currentApi;
 	
 	public OverviewFragment() { 

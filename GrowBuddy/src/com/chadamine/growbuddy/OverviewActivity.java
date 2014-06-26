@@ -15,6 +15,8 @@ import android.view.MenuItem;
 
 import com.chadamine.growbuddy.journal.JournalDetailsFragment;
 import com.chadamine.growbuddy.journal.JournalListFragment;
+import com.chadamine.growbuddy.cultivation.plants.*;
+import com.chadamine.growbuddy.cultivation.*;
 
 public class OverviewActivity extends ActionBarActivity implements
 ActionBar.TabListener {
@@ -110,9 +112,13 @@ ActionBar.TabListener {
 		
 		if(detailsContainer instanceof JournalDetailsFragment)
 			manager.popBackStack("journalDetails",  FragmentManager.POP_BACK_STACK_INCLUSIVE); 
-		else if (listContainer instanceof JournalListFragment)
+		if (listContainer instanceof JournalListFragment)
 			manager.popBackStack("journalList", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-		else if (listContainer instanceof BlankFragment)
+		if (listContainer instanceof PlantsListFragment)
+			manager.popBackStack("plantsList", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+		if (listContainer instanceof CultivationListFragment)
+			manager.popBackStack("cultivationList", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+		if (listContainer instanceof BlankFragment)
 			finish();
 	}
 

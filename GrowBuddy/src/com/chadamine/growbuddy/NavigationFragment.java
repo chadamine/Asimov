@@ -22,6 +22,8 @@ import android.widget.Spinner;
 import com.chadamine.growbuddy.analysis.AnalysisActivity;
 import com.chadamine.growbuddy.cultivation.CultivationListFragment;
 import com.chadamine.growbuddy.journal.JournalListFragment;
+import android.support.v4.app.*;
+import com.chadamine.growbuddy.cultivation.plants.*;
 
 public class NavigationFragment extends Fragment {
 	Activity activity;
@@ -109,7 +111,7 @@ public class NavigationFragment extends Fragment {
 	private void setUp(View r) {
 		
 		//activity = getActivity();
-		
+		final FragmentManager manager = getFragmentManager();
 		
 		ListView lvNav = (ListView) r.findViewById(R.id.lvNavigation);
 		lvNav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -121,40 +123,37 @@ public class NavigationFragment extends Fragment {
 				Intent intent;
 				
 				switch(position) {
-				case 0:
-					//intent = new Intent(activity, JournalListActivity.class);
-					//startActivity(intent);
-					getFragmentManager()
+				case 0:	// Journals
+					manager
 					.beginTransaction()
 					.replace(R.id.frameList, new JournalListFragment())
 					.addToBackStack("journalList")
 					.commit();
 					break;
-				case 1:
-					getFragmentManager()
+				case 1:	// Schedule
+					manager
 					.beginTransaction()
-					.replace(R.id.frameList, new BlankFragment())
-					.addToBackStack("blankFragment")
+					.replace(R.id.frameList, new PlantsListFragment())
+					.addToBackStack("plantsList")
 					.commit();
 					break;
-				case 2: 
-					getFragmentManager()
+				case 2: // Cultivation
+					manager
 					.beginTransaction()
 					.replace(R.id.frameList, new CultivationListFragment())
 					.addToBackStack("cultivationList")
 					.commit();
 					break;
 				case 3:
-					intent = new Intent(activity, AnalysisActivity.class);
-					startActivity(intent);
+					
+					
 					break;
 				default:
-					intent = new Intent(activity, MainActivity.class);
-					startActivity(intent);
+					
 					break;
 				}
 				
-				//startActivity(intent);
+				
 			}
 			
 		});
