@@ -112,6 +112,8 @@
         <item name="android:textStyle">bold</item>
 	</style>
 	
+	
+	<!-- text styles -->
 	<style name="nav_list_title">	
         <item name="android:layout_alignParentTop">true</item>
         <item name="android:layout_alignParentLeft">true</item>
