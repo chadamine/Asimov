@@ -16,7 +16,7 @@
 		style="@style/list_box_container_portrait"
     >
 		<TextView 
-			android:id="@+id/tvNavTitle"
+			android:id="@+id/textNavTitle"
 			android:layout_height="30dp"
 			android:layout_width="match_parent"
 			style="@style/nav_list_title"
@@ -28,7 +28,7 @@
 			style="@style/list_box"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:layout_below="@+id/tvNavTitle"
+			android:layout_below="@+id/textNavTitle"
 			android:layout_marginTop="1dp" />
 	</RelativeLayout>       
 

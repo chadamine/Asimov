@@ -18,7 +18,7 @@ import com.chadamine.growbuddy.journal.JournalListFragment;
 import com.chadamine.growbuddy.cultivation.plants.*;
 import com.chadamine.growbuddy.cultivation.*;
 
-public class OverviewActivity extends ActionBarActivity implements
+public class GrowJournalPlus extends ActionBarActivity implements
 ActionBar.TabListener {
 
 	/**

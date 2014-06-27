@@ -41,7 +41,7 @@ public class JournalDetailsFragment extends Fragment {
 	
 	private Uri imageUri;
 	private final int PIC_CROP = 2;
-	private static FrameLayout frame;
+	private FrameLayout frame;
 	
 	private Intent takePictureIntent;
 	private PackageManager pManager;
@@ -61,23 +61,23 @@ public class JournalDetailsFragment extends Fragment {
 		itemUri = Journals.CONTENT_URI;
 		
 		/* MUST HAVE THE FALSE FOR THIS FRAGMENT TO LOAD */
-		View rootView = inflater.inflate(R.layout.fragment_add_journal, container, false);
+		View view = inflater.inflate(R.layout.fragment_add_journal, container, false);
 		
-		Button btnSubmit = (Button) rootView.findViewById(R.id.btnSubmit);
+		Button btnSubmit = (Button) view.findViewById(R.id.btnSubmit);
 		btnSubmit.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				getActivity().getSupportFragmentManager().popBackStack("journalDetails", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-				//beginTransaction().remove(new JournalListFragment()).commit();
+				//begin Transaction().remove(new JournalListFragment()).commit();
 				
 			}
 		});
 		
-		registerForContextMenu(rootView.findViewById(R.id.flImage));
+		registerForContextMenu(view.findViewById(R.id.frameDetailImage));
 		
-		frame = (FrameLayout) rootView.findViewById(R.id.flImage);
-		
+		frame = (FrameLayout) view.findViewById(R.id.frameDetailImage);
+		/*
 		TextView addImage = new TextView(activity);
 		
 		int left = 0;
@@ -89,10 +89,11 @@ public class JournalDetailsFragment extends Fragment {
 		
 		addImage.setText("ADD\nIMAGE");
 		addImage.setGravity(Gravity.CENTER);
-		
-		frame.addView(addImage);
+		*/
+		//frame.addView(addImage);
+		frame.addView(inflater.inflate(R.layout.add_image_filler, null));
 	
-		return rootView;
+		return view;
 	}
 	
 	private void populateSpinner(View v) {

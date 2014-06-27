@@ -20,7 +20,7 @@
 		>
 
 			<TextView
-				android:id="@+id/tvNutrientTitle"
+				android:id="@+id/textNutrientTitle"
 				android:layout_height="30dp"
 				android:layout_width="wrap_content"
 				style="@style/nav_list_title"
@@ -32,23 +32,23 @@
 				android:id="@+id/buttonDeleteNutrient"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="Delete Journal"
+				android:text="Delete Nutrient"
 				style="@style/title_text"
 				android:background="@drawable/button_background"
-				android:layout_alignTop="@id/tvJournalTitle"
-				android:layout_alignBottom="@id/tvJournalTitle"
+				android:layout_alignTop="@id/textNutrientTitle"
+				android:layout_alignBottom="@id/textNutrientTitle"
 				android:layout_alignParentRight="true"
 		    />
 			<Button 
 				android:id="@+id/buttonAddNutrient"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="Add Journal"
+				android:text="Add Nutrient"
 				style="@style/title_text"
 				android:background="@drawable/button_background"
-				android:layout_toLeftOf="@id/buttonDeleteJournal"
-				android:layout_alignTop="@id/tvJournalTitle"
-				android:layout_alignBottom="@id/tvJournalTitle"
+				android:layout_toLeftOf="@id/buttonDeleteNutrient"
+				android:layout_alignTop="@id/textNutrientTitle"
+				android:layout_alignBottom="@id/textNutrientTitle"
 
 		    />
 		</RelativeLayout>

@@ -1,32 +1,25 @@
 package com.chadamine.growbuddy;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.Display;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import com.chadamine.growbuddy.analysis.AnalysisActivity;
 import com.chadamine.growbuddy.cultivation.CultivationListFragment;
+import com.chadamine.growbuddy.cultivation.plants.PlantsListFragment;
 import com.chadamine.growbuddy.journal.JournalListFragment;
-import android.support.v4.app.*;
-import com.chadamine.growbuddy.cultivation.plants.*;
 
 public class NavigationFragment extends Fragment {
-	Activity activity;
 	
 	public NavigationFragment() {
 	}
@@ -37,72 +30,8 @@ public class NavigationFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_main, container,
 				false);
-		activity = getActivity();
-		// Use window manager and systemService to get display
-		WindowManager wm = (WindowManager) activity.getSystemService(activity.WINDOW_SERVICE);
-		Display display = wm.getDefaultDisplay();
-		//Display display = activity.getWindowManager().getDefaultDisplay();
 		
-		int width;
-		int height;
-		int currentApi = android.os.Build.VERSION.SDK_INT;
-		
-		// Get display dimensions based on API 
-		if (currentApi <= android.os.Build.VERSION_CODES.HONEYCOMB) {
-			width = display.getWidth();
-			height = display.getHeight();
-		} else {
-			Point displaySize = new Point();
-			display.getSize(displaySize);
-			
-			width = displaySize.x;
-			height = displaySize.y;
-		}
-			
-		int rotation = display.getRotation();
-		final int undefined = Configuration.ORIENTATION_UNDEFINED;
-		final int landscape = Configuration.ORIENTATION_LANDSCAPE;
-		final int portrait = Configuration.ORIENTATION_PORTRAIT;
-		final int square = Configuration.ORIENTATION_SQUARE;
-		int navBoxWidth = 0;
-		
-		switch(rotation) {
-			case landscape:
-				navBoxWidth = (int) (.5 * width);
-		}
-		
-		//RelativeLayout rlMain = (RelativeLayout) inflater.inflate(R.layout.fragment_main, null);
-		//RelativeLayout rlNavList = (RelativeLayout) rlMain.findViewById(R.id.rlNavList);
-		//RelativeLayout rlNews = (RelativeLayout) rlMain.findViewById(R.id.rlNews);
-		//RelativeLayout.LayoutParams newsBoxParams = (RelativeLayout.LayoutParams) rlNavList.getLayoutParams();
-		/*
-		if (navBoxWidth != 0) {
-			//android.view.ViewGroup.LayoutParams navBoxParams;
-		
-			
-			int navBoxHeight = RelativeLayout.LayoutParams.MATCH_PARENT;
-			//navBoxHeight = 200;
-			navBoxWidth = 200;
-			//newsBoxParams = new RelativeLayout.LayoutParams(navBoxWidth, navBoxHeight);
-			newsBoxParams.width = navBoxWidth;
-			newsBoxParams.height = navBoxHeight;
-				
-			try {
-				rlNavList.getLayoutParams().width = 200;
-				rlNavList.setLayoutParams(newsBoxParams);
-				rlNews.setLayoutParams(newsBoxParams);
-			
-			} catch (NullPointerException e) {
-				Toast.makeText(activity, "failed to set layoutParams", Toast.LENGTH_SHORT).show();
-			}
-		}
-		
-		Toast.makeText(activity, "navBoxParamWidth:" + newsBoxParams.width, Toast.LENGTH_SHORT).show();
-		
-	*/
 		setUp(rootView);
-		//return rootView;
-		
 		 
 		return rootView;
 	}
@@ -111,7 +40,7 @@ public class NavigationFragment extends Fragment {
 	private void setUp(View r) {
 		
 		//activity = getActivity();
-		final FragmentManager manager = getFragmentManager();
+		final FragmentManager manager = getActivity().getSupportFragmentManager();
 		
 		ListView lvNav = (ListView) r.findViewById(R.id.lvNavigation);
 		lvNav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -152,10 +81,7 @@ public class NavigationFragment extends Fragment {
 					
 					break;
 				}
-				
-				
 			}
-			
 		});
 		
 		Spinner spNavOptions = (Spinner) r.findViewById(R.id.spNewsFilter);
@@ -167,7 +93,7 @@ public class NavigationFragment extends Fragment {
 		String[] navs = new String[] {"Journals",  "Schedule", "Cultivation", "Analysis" };
 		
 		//ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.navSort, android.R.layout.simple_spinner_item);	
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity, R.layout.row_nav, R.id.tvNavItemTitle, navs);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.row_nav, R.id.tvNavItemTitle, navs);
 		
 		lvNav.setAdapter(adapter);
 		

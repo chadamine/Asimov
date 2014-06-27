@@ -47,7 +47,7 @@
 		    style="@style/title_text"
 		    android:background="@drawable/button_background"
 		    android:layout_toLeftOf="@id/buttonDeletePlants"
-		    android:layout_alignTop="@id/tvJournalTitle"
+		    android:layout_alignTop="@id/textJournalTitle"
 		    android:layout_alignBottom="@id/textPlantsTitle"
 		    
 		    />

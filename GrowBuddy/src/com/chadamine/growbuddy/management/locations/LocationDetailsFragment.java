@@ -60,9 +60,9 @@ public class LocationDetailsFragment extends Fragment {
 				}
 			});
 
-		registerForContextMenu(rootView.findViewById(R.id.flImage));
+		registerForContextMenu(rootView.findViewById(R.id.frameDetailImage));
 
-		frame = (FrameLayout) rootView.findViewById(R.id.flImage);
+		frame = (FrameLayout) rootView.findViewById(R.id.frameDetailImage);
 
 		TextView addImage = new TextView(activity);
 

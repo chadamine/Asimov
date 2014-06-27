@@ -17,7 +17,7 @@
 		style="@style/detail_text"/>
 
 	<RelativeLayout
-		android:id="@+id/rlBasicInfo"
+		android:id="@+id/relativeBasicInfo"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		style="@style/list_box_container_portrait"
@@ -48,7 +48,7 @@
 			style="@style/list_box">
 
 			<FrameLayout
-				android:id="@+id/flImage"
+				android:id="@+id/frameDetailImage"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginLeft="10dp"
@@ -64,7 +64,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="Name:"
-				android:layout_toRightOf="@+id/flImage"
+				android:layout_toRightOf="@+id/frameDetailImage"
 				android:layout_marginTop="20dp"
 				android:layout_marginLeft="20dp"
 				android:layout_marginBottom="10dp"
@@ -111,7 +111,7 @@
 		android:id="@+id/rlLocations"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/rlBasicInfo"
+		android:layout_below="@+id/relativeBasicInfo"
 		style="@style/list_box_container_portrait">
 
 		<RelativeLayout

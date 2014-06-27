@@ -1,14 +1,21 @@
 package com.chadamine.growbuddy.cultivation.plants;
 
+import android.app.Activity;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.ListFragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.support.v4.widget.SimpleCursorAdapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
-import android.widget.*;
-import android.view.*;
-import android.app.*;
-import android.os.*;
-import com.chadamine.growbuddy.*;
+import com.chadamine.growbuddy.R;
 import com.chadamine.growbuddy.database.DatabaseContract.Nutrients;
-import android.database.*;
-import android.content.*;
 
 
 public class PlantsListFragment extends ListFragment 

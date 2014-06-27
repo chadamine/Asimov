@@ -9,8 +9,12 @@
     tools:context="com.chadamine.growbuddy.NutrientsActivity$PlaceholderFragment" >
 
     <TextView
-        android:id="@+id/section_label"
+        android:id="@+id/filler"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" 
+        android:gravity="center"
+        android:text="NutrientsFragment"
+        />
+    	
 
 </RelativeLayout>

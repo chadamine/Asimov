@@ -4,7 +4,7 @@ import com.chadamine.growbuddy.database.DatabaseContract.Journals;
 
 import android.database.sqlite.SQLiteDatabase;
 
-public class TableJournals {
+public class JournalsTable {
 	
 	public static final String CREATE = "create table "
 			+ Journals.TABLE_NAME + "("

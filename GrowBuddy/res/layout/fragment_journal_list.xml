@@ -20,7 +20,7 @@
 	        >
 	        
 		<TextView
-			android:id="@+id/tvJournalTitle"
+			android:id="@+id/textJournalTitle"
 			android:layout_height="30dp"
 			android:layout_width="wrap_content"
 			style="@style/nav_list_title"
@@ -35,8 +35,8 @@
 		    android:text="Delete Journal"
 		    style="@style/title_text"
 		    android:background="@drawable/button_background"
-		    android:layout_alignTop="@id/tvJournalTitle"
-		    android:layout_alignBottom="@id/tvJournalTitle"
+		    android:layout_alignTop="@id/textJournalTitle"
+		    android:layout_alignBottom="@id/textJournalTitle"
 		    android:layout_alignParentRight="true"
 		    />
 		<Button 
@@ -47,8 +47,8 @@
 		    style="@style/title_text"
 		    android:background="@drawable/button_background"
 		    android:layout_toLeftOf="@id/buttonDeleteJournal"
-		    android:layout_alignTop="@id/tvJournalTitle"
-		    android:layout_alignBottom="@id/tvJournalTitle"
+		    android:layout_alignTop="@id/textJournalTitle"
+		    android:layout_alignBottom="@id/textJournalTitle"
 		    
 		    />
 		</RelativeLayout>
@@ -59,8 +59,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_below="@id/relativeJournalTitleHeader"
-			android:layout_marginTop="1dp"
-			android:dividerHeight="1dp"
+			android:dividerHeight="0dp"
 			/>
 
 	</RelativeLayout>

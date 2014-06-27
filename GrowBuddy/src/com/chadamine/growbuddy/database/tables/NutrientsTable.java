@@ -4,7 +4,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.chadamine.growbuddy.database.DatabaseContract.Nutrients;
 
-public class TableNutrients
+public class NutrientsTable
 {
 	public static final String CREATE = "create table "
 		+ Nutrients.TABLE_NAME + "("

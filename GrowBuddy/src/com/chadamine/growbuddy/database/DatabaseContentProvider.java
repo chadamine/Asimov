@@ -206,7 +206,7 @@ public class DatabaseContentProvider extends ContentProvider {
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
-			TableJournals.onCreate(db);
+			JournalsTable.onCreate(db);
 		}
 
 		@Override
@@ -227,7 +227,7 @@ public class DatabaseContentProvider extends ContentProvider {
 		
 		@Override
 		public void onCreate(SQLiteDatabase db) {
-			TableNutrients.onCreate(db);
+			NutrientsTable.onCreate(db);
 		}
 		
 		@Override

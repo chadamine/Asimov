@@ -1,40 +1,29 @@
 package com.chadamine.growbuddy.cultivation;
 
-import android.database.Cursor;
+
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v4.widget.CursorAdapter;
-import android.support.v4.widget.SimpleCursorAdapter;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.chadamine.growbuddy.R;
-import com.chadamine.growbuddy.database.DatabaseContract;
-import com.chadamine.growbuddy.database.DatabaseContract.Journals;
-import android.view.*;
-import android.widget.*;
-import android.widget.RadioGroup.*;
-import android.support.v4.app.*;
-import android.app.*;
-import com.chadamine.growbuddy.cultivation.plants.*;
+import com.chadamine.growbuddy.cultivation.nutrients.NutrientsListFragment;
+import com.chadamine.growbuddy.cultivation.plants.PlantsListFragment;
 
 public class CultivationListFragment extends ListFragment {
 	
-	android.support.v4.app.FragmentManager manager;
-	Activity activity;
+	FragmentManager manager;
 	View root;
-	
-	
 	
 	@Override 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		root = inflater.inflate(R.layout.fragment_cultivation_nav_list, container, false);
-		activity = getActivity();
+		root = inflater.inflate(R.layout.fragment_cultivation_list, container, false);
 		
 		String[] values = new String[] { "Plants", "Nutrients", "Recipes", "Irrigation", "Pest & Disease", "Environment", "Locations" };
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.row_nav, R.id.tvNavItemTitle, values);
@@ -51,7 +40,6 @@ public class CultivationListFragment extends ListFragment {
 			
 	private void populateList(View r) {
 				
-		final Activity activity = getActivity();
 		final View theView = r;
 				
 		ListView lvCultivation = getListView();
@@ -62,7 +50,7 @@ public class CultivationListFragment extends ListFragment {
 					int position, long id) {
 			
 				//FrameLayout frameList = (FrameLayout) theView.findViewById(R.id.frameList);
-				manager = activity.getSupportFragmentManager();	
+				manager = getActivity().getSupportFragmentManager();	
 				//BlankFragment blank = (BlankFragment) theView.findViewById(R.layout.fragment_blank);
 				switch(position) {
 				
