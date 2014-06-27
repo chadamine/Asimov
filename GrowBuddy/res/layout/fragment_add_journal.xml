@@ -70,7 +70,9 @@
 				style="@style/detail_edit_text"
 				android:layout_alignLeft="@+id/spinnerLocation"
 				android:layout_alignBaseline="@id/textName"
-				android:layout_marginRight="10dp"/>
+				android:layout_marginRight="10dp"
+				android:paddingLeft="5dp"
+				/>
 
 			<TextView
 				android:id="@+id/textLocation"

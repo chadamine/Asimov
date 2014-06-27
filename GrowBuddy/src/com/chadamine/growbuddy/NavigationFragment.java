@@ -17,7 +17,7 @@ import android.widget.Spinner;
 
 import com.chadamine.growbuddy.cultivation.CultivationListFragment;
 import com.chadamine.growbuddy.cultivation.plants.PlantsListFragment;
-import com.chadamine.growbuddy.journal.JournalListFragment;
+import com.chadamine.growbuddy.journals.JournalListFragment;
 
 public class NavigationFragment extends Fragment {
 	

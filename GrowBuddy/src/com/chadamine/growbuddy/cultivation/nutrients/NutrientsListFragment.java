@@ -33,12 +33,12 @@ public class NutrientsListFragment extends ListFragment {
 				manager
 				.beginTransaction()
 				.replace(R.id.frameDetails, new NutrientsFragment())
-				.addToBackStack("nutrients")
+				.addToBackStack("nutrientDetails")
 				.commit();
 			}
 		});
 		
-		btnAdd.setOnClickListener(new View.OnClickListener() {
+		btnDel.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {

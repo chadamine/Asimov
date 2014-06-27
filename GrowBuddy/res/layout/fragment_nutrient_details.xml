@@ -4,10 +4,12 @@
 	android:layout_height="match_parent"
 	android:layout_width="match_parent"
 	xmlns:tools="http://schemas.android.com/tools"
-	tools:context="com.chadamine.growbuddy.NutrientsActivity$PlaceholderFragment">
+	tools:context="com.chadamine.growbuddy.NutrientsActivity$PlaceholderFragment"
+	android:background="#74c2e1"
+	>
 
 	<RelativeLayout
-		android:layout_height="match_parent"
+		android:layout_height="wrap_content"
 		android:layout_width="wrap_content">
 
 		<TextView
@@ -17,7 +19,9 @@
 			android:layout_alignParentTop="true"
 			android:text="Nutrient Details"
 			android:layout_marginLeft="10dp"
-			android:layout_marginTop="10dp"/>
+			android:layout_marginTop="10dp"
+			style="@style/title_text"
+			/>
 
 		<RelativeLayout
 			android:layout_width="match_parent"
@@ -37,17 +41,22 @@
 				android:layout_width="wrap_content"
 				android:layout_alignParentTop="true"
 				android:layout_marginTop="10dp"
-				android:id="@+id/textNutrientManufacturer"/>
+				android:id="@+id/textNutrientManufacturer"
+				style="@style/title_text"
+				/>
 
 			<EditText
+			    android:id="@+id/editNutrientManufacturer"
+			    android:inputType="text"
 				android:layout_height="wrap_content"
 				android:ems="10"
-				android:layout_width="70dp"
+				android:layout_width="200dp"
 				android:layout_toRightOf="@id/textNutrientManufacturer"
-				android:layout_below="@id/textNutrientDetailTitle"
 				android:layout_marginLeft="10dp"
 				android:layout_alignBottom="@id/textNutrientManufacturer"
-				android:layout_alignTop="@id/textNutrientManufacturer"/>
+				android:layout_alignTop="@id/textNutrientManufacturer"
+				android:background="@drawable/edit_text"
+				/>
 
 			<TextView
 				android:layout_height="wrap_content"
@@ -55,28 +64,37 @@
 				android:layout_width="wrap_content"
 				android:layout_below="@id/textNutrientManufacturer"
 				android:layout_marginTop="10dp"
-				android:id="@+id/textNutrientProductName"/>
+				android:id="@+id/textNutrientProduct"
+				style="@style/title_text"
+				/>
 
 			<EditText
+			    android:id="@+id/editNutrientProduct"
+			    android:inputType="text"
 				android:layout_height="wrap_content"
 				android:ems="10"
-				android:layout_width="70dp"
-				android:layout_toRightOf="@id/textNutrientProductName"
-				android:layout_alignBottom="@id/textNutrientProductName"
-				android:layout_alignTop="@id/textNutrientProductName"
-				android:layout_marginLeft="10dp"/>
+				android:layout_width="200dp"
+				android:layout_toRightOf="@id/textNutrientProduct"
+				android:layout_alignBottom="@id/textNutrientProduct"
+				android:layout_alignTop="@id/textNutrientProduct"
+				android:layout_marginLeft="10dp"
+				android:background="@drawable/edit_text"
+				
+				/>
 
 			<TextView
 				android:layout_height="wrap_content"
 				android:text="Type:"
 				android:layout_width="wrap_content"
-				android:layout_below="@id/textNutrientProductName"
+				android:layout_below="@id/textNutrientProduct"
 				android:layout_marginTop="10dp"
-				android:id="@+id/textNutrientType"/>
+				android:id="@+id/textNutrientType"
+				style="@style/title_text"
+				/>
 
 			<Spinner
 				android:layout_height="wrap_content"
-				android:layout_width="40dp"
+				android:layout_width="70dp"
 				android:layout_toRightOf="@id/textNutrientType"
 				android:layout_alignBottom="@id/textNutrientType"
 				android:layout_alignTop="@id/textNutrientType"
@@ -86,6 +104,7 @@
 		</RelativeLayout>
 
 		<RelativeLayout
+		    android:id="@+id/relativeNutrientProperties"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_below="@id/fragmentnutrientdetailRelativeLayout1"
@@ -101,20 +120,25 @@
 				android:layout_height="wrap_content"
 				android:text="Mol. Weight:"
 				android:layout_width="wrap_content"
-				android:layout_below="@id/textNutrientType"
+				android:layout_alignParentTop="true"
 				android:id="@+id/textNutrientMolWeight"
-				android:layout_marginTop="10dp"/>
+				android:layout_marginTop="10dp"
+				style="@style/title_text"
+				/>
 
 			<EditText
+			    android:id="@+id/editNutrientMolWeight"
 				android:layout_height="wrap_content"
 				android:inputType="number"
 				android:ems="10"
-				android:layout_width="70dp"
+				android:layout_width="200dp"
 				android:layout_toRightOf="@id/textNutrientMolWeight"
 				android:layout_alignBottom="@id/textNutrientMolWeight"
 				android:layout_alignTop="@id/textNutrientMolWeight"
 				android:layout_marginLeft="10dp"
-				android:id="@+id/fragmentnutrientdetailEditText1"/>
+				android:background="@drawable/edit_text"
+				
+				/>
 
 			<TextView
 				android:layout_height="wrap_content"
@@ -122,35 +146,42 @@
 				android:layout_width="wrap_content"
 				android:layout_below="@id/textNutrientMolWeight"
 				android:layout_marginTop="10dp"
-				android:id="@+id/textNutrientDensity"/>
+				android:id="@+id/textNutrientDensity"
+				style="@style/title_text"
+				/>
 
 			<EditText
 				android:layout_height="wrap_content"
 				android:inputType="numberDecimal"
 				android:ems="10"
-				android:layout_width="70dp"
+				android:layout_width="200dp"
 				android:layout_toRightOf="@id/textNutrientDensity"
 				android:layout_alignBottom="@id/textNutrientDensity"
 				android:layout_alignTop="@id/textNutrientDensity"
 				android:layout_marginLeft="10dp"
-				android:id="@+id/editNutrientDensity"/>
+				android:id="@+id/editNutrientDensity"
+				android:background="@drawable/edit_text"
+				/>
 
 			<Spinner
 				android:layout_height="wrap_content"
-				android:layout_width="70dp"
+				android:layout_width="60dp"
 				android:layout_toRightOf="@id/editNutrientDensity"
 				android:layout_alignBottom="@id/editNutrientDensity"
 				android:layout_alignTop="@id/textNutrientDensity"
 				android:layout_marginLeft="10dp"
 				android:id="@+id/spinnerNutrientDensity"/>
-
-			<FrameLayout
-				android:layout_height="wrap_content"
-				android:layout_width="wrap_content"
-				android:layout_toRightOf="@id/spinnerNutrientDensity"
-				android:layout_alignBottom="@id/spinnerNutrientDensity"
-				android:layout_marginLeft="10dp"
-				android:id="@+id/imageDensityCalc"/>
+			
+			<ImageView
+			    android:contentDescription="calculator"
+			    android:id="@+id/imageDensityCalc"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_alignBottom="@id/spinnerNutrientDensity"
+			    android:layout_alignTop="@id/spinnerNutrientDensity"
+			    android:layout_toRightOf="@id/spinnerNutrientDensity" 
+			    android:src="@drawable/calendar_ice_256"
+			    />
 
 			<TextView
 				android:layout_height="wrap_content"
@@ -158,41 +189,44 @@
 				android:layout_width="wrap_content"
 				android:layout_below="@id/textNutrientDensity"
 				android:layout_marginTop="10dp"
-				android:id="@+id/fragmentnutrientdetailTextView1"/>
-
+				android:id="@+id/fragmentnutrientdetailTextView1"
+				style="@style/title_text"
+				/>
 			<TextView
 				android:layout_height="wrap_content"
 				android:text="Mol. Formula:"
 				android:layout_width="wrap_content"
 				android:layout_below="@id/fragmentnutrientdetailTextView1"
 				android:layout_marginTop="10dp"
-				android:id="@+id/fragmentnutrientdetailTextView2"/>
-
-			<Spinner
-				android:layout_height="wrap_content"
-				android:layout_width="wrap_content"
-				android:layout_toRightOf="@id/fragmentnutrientdetailTextView1"
-				android:layout_alignBottom="@id/fragmentnutrientdetailTextView1"
-				android:layout_alignTop="@id/fragmentnutrientdetailTextView1"
-				android:layout_marginLeft="10dp"/>
-
+				android:id="@+id/textNutrientMolFormula"
+				style="@style/title_text"
+				/>
+		
 			<EditText
+			    android:inputType="text"
+			    android:id="@+id/editNutrientMolFormula"
 				android:layout_height="wrap_content"
 				android:ems="10"
-				android:layout_width="70dp"
-				android:layout_toRightOf="@id/fragmentnutrientdetailTextView2"
-				android:layout_alignBottom="@id/fragmentnutrientdetailTextView2"
-				android:layout_alignTop="@id/fragmentnutrientdetailTextView2"
-				android:layout_marginLeft="10dp"/>
-
-			<FrameLayout
-				android:layout_height="wrap_content"
-				android:layout_width="wrap_content"
-				android:layout_toLeftOf="@id/textNutrientDensity"
-				android:layout_alignParentLeft="true"/>
+				android:layout_width="200dp"
+				android:layout_toRightOf="@id/textNutrientMolFormula"
+				android:layout_alignBottom="@id/textNutrientMolFormula"
+				android:layout_alignTop="@id/textNutrientMolFormula"
+				android:layout_marginLeft="10dp"
+				android:background="@drawable/edit_text"
+				/>
 
 		</RelativeLayout>
 
+		<Button
+		    android:id="@+id/buttonNutrientSubmit"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentBottom="true"
+		    android:layout_alignParentRight="true"
+		    android:layout_marginTop="20dp"
+		    android:layout_below="@id/relativeNutrientProperties"
+		    android:text="Save Nutrient"
+		    />
 	</RelativeLayout>
 
 </ScrollView>

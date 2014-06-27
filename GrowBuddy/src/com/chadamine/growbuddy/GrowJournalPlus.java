@@ -13,8 +13,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.chadamine.growbuddy.journal.JournalDetailsFragment;
-import com.chadamine.growbuddy.journal.JournalListFragment;
+import com.chadamine.growbuddy.journals.JournalDetailsFragment;
+import com.chadamine.growbuddy.journals.JournalListFragment;
 import com.chadamine.growbuddy.cultivation.plants.*;
 import com.chadamine.growbuddy.cultivation.*;
 

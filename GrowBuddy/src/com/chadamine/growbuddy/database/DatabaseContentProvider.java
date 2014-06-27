@@ -4,10 +4,14 @@ import android.content.*;
 import android.database.*;
 import android.database.sqlite.*;
 import android.net.*;
+
 import com.chadamine.growbuddy.database.DatabaseContract.*;
 import com.chadamine.growbuddy.database.tables.*;
+
 import android.widget.*;
-import com.chadamine.growbuddy.journal.*;
+
+import com.chadamine.growbuddy.journals.*;
+
 import android.text.*;
 
 public class DatabaseContentProvider extends ContentProvider {

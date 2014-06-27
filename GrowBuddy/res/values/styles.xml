@@ -33,13 +33,7 @@
     
     
     <!-- Sortable List Box Styles -->
-		<style name="title_text">
-			<item name="android:textColor">#ffffff</item>
-			<item name="android:textStyle">bold</item>
-			<item name="android:textSize">14sp</item>
-			<item name="android:paddingLeft">10dp</item>
-			<item name="android:paddingRight">10dp</item>
-		</style>
+		
 	<style name="list_item">
 		<item name="android:background">#000000</item>
 	</style>
@@ -112,8 +106,21 @@
         <item name="android:textStyle">bold</item>
 	</style>
 	
+	<style 
+	    name="light_blue">
+	    <item name="android:background">#74c2e1</item>
+	</style>
+	
 	
 	<!-- text styles -->
+	<style name="title_text">
+		<item name="android:textColor">#ffffff</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textSize">14sp</item>
+		<item name="android:paddingLeft">10dp</item>
+		<item name="android:paddingRight">10dp</item>
+	</style>
+	
 	<style name="nav_list_title">	
         <item name="android:layout_alignParentTop">true</item>
         <item name="android:layout_alignParentLeft">true</item>

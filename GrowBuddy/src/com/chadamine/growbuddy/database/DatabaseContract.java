@@ -112,10 +112,63 @@ public class DatabaseContract {
 		
 		public static final String COL_ID = "_id";
 		public static final String COL_NAME = "name";
-		public static final String COL_DETAILS = "details";
+		public static final String COL_MANUFACTURER = "manufacturer";
+		public static final String COL_PRODUCT = "product";
+		public static final String COL_MOL_WEIGHT = "mol_weight";
+		public static final String COL_DENSITY = "density";
+		public static final String COL_PHASE = "phase";
 		public static final String COL_DATE_CREATED = "date_created";
-		public static final String COL_LOCATION = "location";
-		public static final String COL_BATCH = "batch";
+		public static final String COL_TYPE = "type";
+	
+		public static final Uri contentUri = Uri.withAppendedPath(CONTENT_URI, TABLE_NAME);
+	}
+	
+//	Nutrient Formulas
+	public static final class NutrientFormulas implements Columns {
+		
+		public static final String TABLE_NAME = "nutrient_formulas";
+		public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TABLE_NAME);
+		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/nutrient_formulas";
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/nutrient_formulas";
+		
+		public static final String COL_ID = "_id";
+		public static final String COL_NAME = "name";	// Foreign Key
+		public static final String COL_C = "C";
+		public static final String COL_H = "H";
+		public static final String COL_O = "O";
+		public static final String COL_N = "N";
+		public static final String COL_P = "P";
+		public static final String COL_K = "K";
+		public static final String COL_CA = "Ca";
+		public static final String COL_MG = "Mg";
+		public static final String COL_SI = "Si";
+	
+		public static final Uri contentUri = Uri.withAppendedPath(CONTENT_URI, TABLE_NAME);
+	}
+	
+//	Nutrients
+	public static final class NutrientSolubilities implements Columns {
+		
+		public static final String TABLE_NAME = "nutrient_solubilities";
+		public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TABLE_NAME);
+		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/nutrient_solubilities";
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/nutrient_solubilities";
+		
+		public static final String COL_ID = "_id";
+		public static final String COL_NAME = "name";
+		public static final String COL_0 = "0";
+		public static final String COL_10 = "10";
+		public static final String COL_20 = "20";
+		public static final String COL_25 = "25";
+		public static final String COL_30 = "30";
+		public static final String COL_40 = "40";
+		public static final String COL_50 = "50";
+		public static final String COL_60 = "60";
+		public static final String COL_70 = "70";
+		public static final String COL_80 = "80";
+		public static final String COL_90 = "90";
+		public static final String COL_100 = "100";
+				
 		public static final String COL_TYPE = "type";
 	
 		public static final Uri contentUri = Uri.withAppendedPath(CONTENT_URI, TABLE_NAME);
@@ -300,6 +353,10 @@ public class DatabaseContract {
 	public static final int LOCATIONS_ID = 4;
 	public static final int NUTRIENTS = 7;
 	public static final int NUTRIENTS_ID = 8;
+	public static final int NUTRIENT_FORMULAS = 21;
+	public static final int NUTRIENT_FORMULA_ID = 22;
+	public static final int NUTRIENT_SOLUBILITIES = 23;
+	public static final int NUTRIENT_SOLUBILITY_ID = 24;
 	public static final int NUTRIENT_COMPONENTS = 9;
 	public static final int NUTRIENT_COMPONENTS_ID = 10;
 	public static final int BATCHES = 11;
@@ -321,7 +378,12 @@ public class DatabaseContract {
 		URI_MATCHER.addURI(AUTHORITY, JournalsHistory.TABLE_NAME + "#", JOURNALS_HISTORY);
 		URI_MATCHER.addURI(AUTHORITY, JournalLocations.TABLE_NAME, JOURNAL_LOCATIONS);
 		URI_MATCHER.addURI(AUTHORITY, Nutrients.TABLE_NAME, NUTRIENTS);
-		URI_MATCHER.addURI(AUTHORITY, Nutrients.TABLE_NAME + "/#", NUTRIENTS_ID);	
+		URI_MATCHER.addURI(AUTHORITY, Nutrients.TABLE_NAME + "/#", NUTRIENTS_ID);
+		URI_MATCHER.addURI(AUTHORITY, NutrientFormulas.TABLE_NAME, NUTRIENT_FORMULAS);
+		URI_MATCHER.addURI(AUTHORITY, NutrientFormulas.TABLE_NAME + "#", NUTRIENT_FORMULA_ID);
+		URI_MATCHER.addURI(AUTHORITY, NutrientSolubilities.TABLE_NAME, NUTRIENT_SOLUBILITIES);
+		URI_MATCHER.addURI(AUTHORITY, NutrientSolubilities.TABLE_NAME + "#", NUTRIENT_SOLUBILITY_ID);
+		
 		
 		URI_MATCHER.addURI(AUTHORITY, Locations.TABLE_NAME, LOCATIONS);
 		URI_MATCHER.addURI(AUTHORITY, Locations.TABLE_NAME + "/#", LOCATIONS_ID);

@@ -10,7 +10,12 @@ public class NutrientsTable
 		+ Nutrients.TABLE_NAME + "("
 		+ Nutrients.COL_ID + " integer primary key autoincrement, "
 		+ Nutrients.COL_NAME + " text not null, "
-		+ Nutrients.COL_DETAILS + " text not null)";
+		+ Nutrients.COL_MANUFACTURER + " text not null, "
+		+ Nutrients.COL_PRODUCT + " text not null, "
+		+ Nutrients.COL_TYPE + " text not null, "
+		+ Nutrients.COL_MOL_WEIGHT + " text not null, "
+		+ Nutrients.COL_DENSITY + " text not null, "
+		+ Nutrients.COL_PHASE + " text not null)";
 	
 	public static void onCreate(SQLiteDatabase db) throws SQLException {
 		db.execSQL(CREATE);

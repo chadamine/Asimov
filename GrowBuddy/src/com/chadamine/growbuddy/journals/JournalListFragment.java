@@ -1,4 +1,4 @@
-package com.chadamine.growbuddy.journal;
+package com.chadamine.growbuddy.journals;
 
 import android.content.Context;
 import android.database.Cursor;

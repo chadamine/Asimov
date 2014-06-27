@@ -36,7 +36,7 @@
             </intent-filter>-->
         </activity>
         <activity
-            android:name="com.chadamine.growbuddy.journal.JournalListActivity"
+            android:name="com.chadamine.growbuddy.journals.JournalListActivity"
             android:label="Journal List Activity"
             android:uiOptions="splitActionBarWhenNarrow" >
             <meta-data
@@ -44,7 +44,7 @@
                 android:value="splitActionBarWhenNarrow" />
         </activity>
         <activity
-            android:name="com.chadamine.growbuddy.journal.JournalDetailsActivity"
+            android:name="com.chadamine.growbuddy.journals.JournalDetailsActivity"
             android:label="@string/title_activity_main"
             android:uiOptions="splitActionBarWhenNarrow" >
             <meta-data
