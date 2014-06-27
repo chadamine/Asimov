@@ -10,10 +10,22 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.chadamine.growbuddy.R;
+import com.chadamine.growbuddy.database.DatabaseContract.Nutrients;
+import com.chadamine.growbuddy.database.DatabaseContract.NutrientSolubilities;
+import com.chadamine.growbuddy.database.DatabaseContract.NutrientFormulas;
+import android.support.v4.widget.*;
+import android.support.v4.app.*;
+import android.database.*;
+import android.support.v4.content.*;
+import android.database.sqlite.*;
+import android.widget.Toast;
 
-public class NutrientsListFragment extends ListFragment {
+
+public class NutrientsListFragment extends ListFragment 
+	implements LoaderManager.LoaderCallbacks<Cursor>{
 
 	FragmentActivity activity;
+	private CursorAdapter adapter;
 	
 	@Override 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,7 +57,48 @@ public class NutrientsListFragment extends ListFragment {
 				
 			}
 		});
+		
+		fillData();
+		
 		return view;
+	}
+	
+	private void fillData() {
+		String[] from = new String[] { 
+			Nutrients.COL_MANUFACTURER, 
+			Nutrients.COL_PRODUCT
+			};
+		int[] to = new int[] { R.id.textTitle, R.id.textDetails };
+
+		try {
+			activity.getSupportLoaderManager().initLoader(0, null, this);
+
+			adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_item_checkable, null, from, to, 0);
+			setListAdapter(adapter);
+		} 
+		catch (SQLiteException e) {
+			Toast.makeText(activity, "adapter could not be set", Toast.LENGTH_SHORT);
+		}
+		//Toast.makeText(getActivity(), "list adapter set", Toast.LENGTH_SHORT).show();;
+	}
+	
+	@Override
+	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
+
+		String[] projection = { Nutrients.COL_ID, Nutrients.COL_MANUFACTURER, Nutrients.COL_PRODUCT };
+
+		CursorLoader loader = new CursorLoader(getActivity(), Nutrients.CONTENT_URI, projection, null, null, null);
+		return loader;
+	}
+
+	@Override
+	public void onLoadFinished(Loader<Cursor> l, Cursor c) {
+		adapter.swapCursor(c);
+	}
+
+	@Override
+	public void onLoaderReset(Loader<Cursor> arg0) {
+		adapter.swapCursor(null);
 	}
 
 }		

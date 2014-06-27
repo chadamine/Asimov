@@ -38,11 +38,12 @@ public class DatabaseContentProvider extends ContentProvider {
 		// checkColumns(projection);
 		
 		queryBuilder.setTables(getTableName(uri));
+		Cursor cursor = null;
 		
-		if(columnName != "")
+		if(columnName != "") {
 			queryBuilder.appendWhere(columnName + "=" + uri.getLastPathSegment());
 		
-		Cursor cursor = null;
+		
 		
 		SQLiteDatabase database;
 		
@@ -53,6 +54,7 @@ public class DatabaseContentProvider extends ContentProvider {
 			throw new SQLiteException("Database Creation Failed."/* UriType = " + Integer.toString(uriType) + " Column name: " + columnName*/);
 		}
 		
+		
 		try {
 			cursor = queryBuilder.query(database, projection, selection, selectionArgs, null, null, sortOrder);
 		} catch (SQLiteException e) {
@@ -62,8 +64,10 @@ public class DatabaseContentProvider extends ContentProvider {
 					+ "; ColumnName: " + columnName
 					+ "; queryBuilder: " + queryBuilder.getTables());
 		}
+		
 	
 		cursor.setNotificationUri(getContext().getContentResolver(), uri);	
+		}
 		
 		return cursor;
 	}
@@ -82,6 +86,16 @@ public class DatabaseContentProvider extends ContentProvider {
 				break;
 			case DatabaseContract.JOURNALS_ID:
 				col = Journals.COL_ID;
+				break;
+			case DatabaseContract.NUTRIENT_SOLUBILITY_ID:
+				col = NutrientSolubilities.COL_ID;
+				break;
+			case DatabaseContract.NUTRIENT_SOLUBILITIES:
+				break;
+			case DatabaseContract.NUTRIENT_FORMULA_ID:
+				col = NutrientFormulas.COL_ID;
+				break;
+			case DatabaseContract.NUTRIENT_FORMULAS:
 				break;
 			case DatabaseContract.LOCATIONS:
 				break;
@@ -112,6 +126,15 @@ public class DatabaseContentProvider extends ContentProvider {
 			case DatabaseContract.JOURNALS_HISTORY:
 				name = JournalsHistory.TABLE_NAME;
 				break;
+			case DatabaseContract.NUTRIENTS:
+				name = Nutrients.TABLE_NAME;
+				break;
+			case DatabaseContract.NUTRIENT_FORMULAS:
+				name = NutrientFormulas.TABLE_NAME;
+				break;
+			case DatabaseContract.NUTRIENT_SOLUBILITIES:
+				name = NutrientSolubilities.TABLE_NAME;
+				break;
 			case DatabaseContract.LOCATIONS:
 				name = Locations.TABLE_NAME;
 				break;
@@ -119,6 +142,7 @@ public class DatabaseContentProvider extends ContentProvider {
 				name = Batches.TABLE_NAME;
 				break;
 			case DatabaseContract.BATCH_PLANTS:
+				break;
 				
 			default:
 				throw new IllegalArgumentException("Unknown URI: " + uri);

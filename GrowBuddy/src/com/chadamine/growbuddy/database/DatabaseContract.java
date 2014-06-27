@@ -349,8 +349,10 @@ public class DatabaseContract {
 	public static final int JOURNALS_HISTORY_ID = 20;
 	public static final int JOURNAL_LOCATIONS = 5;
 	public static final int JOURNAL_LOCATIONS_ID = 6;
+	
 	public static final int LOCATIONS = 3;
 	public static final int LOCATIONS_ID = 4;
+	
 	public static final int NUTRIENTS = 7;
 	public static final int NUTRIENTS_ID = 8;
 	public static final int NUTRIENT_FORMULAS = 21;
@@ -359,12 +361,15 @@ public class DatabaseContract {
 	public static final int NUTRIENT_SOLUBILITY_ID = 24;
 	public static final int NUTRIENT_COMPONENTS = 9;
 	public static final int NUTRIENT_COMPONENTS_ID = 10;
+	
 	public static final int BATCHES = 11;
 	public static final int BATCHES_ID = 12;
 	public static final int BATCH_PLANTS = 15;
 	public static final int BATCH_PLANTS_ID = 16;
+	
 	public static final int PLANTS = 13;
 	public static final int PLANTS_ID = 14;
+	
 	public static final int TASKS = 17;
 	public static final int TASKS_ID = 18;
 	
@@ -377,13 +382,13 @@ public class DatabaseContract {
 		URI_MATCHER.addURI(AUTHORITY, JournalsHistory.TABLE_NAME, JOURNALS_HISTORY);
 		URI_MATCHER.addURI(AUTHORITY, JournalsHistory.TABLE_NAME + "#", JOURNALS_HISTORY);
 		URI_MATCHER.addURI(AUTHORITY, JournalLocations.TABLE_NAME, JOURNAL_LOCATIONS);
+		
 		URI_MATCHER.addURI(AUTHORITY, Nutrients.TABLE_NAME, NUTRIENTS);
 		URI_MATCHER.addURI(AUTHORITY, Nutrients.TABLE_NAME + "/#", NUTRIENTS_ID);
 		URI_MATCHER.addURI(AUTHORITY, NutrientFormulas.TABLE_NAME, NUTRIENT_FORMULAS);
 		URI_MATCHER.addURI(AUTHORITY, NutrientFormulas.TABLE_NAME + "#", NUTRIENT_FORMULA_ID);
 		URI_MATCHER.addURI(AUTHORITY, NutrientSolubilities.TABLE_NAME, NUTRIENT_SOLUBILITIES);
 		URI_MATCHER.addURI(AUTHORITY, NutrientSolubilities.TABLE_NAME + "#", NUTRIENT_SOLUBILITY_ID);
-		
 		
 		URI_MATCHER.addURI(AUTHORITY, Locations.TABLE_NAME, LOCATIONS);
 		URI_MATCHER.addURI(AUTHORITY, Locations.TABLE_NAME + "/#", LOCATIONS_ID);

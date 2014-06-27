@@ -18,6 +18,7 @@ import com.chadamine.growbuddy.R;
 import com.chadamine.growbuddy.database.DatabaseContract.NutrientFormulas;
 import com.chadamine.growbuddy.database.DatabaseContract.NutrientSolubilities;
 import com.chadamine.growbuddy.database.DatabaseContract.Nutrients;
+import android.widget.*;
 
 public class NutrientsFragment extends Fragment {
 	
@@ -64,10 +65,10 @@ public class NutrientsFragment extends Fragment {
 		
 		String mfctr =  view.findViewById(R.id.editNutrientManufacturer).toString();
 		
-		String pdct = view.findViewById(R.id.editNutrientProduct).toString();
-		String type = view.findViewById(R.id.spinnerNutrientType).toString();
-		String mol = view.findViewById(R.id.editNutrientMolWeight).toString();
-		String density = view.findViewById(R.id.editNutrientDensity).toString();
+		String pdct = ((EditText) view.findViewById(R.id.editNutrientProduct)).getText().toString();
+		//String type = ((Spinner) view.findViewById(R.id.spinnerNutrientType)).getSelectedItem().toString();
+		String mol = ((EditText) view.findViewById(R.id.editNutrientMolWeight)).getText().toString();
+		String density = ((EditText) view.findViewById(R.id.editNutrientDensity)).toString();
 		
 		String molFormula = view.findViewById(R.id.editNutrientMolFormula).toString();
 		String solubility = "solubility";
@@ -80,8 +81,8 @@ public class NutrientsFragment extends Fragment {
 			nutrientValues.put(Nutrients.COL_PRODUCT, pdct);
 		if(mfctr.length() > 0) 
 			nutrientValues.put(Nutrients.COL_MANUFACTURER, mfctr);
-		if(type.length() > 0)
-			nutrientValues.put(Nutrients.COL_TYPE, type);
+		//if(type.length() > 0)
+			//nutrientValues.put(Nutrients.COL_TYPE, type);
 		if(mol.length() > 0) 
 			nutrientValues.put(Nutrients.COL_MOL_WEIGHT, mol);
 		if(density.length() > 0)
