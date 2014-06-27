@@ -1306,7 +1306,7 @@ containing a value of this type.
         public static final int fragment_journal_list=0x7f03002f;
         public static final int fragment_locations_list=0x7f030030;
         public static final int fragment_main=0x7f030031;
-        public static final int fragment_nutrients=0x7f030032;
+        public static final int fragment_nutrient_detail=0x7f030032;
         public static final int fragment_nutrients_list=0x7f030033;
         public static final int fragment_overview=0x7f030034;
         public static final int fragment_pest_disease=0x7f030035;
