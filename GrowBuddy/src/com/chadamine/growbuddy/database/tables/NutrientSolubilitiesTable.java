@@ -8,9 +8,9 @@ import android.support.v4.app.Fragment;
 
 public class NutrientSolubilitiesTable extends Fragment {
 	public static final String CREATE = "create table "
-			+ NutrientSolubilities.TABLE_NAME + " text not null" 
+			+ NutrientSolubilities.TABLE_NAME + " text not null, " 
+			+ NutrientSolubilities.COL_0 + " int, "
 			+
-			
 			")";
 		
 		public static void onCreate(SQLiteDatabase db) throws SQLException {
