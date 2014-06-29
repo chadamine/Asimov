@@ -42,7 +42,7 @@ public class DatabaseContentProvider extends ContentProvider {
 		
 		if(columnName != "") {
 			queryBuilder.appendWhere(columnName + "=" + uri.getLastPathSegment());
-		
+		}
 		
 		
 		SQLiteDatabase database;
@@ -67,7 +67,7 @@ public class DatabaseContentProvider extends ContentProvider {
 		
 	
 		cursor.setNotificationUri(getContext().getContentResolver(), uri);	
-		}
+		
 		
 		return cursor;
 	}

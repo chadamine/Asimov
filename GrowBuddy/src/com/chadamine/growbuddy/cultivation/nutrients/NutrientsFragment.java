@@ -68,9 +68,9 @@ public class NutrientsFragment extends Fragment {
 		String pdct = ((EditText) view.findViewById(R.id.editNutrientProduct)).getText().toString();
 		//String type = ((Spinner) view.findViewById(R.id.spinnerNutrientType)).getSelectedItem().toString();
 		String mol = ((EditText) view.findViewById(R.id.editNutrientMolWeight)).getText().toString();
-		String density = ((EditText) view.findViewById(R.id.editNutrientDensity)).toString();
+		String density = ((EditText) view.findViewById(R.id.editNutrientDensity)).getText().toString();
 		
-		String molFormula = view.findViewById(R.id.editNutrientMolFormula).toString();
+		String molFormula = ((EditText) view.findViewById(R.id.editNutrientMolFormula)).getText().toString();
 		String solubility = "solubility";
 		
 		ContentValues nutrientValues = new ContentValues();
@@ -88,9 +88,6 @@ public class NutrientsFragment extends Fragment {
 		if(density.length() > 0)
 			nutrientValues.put(Nutrients.COL_DENSITY, density);
 		
-		
-	
-		
 		if(solubility.length() > 0) {
 			int sol = -1;
 			
@@ -102,9 +99,8 @@ public class NutrientsFragment extends Fragment {
 			
 			if(sol != -1) 
 				solubilityValues.put(NutrientSolubilities.COL_0, sol);
-		
-			
 		}
+		
 			//nutrientsUri = 
 		if(nutrientValues != null) 
 			getActivity()
