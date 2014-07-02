@@ -63,9 +63,11 @@ public class NutrientsFragment extends Fragment {
 		Uri nutrientSolubilityUri = NutrientSolubilities.CONTENT_URI;
 		Uri nutrientFormulasUri = NutrientFormulas.CONTENT_URI;
 		
-		String mfctr =  view.findViewById(R.id.editNutrientManufacturer).toString();
+		String mfctr =  ((EditText) view.findViewById(R.id.editNutrientManufacturer)).getText().toString();
 		
 		String pdct = ((EditText) view.findViewById(R.id.editNutrientProduct)).getText().toString();
+		if(pdct.length() == 0)
+			pdct = "null";
 		//String type = ((Spinner) view.findViewById(R.id.spinnerNutrientType)).getSelectedItem().toString();
 		String mol = ((EditText) view.findViewById(R.id.editNutrientMolWeight)).getText().toString();
 		String density = ((EditText) view.findViewById(R.id.editNutrientDensity)).getText().toString();
@@ -106,7 +108,7 @@ public class NutrientsFragment extends Fragment {
 			getActivity()
 				.getContentResolver()
 				.insert(nutrientsUri, nutrientValues);
-		
+		/*
 		if(formulaValues != null) 
 			getActivity()
 				.getContentResolver()
@@ -116,7 +118,7 @@ public class NutrientsFragment extends Fragment {
 			getActivity()
 				.getContentResolver()
 				.insert(nutrientSolubilityUri, solubilityValues);
-		
+		*/
 		Toast.makeText(getActivity(), "Nutrient Added to Database: " + nutrientValues.toString() + "; " + formulaValues.toString() + "; " + solubilityValues.toString(), Toast.LENGTH_SHORT).show();
 		
 		

@@ -22,6 +22,9 @@ public class DatabaseContract {
 	public static final String AUTHORITY = "com.chadamine.growbuddy.provider";
 	public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY);
 	
+	//public static final String NUTRIENT_AUTHORITY = "com.chadamine.growbuddy.nutrients_provider";
+	//public static final Uri NUTRIENT_CONTENT_URI = Uri.parse("content://" + NUTRIENT_AUTHORITY);
+	
 	//	Journals
 	public static final class Journals implements Columns { 
 		
@@ -73,9 +76,6 @@ public class DatabaseContract {
 		public static final String COL_BATCH = "batch";
 		public static final String COL_TYPE = "type";
 		
-		public static final Uri contentUri = Uri.withAppendedPath(
-				Locations.CONTENT_URI, 
-				Locations.TABLE_NAME);
 	}
 	
 	
@@ -96,9 +96,6 @@ public class DatabaseContract {
 		public static final String COL_BATCH = "batch";
 		public static final String COL_TYPE = "type";
 		
-		public static final Uri contentUri = Uri.withAppendedPath(
-				JournalLocations.CONTENT_URI, 
-				JournalLocations.TABLE_NAME); 
 		}
 	
 	
@@ -106,9 +103,9 @@ public class DatabaseContract {
 	public static final class Nutrients implements Columns {
 		
 		public static final String TABLE_NAME = "nutrients";
-		public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TABLE_NAME);
+		public static final Uri CONTENT_URI = Uri.withAppendedPath(DatabaseContract.CONTENT_URI, TABLE_NAME);
 		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/nutrients";
-		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/nutrient";
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/nutrients";
 		
 		public static final String COL_ID = "_id";
 		public static final String COL_NAME = "name";
@@ -120,7 +117,6 @@ public class DatabaseContract {
 		public static final String COL_DATE_CREATED = "date_created";
 		public static final String COL_TYPE = "type";
 	
-		public static final Uri contentUri = Uri.withAppendedPath(CONTENT_URI, TABLE_NAME);
 	}
 	
 //	Nutrient Formulas
@@ -342,7 +338,7 @@ public class DatabaseContract {
 	
 	public static final String TABLE_BATCH_NUTRIENTS = "batch_nutrients";
 	
-	// _ID's MUST be EVEN (and nothing can be 0) !!! -- see ContentProvider delete() method 
+	// _ID's MUST be EVEN (and nothing can be 0) !!! -- see GrowJournalPlusContentProvider delete() method 
 	public static final int JOURNALS = 1;
 	public static final int JOURNALS_ID = 2;
 	public static final int JOURNALS_HISTORY = 19;
@@ -380,15 +376,16 @@ public class DatabaseContract {
 		URI_MATCHER.addURI(AUTHORITY, Journals.TABLE_NAME, JOURNALS);
 		URI_MATCHER.addURI(AUTHORITY, Journals.TABLE_NAME + "/#", JOURNALS_ID);
 		URI_MATCHER.addURI(AUTHORITY, JournalsHistory.TABLE_NAME, JOURNALS_HISTORY);
-		URI_MATCHER.addURI(AUTHORITY, JournalsHistory.TABLE_NAME + "#", JOURNALS_HISTORY);
+		URI_MATCHER.addURI(AUTHORITY, JournalsHistory.TABLE_NAME + "/#", JOURNALS_HISTORY_ID);
 		URI_MATCHER.addURI(AUTHORITY, JournalLocations.TABLE_NAME, JOURNAL_LOCATIONS);
+		URI_MATCHER.addURI(AUTHORITY, JournalLocations.TABLE_NAME + "/#", JOURNAL_LOCATIONS);
 		
 		URI_MATCHER.addURI(AUTHORITY, Nutrients.TABLE_NAME, NUTRIENTS);
 		URI_MATCHER.addURI(AUTHORITY, Nutrients.TABLE_NAME + "/#", NUTRIENTS_ID);
 		URI_MATCHER.addURI(AUTHORITY, NutrientFormulas.TABLE_NAME, NUTRIENT_FORMULAS);
-		URI_MATCHER.addURI(AUTHORITY, NutrientFormulas.TABLE_NAME + "#", NUTRIENT_FORMULA_ID);
+		URI_MATCHER.addURI(AUTHORITY, NutrientFormulas.TABLE_NAME + "/#", NUTRIENT_FORMULA_ID);
 		URI_MATCHER.addURI(AUTHORITY, NutrientSolubilities.TABLE_NAME, NUTRIENT_SOLUBILITIES);
-		URI_MATCHER.addURI(AUTHORITY, NutrientSolubilities.TABLE_NAME + "#", NUTRIENT_SOLUBILITY_ID);
+		URI_MATCHER.addURI(AUTHORITY, NutrientSolubilities.TABLE_NAME + "/#", NUTRIENT_SOLUBILITY_ID);
 		
 		URI_MATCHER.addURI(AUTHORITY, Locations.TABLE_NAME, LOCATIONS);
 		URI_MATCHER.addURI(AUTHORITY, Locations.TABLE_NAME + "/#", LOCATIONS_ID);

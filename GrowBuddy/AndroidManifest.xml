@@ -19,8 +19,8 @@
         android:theme="@style/AppTheme"
         android:vmSafeMode="false" >
         <activity
-            android:name="com.chadamine.growbuddy.GrowJournalPlus"
-            android:label="@string/title_activity_overview" >
+            android:name="com.chadamine.growbuddy.Main"
+            android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -108,9 +108,8 @@
             android:label="@string/title_activity_primary" >
         </activity>
 		<provider
-            android:name="com.chadamine.growbuddy.database.DatabaseContentProvider"
+            android:name="com.chadamine.growbuddy.database.GrowJournalPlusContentProvider"
             android:authorities="com.chadamine.growbuddy.provider" />
-		
     </application>
 
 </manifest>

@@ -85,10 +85,14 @@ public class JournalListFragment extends ListFragment
 	}
 	
 	private void fillData() {
-			String[] from = new String[] { Journals.COL_NAME, Journals.COL_LOCATION };
+			String[] from = new String[] { 
+					Journals.COL_NAME, 
+					Journals.COL_LOCATION 
+			};
+			
 			int[] to = new int[] { R.id.textTitle, R.id.textDetails };
 		
-			getLoaderManager().initLoader(0, null, this);
+			getActivity().getSupportLoaderManager().initLoader(0, null, this);
 			
 			adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_item_checkable, null, from, to, 0);
 			setListAdapter(adapter);

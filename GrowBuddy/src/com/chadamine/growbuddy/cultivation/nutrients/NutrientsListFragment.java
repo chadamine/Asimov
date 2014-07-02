@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.chadamine.growbuddy.R;
 import com.chadamine.growbuddy.database.DatabaseContract.Nutrients;
 import com.chadamine.growbuddy.database.DatabaseContract.NutrientSolubilities;
 import com.chadamine.growbuddy.database.DatabaseContract.NutrientFormulas;
+
 import android.support.v4.widget.*;
 import android.support.v4.app.*;
 import android.database.*;
@@ -27,8 +29,14 @@ public class NutrientsListFragment extends ListFragment
 	FragmentActivity activity;
 	private CursorAdapter adapter;
 	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+	}
 	@Override 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		super.onCreateView(inflater, container, savedInstanceState);
+		
 		View view = inflater.inflate(R.layout.fragment_nutrients_list, container, false);
 
 		activity = getActivity();
@@ -67,18 +75,23 @@ public class NutrientsListFragment extends ListFragment
 		String[] from = new String[] { 
 			Nutrients.COL_MANUFACTURER, 
 			Nutrients.COL_PRODUCT
-			};
+		};
+		
 		int[] to = new int[] { R.id.textTitle, R.id.textDetails };
 
 		try {
-			activity.getSupportLoaderManager().initLoader(0, null, this);
-
+			getActivity().getSupportLoaderManager().initLoader(1, null, this);
+			Log.d("loaderInitialized", "+ - nutrients loader manager initialized");
+			
 			adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_item_checkable, null, from, to, 0);
+			Log.d("adapterAssigned", "+ - cursorAdapter assigned to adapter");
+			
 			setListAdapter(adapter);
-		} 
-		catch (SQLiteException e) {
-			Toast.makeText(activity, "adapter could not be set", Toast.LENGTH_SHORT);
+			Log.d("listAdapterSet", "+ - list adapter set");
+		} catch (NullPointerException e) {
+			Toast.makeText(activity, "! - adapter could not be set", Toast.LENGTH_SHORT).show();
 		}
+			
 		//Toast.makeText(getActivity(), "list adapter set", Toast.LENGTH_SHORT).show();;
 	}
 	

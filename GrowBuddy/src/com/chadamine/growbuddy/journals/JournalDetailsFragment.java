@@ -286,7 +286,9 @@ public class JournalDetailsFragment extends Fragment {
 			values.put(Journals.COL_LOCATION, "location filler");
 		
 			itemUri = getActivity().getContentResolver().insert(Journals.CONTENT_URI, values);
-			Toast.makeText(getActivity(), "Journal Added to Database: " + values.toString(), Toast.LENGTH_SHORT).show();
+			Toast toastSubmit = Toast.makeText(getActivity(), "Journal Added to Database: " + values.toString(), Toast.LENGTH_SHORT);
+			toastSubmit.setGravity(Gravity.TOP, Gravity.CENTER, 0);
+			toastSubmit.show();
 		}
 		
 	}
