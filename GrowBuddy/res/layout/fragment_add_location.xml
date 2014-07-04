@@ -57,7 +57,9 @@
 				android:layout_marginTop="10dp"
 				android:contentDescription="@string/journal_image"
 				android:background="@drawable/dashed"
-				android:text="  ADD\nIMAGE"/>
+				android:text="  ADD\nIMAGE"
+				style="@style/list_item_frame"
+				/>
 
 			<TextView
 				android:id="@+id/textName"
@@ -84,22 +86,23 @@
 				android:layout_marginRight="10dp"/>
 
 			<TextView
-				android:id="@+id/textLocation"
+				android:id="@+id/textAddress"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="Location:"
+				android:text="Address:"
 				android:layout_below="@+id/textName"
 				android:layout_alignLeft="@+id/textName"
 				android:layout_marginBottom="10dp"
 				style="@style/title_text"/>
 
-			<Spinner
-				android:id="@+id/spinnerLocation"
+			<EditText
+				android:id="@+id/editAddress"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_alignTop="@+id/textLocation"
-				android:layout_toRightOf="@+id/textLocation"
-				android:layout_alignBottom="@+id/textLocation"
+				android:inputType="text"
+				android:layout_alignTop="@+id/textAddress"
+				android:layout_toRightOf="@+id/textAddress"
+				android:layout_alignBottom="@+id/textAddress"
 				android:layout_marginLeft="10dp"
 				android:layout_marginRight="10dp"/>
 

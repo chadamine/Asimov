@@ -1,7 +1,6 @@
 package com.chadamine.growbuddy.cultivation;
 
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
@@ -15,6 +14,7 @@ import android.widget.ListView;
 import com.chadamine.growbuddy.R;
 import com.chadamine.growbuddy.cultivation.nutrients.NutrientsListFragment;
 import com.chadamine.growbuddy.cultivation.plants.PlantsListFragment;
+import com.chadamine.growbuddy.management.locations.LocationsListFragment;
 
 public class CultivationListFragment extends ListFragment {
 	
@@ -76,8 +76,14 @@ public class CultivationListFragment extends ListFragment {
 				case 4:	// Pest and Disease
 					break;
 				case 5:	// Environment
+				
 					break;
 				case 6:	// Locations
+					manager
+					.beginTransaction()
+					.replace(R.id.frameList, new LocationsListFragment())
+					.addToBackStack("locationsList")
+					.commit();
 					break;
 				default:
 					break;

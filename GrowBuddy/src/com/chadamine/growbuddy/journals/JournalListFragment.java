@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.chadamine.growbuddy.R;
@@ -92,8 +91,11 @@ public class JournalListFragment extends ListFragment
 			
 			int[] to = new int[] { R.id.textTitle, R.id.textDetails };
 		
+			try {
 			getActivity().getSupportLoaderManager().initLoader(0, null, this);
-			
+			} catch (NullPointerException e){
+				Toast.makeText(activity, "loader could not be initialized", Toast.LENGTH_SHORT).show();
+			}
 			adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_item_checkable, null, from, to, 0);
 			setListAdapter(adapter);
 			//Toast.makeText(getActivity(), "list adapter set", Toast.LENGTH_SHORT).show();;

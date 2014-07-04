@@ -3,30 +3,32 @@ package com.chadamine.growbuddy.database;
 import android.annotation.TargetApi;
 import android.content.ContentProvider;
 import android.content.ContentValues;
-import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.os.Build;
-import android.text.TextUtils;
 import android.util.Log;
 
-import com.chadamine.growbuddy.database.DatabaseContract.*;
-import com.chadamine.growbuddy.database.DatabaseHelpers.*;
-import com.chadamine.growbuddy.database.tables.NutrientsTable;
+import com.chadamine.growbuddy.database.DatabaseContract.Journals;
+import com.chadamine.growbuddy.database.DatabaseContract.Locations;
+import com.chadamine.growbuddy.database.DatabaseContract.Nutrients;
+import com.chadamine.growbuddy.database.DatabaseHelpers.DatabaseHelper;
+import com.chadamine.growbuddy.database.DatabaseHelpers.LocationsHelper;
+import com.chadamine.growbuddy.database.DatabaseHelpers.NutrientsHelper;
+import com.chadamine.growbuddy.database.tables.LocationsTable;
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 public class GrowJournalPlusContentProvider extends ContentProvider {
 	
 	private DatabaseHelper databaseHelper;
-	
+	private LocationsHelper locationsHelper;
 	@Override
 	public boolean onCreate() {
 		Log.d("helperCreated", "journals helper created");
 		databaseHelper = new DatabaseHelper(getContext());
-		
+		locationsHelper = new LocationsHelper(getContext());
 		return false;
 	}
 
@@ -44,33 +46,35 @@ public class GrowJournalPlusContentProvider extends ContentProvider {
 		//switch(DatabaseContract.URI_MATCHER.match(uri)) {
 		case DatabaseContract.JOURNALS_ID:
 			queryBuilder.appendWhere(Journals.COL_ID + "=" + uri.getLastPathSegment());
-
-			//Log.d("databaseAssigned", "+ database assigned: journal helper. Database: " + database.toString());
 			Log.d("setDatabase", "+ querybuilder appended: journals_id");
 			
 		case DatabaseContract.JOURNALS:
 			queryBuilder.setTables(Journals.TABLE_NAME);
-			
 			Log.d("setDatabase", "+ querybuilder set: journals");
 			break;
 		
 		case DatabaseContract.NUTRIENTS_ID:
-			//queryBuilder.setTables(Nutrients.TABLE_NAME);
+			//database = new NutrientsHelper(getContext()).getWritableDatabase();
 			queryBuilder.appendWhere(Nutrients.COL_ID + "=" + uri.getLastPathSegment());
-			
 			Log.d("setDatabase", "+ type: nutrients_id");
 			
 		case DatabaseContract.NUTRIENTS:
 			queryBuilder.setTables(Nutrients.TABLE_NAME);
-			//NutrientsHelper nutrientsHelper = new NutrientsHelper(getContext());
-			//database = nutrientsHelper.getWritableDatabase();
-			//Log.d("databaseAssigned", "+ database assigned: nutrients helper. Database: " + database.toString());
-			//Log.d("helperCreated", "+ nutrients helper assigned in switch");
 			Log.d("setDatabase", "+ query builder table set: nutrients");
 			break;
 		
+		case DatabaseContract.LOCATIONS_ID:
+			//database = locationsHelper.getWritableDatabase();
+			//database.execSQL(LocationsTable.CREATE);
+			queryBuilder.appendWhere(Locations.COL_ID + "=" + uri.getLastPathSegment());
+			Log.d("setDatabase", "+ querybuilder appended, type: locations_id");
+		case DatabaseContract.LOCATIONS:
+			//database = locationsHelper.getWritableDatabase();
+			queryBuilder.setTables(Locations.TABLE_NAME);
+			Log.d("setDatabase", "+ querybuilder table set: locations");
+			break;
+			
 		default:
-			//database = nutrientsHelper.getWritableDatabase();
 			throw new IllegalArgumentException ("Unknown Uri: " + uri);
 			
 		}
@@ -90,7 +94,6 @@ public class GrowJournalPlusContentProvider extends ContentProvider {
 					+ "; queryBuilder: " + queryBuilder.getTables());
 		}
 		
-		//database.close();
 		cursor.setNotificationUri(getContext().getContentResolver(), uri);	
 	
 		return cursor;
@@ -102,14 +105,14 @@ public class GrowJournalPlusContentProvider extends ContentProvider {
 		switch(DatabaseContract.URI_MATCHER.match(uri)) {
 			case DatabaseContract.JOURNALS:
 				return Journals.CONTENT_TYPE;
-				
-			case DatabaseContract.JOURNAL_LOCATIONS_ID:
-				return Journals.CONTENT_ITEM_TYPE;
-				
 			case DatabaseContract.NUTRIENTS:
 				return Nutrients.CONTENT_TYPE;
 			case DatabaseContract.NUTRIENTS_ID:
 				return Nutrients.CONTENT_ITEM_TYPE;
+			case DatabaseContract.LOCATIONS:
+				return Locations.CONTENT_TYPE;
+			case DatabaseContract.LOCATIONS_ID:
+				return Locations.CONTENT_ITEM_TYPE;
 			default:
 				throw new IllegalArgumentException("Unsupported URI: " + uri);
 		}
@@ -121,7 +124,8 @@ public class GrowJournalPlusContentProvider extends ContentProvider {
 	@Override
 	public Uri insert(Uri uri, ContentValues values) {
 		//TODO: Add uriType switch
-		SQLiteDatabase database = databaseHelper.getWritableDatabase();
+		SQLiteDatabase database;
+		//= databaseHelper.getWritableDatabase();
 		int uriType = DatabaseContract.URI_MATCHER.match(uri);
 		long id = 0;
 		//SQLiteDatabase db = database;
@@ -129,16 +133,20 @@ public class GrowJournalPlusContentProvider extends ContentProvider {
 		
 		switch(uriType) {
 		case DatabaseContract.JOURNALS:
+			database = new DatabaseHelper(getContext()).getWritableDatabase();
 			id = database.insert(Journals.TABLE_NAME, null, values);
-			Uri.parse(Journals.TABLE_NAME + "/" + id);
 			getContext().getContentResolver().notifyChange(uri, null);
 			return Uri.parse(Journals.TABLE_NAME + "/" + id);
 			
+		case DatabaseContract.LOCATIONS:
+			database = locationsHelper.getWritableDatabase();
+			id = database.insert(Locations.TABLE_NAME, null, values);
+			getContext().getContentResolver().notifyChange(uri, null);
+			return Uri.parse(Locations.TABLE_NAME + "/" + id);
+			
 		case DatabaseContract.NUTRIENTS:
-			//NutrientsHelper nutrientsHelper = new NutrientsHelper(getContext());
-			//database = nutrientsHelper.getWritableDatabase();
+			database = new NutrientsHelper(getContext()).getWritableDatabase();
 			id = database.insert(Nutrients.TABLE_NAME, null, values);
-			Uri.parse(Nutrients.TABLE_NAME + "/" + id);
 			getContext().getContentResolver().notifyChange(uri, null);
 			return Uri.parse(Nutrients.TABLE_NAME + "/" + id);
 			

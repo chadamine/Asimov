@@ -5,35 +5,36 @@
 	android:layout_width="match_parent"
 	xmlns:tools="http://schemas.android.com/tools"
 	tools:context="com.chadamine.growbuddy.NutrientsActivity$PlaceholderFragment"
-	android:background="#74c2e1"
 	>
 
 	<RelativeLayout
 		android:layout_height="wrap_content"
-		android:layout_width="wrap_content">
-
+		android:layout_width="match_parent"
+		style="@style/list_box_container_portrait"
+		>
+	<RelativeLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/relativeNutrientBasicContainer"
+	    style="@style/list_box_header_strip">
 		<TextView
 			android:id="@+id/textNutrientDetailTitle"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_alignParentTop="true"
 			android:text="Nutrient Details"
-			android:layout_marginLeft="10dp"
-			android:layout_marginTop="10dp"
 			style="@style/title_text"
 			/>
+		</RelativeLayout>
 
 		<RelativeLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:id="@+id/fragmentnutrientdetailRelativeLayout1"
+			android:layout_below="@id/relativeNutrientBasicContainer"
 			android:paddingBottom="10dp"
-			android:paddingLeft="10dp"
-			android:layout_marginLeft="10dp"
-			android:paddingRight="10dp"
-			android:layout_marginRight="10dp"
-			android:layout_marginTop="10dp"
-			android:layout_below="@id/textNutrientDetailTitle">
+			style="@style/list_box"
+			>
 
 			<TextView
 				android:layout_height="wrap_content"
@@ -109,12 +110,9 @@
 			android:layout_height="wrap_content"
 			android:layout_below="@id/fragmentnutrientdetailRelativeLayout1"
 			android:layout_marginTop="10dp"
-			android:paddingLeft="10dp"
-			android:paddingRight="10dp"
-			android:layout_marginRight="10dp"
 			android:paddingBottom="10dp"
-			android:layout_marginLeft="10dp"
-			android:layout_marginBottom="10dp">
+			style="@style/list_box"
+			>
 
 			<TextView
 				android:layout_height="wrap_content"

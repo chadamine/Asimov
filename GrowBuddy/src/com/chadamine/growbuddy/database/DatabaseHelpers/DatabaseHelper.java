@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.chadamine.growbuddy.database.DatabaseContract;
 import com.chadamine.growbuddy.database.tables.JournalsTable;
+import com.chadamine.growbuddy.database.tables.LocationsTable;
 import com.chadamine.growbuddy.database.tables.NutrientsTable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -28,6 +29,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		//NutrientsTable.onCreate(db);
 		db.execSQL(NutrientsTable.CREATE);
 		Log.d("tableCreated", "nutrients table created in helper");
+		
+		db.execSQL(LocationsTable.CREATE);
 	}
 	
 	@Override

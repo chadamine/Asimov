@@ -85,10 +85,10 @@ public class LocationDetailsFragment extends Fragment {
 		Spinner sprLocations = (Spinner) v.findViewById(R.id.spinnerLocation);
 
 		uri = Locations.CONTENT_URI;
-		String[] from = { Locations.COL_NAME, Locations.COL_LOCATION, };
+		String[] from = { Locations.COL_NAME, Locations.COL_ADDRESS, };
 		int[] to = new int[] { android.R.id.text1 };
 		//Cursor cursor = activity.getContentResolver().query(uri, from, null, null, null);
-		SimpleCursorAdapter adapter = new SimpleCursorAdapter(activity, android.R.layout.simple_spinner_item, null, from, to);
+		SimpleCursorAdapter adapter = new SimpleCursorAdapter(activity, android.R.layout.simple_spinner_item, null, from, to, 0);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 	}
 

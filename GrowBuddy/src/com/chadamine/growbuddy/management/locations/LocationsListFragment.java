@@ -17,7 +17,9 @@ import android.view.View;
 import com.chadamine.growbuddy.R;
 import com.chadamine.growbuddy.database.DatabaseContract;
 import com.chadamine.growbuddy.database.DatabaseContract.Locations;
+
 import android.view.*;
+import android.widget.Toast;
 
 public class LocationsListFragment extends ListFragment 
 implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -50,15 +52,17 @@ implements LoaderManager.LoaderCallbacks<Cursor> {
 	}
 	
 	private void fillData() {
-			String[] from = new String[] { Locations.COL_NAME, Locations.COL_LOCATION };
+			String[] from = new String[] { Locations.COL_NAME, Locations.COL_ADDRESS};
 			int[] to = new int[] { R.id.tvNavItemTitle, R.id.tvNavItemDetails };
-		
-			getLoaderManager().initLoader(0, null, this);
 			
-			adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_nav, null, from, to, 0);
+			try {
+				getActivity().getSupportLoaderManager().initLoader(0, null, this);
+			
+			} catch (NullPointerException e) {
+				Toast.makeText(getActivity(), "error adapting database", Toast.LENGTH_SHORT).show();
+			}
+			adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_item_checkable, null, from, to, 0);
 			setListAdapter(adapter);
-			
-			if(adapter == null) throw new IllegalArgumentException("Error Adapting Database");
 	}
 
 	@Override
@@ -86,7 +90,7 @@ implements LoaderManager.LoaderCallbacks<Cursor> {
 	@Override
 	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
 		
-		String[] projection = { Locations.COL_ID, Locations.COL_NAME, Locations.COL_LOCATION };
+		String[] projection = { Locations.COL_ID, Locations.COL_NAME, Locations.COL_ADDRESS};
 		
 		CursorLoader loader = new CursorLoader(getActivity(), Locations.CONTENT_URI, projection, null, null, null);
 		return loader;

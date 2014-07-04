@@ -66,19 +66,19 @@ public class DatabaseContract {
 		public static final String TABLE_NAME = "locations";
 		public static final Uri CONTENT_URI = Uri.withAppendedPath(DatabaseContract.CONTENT_URI, TABLE_NAME);
 		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + TABLE_NAME;
-		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/location";
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/locations";
 		
 		public static final String COL_ID = "_id";
+		public static final String COL_TYPE = "type";
 		public static final String COL_NAME = "name";
 		public static final String COL_DETAILS = "details";
 		public static final String COL_DATE_CREATED = "date_created";
-		public static final String COL_LOCATION = "location";
+		public static final String COL_ADDRESS = "address";
 		public static final String COL_BATCH = "batch";
-		public static final String COL_TYPE = "type";
 		
 	}
 	
-	
+	/*
 	//	Journal Locations
 	public static final class JournalLocations implements Columns {
 		
@@ -98,7 +98,7 @@ public class DatabaseContract {
 		
 		}
 	
-	
+	*/
 	//	Nutrients
 	public static final class Nutrients implements Columns {
 		
@@ -343,8 +343,8 @@ public class DatabaseContract {
 	public static final int JOURNALS_ID = 2;
 	public static final int JOURNALS_HISTORY = 19;
 	public static final int JOURNALS_HISTORY_ID = 20;
-	public static final int JOURNAL_LOCATIONS = 5;
-	public static final int JOURNAL_LOCATIONS_ID = 6;
+	//public static final int JOURNAL_LOCATIONS = 5;
+	//public static final int JOURNAL_LOCATIONS_ID = 6;
 	
 	public static final int LOCATIONS = 3;
 	public static final int LOCATIONS_ID = 4;
@@ -377,8 +377,8 @@ public class DatabaseContract {
 		URI_MATCHER.addURI(AUTHORITY, Journals.TABLE_NAME + "/#", JOURNALS_ID);
 		URI_MATCHER.addURI(AUTHORITY, JournalsHistory.TABLE_NAME, JOURNALS_HISTORY);
 		URI_MATCHER.addURI(AUTHORITY, JournalsHistory.TABLE_NAME + "/#", JOURNALS_HISTORY_ID);
-		URI_MATCHER.addURI(AUTHORITY, JournalLocations.TABLE_NAME, JOURNAL_LOCATIONS);
-		URI_MATCHER.addURI(AUTHORITY, JournalLocations.TABLE_NAME + "/#", JOURNAL_LOCATIONS);
+		//URI_MATCHER.addURI(AUTHORITY, JournalLocations.TABLE_NAME, JOURNAL_LOCATIONS);
+		//URI_MATCHER.addURI(AUTHORITY, JournalLocations.TABLE_NAME + "/#", JOURNAL_LOCATIONS);
 		
 		URI_MATCHER.addURI(AUTHORITY, Nutrients.TABLE_NAME, NUTRIENTS);
 		URI_MATCHER.addURI(AUTHORITY, Nutrients.TABLE_NAME + "/#", NUTRIENTS_ID);

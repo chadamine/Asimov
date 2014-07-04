@@ -1,54 +1,53 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    
-    
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#dee7ef"
-    tools:context="com.chadamine.growbuddy.MainActivity$PlaceholderFragment" >
-    
-<RelativeLayout 
-    android:id="@+id/rlNavList"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:baselineAligned="false"
     android:orientation="horizontal"
-	style="@style/list_box_container_portrait"
+    tools:context="com.chadamine.growbuddy.MainActivity$PlaceholderFragment" >
+
+	<RelativeLayout 
+		android:id="@+id/rlNavList"
+		android:layout_weight=".5"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:orientation="horizontal"
+		style="@style/list_box_container_portrait"
     >
-      <TextView 
-        android:id="@+id/textNavTitle"
-        android:layout_height="30dp"
-		android:layout_width="match_parent"
-        style="@style/nav_list_title"
-	  	android:text="@string/nav_title"
+		<TextView 
+			android:id="@+id/textNavTitle"
+			android:layout_height="30dp"
+			android:layout_width="match_parent"
+			style="@style/nav_list_title"
+			android:text="@string/nav_title"
         />
-       
-     <ListView
-         android:id="@+id/lvNavigation"
-         style="@style/list_box"
-         android:layout_width="match_parent"
-         android:layout_height="221dp"
-         android:layout_below="@+id/textNavTitle"
-         android:layout_marginTop="1dp" />
-     </RelativeLayout>       
-      
-     <RelativeLayout
-         android:id="@+id/rlNews"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:orientation="horizontal"   
-         android:layout_below="@+id/rlNavList"  
-         style="@style/list_box_container_portrait"
-         >
+
+		<ListView
+			android:id="@+id/lvNavigation"
+			style="@style/list_box"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_below="@+id/textNavTitle"
+			android:layout_marginTop="1dp" />
+	</RelativeLayout>       
+
+	<RelativeLayout
+		android:id="@+id/rlNews"
+		android:layout_weight=".5"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="horizontal"   
+		style="@style/list_box_container_right"
+	>
      	<RelativeLayout
          	android:id="@+id/llListGroup"
          	android:layout_width="match_parent"
          	android:layout_height="wrap_content"
          	android:background="#0191c8"
          	android:layout_marginBottom="1dp"
-         	>
-         	
+		>
+
        		<TextView
        		    android:id="@+id/tvNewsTitle"
        		    android:layout_width="wrap_content"
@@ -57,8 +56,8 @@
        		    android:layout_marginBottom="1dp"
        		    android:text="RECENT ACTIVITY"
         		style="@style/nav_list_title"
-       		    />
-       		
+			/>
+
      		<Spinner 
             	android:id="@+id/spNewsFilter"
             	android:layout_width="30dp"
@@ -70,16 +69,16 @@
         		android:layout_toRightOf="@+id/tvNewsTitle"
         		android:layout_alignParentTop="true"
         		android:layout_alignParentRight="true"
-            	/>
-           </RelativeLayout>
-           
-           <ListView
-               android:id="@+id/lvNews"
-               android:layout_width="match_parent"
-               android:layout_height="221dp"
-               android:layout_below="@id/llListGroup"
-               android:background="#74c2e1" />
-          
-     </RelativeLayout>
-        
-</RelativeLayout>
+			/>
+		</RelativeLayout>
+
+		<ListView
+			android:id="@+id/lvNews"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_below="@id/llListGroup"
+			android:background="#74c2e1" />
+
+	</RelativeLayout>
+
+</LinearLayout>

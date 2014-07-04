@@ -86,9 +86,11 @@ public class NutrientsFragment extends Fragment {
 		//if(type.length() > 0)
 			//nutrientValues.put(Nutrients.COL_TYPE, type);
 		if(mol.length() > 0) 
-			nutrientValues.put(Nutrients.COL_MOL_WEIGHT, mol);
+			formulaValues.put(Nutrients.COL_MOL_WEIGHT, mol);
 		if(density.length() > 0)
 			nutrientValues.put(Nutrients.COL_DENSITY, density);
+		//if(molFormula.length() > 0) 
+			//formulaValues.put(Nutrients.Col_MOL_FORMULA, molFormula);
 		
 		if(solubility.length() > 0) {
 			int sol = -1;

@@ -1,28 +1,57 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     >
     <RelativeLayout 
-		android:id="@+id/llLocationsList"
+		android:id="@+id/llLocationssList"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:orientation="horizontal"
 		style="@style/list_box_container_portrait"
     >
+    <RelativeLayout
+        android:id="@+id/relativeLocationsTitleHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
 		<TextView 
-			android:id="@+id/tvLocationsTitle"
+			android:id="@+id/textLocationsTitle"
 			android:layout_height="30dp"
 			android:layout_width="match_parent"
 			style="@style/nav_list_title"
 			android:text="@string/nav_title"
         />
+		
+		<Button 
+		    android:id="@+id/buttonDeleteLocations"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="Delete Location"
+		    style="@style/title_text"
+		    android:background="@drawable/button_background"
+		    android:layout_alignTop="@id/textLocationsTitle"
+		    android:layout_alignBottom="@id/textLocationsTitle"
+		    android:layout_alignParentRight="true"
+		    />
+		<Button 
+		    android:id="@+id/buttonAddLocations"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="Add Location"
+		    style="@style/title_text"
+		    android:background="@drawable/button_background"
+		    android:layout_toLeftOf="@id/buttonDeleteLocations"
+		    android:layout_alignTop="@id/textLocationsTitle"
+		    android:layout_alignBottom="@id/textLocationsTitle"
+		    
+		    />
+    </RelativeLayout>
 
 		<ListView
 			android:id="@android:id/list"
 			style="@style/list_box"
 			android:layout_width="match_parent"
 			android:layout_height="221dp"
-			android:layout_below="@id/textJournalTitle"
+			android:layout_below="@id/relativeLocationsTitleHeader"
 			android:layout_marginTop="1dp" />
 	</RelativeLayout>   
 </RelativeLayout>

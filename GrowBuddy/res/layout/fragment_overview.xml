@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:baselineAligned="false"
-    android:background="#000000"
  	>
  	<FrameLayout
  	    android:id="@+id/frameNav"
@@ -14,7 +13,13 @@
  	    />
  	    
     <FrameLayout
-        android:id="@+id/frameContent"
+        android:id="@+id/frameList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        />
+     <FrameLayout
+        android:id="@+id/frameDetails"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="3"

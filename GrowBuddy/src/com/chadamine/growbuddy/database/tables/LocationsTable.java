@@ -11,7 +11,7 @@ public class LocationsTable {
 		+ Locations.TABLE_NAME + "("
 		+ Locations.COL_ID + " integer primary key autoincrement, "
 		+ Locations.COL_NAME + " text not null, "
-		+ Locations.COL_LOCATION + " text not null)";
+		+ Locations.COL_ADDRESS + " text not null)";
 
 		public static void onCreate(SQLiteDatabase db) {
 			db.execSQL(CREATE);
