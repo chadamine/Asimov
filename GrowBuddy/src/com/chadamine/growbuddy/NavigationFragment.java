@@ -1,20 +1,22 @@
 package com.chadamine.growbuddy;
 
 import android.annotation.TargetApi;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.chadamine.growbuddy.cultivation.CultivationListFragment;
 import com.chadamine.growbuddy.cultivation.plants.PlantsListFragment;
@@ -96,11 +98,99 @@ public class NavigationFragment extends Fragment {
 		
 		} catch (NullPointerException e) {
 			Toast.makeText(getActivity(), "no list view found", Toast.LENGTH_SHORT).show();
+			
+			final ToggleButton btnJournals = (ToggleButton) r.findViewById(R.id.buttonJournals);
+			final ToggleButton btnSchedules = (ToggleButton) r.findViewById(R.id.buttonSchedule);
+			final ToggleButton btnCultivation = (ToggleButton) r.findViewById(R.id.buttonCultivation);
+			final ToggleButton btnAnalysis = (ToggleButton) r.findViewById(R.id.buttonAnalysis);
+			final Fragment container = manager.findFragmentById(R.id.frameList);
+			
+			btnJournals.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					btnJournals.setEnabled(false);
+					
+					btnSchedules.setChecked(false);
+					btnSchedules.setEnabled(true);
+					
+					btnAnalysis.setChecked(false);
+					btnAnalysis.setEnabled(true);
+					
+					btnCultivation.setChecked(false);
+					btnCultivation.setEnabled(true);
+					
+					if(container instanceof JournalsListFragment == false) 
+						manager
+							.beginTransaction()
+							.replace(R.id.frameList, new JournalsListFragment())
+							.addToBackStack("journalList")
+							.commit();
+				}
+			});
+			btnSchedules.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					btnSchedules.setEnabled(false);
+					
+					btnJournals.setChecked(false);
+					btnJournals.setEnabled(true);
+					
+					btnAnalysis.setChecked(false);
+					btnAnalysis.setEnabled(true);
+					
+					btnCultivation.setChecked(false);
+					btnCultivation.setEnabled(true);
+					
+					manager
+					.beginTransaction()
+					.replace(R.id.frameList, new PlantsListFragment())
+					.addToBackStack("plantsList")
+					.commit();	
+				}
+			});
+			
+			btnCultivation.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					
+					((ToggleButton) v).setEnabled(false);
+					
+					btnJournals.setChecked(false);
+					btnJournals.setEnabled(true);
+					
+					btnAnalysis.setChecked(false);
+					btnAnalysis.setEnabled(true);
+					
+					btnSchedules.setChecked(false);
+					btnSchedules.setEnabled(true);
+					
+					manager
+					.beginTransaction()
+					.replace(R.id.frameList, new CultivationListFragment())
+					.addToBackStack("cultivationList")
+					.commit();	
+				}
+			});
+			
+			btnAnalysis.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					btnJournals.setChecked(false);
+					btnSchedules.setChecked(false);
+					btnCultivation.setChecked(false);
+					
+					
+				}
+			});
 		}
 		
 		Spinner spNavOptions = (Spinner) r.findViewById(R.id.spNewsFilter);
-		ListView lvNews = (ListView) r.findViewById(R.id.lvNews);
-		lvNews.setBackgroundColor(Color.WHITE);
+		//ListView lvNews = (ListView) r.findViewById(R.id.lvNews);
+		//lvNews.setBackgroundColor(Color.WHITE);
 		
 		String[] newsSort = { "Date Due", "Name" };
 

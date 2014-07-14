@@ -12,6 +12,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ToggleButton;
 
 import com.chadamine.growbuddy.cultivation.CultivationListFragment;
 import com.chadamine.growbuddy.cultivation.nutrients.NutrientsFragment;
@@ -88,6 +90,15 @@ ActionBar.TabListener {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.schedule, menu);
 		return true;
+	}
+	
+	public void onToggleClicked(View v) {
+		ToggleButton toggle = (ToggleButton) v;
+		
+		if (toggle.isChecked())
+			toggle.setChecked(true);
+		
+	
 	}
 
 	@Override

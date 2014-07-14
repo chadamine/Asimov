@@ -9,8 +9,7 @@
 
 	<RelativeLayout 
 		android:id="@+id/rlNavList"
-		android:layout_weight=".5"
-		android:layout_width="wrap_content"
+		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:orientation="horizontal"
 		style="@style/list_box_container_portrait"
@@ -23,72 +22,63 @@
 			android:text="@string/nav_title"
         />
 
-		<Button
+		<ToggleButton
 			android:id="@+id/buttonJournals"
-			
 			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_below="@+id/textNavTitle"
+		    android:layout_height="30dp"
+			android:layout_below="@id/textNavTitle"
 			android:layout_marginTop="1dp"
-			android:text="Journals"
+			android:onClick="onToggleClicked"
+			android:background="@drawable/toggle_selector"
+			android:textOn="Journals"
+			android:textOff="Journals"
+			style="@style/button_title_text"
 			/>
-		<Button 
+		<ToggleButton 
 		    android:id="@+id/buttonSchedule"
 		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
+		    android:layout_height="30dp"
 		    android:layout_toRightOf="@id/buttonJournals"
+		    android:layout_below="@id/textNavTitle"
 		    android:layout_marginTop="1dp"
 		    android:text="Schedule"
+			android:background="@drawable/toggle_selector"
+		    android:textOn="Schedule"
+			android:textOff="Schedule"
+			android:onClick="onToggleClicked"
+		    style="@style/button_title_text"
+		    />
+		<ToggleButton
+		    android:id="@+id/buttonCultivation"
+		    android:layout_width="wrap_content"
+		    android:layout_height="30dp"
+		    android:layout_toRightOf="@id/buttonSchedule"
+		    android:layout_below="@id/textNavTitle"
+		    android:layout_marginTop="1dp"
+		    android:textOn="Cultivation"
+			android:background="@drawable/toggle_selector"
+			android:textOff="Cultivation"
+			android:onClick="onToggleClicked"
+		    android:text="Cultivation"
+		    style="@style/button_title_text"
+			
+			/>
+		<ToggleButton
+		    android:id="@+id/buttonAnalysis"
+		    android:layout_width="wrap_content"
+		    android:layout_height="30dp"
+		    android:layout_below="@id/textNavTitle"
+		    android:layout_toRightOf="@id/buttonCultivation"
+		    android:layout_marginTop="1dp"
+			android:background="@drawable/toggle_selector"
+		    android:text="Analysis"
+		    android:textOn="Analysis"
+			android:textOff="Analysis"
+			android:onClick="onToggleClicked"
+		    style="@style/button_title_text"
 		    />
 	</RelativeLayout>       
 
-	<RelativeLayout
-		android:id="@+id/rlNews"
-		android:layout_weight=".5"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:orientation="horizontal"   
-		style="@style/list_box_container_right"
-	>
-     	<RelativeLayout
-         	android:id="@+id/llListGroup"
-         	android:layout_width="match_parent"
-         	android:layout_height="wrap_content"
-         	android:background="#0191c8"
-         	android:layout_marginBottom="1dp"
-		>
 
-       		<TextView
-       		    android:id="@+id/tvNewsTitle"
-       		    android:layout_width="wrap_content"
-       		    android:layout_height="wrap_content"
-       		    android:layout_alignParentTop="true"
-       		    android:layout_marginBottom="1dp"
-       		    android:text="RECENT ACTIVITY"
-        		style="@style/nav_list_title"
-			/>
-
-     		<Spinner 
-            	android:id="@+id/spNewsFilter"
-            	android:layout_width="30dp"
-            	android:layout_height="wrap_content"
-            	android:layout_alignTop="@+id/tvNewsTitle"
-            	android:layout_alignBottom="@+id/tvNewsTitle"
-        		android:layout_marginRight="1dp"
-        		android:layout_marginLeft="15dp"
-        		android:layout_toRightOf="@+id/tvNewsTitle"
-        		android:layout_alignParentTop="true"
-        		android:layout_alignParentRight="true"
-			/>
-		</RelativeLayout>
-
-		<ListView
-			android:id="@+id/lvNews"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_below="@id/llListGroup"
-			android:background="#74c2e1" />
-
-	</RelativeLayout>
 
 </LinearLayout>
