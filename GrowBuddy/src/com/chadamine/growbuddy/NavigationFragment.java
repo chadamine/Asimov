@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.chadamine.growbuddy.cultivation.CultivationListFragment;
 import com.chadamine.growbuddy.cultivation.plants.PlantsListFragment;
@@ -42,12 +43,12 @@ public class NavigationFragment extends Fragment {
 		//activity = getActivity();
 		final FragmentManager manager = getActivity().getSupportFragmentManager();
 		
-		ListView lvNav = (ListView) r.findViewById(R.id.lvNavigation);
+		ListView lvNav;
 		
-		if (lvNav != null) {
+		try {
+			lvNav = (ListView) r.findViewById(R.id.lvNavigation);
 			
-		
-		lvNav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			lvNav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
@@ -93,7 +94,10 @@ public class NavigationFragment extends Fragment {
 		
 		lvNav.setAdapter(adapter);
 		
+		} catch (NullPointerException e) {
+			Toast.makeText(getActivity(), "no list view found", Toast.LENGTH_SHORT).show();
 		}
+		
 		Spinner spNavOptions = (Spinner) r.findViewById(R.id.spNewsFilter);
 		ListView lvNews = (ListView) r.findViewById(R.id.lvNews);
 		lvNews.setBackgroundColor(Color.WHITE);
