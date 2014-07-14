@@ -69,7 +69,7 @@ public class JournalDetailsFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				getActivity().getSupportFragmentManager().popBackStack("journalDetails", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-				//begin Transaction().remove(new JournalListFragment()).commit();
+				//begin Transaction().remove(new JournalsListFragment()).commit();
 				
 			}
 		});

@@ -21,7 +21,7 @@ import android.widget.Toast;
 import com.chadamine.growbuddy.R;
 import com.chadamine.growbuddy.database.DatabaseContract.Journals;
 
-public class JournalListFragment extends ListFragment 
+public class JournalsListFragment extends ListFragment 
 	implements LoaderManager.LoaderCallbacks<Cursor> {
 	
 	private FragmentActivity activity;

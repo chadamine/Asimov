@@ -13,10 +13,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.chadamine.growbuddy.cultivation.CultivationListFragment;
+import com.chadamine.growbuddy.cultivation.nutrients.NutrientsFragment;
+import com.chadamine.growbuddy.cultivation.nutrients.NutrientsListFragment;
+import com.chadamine.growbuddy.cultivation.plants.PlantsListFragment;
 import com.chadamine.growbuddy.journals.JournalDetailsFragment;
-import com.chadamine.growbuddy.journals.JournalListFragment;
-import com.chadamine.growbuddy.cultivation.plants.*;
-import com.chadamine.growbuddy.cultivation.*;
+import com.chadamine.growbuddy.journals.JournalsListFragment;
+import com.chadamine.growbuddy.management.locations.LocationsListFragment;
 
 public class Main extends ActionBarActivity implements
 ActionBar.TabListener {
@@ -112,12 +115,18 @@ ActionBar.TabListener {
 		
 		if(detailsContainer instanceof JournalDetailsFragment)
 			manager.popBackStack("journalDetails",  FragmentManager.POP_BACK_STACK_INCLUSIVE); 
-		if (listContainer instanceof JournalListFragment)
+		if (listContainer instanceof JournalsListFragment)
 			manager.popBackStack("journalList", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 		if (listContainer instanceof PlantsListFragment)
 			manager.popBackStack("plantsList", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 		if (listContainer instanceof CultivationListFragment)
 			manager.popBackStack("cultivationList", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+		if (listContainer instanceof LocationsListFragment)
+			manager.popBackStack("locationsList", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+		if (listContainer instanceof NutrientsListFragment)
+			manager.popBackStack("nutrientsList", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+		if (detailsContainer instanceof NutrientsFragment)
+			manager.popBackStack("nutrientDetails", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 		if (listContainer instanceof BlankFragment)
 			finish();
 	}

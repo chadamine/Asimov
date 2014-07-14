@@ -17,7 +17,7 @@ import android.widget.Spinner;
 
 import com.chadamine.growbuddy.cultivation.CultivationListFragment;
 import com.chadamine.growbuddy.cultivation.plants.PlantsListFragment;
-import com.chadamine.growbuddy.journals.JournalListFragment;
+import com.chadamine.growbuddy.journals.JournalsListFragment;
 
 public class NavigationFragment extends Fragment {
 	
@@ -49,13 +49,13 @@ public class NavigationFragment extends Fragment {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				
-				Intent intent;
+				//Intent intent;
 				
 				switch(position) {
 				case 0:	// Journals
 					manager
 					.beginTransaction()
-					.replace(R.id.frameList, new JournalListFragment())
+					.replace(R.id.frameList, new JournalsListFragment())
 					.addToBackStack("journalList")
 					.commit();
 					break;
