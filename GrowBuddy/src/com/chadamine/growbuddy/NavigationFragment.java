@@ -43,6 +43,10 @@ public class NavigationFragment extends Fragment {
 		final FragmentManager manager = getActivity().getSupportFragmentManager();
 		
 		ListView lvNav = (ListView) r.findViewById(R.id.lvNavigation);
+		
+		if (lvNav != null) {
+			
+		
 		lvNav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
@@ -84,18 +88,21 @@ public class NavigationFragment extends Fragment {
 			}
 		});
 		
+		String[] navs = new String[] {"Journals",  "Schedule", "Cultivation", "Analysis" };
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.row_nav, R.id.tvNavItemTitle, navs);
+		
+		lvNav.setAdapter(adapter);
+		
+		}
 		Spinner spNavOptions = (Spinner) r.findViewById(R.id.spNewsFilter);
 		ListView lvNews = (ListView) r.findViewById(R.id.lvNews);
 		lvNews.setBackgroundColor(Color.WHITE);
 		
 		String[] newsSort = { "Date Due", "Name" };
 
-		String[] navs = new String[] {"Journals",  "Schedule", "Cultivation", "Analysis" };
 		
 		//ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.navSort, android.R.layout.simple_spinner_item);	
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.row_nav, R.id.tvNavItemTitle, navs);
-		
-		lvNav.setAdapter(adapter);
+	
 		
 		//spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		//spNavOptions.setAdapter(spinnerAdapter);

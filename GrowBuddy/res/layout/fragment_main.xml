@@ -20,16 +20,26 @@
 			android:layout_height="30dp"
 			android:layout_width="match_parent"
 			style="@style/nav_list_title"
-			android:text="normal"
+			android:text="@string/nav_title"
         />
 
-		<ListView
-			android:id="@+id/lvNavigation"
-			style="@style/list_box"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
+		<Button
+			android:id="@+id/buttonJournals"
+			
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
 			android:layout_below="@+id/textNavTitle"
-			android:layout_marginTop="1dp" />
+			android:layout_marginTop="1dp"
+			android:text="Journals"
+			/>
+		<Button 
+		    android:id="@+id/buttonSchedule"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_toRightOf="@id/buttonJournals"
+		    android:layout_marginTop="1dp"
+		    android:text="Schedule"
+		    />
 	</RelativeLayout>       
 
 	<RelativeLayout
