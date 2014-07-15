@@ -13,6 +13,14 @@
         -->
     </style>
     
+    <style name="CustomTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/ActionBarTheme</item>
+    </style>
+    
+    <style name="ActionBarTheme" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@drawable/button_background</item>
+    </style>
+    
     <!-- Detail View Styles -->
     <style name="detail_text">
         <item name="android:layout_marginTop">30dp</item>

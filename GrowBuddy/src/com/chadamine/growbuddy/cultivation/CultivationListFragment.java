@@ -31,8 +31,9 @@ public class CultivationListFragment extends ListFragment {
 		setListAdapter(adapter);
 		
 		return root;
+		
 	}
-	
+		
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		populateList(view);

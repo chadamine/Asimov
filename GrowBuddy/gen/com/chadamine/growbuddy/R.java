@@ -1091,7 +1091,8 @@ containing a value of this type.
         public static final int ic_launcher=0x7f02005f;
         public static final int innerglow=0x7f020060;
         public static final int livejournal_256=0x7f020061;
-        public static final int toggle_selector=0x7f020062;
+        public static final int tab_selector=0x7f020062;
+        public static final int toggle_selector=0x7f020063;
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f050042;
@@ -1179,7 +1180,6 @@ containing a value of this type.
         public static final int lvNews=0x7f050073;
         public static final int middle=0x7f050012;
         public static final int never=0x7f050009;
-        public static final int new_item=0x7f0500a2;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
         public static final int nutrientsListContainer=0x7f050041;
@@ -1228,6 +1228,7 @@ containing a value of this type.
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f050039;
         public static final int tabMode=0x7f050002;
+        public static final int tabs_display=0x7f0500a2;
         public static final int textAddImage=0x7f050043;
         public static final int textAddress=0x7f05004c;
         public static final int textBlankFragment=0x7f05005c;
@@ -1452,6 +1453,7 @@ containing a value of this type.
         public static final int title_tab_plants=0x7f0a0011;
     }
     public static final class style {
+        public static final int ActionBarTheme=0x7f0b008d;
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
@@ -1478,7 +1480,17 @@ containing a value of this type.
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f0b00a0;
+        public static final int AppTheme=0x7f0b00a2;
+        /**  the theme applied to the application or activity 
+         */
+        public static final int CustomActionBarTheme=0x7f0b00a3;
+        public static final int CustomTheme=0x7f0b008c;
+        /**  ActionBar styles 
+         */
+        public static final int MyActionBar=0x7f0b00a4;
+        /**  ActionBar tabs styles 
+         */
+        public static final int MyActionBarTabs=0x7f0b00a5;
         /**  Mimic text appearance in select_dialog_item.xml 
          */
         public static final int TextAppearance_AppCompat_Base_CompactMenu_Dialog=0x7f0b0063;
@@ -1681,34 +1693,34 @@ containing a value of this type.
         public static final int Widget_AppCompat_ProgressBar=0x7f0b000a;
         public static final int Widget_AppCompat_ProgressBar_Horizontal=0x7f0b0009;
         public static final int Widget_AppCompat_Spinner_DropDown_ActionBar=0x7f0b0022;
-        public static final int buttonTitle=0x7f0b0091;
-        public static final int button_title_text=0x7f0b009e;
-        public static final int detail_edit_text=0x7f0b008d;
+        public static final int buttonTitle=0x7f0b0093;
+        public static final int button_title_text=0x7f0b00a0;
+        public static final int detail_edit_text=0x7f0b008f;
         /**  Detail View Styles 
          */
-        public static final int detail_text=0x7f0b008c;
-        public static final int detail_title_text=0x7f0b008e;
-        public static final int image_box=0x7f0b0092;
-        public static final int light_blue=0x7f0b009c;
+        public static final int detail_text=0x7f0b008e;
+        public static final int detail_title_text=0x7f0b0090;
+        public static final int image_box=0x7f0b0094;
+        public static final int light_blue=0x7f0b009e;
         /**  <item name="android:popupBackground">@style/button</item> 
          */
-        public static final int list_box=0x7f0b0095;
-        public static final int list_box_container_bottom=0x7f0b0099;
-        public static final int list_box_container_portrait=0x7f0b0097;
-        public static final int list_box_container_right=0x7f0b0098;
-        public static final int list_box_deleted=0x7f0b0096;
-        public static final int list_box_header_strip=0x7f0b0090;
+        public static final int list_box=0x7f0b0097;
+        public static final int list_box_container_bottom=0x7f0b009b;
+        public static final int list_box_container_portrait=0x7f0b0099;
+        public static final int list_box_container_right=0x7f0b009a;
+        public static final int list_box_deleted=0x7f0b0098;
+        public static final int list_box_header_strip=0x7f0b0092;
         /**  Sortable List Box Styles 
          */
-        public static final int list_item=0x7f0b008f;
-        public static final int list_item_frame=0x7f0b0094;
-        public static final int list_item_frame_small=0x7f0b0093;
-        public static final int nav_list_title=0x7f0b009f;
-        public static final int nav_row_detail=0x7f0b009b;
-        public static final int nav_row_title=0x7f0b009a;
+        public static final int list_item=0x7f0b0091;
+        public static final int list_item_frame=0x7f0b0096;
+        public static final int list_item_frame_small=0x7f0b0095;
+        public static final int nav_list_title=0x7f0b00a1;
+        public static final int nav_row_detail=0x7f0b009d;
+        public static final int nav_row_title=0x7f0b009c;
         /**  text styles 
          */
-        public static final int title_text=0x7f0b009d;
+        public static final int title_text=0x7f0b009f;
     }
     public static final class styleable {
         /**  ============================================ 

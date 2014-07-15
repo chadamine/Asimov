@@ -7,11 +7,11 @@
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
-        app:showAsAction="never"/>
+        app:showAsAction="always"/>
     <item
-        android:id="@+id/new_item"
+        android:id="@+id/tabs_display"
         android:orderInCategory="200"
-        android:title="New Item"
-        app:showAsAction="never" />
+        android:title="Hide Tabs"
+        app:showAsAction="always" />
 
 </menu>

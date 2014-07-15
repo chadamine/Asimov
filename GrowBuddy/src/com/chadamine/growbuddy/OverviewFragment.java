@@ -55,27 +55,34 @@ public class OverviewFragment extends Fragment {
 		super.onCreateView(inflater, container, savedInstanceState);
 		
 		activity = getActivity();
-		activity.getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 	
 		fragmentManager = activity.getSupportFragmentManager();
-/*		
+		
 		// Use window manager and systemService to get display
 		WindowManager wm = (WindowManager) activity.getSystemService(activity.WINDOW_SERVICE);
 		Display display = wm.getDefaultDisplay();
 		//Display display = activity.getWindowManager().getDefaultDisplay();
-		
+	/*	
 		// Get display dimensions based on API 
 		if (currentApi <= android.os.Build.VERSION_CODES.HONEYCOMB) {
 			width = display.getWidth();
 			height = display.getHeight();
 		} else {
+		*/
 			Point displaySize = new Point();
 			display.getSize(displaySize);
 			
-			width = displaySize.x;
-			height = displaySize.y;
-		}
+			int width = displaySize.x;
+			int height = displaySize.y;
+		//}
+	
+			Toast.makeText(getActivity(), "width is: " + width + "; height is: " + height, Toast.LENGTH_SHORT).show();
 			
+	if (width > 1500 || height > 1500) {
+		activity.getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+		
+	}
+			/*
 		int rotation = display.getRotation();
 		
 		final int undefined = Configuration.ORIENTATION_UNDEFINED;

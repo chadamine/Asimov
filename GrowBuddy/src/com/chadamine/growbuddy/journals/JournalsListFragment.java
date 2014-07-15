@@ -92,7 +92,7 @@ public class JournalsListFragment extends ListFragment
 			int[] to = new int[] { R.id.textTitle, R.id.textDetails };
 		
 			try {
-			getActivity().getSupportLoaderManager().initLoader(0, null, this);
+			getActivity().getSupportLoaderManager().initLoader(3, null, this);
 			} catch (NullPointerException e){
 				Toast.makeText(activity, "loader could not be initialized", Toast.LENGTH_SHORT).show();
 			}

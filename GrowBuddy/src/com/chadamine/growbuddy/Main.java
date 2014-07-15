@@ -88,7 +88,7 @@ ActionBar.TabListener {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.schedule, menu);
+		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 	
@@ -107,8 +107,22 @@ ActionBar.TabListener {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
+		ActionBar actionBar = getSupportActionBar();
+		
 		if (id == R.id.action_settings) {
 			return true;
+		}
+		
+		if (id == R.id.tabs_display) {
+			if (actionBar.getNavigationMode() == ActionBar.NAVIGATION_MODE_STANDARD) { 
+				actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+				item.setTitle("Hide Tabs");
+			}
+			
+			else {
+				actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+				item.setTitle("Show Tabs");
+			}
 		}
 		return super.onOptionsItemSelected(item);
 	}

@@ -30,9 +30,25 @@ public class NutrientsListFragment extends ListFragment
 	private CursorAdapter adapter;
 	
 	@Override
+	public void onResume( ) {
+		super.onResume();
+		
+		fillData();
+	}
+	
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		fillData();
+	
 	}
+	
+	@Override
+	public void onDestroy() {
+		//adapter.swapCursor(null);
+	}
+	
+	
 	@Override 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
@@ -66,7 +82,7 @@ public class NutrientsListFragment extends ListFragment
 			}
 		});
 		
-		fillData();
+		//fillData();
 		
 		return view;
 	}
@@ -89,7 +105,7 @@ public class NutrientsListFragment extends ListFragment
 			setListAdapter(adapter);
 			Log.d("listAdapterSet", "+ - list adapter set");
 		} catch (NullPointerException e) {
-			Toast.makeText(activity, "! - adapter could not be set", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), "! - adapter could not be set", Toast.LENGTH_SHORT).show();
 		}
 			
 		//Toast.makeText(getActivity(), "list adapter set", Toast.LENGTH_SHORT).show();;
