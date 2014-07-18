@@ -49,7 +49,7 @@ public class JournalsListFragment extends ListFragment
 			public void onClick(View v) {
 				manager
 				.beginTransaction()
-				.replace(R.id.frameDetails, new JournalDetailsFragment())
+				.replace(R.id.journalFrameList, new JournalDetailsFragment())
 				.addToBackStack("journalDetails")
 				.commit();
 			}

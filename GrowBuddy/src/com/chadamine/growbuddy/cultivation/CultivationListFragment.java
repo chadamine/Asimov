@@ -52,13 +52,13 @@ public class CultivationListFragment extends ListFragment {
 			
 				//FrameLayout frameList = (FrameLayout) theView.findViewById(R.id.frameList);
 				manager = getActivity().getSupportFragmentManager();	
-				//BlankFragment blank = (BlankFragment) theView.findViewById(R.layout.fragment_blank);
+				//SchedulesFragment blank = (SchedulesFragment) theView.findViewById(R.layout.fragment_blank);
 				switch(position) {
 				
 				case 0:	// Plants
 					manager
 						.beginTransaction()
-						.replace(R.id.frameList, new PlantsListFragment())
+						.replace(R.id.cultivationFrameList, new PlantsListFragment())
 						.addToBackStack("plantsList")
 						.commit();
 					
@@ -66,7 +66,7 @@ public class CultivationListFragment extends ListFragment {
 				case 1: // Nutrients
 					manager
 						.beginTransaction()
-						.replace(R.id.frameList, new NutrientsListFragment())
+						.replace(R.id.cultivationFrameList, new NutrientsListFragment())
 						.addToBackStack("nutrientsList")
 						.commit();
 					break;
@@ -82,7 +82,7 @@ public class CultivationListFragment extends ListFragment {
 				case 6:	// Locations
 					manager
 					.beginTransaction()
-					.replace(R.id.frameList, new LocationsListFragment())
+					.replace(R.id.cultivationFrameList, new LocationsListFragment())
 					.addToBackStack("locationsList")
 					.commit();
 					break;

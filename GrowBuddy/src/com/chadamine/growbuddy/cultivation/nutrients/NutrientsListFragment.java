@@ -1,25 +1,28 @@
 package com.chadamine.growbuddy.cultivation.nutrients;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
-
 import com.chadamine.growbuddy.R;
 import com.chadamine.growbuddy.database.DatabaseContract.Nutrients;
 import com.chadamine.growbuddy.database.DatabaseContract.NutrientSolubilities;
 import com.chadamine.growbuddy.database.DatabaseContract.NutrientFormulas;
-
 import android.support.v4.widget.*;
 import android.support.v4.app.*;
+import android.annotation.TargetApi;
 import android.database.*;
 import android.support.v4.content.*;
 import android.database.sqlite.*;
+import android.graphics.Point;
 import android.widget.Toast;
 
 
@@ -45,6 +48,7 @@ public class NutrientsListFragment extends ListFragment
 	
 	@Override
 	public void onDestroy() {
+		super.onDestroy();
 		//adapter.swapCursor(null);
 	}
 	
@@ -64,11 +68,26 @@ public class NutrientsListFragment extends ListFragment
 		
 		btnAdd.setOnClickListener(new View.OnClickListener() {
 			
+			@TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
 			@Override
 			public void onClick(View v) {
-				manager
+				
+				WindowManager wm = (WindowManager) activity.getSystemService(activity.WINDOW_SERVICE);
+				Display display = wm.getDefaultDisplay();
+				Point displaySize = new Point();
+				display.getSize(displaySize);
+				
+				int width = displaySize.x;
+				int height = displaySize.y;
+			//}
+		
+				//Toast.makeText(getActivity(), "width is: " + width + "; height is: " + height, Toast.LENGTH_SHORT).show();
+				
+		if (width > 1500 || height > 1500)
+				
+			manager
 				.beginTransaction()
-				.replace(R.id.frameDetails, new NutrientsFragment())
+				.replace(R.id.cultivationFrameDetails, new NutrientsFragment())
 				.addToBackStack("nutrientDetails")
 				.commit();
 			}

@@ -1,7 +1,6 @@
 package com.chadamine.growbuddy;
 
-import java.util.Locale;
-
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,18 +9,25 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ToggleButton;
 
+import com.chadamine.growbuddy.analysis.AnalysisOverviewFragment;
 import com.chadamine.growbuddy.cultivation.CultivationListFragment;
+import com.chadamine.growbuddy.cultivation.CultivationOverviewFragmentContainer;
 import com.chadamine.growbuddy.cultivation.nutrients.NutrientsFragment;
 import com.chadamine.growbuddy.cultivation.nutrients.NutrientsListFragment;
 import com.chadamine.growbuddy.cultivation.plants.PlantsListFragment;
 import com.chadamine.growbuddy.journals.JournalDetailsFragment;
 import com.chadamine.growbuddy.journals.JournalsListFragment;
+import com.chadamine.growbuddy.journals.JournalsOverviewContainer;
 import com.chadamine.growbuddy.management.locations.LocationsListFragment;
+import com.chadamine.growbuddy.schedule.ScheduleOverviewFragment;
 
 public class Main extends ActionBarActivity implements
 ActionBar.TabListener {
@@ -41,34 +47,69 @@ ActionBar.TabListener {
 	/**
 	 * The {@link ViewPager} that will host the section contents.
 	 */
-	ViewPager mViewPager;
+	public ViewPager mViewPager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_schedule);
-
+		Log.d("activityCreated", "+ main activity created");
+		
+		setContentView(R.layout.activity_main);
+		Log.d("activityContentViewSet", "+ main activity content view set");
+		
 		// Set up the action bar.
 		final ActionBar actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the activity.
-		mSectionsPagerAdapter = new SectionsPagerAdapter(
-			getSupportFragmentManager());
+		mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+		Log.d("sectionsPagerAdapterCreated", "+ sectionsPagerAdapter created in Main activity (line 65)");
 
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
+		Log.d("viewPagerSet", "+ viewPager set in Main activity (line 69)");
+		
 		mViewPager.setAdapter(mSectionsPagerAdapter);
+		Log.d("viewPagerAdapterSet", "+ viewPagerAdapterSet in Main activity (line 72)");
 
 		// When swiping between different sections, select the corresponding
 		// tab. We can also use ActionBar.Tab#select() to do this if we have
 		// a reference to the Tab.
+		
 		mViewPager
 			.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+				
+				private int current;
+				
 				@Override
 				public void onPageSelected(int position) {
+					
+					FragmentManager manager = getSupportFragmentManager();
+					Fragment list = manager.findFragmentById(R.id.frameList);
+					Fragment details = manager.findFragmentById(R.id.frameDetails);
+					
+					current = position;
+					
 					actionBar.setSelectedNavigationItem(position);
+					
+					/*
+					if(actionBar.getNavigationMode() == ActionBar.NAVIGATION_MODE_TABS)
+						actionBar.setSelectedNavigationItem(position);
+					else
+						if (list instanceof JournalsListFragment)
+							actionBar.setSelectedNavigationItem(0);
+						if (list instanceof SchedulesFragment) 
+							actionBar.setSelectedNavigationItem(1);
+						if (list instanceof JournalsListFragment)
+							actionBar.setSelectedNavigationItem(2);
+						if (list instanceof AnalysisOverviewFragment)
+							actionBar.setSelectedNavigationItem(3);
+					*/
+				}
+				
+				public final int getCurrentPage() {
+					return current;
 				}
 			});
 
@@ -187,49 +228,100 @@ ActionBar.TabListener {
 		@Override
 		public Fragment getItem(int position) {
 			// getItem is called to instantiate the fragment for the given page.
-			// Return a PlaceholderFragment (defined as a static inner class
-			// below).
 			
 			Fragment fragment = new Fragment();
+			
 			switch(position) {
-				case 0:
-					fragment = OverviewFragment.newInstance(frameWidth, frameHeight);
+				case 0:	// Journals
+					fragment = new JournalsOverviewContainer();
 					break;
-				case 1:
-					fragment = new BlankFragment();
+					
+				case 1:	// Schedule
+					fragment = new ScheduleOverviewFragment();
 					break;
-				case 2:
-					fragment =  new BlankFragment();
+					
+				case 2:	// Cultivation
+					fragment = new CultivationOverviewFragmentContainer();
 					break;
-				default:
-					fragment =  new BlankFragment();
+				
+				case 3:	// Analysis
+					fragment = new AnalysisOverviewFragment();
 					break;
 					
 			}
-			
 			return fragment;
-			
-			//PlaceholderFragment.newInstance(position + 1);
 		}
 
 		@Override
 		public int getCount() {
-			// Show 3 total pages.
-			return 3;
+			// Show 4 total pages.
+			return 4;
 		}
 
 		@Override
 		public CharSequence getPageTitle(int position) {
-			Locale l = Locale.getDefault();
+			
+			//Locale l = Locale.getDefault();
+			
 			switch (position) {
 				case 0:
-					return getString(R.string.title_tab_nutrients).toUpperCase(l);
+					return "Journals";
 				case 1:
-					return getString(R.string.title_tab_irrigation).toUpperCase(l);
+					//return getString(R.string.title_tab_irrigation).toUpperCase(l);
+					return "Schedule";
 				case 2:
-					return getString(R.string.title_tab_genetics).toUpperCase(l);
+					return "Cultivation";
+					//return getString(R.string.title_tab_genetics).toUpperCase(l);
+				case 3:
+					return "Analysis";
 			}
 			return null;
 		}
+		
 	}
+	
+	// Custom View Pager to disable swipe as needed
+	public class CustomViewPager extends ViewPager {
+		private boolean enabled;
+		
+		public CustomViewPager(Context context, AttributeSet attrs) {
+			super(context, attrs);
+			this.enabled = true;
+		}
+		
+		@Override
+		public boolean onTouchEvent(MotionEvent event) {
+			if (this.enabled) 
+				return super.onTouchEvent(event);
+			
+			return false;
+		}
+		
+		@Override
+		public boolean onInterceptTouchEvent(MotionEvent event) {
+			if (this.enabled) {
+				return super.onInterceptTouchEvent(event)	;
+			}
+			
+			return false;
+		}
+		
+		public void setPaginEnabled(boolean enabled) {
+			this.enabled = enabled;
+		}
+	}
+	
+	/*public class PageChangeListener extends ViewPager.OnPageChangeListener {
+		private int current;
+		
+		@Override
+		public void onPageSelected(int position) {
+			current = p;
+		}
+		
+		public final int getCurrentPage() {
+			return current;
+		}
+	}
+	*/
 }

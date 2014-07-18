@@ -2,6 +2,7 @@ package com.chadamine.growbuddy.cultivation.nutrients;
 
 import android.app.FragmentManager;
 import android.content.ContentValues;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -18,6 +20,7 @@ import com.chadamine.growbuddy.R;
 import com.chadamine.growbuddy.database.DatabaseContract.NutrientFormulas;
 import com.chadamine.growbuddy.database.DatabaseContract.NutrientSolubilities;
 import com.chadamine.growbuddy.database.DatabaseContract.Nutrients;
+
 import android.widget.*;
 
 public class NutrientsFragment extends Fragment {
@@ -43,10 +46,20 @@ public class NutrientsFragment extends Fragment {
 				getActivity()
 				.getSupportFragmentManager()
 				//.beginTransaction()
-				//.replace(R.id.frameDetails, new BlankFragment())
+				//.replace(R.id.frameDetails, new SchedulesFragment())
 				//.addToBackStack("blankFragment")
 				//.commit();
 				.popBackStack("nutrientDetails", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+				
+				// Hide Keyboard
+				FragmentActivity activity = getActivity();
+				View view = activity.getCurrentFocus();
+				
+			    //check if no view has focus:
+			    if(view == null)
+			        return;
+
+			    ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 			}
 		});
 		return view;

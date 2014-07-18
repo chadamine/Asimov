@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -12,6 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Gravity;
@@ -20,13 +22,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chadamine.growbuddy.R;
@@ -70,6 +72,16 @@ public class JournalDetailsFragment extends Fragment {
 			public void onClick(View v) {
 				getActivity().getSupportFragmentManager().popBackStack("journalDetails", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 				//begin Transaction().remove(new JournalsListFragment()).commit();
+				
+				// Hide Keyboard
+				FragmentActivity activity = getActivity();
+				View view = activity.getCurrentFocus();
+				
+			    //check if no view has focus:
+			    if(view == null)
+			        return;
+
+			    ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 				
 			}
 		});
