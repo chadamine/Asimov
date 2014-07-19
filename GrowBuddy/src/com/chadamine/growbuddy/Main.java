@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.chadamine.growbuddy.analysis.AnalysisOverviewFragment;
@@ -44,6 +45,12 @@ ActionBar.TabListener {
 	int frameWidth = 100;
 	int frameHeight = 100;
 	
+	private Fragment 
+		listContainer, 
+		detailsContainer,
+		currentFragment;
+	
+	FragmentManager manager;
 	/**
 	 * The {@link ViewPager} that will host the section contents.
 	 */
@@ -54,8 +61,14 @@ ActionBar.TabListener {
 		super.onCreate(savedInstanceState);
 		Log.d("activityCreated", "+ main activity created");
 		
+	
+		
 		setContentView(R.layout.activity_main);
 		Log.d("activityContentViewSet", "+ main activity content view set");
+		
+		manager = getSupportFragmentManager();
+		listContainer = manager.findFragmentById(R.id.frameList);
+		detailsContainer = manager.findFragmentById(R.id.frameDetails);	
 		
 		// Set up the action bar.
 		final ActionBar actionBar = getSupportActionBar();
@@ -91,7 +104,8 @@ ActionBar.TabListener {
 					
 					current = position;
 					
-					actionBar.setSelectedNavigationItem(position);
+					if(actionBar.getNavigationMode() == ActionBar.NAVIGATION_MODE_TABS)
+						actionBar.setSelectedNavigationItem(position);
 					
 					/*
 					if(actionBar.getNavigationMode() == ActionBar.NAVIGATION_MODE_TABS)
@@ -138,8 +152,6 @@ ActionBar.TabListener {
 		
 		if (toggle.isChecked())
 			toggle.setChecked(true);
-		
-	
 	}
 
 	@Override
@@ -172,13 +184,7 @@ ActionBar.TabListener {
 	public void onBackPressed() {
 		//swap();
 		int id;
-		Fragment listContainer = new Fragment();
-		Fragment detailsContainer = new Fragment();
-		
-		FragmentManager manager = getSupportFragmentManager();
-		listContainer = manager.findFragmentById(R.id.frameList);
-		detailsContainer = manager.findFragmentById(R.id.frameDetails);
-		
+	
 		if(detailsContainer instanceof JournalDetailsFragment)
 			manager.popBackStack("journalDetails",  FragmentManager.POP_BACK_STACK_INCLUSIVE); 
 		if (listContainer instanceof JournalsListFragment)
@@ -229,27 +235,32 @@ ActionBar.TabListener {
 		public Fragment getItem(int position) {
 			// getItem is called to instantiate the fragment for the given page.
 			
-			Fragment fragment = new Fragment();
-			
+			Fragment itemFragment = new Fragment();
+				if(listContainer instanceof JournalDetailsFragment) {
+					Log.d("detailsFragmentFound", "+ journal details found in listContainer");
+					return itemFragment;
+				}
+				
 			switch(position) {
 				case 0:	// Journals
-					fragment = new JournalsOverviewContainer();
+					
+					itemFragment = new JournalsOverviewContainer();
 					break;
 					
 				case 1:	// Schedule
-					fragment = new ScheduleOverviewFragment();
+					itemFragment = new ScheduleOverviewFragment();
 					break;
 					
 				case 2:	// Cultivation
-					fragment = new CultivationOverviewFragmentContainer();
+					itemFragment = new CultivationOverviewFragmentContainer();
 					break;
 				
 				case 3:	// Analysis
-					fragment = new AnalysisOverviewFragment();
+					itemFragment = new AnalysisOverviewFragment();
 					break;
 					
 			}
-			return fragment;
+			return itemFragment;
 		}
 
 		@Override

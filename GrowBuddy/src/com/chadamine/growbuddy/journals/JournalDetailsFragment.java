@@ -50,6 +50,7 @@ public class JournalDetailsFragment extends Fragment {
 	
 	private String currentPhotoPath;
 	private Uri capturedImageUri;
+	private View view;
 
 	private final static String CAPTURED_PHOTO_PATH_KEY = "currentPhotoPath";
 	private final static String CAPTURED_PHOTO_URI_KEY = "capturedImageUri";
@@ -63,7 +64,7 @@ public class JournalDetailsFragment extends Fragment {
 		itemUri = Journals.CONTENT_URI;
 		
 		/* MUST HAVE THE FALSE FOR THIS FRAGMENT TO LOAD */
-		View view = inflater.inflate(R.layout.fragment_add_journal, container, false);
+		view = inflater.inflate(R.layout.fragment_add_journal, container, false);
 		
 		Button btnSubmit = (Button) view.findViewById(R.id.btnSubmit);
 		btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -249,6 +250,7 @@ public class JournalDetailsFragment extends Fragment {
 			outState.putString(CAPTURED_PHOTO_URI_KEY, capturedImageUri.toString());
 		}
 		
+		//outState.putSerializable("view", );
 		super.onSaveInstanceState(outState);
 	}
 	
@@ -289,12 +291,19 @@ public class JournalDetailsFragment extends Fragment {
 	}
 	
 	private void saveState() {
-		String name = ((EditText) getActivity().findViewById(R.id.etName)).getText().toString();
-		//String details = ((EditText) getActivity().findViewById(R.id.etDetails)).getText().toString();
+		String name = "";
+		try {
+			//name = ((EditText) view.findViewById(R.id.etName)).getText().toString();
+			name = ((EditText) getActivity().findViewById(R.id.etName)).getText().toString();
+		} catch (NullPointerException e) {
+			Toast.makeText(getActivity(), "name could not be created", Toast.LENGTH_SHORT).show();
+		}
+		//String locaiton = ((EditText) getActivity().findViewById(R.id.etLocation)).getText().toString();
 		
 		if(name.length() > 0 ) {
 			ContentValues values = new ContentValues();
 			values.put(Journals.COL_NAME, name);
+		
 			values.put(Journals.COL_LOCATION, "location filler");
 		
 			itemUri = getActivity().getContentResolver().insert(Journals.CONTENT_URI, values);

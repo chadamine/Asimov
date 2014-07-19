@@ -19,7 +19,6 @@ public class AnalysisOverviewFragment extends Fragment {
 		
 		View view = inflater.inflate(R.layout.fragment_analysis_overview, container, false);
 		
-		
 		getActivity().getSupportFragmentManager()
 		.beginTransaction()
 		.replace(R.id.analysisFrameList, new BlankFragment())
