@@ -31,25 +31,24 @@ public class NutrientsListFragment extends ListFragment
 
 	FragmentActivity activity;
 	private CursorAdapter adapter;
-	private boolean isNewInstance;
+	//private boolean isNewInstance;
 	
 	@Override
 	public void onResume( ) {
 		super.onResume();
-		isNewInstance = false;
+		//isNewInstance = false;
 		fillData();
 	}
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		isNewInstance = true;
+		//isNewInstance = true;
 	}
 	
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		//adapter.swapCursor(null);
 	}
 	
 	
@@ -101,8 +100,6 @@ public class NutrientsListFragment extends ListFragment
 			}
 		});
 		
-		//fillData();
-		
 		return view;
 	}
 	
@@ -113,27 +110,26 @@ public class NutrientsListFragment extends ListFragment
 		};
 		
 		int[] to = new int[] { R.id.textTitle, R.id.textDetails };
-
-		try {
-			if(isNewInstance) {
-				getActivity().getSupportLoaderManager().initLoader(1, null, this);
-				Log.d("loaderInitialized", "+ - nutrients loader manager initialized (new instance)");
-			} else {
-				getActivity().getSupportLoaderManager().restartLoader(1, null, this);
-				Log.d("loaderInitialized", "+ - nutrients loader manager initialized (old instance)");
-			}
-					
 			
 			adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_item_checkable, null, from, to, 0);
 			Log.d("adapterAssigned", "+ - cursorAdapter assigned to adapter");
 			
 			setListAdapter(adapter);
 			Log.d("listAdapterSet", "+ - list adapter set");
+			
+			/*try {
+				if(isNewInstance) {	*/
+					getActivity().getSupportLoaderManager().initLoader(1, null, this);
+			/*		Log.d("loaderInitialized", "+ - nutrients loader manager initialized (new instance)");
+				} else {
+					getActivity().getSupportLoaderManager().restartLoader(1, null, this);
+					Log.d("loaderInitialized", "+ - nutrients loader manager initialized (old instance)");
+				}
+				
 		} catch (NullPointerException e) {
 			Toast.makeText(getActivity(), "! - adapter could not be set", Toast.LENGTH_SHORT).show();
 		}
-			
-		//Toast.makeText(getActivity(), "list adapter set", Toast.LENGTH_SHORT).show();;
+		*/
 	}
 	
 	@Override

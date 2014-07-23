@@ -26,18 +26,15 @@ public class JournalsListFragment extends ListFragment
 	
 	private FragmentActivity activity;
 	private CursorAdapter adapter;
-	private boolean isNewInstance;
 
 	@Override 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		isNewInstance = true;
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
-		isNewInstance = false;
 		fillData();
 	}
 	
@@ -45,10 +42,18 @@ public class JournalsListFragment extends ListFragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		super.onCreateView(inflater, container, savedInstanceState);
+		View view = inflater.inflate(R.layout.fragment_journal_list, container, false);
+		
+		return view;
+		
+	}
+	
+	@Override
+	public void onViewCreated(View view, Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
 		
 		activity = getActivity();
 		final FragmentManager manager = activity.getSupportFragmentManager();
-		View view = inflater.inflate(R.layout.fragment_journal_list, container, false);
 		Button btnAdd = (Button) view.findViewById(R.id.buttonAddJournal);
 		
 		btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -63,9 +68,6 @@ public class JournalsListFragment extends ListFragment
 			}
 		});
 	
-		//setHasOptionsMenu(true);
-		return view;
-		
 	}
 	
 	@Override
@@ -102,15 +104,13 @@ public class JournalsListFragment extends ListFragment
 			};
 			
 			int[] to = new int[] { R.id.textTitle, R.id.textDetails };
-		
-			// new instance ? initLoader : restartLoader
-			if(isNewInstance)
-				getActivity().getSupportLoaderManager().initLoader(3, null, this);
-			else
-				getActivity().getSupportLoaderManager().restartLoader(3, null, this);
 			
+			// Adapter must be initialized before initLoader is called
 			adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_item_checkable, null, from, to, 0);
 			setListAdapter(adapter);
+			
+			// initLoader can now be called 
+			getActivity().getSupportLoaderManager().initLoader(3, null, this);
 	}
 /*
 	@Override
