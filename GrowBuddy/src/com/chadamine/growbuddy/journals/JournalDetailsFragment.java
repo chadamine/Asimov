@@ -1,6 +1,7 @@
 package com.chadamine.growbuddy.journals;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
@@ -8,12 +9,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.database.MatrixCursor;
+import android.database.MergeCursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Gravity;
@@ -31,10 +38,14 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.chadamine.growbuddy.Main;
 import com.chadamine.growbuddy.R;
 import com.chadamine.growbuddy.database.DatabaseContract.Journals;
+import com.chadamine.growbuddy.database.DatabaseContract.Nutrients;
+import com.chadamine.growbuddy.database.DatabaseContract;
+import com.chadamine.growbuddy.database.GrowJournalPlusContentProvider;
 
-public class JournalDetailsFragment extends Fragment {
+public class JournalDetailsFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
 	private static Uri itemUri;
 	private static Activity activity;
@@ -55,6 +66,8 @@ public class JournalDetailsFragment extends Fragment {
 	private final static String CAPTURED_PHOTO_PATH_KEY = "currentPhotoPath";
 	private final static String CAPTURED_PHOTO_URI_KEY = "capturedImageUri";
 	
+	private SimpleCursorAdapter locationsAdapter;
+	
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle args) {
@@ -62,6 +75,8 @@ public class JournalDetailsFragment extends Fragment {
 		activity = getActivity();
 		activity.getActionBar().setTitle("Add New Journal");
 		itemUri = Journals.CONTENT_URI;
+		
+		
 		
 		/* MUST HAVE THE FALSE FOR THIS FRAGMENT TO LOAD */
 		view = inflater.inflate(R.layout.fragment_add_journal, container, false);
@@ -110,17 +125,42 @@ public class JournalDetailsFragment extends Fragment {
 	}
 	
 	private void populateSpinner(View v) {
+		
 		Spinner sprLocations = (Spinner) v.findViewById(R.id.spinnerLocation);
 		
+		String[] projection = new String[] { "_id", "name" }; 
 		String[] from = { Journals.COL_NAME };
 		int[] to = new int[] { android.R.id.text1 };
 		
-		SimpleCursorAdapter adapter = new SimpleCursorAdapter(activity, android.R.layout.simple_spinner_item, null, from, to, 0);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		Cursor cursor = getActivity().getContentResolver().query(Journals.CONTENT_URI, projection, null, null, null);
+		MatrixCursor extras = new MatrixCursor(projection);
+		
+		extras.addRow(new String[] { "-1", "Add New Location" });
+		//extras.addRow(new String[] { "-2", "Empty Template" });
+		
+		Cursor[] cursors = { extras, cursor };
+		Cursor extendedCursor = new MergeCursor(cursors);
+		Log.d("cursorsMerged", "+ cursors merged in journal details: " + extendedCursor.getCount());
+		
+		//SimpleCursorAdapter adapter = new SimpleCursorAdapter(getActivity(), android.R.layout.simple_spinner_item, null, from, to, 0);
+		locationsAdapter = new SimpleCursorAdapter(getActivity(), android.R.layout.simple_spinner_item, extendedCursor, from, to, 0);
+		locationsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		
+		locationsAdapter.changeCursor(extendedCursor);
+		sprLocations.setAdapter(locationsAdapter);
+		Log.d("cursorIs", "+ Cursor is: " + locationsAdapter.getCursor().toString());
+		
+		Log.d("cursorItem", "+ Cursor item 0: " + extendedCursor.getString(0));
+		//Log.d("cursorItem", "+ Cursor item 1: " + extendedCursor.getString(1));
+		//Log.d("cursorItem", "+ Cursor item 2: " + extendedCursor.getString(2));
+		
+		getActivity().getSupportLoaderManager().initLoader(1, null, this);
 	}
 	
 	@Override 
 	public void onViewCreated(View view, Bundle savedInstanceState) {
+		
+		populateSpinner(view);
 		
 		frame.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -291,18 +331,29 @@ public class JournalDetailsFragment extends Fragment {
 	}
 	
 	private void saveState() {
+		
 		String name = "";
+		
 		try {
 			//name = ((EditText) view.findViewById(R.id.etName)).getText().toString();
 			name = ((EditText) getActivity().findViewById(R.id.etName)).getText().toString();
 		} catch (NullPointerException e) {
 			Toast.makeText(getActivity(), "name could not be created", Toast.LENGTH_SHORT).show();
 		}
-		//String locaiton = ((EditText) getActivity().findViewById(R.id.etLocation)).getText().toString();
+		//String location = ((EditText) getActivity().findViewById(R.id.etLocation)).getText().toString();
+		
+		AlertDialog alert = new AlertDialog.Builder(getActivity()).create();
 		
 		if(name.length() > 0 ) {
 			ContentValues values = new ContentValues();
-			values.put(Journals.COL_NAME, name);
+			
+			if (name != "")
+				values.put(Journals.COL_NAME, name);
+			else {
+				alert.setTitle("Name Cannot Be Blank");
+				alert.setMessage("You must provide a name to save your journal");
+				alert.show();
+			}
 		
 			values.put(Journals.COL_LOCATION, "location filler");
 		
@@ -313,5 +364,33 @@ public class JournalDetailsFragment extends Fragment {
 		}
 		
 	}
+
+	@Override
+	public Loader<Cursor> onCreateLoader(int id, Bundle savedInstanceState) {
+
+		if(id == 1) {
+			String[] projection = { Journals.COL_ID, Journals.COL_NAME, Journals.COL_LOCATION };
+
+			CursorLoader loader = new CursorLoader(getActivity(), Journals.CONTENT_URI, projection, null, null, null);
+			return loader;
+		}
+		
+		return null;
+	}
+
+	@Override
+	public void onLoadFinished(Loader<Cursor> l, Cursor c) {
+		
+		if(l.getId() == 1)
+			locationsAdapter.swapCursor(c);
+	}
+
+	@Override
+	public void onLoaderReset(Loader<Cursor> l) {
+		
+		if(l.getId() == 2)
+			locationsAdapter.swapCursor(null);
+	}
+
 
 }
