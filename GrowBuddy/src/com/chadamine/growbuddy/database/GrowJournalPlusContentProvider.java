@@ -14,21 +14,17 @@ import android.util.Log;
 import com.chadamine.growbuddy.database.DatabaseContract.Journals;
 import com.chadamine.growbuddy.database.DatabaseContract.Locations;
 import com.chadamine.growbuddy.database.DatabaseContract.Nutrients;
-import com.chadamine.growbuddy.database.DatabaseHelpers.DatabaseHelper;
-import com.chadamine.growbuddy.database.DatabaseHelpers.LocationsHelper;
-import com.chadamine.growbuddy.database.DatabaseHelpers.NutrientsHelper;
-import com.chadamine.growbuddy.database.tables.LocationsTable;
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 public class GrowJournalPlusContentProvider extends ContentProvider {
 	
 	private DatabaseHelper databaseHelper;
-	private LocationsHelper locationsHelper;
+	//private LocationsHelper locationsHelper;
 	@Override
 	public boolean onCreate() {
 		Log.d("helperCreated", "journals helper created");
 		databaseHelper = new DatabaseHelper(getContext());
-		locationsHelper = new LocationsHelper(getContext());
+		//locationsHelper = new LocationsHelper(getContext());
 		return false;
 	}
 
@@ -139,13 +135,15 @@ public class GrowJournalPlusContentProvider extends ContentProvider {
 			return Uri.parse(Journals.TABLE_NAME + "/" + id);
 			
 		case DatabaseContract.LOCATIONS:
-			database = locationsHelper.getWritableDatabase();
+			//database = locationsHelper.getWritableDatabase();
+			database = new DatabaseHelper(getContext()).getWritableDatabase();
 			id = database.insert(Locations.TABLE_NAME, null, values);
 			getContext().getContentResolver().notifyChange(uri, null);
 			return Uri.parse(Locations.TABLE_NAME + "/" + id);
 			
 		case DatabaseContract.NUTRIENTS:
-			database = new NutrientsHelper(getContext()).getWritableDatabase();
+			//database = new NutrientsHelper(getContext()).getWritableDatabase();
+			database = new DatabaseHelper(getContext()).getWritableDatabase();
 			id = database.insert(Nutrients.TABLE_NAME, null, values);
 			getContext().getContentResolver().notifyChange(uri, null);
 			return Uri.parse(Nutrients.TABLE_NAME + "/" + id);

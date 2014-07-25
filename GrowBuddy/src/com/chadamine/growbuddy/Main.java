@@ -15,20 +15,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.chadamine.growbuddy.analysis.AnalysisOverviewFragment;
-import com.chadamine.growbuddy.cultivation.CultivationListFragment;
-import com.chadamine.growbuddy.cultivation.CultivationOverviewFragmentContainer;
-import com.chadamine.growbuddy.cultivation.nutrients.NutrientsFragment;
-import com.chadamine.growbuddy.cultivation.nutrients.NutrientsListFragment;
-import com.chadamine.growbuddy.cultivation.plants.PlantsListFragment;
-import com.chadamine.growbuddy.journals.JournalDetailsFragment;
-import com.chadamine.growbuddy.journals.JournalsListFragment;
-import com.chadamine.growbuddy.journals.JournalsOverviewContainer;
-import com.chadamine.growbuddy.management.locations.LocationsListFragment;
-import com.chadamine.growbuddy.schedule.ScheduleOverviewFragment;
+import com.chadamine.growbuddy.adapters.MainPageChangeListener;
+import com.chadamine.growbuddy.adapters.SectionsPagerAdapter;
+import com.chadamine.growbuddy.fragments.BlankFragment;
+import com.chadamine.growbuddy.fragments.CultivationListFragment;
+import com.chadamine.growbuddy.fragments.JournalDetailsFragment;
+import com.chadamine.growbuddy.fragments.JournalsListFragment;
+import com.chadamine.growbuddy.fragments.LocationsListFragment;
+import com.chadamine.growbuddy.fragments.NutrientsFragment;
+import com.chadamine.growbuddy.fragments.NutrientsListFragment;
+import com.chadamine.growbuddy.fragments.PlantsListFragment;
 
 public class Main extends ActionBarActivity implements
 ActionBar.TabListener {
@@ -45,10 +43,7 @@ ActionBar.TabListener {
 	int frameWidth = 100;
 	int frameHeight = 100;
 	
-	private Fragment 
-		listContainer, 
-		detailsContainer,
-		currentFragment;
+	private Fragment listContainer, detailsContainer, currentFragment;
 	
 	FragmentManager manager;
 	/**
@@ -61,11 +56,14 @@ ActionBar.TabListener {
 		super.onCreate(savedInstanceState);
 		Log.d("activityCreated", "+ main activity created");
 		
-	
-		
 		setContentView(R.layout.activity_main);
 		Log.d("activityContentViewSet", "+ main activity content view set");
 		
+		setUpMain();
+
+	}
+
+	private void setUpMain() {
 		manager = getSupportFragmentManager();
 		listContainer = manager.findFragmentById(R.id.frameList);
 		detailsContainer = manager.findFragmentById(R.id.frameDetails);	
@@ -91,43 +89,9 @@ ActionBar.TabListener {
 		// a reference to the Tab.
 		
 		mViewPager
-			.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-				
-				private int current;
-				
-				@Override
-				public void onPageSelected(int position) {
-					
-					FragmentManager manager = getSupportFragmentManager();
-					Fragment list = manager.findFragmentById(R.id.frameList);
-					Fragment details = manager.findFragmentById(R.id.frameDetails);
-					
-					current = position;
-					
-					if(actionBar.getNavigationMode() == ActionBar.NAVIGATION_MODE_TABS)
-						actionBar.setSelectedNavigationItem(position);
-					
-					/*
-					if(actionBar.getNavigationMode() == ActionBar.NAVIGATION_MODE_TABS)
-						actionBar.setSelectedNavigationItem(position);
-					else
-						if (list instanceof JournalsListFragment)
-							actionBar.setSelectedNavigationItem(0);
-						if (list instanceof SchedulesFragment) 
-							actionBar.setSelectedNavigationItem(1);
-						if (list instanceof JournalsListFragment)
-							actionBar.setSelectedNavigationItem(2);
-						if (list instanceof AnalysisOverviewFragment)
-							actionBar.setSelectedNavigationItem(3);
-					*/
-				}
-				
-				public final int getCurrentPage() {
-					return current;
-				}
-			});
-
-		// For each of the sections in the app, add a tab to the action bar.
+			.setOnPageChangeListener(new MainPageChangeListener(actionBar, this));
+			
+		//For each of the sections in the app, add a tab to the action bar.
 		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
 			// Create a tab with text corresponding to the page title defined by
 			// the adapter. Also specify this Activity object, which implements
@@ -136,9 +100,9 @@ ActionBar.TabListener {
 			actionBar.addTab(actionBar.newTab()
 							 .setText(mSectionsPagerAdapter.getPageTitle(i))
 							 .setTabListener(this));
-		}
+		}	
+		
 	}
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -221,10 +185,12 @@ ActionBar.TabListener {
 								FragmentTransaction fragmentTransaction) {
 	}
 
+	
 	/**
 	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
 	 * one of the sections/tabs/pages.
 	 */
+	/*
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
 		public SectionsPagerAdapter(FragmentManager fm) {
@@ -290,7 +256,7 @@ ActionBar.TabListener {
 		}
 		
 	}
-	
+	*/
 	// Custom View Pager to disable swipe as needed
 	public class CustomViewPager extends ViewPager {
 		private boolean enabled;

@@ -4,10 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.TextView;
 
 import com.chadamine.growbuddy.R;
 
@@ -26,19 +28,19 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 	@Override
 	public int getGroupCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return listTitles.size();
 	}
 
 	@Override
 	public int getChildrenCount(int groupPosition) {
 		// TODO Auto-generated method stub
-		return 0;
+		return listChildren.get(listTitles.get(groupPosition)).size();
 	}
 
 	@Override
 	public Object getGroup(int groupPosition) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return listTitles.get(groupPosition);
 	}
 
 	@Override
@@ -49,7 +51,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 	@Override
 	public long getGroupId(int groupPosition) {
 		// TODO Auto-generated method stub
-		return 0;
+		return groupPosition;
 	}
 
 	@Override
@@ -67,6 +69,18 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 	public View getGroupView(int groupPosition, boolean isExpanded,
 			View convertView, ViewGroup parent) {
 	
+		String headerTitle = (String) getGroup(groupPosition);
+		
+		if(convertView == null) {
+			LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			
+			convertView = inflater.inflate(R.layout.list_group, null);
+		}
+		
+		TextView header = (TextView) convertView.findViewById(R.id.textNavItemTitle);
+		header.setTypeface(null, Typeface.BOLD);
+		header.setText(headerTitle);
+		
 		return null;
 	}
 
@@ -78,16 +92,19 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 		
 		if (convertView == null) {
 			LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			convertView = inflater.inflate(R.layout.list_item, null);
+			convertView = inflater.inflate(R.layout.row_nav, null);
 		}
 		
-		return null;
+		TextView txtListChild = (TextView) convertView.findViewById(R.id.textNavItemTitle);
+		txtListChild.setText(childText);
+	
+		return convertView;
 	}
 
 	@Override
 	public boolean isChildSelectable(int groupPosition, int childPosition) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }
