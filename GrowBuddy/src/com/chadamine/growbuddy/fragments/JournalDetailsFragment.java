@@ -368,27 +368,27 @@ public class JournalDetailsFragment extends Fragment implements LoaderManager.Lo
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle savedInstanceState) {
 
-		if(id == 1) {
+		//if(id == 1) {
 			String[] projection = { Journals.COL_ID, Journals.COL_NAME, Journals.COL_LOCATION };
 
 			CursorLoader loader = new CursorLoader(getActivity(), Journals.CONTENT_URI, projection, null, null, null);
 			return loader;
-		}
+		//}
 		
-		return null;
+		//return null;
 	}
 
 	@Override
 	public void onLoadFinished(Loader<Cursor> l, Cursor c) {
 		
-		if(l.getId() == 1)
+		//if(l.getId() == 1)
 			locationsAdapter.swapCursor(c);
 	}
 
 	@Override
 	public void onLoaderReset(Loader<Cursor> l) {
 		
-		if(l.getId() == 2)
+		//if(l.getId() == 1)
 			locationsAdapter.swapCursor(null);
 	}
 

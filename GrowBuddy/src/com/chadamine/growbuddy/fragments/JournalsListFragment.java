@@ -9,7 +9,6 @@ import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,13 +18,14 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.chadamine.growbuddy.R;
+import com.chadamine.growbuddy.adapters.CursorLoaderCallbacks;
 import com.chadamine.growbuddy.database.DatabaseContract.Journals;
 
 public class JournalsListFragment extends ListFragment 
 	implements LoaderManager.LoaderCallbacks<Cursor> {
 	
 	private FragmentActivity activity;
-	private CursorAdapter adapter;
+	private SimpleCursorAdapter adapter;
 
 	@Override 
 	public void onCreate(Bundle savedInstanceState) {
@@ -98,6 +98,7 @@ public class JournalsListFragment extends ListFragment
 	}
 	
 	private void fillData() {
+		
 			String[] from = new String[] { 
 					Journals.COL_NAME, 
 					Journals.COL_LOCATION 
@@ -110,7 +111,10 @@ public class JournalsListFragment extends ListFragment
 			setListAdapter(adapter);
 			
 			// initLoader can now be called 
-			getActivity().getSupportLoaderManager().initLoader(3, null, this);
+			getActivity().getSupportLoaderManager().initLoader(1, null, 
+			//		new CursorLoaderCallbacks((Context)getActivity(), adapter)
+					this);
+			//adapter.notifyDataSetChanged();
 	}
 /*
 	@Override
@@ -165,4 +169,6 @@ public class JournalsListFragment extends ListFragment
 	public void onLoaderReset(Loader<Cursor> arg0) {
 		adapter.swapCursor(null);
 	}
+	
 }
+

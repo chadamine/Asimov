@@ -15,18 +15,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.chadamine.growbuddy.adapters.MainPageChangeListener;
 import com.chadamine.growbuddy.adapters.SectionsPagerAdapter;
-import com.chadamine.growbuddy.fragments.BlankFragment;
-import com.chadamine.growbuddy.fragments.CultivationListFragment;
 import com.chadamine.growbuddy.fragments.JournalDetailsFragment;
 import com.chadamine.growbuddy.fragments.JournalsListFragment;
-import com.chadamine.growbuddy.fragments.LocationsListFragment;
-import com.chadamine.growbuddy.fragments.NutrientsFragment;
-import com.chadamine.growbuddy.fragments.NutrientsListFragment;
-import com.chadamine.growbuddy.fragments.PlantsListFragment;
+import com.chadamine.growbuddy.fragments.JournalsOverviewContainer;
 
 public class Main extends ActionBarActivity implements
 ActionBar.TabListener {
@@ -43,7 +39,8 @@ ActionBar.TabListener {
 	int frameWidth = 100;
 	int frameHeight = 100;
 	
-	private Fragment listContainer, detailsContainer, currentFragment;
+	//private Fragment listContainer, detailsContainer, currentFragment;
+	
 	
 	FragmentManager manager;
 	/**
@@ -65,8 +62,8 @@ ActionBar.TabListener {
 
 	private void setUpMain() {
 		manager = getSupportFragmentManager();
-		listContainer = manager.findFragmentById(R.id.frameList);
-		detailsContainer = manager.findFragmentById(R.id.frameDetails);	
+		//listContainer = manager.findFragmentById(R.id.frameList);
+		//detailsContainer = manager.findFragmentById(R.id.frameDetails);	
 		
 		// Set up the action bar.
 		final ActionBar actionBar = getSupportActionBar();
@@ -149,8 +146,19 @@ ActionBar.TabListener {
 		//swap();
 		int id;
 	
-		if(detailsContainer instanceof JournalDetailsFragment)
-			manager.popBackStack("journalDetails",  FragmentManager.POP_BACK_STACK_INCLUSIVE); 
+		Fragment fragment = manager.findFragmentById(R.id.pager);
+		
+		if (fragment instanceof JournalsOverviewContainer) {
+			
+			if (manager.findFragmentById(R.id.journalFrameList) instanceof JournalsListFragment) {
+				manager.popBackStack("journalList", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+			}
+			
+			if(manager.findFragmentById(R.id.journalFrameList) instanceof JournalDetailsFragment)
+				manager.popBackStack("journalDetails", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+		}
+				
+		/*
 		if (listContainer instanceof JournalsListFragment)
 			manager.popBackStack("journalList", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 		if (listContainer instanceof PlantsListFragment)
@@ -161,10 +169,14 @@ ActionBar.TabListener {
 			manager.popBackStack("locationsList", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 		if (listContainer instanceof NutrientsListFragment)
 			manager.popBackStack("nutrientsList", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-		if (detailsContainer instanceof NutrientsFragment)
-			manager.popBackStack("nutrientDetails", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 		if (listContainer instanceof BlankFragment)
 			finish();
+		
+		if (detailsContainer instanceof NutrientsFragment)
+			manager.popBackStack("nutrientDetails", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+		if(detailsContainer instanceof JournalDetailsFragment)
+			manager.popBackStack("journalDetails",  FragmentManager.POP_BACK_STACK_INCLUSIVE); 
+		*/
 	}
 
 	@Override
@@ -176,87 +188,16 @@ ActionBar.TabListener {
 	}
 
 	@Override
-	public void onTabUnselected(ActionBar.Tab tab,
-								FragmentTransaction fragmentTransaction) {
+	public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+		
 	}
 
 	@Override
-	public void onTabReselected(ActionBar.Tab tab,
-								FragmentTransaction fragmentTransaction) {
-	}
-
-	
-	/**
-	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-	 * one of the sections/tabs/pages.
-	 */
-	/*
-	public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-		public SectionsPagerAdapter(FragmentManager fm) {
-			super(fm);
-		}
-
-		@Override
-		public Fragment getItem(int position) {
-			// getItem is called to instantiate the fragment for the given page.
-			
-			Fragment itemFragment = new Fragment();
-				if(listContainer instanceof JournalDetailsFragment) {
-					Log.d("detailsFragmentFound", "+ journal details found in listContainer");
-					return itemFragment;
-				}
-				
-			switch(position) {
-				case 0:	// Journals
-					
-					itemFragment = new JournalsOverviewContainer();
-					break;
-					
-				case 1:	// Schedule
-					itemFragment = new ScheduleOverviewFragment();
-					break;
-					
-				case 2:	// Cultivation
-					itemFragment = new CultivationOverviewFragmentContainer();
-					break;
-				
-				case 3:	// Analysis
-					itemFragment = new AnalysisOverviewFragment();
-					break;
-					
-			}
-			return itemFragment;
-		}
-
-		@Override
-		public int getCount() {
-			// Show 4 total pages.
-			return 4;
-		}
-
-		@Override
-		public CharSequence getPageTitle(int position) {
-			
-			//Locale l = Locale.getDefault();
-			
-			switch (position) {
-				case 0:
-					return "Journals";
-				case 1:
-					//return getString(R.string.title_tab_irrigation).toUpperCase(l);
-					return "Schedule";
-				case 2:
-					return "Cultivation";
-					//return getString(R.string.title_tab_genetics).toUpperCase(l);
-				case 3:
-					return "Analysis";
-			}
-			return null;
-		}
+	public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 		
 	}
-	*/
+
+
 	// Custom View Pager to disable swipe as needed
 	public class CustomViewPager extends ViewPager {
 		private boolean enabled;
