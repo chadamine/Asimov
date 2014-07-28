@@ -7,6 +7,9 @@ import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
 import android.support.v7.app.ActionBar;
 
 import com.chadamine.growbuddy.R;
+import com.chadamine.growbuddy.fragments.AnalysisOverviewFragment;
+import com.chadamine.growbuddy.fragments.JournalsListFragment;
+import com.chadamine.growbuddy.fragments.SchedulesFragment;
 
 public class MainPageChangeListener extends SimpleOnPageChangeListener {
 	private int current;
@@ -33,9 +36,6 @@ public class MainPageChangeListener extends SimpleOnPageChangeListener {
 		if(actionBar.getNavigationMode() == ActionBar.NAVIGATION_MODE_TABS)
 			actionBar.setSelectedNavigationItem(position);
 		
-		/*
-		if(actionBar.getNavigationMode() == ActionBar.NAVIGATION_MODE_TABS)
-			actionBar.setSelectedNavigationItem(position);
 		else
 			if (list instanceof JournalsListFragment)
 				actionBar.setSelectedNavigationItem(0);
@@ -45,7 +45,6 @@ public class MainPageChangeListener extends SimpleOnPageChangeListener {
 				actionBar.setSelectedNavigationItem(2);
 			if (list instanceof AnalysisOverviewFragment)
 				actionBar.setSelectedNavigationItem(3);
-		*/
 	}
 	
 	public final int getCurrentPage() {

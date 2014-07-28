@@ -18,10 +18,10 @@ public class ScheduleOverviewFragment  extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_schedule_overview, container, false);
 		
 		getActivity().getSupportFragmentManager()
-		.beginTransaction()
-		.replace(R.id.scheduleFrameList, new SchedulesFragment())
-		.addToBackStack("scheduleFragment")
-		.commit();
+			.beginTransaction()
+			.replace(R.id.scheduleFrameList, new SchedulesFragment())
+			.addToBackStack("scheduleFragment")
+			.commit();
 		
 		return view;
 	}

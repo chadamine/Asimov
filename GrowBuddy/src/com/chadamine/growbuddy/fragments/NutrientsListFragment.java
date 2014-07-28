@@ -106,7 +106,7 @@ public class NutrientsListFragment extends ListFragment
 		
 		int[] to = new int[] { R.id.textTitle, R.id.textDetails };
 			
-			mAdapter = new SimpleCursorAdapter(getActivity(), R.layout.row_item_checkable, null, from, to, 0);
+			mAdapter = new SimpleCursorAdapter(getActivity(), R.layout.list_item_checkable, null, from, to, 0);
 			Log.d("adapterAssigned", "+ - cursorAdapter assigned to mAdapter");
 			
 			setListAdapter(mAdapter);

@@ -1,6 +1,7 @@
 package com.chadamine.growbuddy;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -23,6 +24,7 @@ import com.chadamine.growbuddy.adapters.SectionsPagerAdapter;
 import com.chadamine.growbuddy.fragments.JournalDetailsFragment;
 import com.chadamine.growbuddy.fragments.JournalsListFragment;
 import com.chadamine.growbuddy.fragments.JournalsOverviewContainer;
+import com.chadamine.growbuddy.fragments.ScheduleOverviewFragment;
 
 public class Main extends ActionBarActivity implements
 ActionBar.TabListener {
@@ -38,9 +40,6 @@ ActionBar.TabListener {
 	
 	int frameWidth = 100;
 	int frameHeight = 100;
-	
-	//private Fragment listContainer, detailsContainer, currentFragment;
-	
 	
 	FragmentManager manager;
 	/**
@@ -87,6 +86,7 @@ ActionBar.TabListener {
 		
 		mViewPager
 			.setOnPageChangeListener(new MainPageChangeListener(actionBar, this));
+		Log.d("onPageChangeListenerSet", "+ onPageChangeListener set on ViewPager");
 			
 		//For each of the sections in the app, add a tab to the action bar.
 		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
@@ -98,6 +98,7 @@ ActionBar.TabListener {
 							 .setText(mSectionsPagerAdapter.getPageTitle(i))
 							 .setTabListener(this));
 		}	
+		Log.d("tabsAdded", "+ tabs added to actionBar");
 		
 	}
 	@Override
@@ -111,8 +112,12 @@ ActionBar.TabListener {
 	public void onToggleClicked(View v) {
 		ToggleButton toggle = (ToggleButton) v;
 		
-		if (toggle.isChecked())
+		if (toggle.isChecked()) {
 			toggle.setChecked(true);
+			findViewById(R.id.rLayoutListItem).setBackgroundColor(Color.RED);
+		}
+		else
+			findViewById(R.id.rLayoutListItem).setBackgroundColor(Color.BLUE);
 	}
 
 	@Override
@@ -143,19 +148,30 @@ ActionBar.TabListener {
 	
 	@Override
 	public void onBackPressed() {
-		//swap();
-		int id;
-	
-		Fragment fragment = manager.findFragmentById(R.id.pager);
 		
+		// find the currently displayed fragment in the pager (activity_main.xml)
+		Fragment fragment = mSectionsPagerAdapter.getItem(mViewPager.getCurrentItem());
+		
+		// Check Overview Container Fragment type
 		if (fragment instanceof JournalsOverviewContainer) {
+			Toast.makeText(this, "fragment is a JournalsOverviewContainer", Toast.LENGTH_SHORT).show();
 			
+			// list or details?
 			if (manager.findFragmentById(R.id.journalFrameList) instanceof JournalsListFragment) {
-				manager.popBackStack("journalList", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+				Toast.makeText(this, "fragment instance of journals list fragment", Toast.LENGTH_SHORT).show();
+				finish();
 			}
 			
-			if(manager.findFragmentById(R.id.journalFrameList) instanceof JournalDetailsFragment)
+			if(manager.findFragmentById(R.id.journalFrameList) instanceof JournalDetailsFragment) {
 				manager.popBackStack("journalDetails", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+				Toast.makeText(this, "fragment instance of journal details fragment", Toast.LENGTH_SHORT).show();
+			}
+		} 
+		
+		if (fragment instanceof ScheduleOverviewFragment) {
+			manager.popBackStack("scheduleFragment", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+			mViewPager.setCurrentItem(0);
 		}
 				
 		/*
@@ -185,6 +201,9 @@ ActionBar.TabListener {
 		// When the given tab is selected, switch to the corresponding page in
 		// the ViewPager.
 		mViewPager.setCurrentItem(tab.getPosition());
+		//getActionBar().setSelectedNavigationItem(tab.getPosition());
+		
+		Log.d("viewPagerCurrentItemSet", "+ currentItemSet for ViewPager in main (205); position: " + tab.getPosition());
 	}
 
 	@Override

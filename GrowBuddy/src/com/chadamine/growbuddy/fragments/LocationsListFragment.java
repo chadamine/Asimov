@@ -61,7 +61,7 @@ implements LoaderManager.LoaderCallbacks<Cursor> {
 			} catch (NullPointerException e) {
 				Toast.makeText(getActivity(), "error adapting database", Toast.LENGTH_SHORT).show();
 			}
-			adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_item_checkable, null, from, to, 0);
+			adapter = new SimpleCursorAdapter(getActivity(), R.layout.list_item_checkable, null, from, to, 0);
 			setListAdapter(adapter);
 	}
 

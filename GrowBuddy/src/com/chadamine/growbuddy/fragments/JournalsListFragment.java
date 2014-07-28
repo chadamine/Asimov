@@ -30,6 +30,7 @@ public class JournalsListFragment extends ListFragment
 	@Override 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setRetainInstance(true);
 	}
 
 	@Override
@@ -83,7 +84,7 @@ public class JournalsListFragment extends ListFragment
 		// TODO: if (cursor for list_item_icon_location) { setIcon(); } else { setFillerIcon(); }
 		LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View view = inflater.inflate(R.layout.add_image_filler, null);
-		View item = inflater.inflate(R.layout.row_item_checkable, null);
+		View item = inflater.inflate(R.layout.list_item_checkable, null);
 		
 		FrameLayout image = //(FrameLayout) inflater.inflate(R.id.frameImage, null, false);
 				(FrameLayout) item.findViewById(R.id.frameImage);
@@ -107,7 +108,7 @@ public class JournalsListFragment extends ListFragment
 			int[] to = new int[] { R.id.textTitle, R.id.textDetails };
 			
 			// Adapter must be initialized before initLoader is called
-			adapter = new SimpleCursorAdapter(getActivity(), R.layout.row_item_checkable, null, from, to, 0);
+			adapter = new SimpleCursorAdapter(getActivity(), R.layout.list_item_checkable, null, from, to, 0);
 			setListAdapter(adapter);
 			
 			// initLoader can now be called 

@@ -1,15 +1,14 @@
 package com.chadamine.growbuddy.adapters;
 
-import com.chadamine.growbuddy.fragments.AnalysisOverviewFragment;
-import com.chadamine.growbuddy.fragments.CultivationOverviewFragmentContainer;
-import com.chadamine.growbuddy.fragments.JournalDetailsFragment;
-import com.chadamine.growbuddy.fragments.JournalsOverviewContainer;
-import com.chadamine.growbuddy.fragments.ScheduleOverviewFragment;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
+
+import com.chadamine.growbuddy.fragments.AnalysisOverviewFragment;
+import com.chadamine.growbuddy.fragments.CultivationOverviewFragmentContainer;
+import com.chadamine.growbuddy.fragments.JournalsOverviewContainer;
+import com.chadamine.growbuddy.fragments.ScheduleOverviewFragment;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -29,19 +28,22 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 			
 		switch(position) {
 			case 0:	// Journals
-				
+				Log.d("getItem", "+ item retrieved at position 0");
 				itemFragment = new JournalsOverviewContainer();
 				break;
 				
 			case 1:	// Schedule
+				Log.d("getItem", "+ item retrieved at position 1");
 				itemFragment = new ScheduleOverviewFragment();
 				break;
 				
 			case 2:	// Cultivation
+				Log.d("getItem", "+ item retrieved at position 2");
 				itemFragment = new CultivationOverviewFragmentContainer();
 				break;
 			
 			case 3:	// Analysis
+				Log.d("getItem", "+ item retrieved at position 3");
 				itemFragment = new AnalysisOverviewFragment();
 				break;
 				
