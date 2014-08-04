@@ -236,17 +236,56 @@ public class DatabaseContract {
 		
 		public static final String COL_ID = "_id";
 		public static final String COL_NAME = "name";
-		public static final String COL_DETAILS = "details";
+		public static final String COL_SPECIES = "species";
 		public static final String COL_DATE_CREATED = "date_created";
 		public static final String COL_LOCATION = "location";
 		public static final String COL_BATCH = "batch";
 		public static final String COL_TYPE = "type";
+		public static final String COL_ORIGIN = "origin";
+		public static final String COL_SOURCE = "source";
+		public static final String COL_PROPAGULE = "propagule";
+		public static final String COL_MOTHER = "mother";
+		public static final String COL_PROP_TIME = "propagation_time";
+		public static final String COL_SEASON = "season";
+		public static final String COL_HARVEST_DAYS = "harvest_days";
+		public static final String COL_SUN_SHADE = "sun_shade";
+		public static final String COL_INDOOR_OUTDOOR = "indoor_outdoor";
+		
 		
 		public static final Uri contentUri = Uri.withAppendedPath(
 				CONTENT_URI, 
 				BASE_PATH);
 	}
 	
+	
+	public static final class Species implements Columns {
+
+		public static final String BASE_PATH = "plants";
+		public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
+		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/plants";
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/plant";
+		public static final String TABLE_NAME = "plants";
+
+		public static final String COL_ID = "_id";
+		public static final String COL_NAME = "name";
+		public static final String COL_SPECIES = "species";
+		public static final String COL_LOCATION = "location";
+		public static final String COL_BATCH = "batch";
+		public static final String COL_TYPE = "type";
+		public static final String COL_ORIGIN = "origin";
+		public static final String COL_SOURCE = "source";
+		public static final String COL_MOTHER = "mother";
+		public static final String COL_PROP_TIME = "propagation_time";
+		public static final String COL_SEASON = "season";
+		public static final String COL_HARVEST_DAYS = "harvest_days";
+		public static final String COL_SUN_SHADE = "sun_shade";
+		public static final String COL_INDOOR_OUTDOOR = "indoor_outdoor";
+
+
+		public static final Uri contentUri = Uri.withAppendedPath(
+			CONTENT_URI, 
+			BASE_PATH);
+	}
 	// Batch Plants
 
 	
