@@ -25,6 +25,32 @@ public class DatabaseContract {
 	//public static final String NUTRIENT_AUTHORITY = "com.chadamine.growbuddy.nutrients_provider";
 	//public static final Uri NUTRIENT_CONTENT_URI = Uri.parse("content://" + NUTRIENT_AUTHORITY);
 	
+
+	public static final class ActionHistory implements Columns { 
+
+		public static final String TABLE_NAME = "action_history";
+		public static final Uri CONTENT_URI = Uri.withAppendedPath(DatabaseContract.CONTENT_URI, TABLE_NAME);
+
+		// mime type of directory of items
+		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/nutrients_history";
+
+		// mime type of single item
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/nutrients_history";
+
+		public static final String COL_ID = "_id";
+		public static final String COL_TABLE_NAME = "table_name";
+		public static final String COL_DATE = "date";
+		public static final String COL_ACTION_TYPE = "action_type";
+		public static final String COL_ACTION_DETAILS = "action_details";
+		
+		// details
+		
+		// create: * table created
+		// addition: * added to * table
+		// deletion: * deleted from * table 
+		// update: * name changed to * in * table 
+	}
+	
 	//	Journals
 	public static final class Journals implements Columns { 
 		
@@ -40,6 +66,7 @@ public class DatabaseContract {
 		public static final String COL_ID = "_id";
 		public static final String COL_NAME = "name";	
 		public static final String COL_LOCATION = "location";
+		
 	}
 	
 	public static final class JournalsHistory implements Columns { 
@@ -78,7 +105,24 @@ public class DatabaseContract {
 		
 	}
 	
-	/*
+	public static final class LocationsHistory implements Columns { 
+
+		public static final String TABLE_NAME = "locations_history";
+		public static final Uri CONTENT_URI = Uri.withAppendedPath(DatabaseContract.CONTENT_URI, TABLE_NAME);
+
+		// mime type of directory of items
+		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/locations_history";
+
+		// mime type of single item
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/locations_history";
+
+		public static final String COL_ID = "_id";
+		public static final String COL_NAME = "name";
+		public static final String COL_DATE = "date";
+		public static final String COL_ACTION = "action";
+		public static final String COL_ACTION_DETAILS = "action_details";
+	}
+	
 	//	Journal Locations
 	public static final class JournalLocations implements Columns {
 		
@@ -98,7 +142,7 @@ public class DatabaseContract {
 		
 		}
 	
-	*/
+	
 	//	Nutrients
 	public static final class Nutrients implements Columns {
 		
@@ -117,6 +161,24 @@ public class DatabaseContract {
 		public static final String COL_DATE_CREATED = "date_created";
 		public static final String COL_TYPE = "type";
 	
+	}
+	
+	public static final class NutrientsHistory implements Columns { 
+
+		public static final String TABLE_NAME = "nutrients_history";
+		public static final Uri CONTENT_URI = Uri.withAppendedPath(DatabaseContract.CONTENT_URI, TABLE_NAME);
+
+		// mime type of directory of items
+		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/nutrients_history";
+
+		// mime type of single item
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/nutrients_history";
+
+		public static final String COL_ID = "_id";
+		public static final String COL_NAME = "name";
+		public static final String COL_DATE = "date";
+		public static final String COL_ACTION = "action";
+		public static final String COL_ACTION_DETAILS = "action_details";
 	}
 	
 //	Nutrient Formulas
@@ -140,6 +202,24 @@ public class DatabaseContract {
 		public static final String COL_SI = "Si";
 	
 		public static final Uri contentUri = Uri.withAppendedPath(CONTENT_URI, TABLE_NAME);
+	}
+	
+	public static final class NutrientFormulasHistory implements Columns { 
+
+		public static final String TABLE_NAME = "nutrient_formulas_history";
+		public static final Uri CONTENT_URI = Uri.withAppendedPath(DatabaseContract.CONTENT_URI, TABLE_NAME);
+
+		// mime type of directory of items
+		public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/nutrient_formulas_history";
+
+		// mime type of single item
+		public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/nutrient_formulas_history";
+
+		public static final String COL_ID = "_id";
+		public static final String COL_NAME = "name";
+		public static final String COL_DATE = "date";
+		public static final String COL_ACTION = "action";
+		public static final String COL_ACTION_DETAILS = "action_details";
 	}
 	
 //	Nutrients

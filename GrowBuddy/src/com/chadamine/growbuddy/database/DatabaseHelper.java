@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.chadamine.growbuddy.database.tables.JournalsTable;
+import com.chadamine.growbuddy.database.tables.*;
 import com.chadamine.growbuddy.database.tables.LocationsTable;
 import com.chadamine.growbuddy.database.tables.NutrientsTable;
 
@@ -20,16 +20,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		database = db;
-		//JournalsTable.onCreate(db);
-		//Log.d("helperCreated", "journal helper created");
+		Log.d("helperCreated", "+ journal helper created");
+		
+		// Create Journals Table
 		JournalsTable.onCreate(db);
-		Log.d("tableCreated", "journals table created in helper");
+		Log.d("tableCreated", "+ journals table created in helper");
+		
+		// Create Journals History Table
+		db.execSQL(JournalsHistoryTable.CREATE);
+		Log.d("tableCreated", "+ journals history table created in helper");
 		
 		//NutrientsTable.onCreate(db);
 		db.execSQL(NutrientsTable.CREATE);
-		Log.d("tableCreated", "nutrients table created in helper");
+		Log.d("tableCreated", "+ nutrients table created in helper");
 		
 		db.execSQL(LocationsTable.CREATE);
+		Log.d("tableCreated", "+ journals table created in helper");
 	}
 	
 	@Override
