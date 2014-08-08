@@ -41,21 +41,6 @@
     <string name="title_activity_locations_main">LocationsMainActivity</string>
     <string name="title_activity_primary">PrimaryActivity</string>
     <string name="title_activity_main">GrowJournalPlus</string>
-    <string-array name="array_drawer_list">
-        <item>Journals</item>
-        <item>Plants</item>
-        <item>Cultivation
-            <item>Tasks</item>
-            <item>Environment</item>
-            <item>Irrigation</item>>
-            <item>Nutrients</item>
-            <item>Pests &amp; Disease</item>
-        </item>
-       <item>Locations</item>
-        <item>Schedule</item>
-        <item>Finances</item>
-        <item>Analysis</item>
-        <item>Planning</item>
-    </string-array>
+    
 
 </resources>

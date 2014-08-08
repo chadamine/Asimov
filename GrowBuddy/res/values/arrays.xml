@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array 
+        name="navSort" >
+        <item>Date Due</item>
+        <item>Name</item>
+        <item>Priority</item>
+    </string-array>
+    <string-array name="array_drawer_list">
+        <item>Journals</item>
+        <item>Plants</item>
+        <item>Cultivation
+            <item>Tasks</item>
+            <item>Environment</item>
+            <item>Irrigation</item>>
+            <item>Nutrients</item>
+            <item>Pests &amp; Disease</item>
+        </item>
+       <item>Locations</item>
+        <item>Schedule</item>
+        <item>Finances</item>
+        <item>Analysis</item>
+        <item>Planning</item>
+    </string-array>
+    <string-array name="units_vol_mass">
+        <item>Mass
+            <item>microGram</item>
+            <item>mg</item>
+            <item>g</item>
+            <item>kg</item>
+            <item>oz</item>
+            <item>lb</item>
+            <item>ton</item>
+       	</item>
+       	<item>Volume
+           <item>microLiter</item>
+           <item>mL</item>
+           <item>L</item>
+           <item>tsp</item>
+           <item>tbsp</item>
+           <item>fl. oz</item>
+           <item>cup</item>
+           <item>gallon</item>
+       	</item>
+    </string-array>
+    
+    <string-array name="lengths">
+        <item>microMeter</item>
+        <item>mm</item>
+        <item>cm</item>
+        <item>m</item>
+        <item>km</item>
+        <item>inch</item>
+        <item>foot</item>
+        <item>yard</item>
+        <item>mile</item>
+    </string-array>
+</resources>

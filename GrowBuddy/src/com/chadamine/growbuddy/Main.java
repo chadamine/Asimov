@@ -68,7 +68,6 @@ ActionBar.TabListener {
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		
 		drawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, drawerString));
-
 		
 	}
 
