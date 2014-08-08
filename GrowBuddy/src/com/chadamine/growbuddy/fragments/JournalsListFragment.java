@@ -3,25 +3,28 @@ package com.chadamine.growbuddy.fragments;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.chadamine.growbuddy.R;
-import com.chadamine.growbuddy.adapters.CursorLoaderCallbacks;
+import com.chadamine.growbuddy.R.color;
 import com.chadamine.growbuddy.database.DatabaseContract.Journals;
 
-public class JournalsListFragment extends ListFragment 
+public class JournalsListFragment extends Fragment 
 	implements LoaderManager.LoaderCallbacks<Cursor> {
 	
 	private FragmentActivity activity;
@@ -44,31 +47,16 @@ public class JournalsListFragment extends ListFragment
 	{
 		super.onCreateView(inflater, container, savedInstanceState);
 		View view = inflater.inflate(R.layout.fragment_journal_list, container, false);
+		registerForContextMenu(view);
+		setHasOptionsMenu(true);
 		
 		return view;
-		
 	}
 	
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		
-		activity = getActivity();
-		final FragmentManager manager = activity.getSupportFragmentManager();
-		Button btnAdd = (Button) view.findViewById(R.id.buttonAddJournal);
-		
-		btnAdd.setOnClickListener(new View.OnClickListener() {
-		
-			@Override
-			public void onClick(View v) {
-				manager
-				.beginTransaction()
-				.replace(R.id.journalFrameList, new JournalDetailsFragment())
-				.addToBackStack("journalDetails")
-				.commit();
-			}
-		});
-	
 	}
 	
 	@Override
@@ -109,15 +97,22 @@ public class JournalsListFragment extends ListFragment
 			
 			// Adapter must be initialized before initLoader is called
 			adapter = new SimpleCursorAdapter(getActivity(), R.layout.list_item_checkable, null, from, to, 0);
-			setListAdapter(adapter);
+			//setListAdapter(adapter);
 			
-			// initLoader can now be called 
-			getActivity().getSupportLoaderManager().initLoader(1, null, 
-			//		new CursorLoaderCallbacks((Context)getActivity(), adapter)
-					this);
-			//adapter.notifyDataSetChanged();
+			FrameLayout listFrame = (FrameLayout) getActivity().findViewById(R.id.list_frame_journals);
+		
+				ListView list = new ListView(getActivity());
+				
+					listFrame.addView(list);
+					list.setBackgroundResource(color.light_blue);
+					
+					list.setAdapter(adapter);
+					
+					// initLoader can now be called 
+					getActivity().getSupportLoaderManager().initLoader(1, null, this);
+			
 	}
-/*
+	
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		super.onCreateOptionsMenu(menu, inflater);
@@ -145,7 +140,8 @@ public class JournalsListFragment extends ListFragment
 			
 		return super.onOptionsItemSelected(i);
 	}
-	*/
+	
+	
 	private void makeDeleteStyle() {
 		//this.getListView().setLayoutParams();
 		//this.getListView().setBackground();

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@color/light_gray" 
+    android:gravity="center">
     <TextView
         android:id="@+id/textBlankFragment"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:text="Choose a navigation option to get started"
+        
+        android:text="Click 'Add' to add a Journal to the list"
         
         />
 

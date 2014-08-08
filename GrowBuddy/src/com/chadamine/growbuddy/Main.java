@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.AttributeSet;
@@ -16,6 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -46,6 +49,9 @@ ActionBar.TabListener {
 	 * The {@link ViewPager} that will host the section contents.
 	 */
 	public ViewPager mViewPager;
+	private String[] drawerString;
+	private ListView drawerList;
+	private DrawerLayout drawerLayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +62,14 @@ ActionBar.TabListener {
 		Log.d("activityContentViewSet", "+ main activity content view set");
 		
 		setUpMain();
+		
+		drawerString = getResources().getStringArray(R.array.array_drawer_list);
+		drawerList = (ListView) findViewById(R.id.left_drawer);
+		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		
+		drawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, drawerString));
 
+		
 	}
 
 	private void setUpMain() {

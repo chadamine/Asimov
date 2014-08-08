@@ -7,7 +7,8 @@ import android.util.Log;
 
 import com.chadamine.growbuddy.fragments.AnalysisOverviewFragment;
 import com.chadamine.growbuddy.fragments.CultivationOverviewFragmentContainer;
-import com.chadamine.growbuddy.fragments.JournalsOverviewContainer;
+import com.chadamine.growbuddy.fragments.FinancesOverviewFragment;
+import com.chadamine.growbuddy.fragments.JournalsListFragment;
 import com.chadamine.growbuddy.fragments.ScheduleOverviewFragment;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -29,7 +30,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 		switch(position) {
 			case 0:	// Journals
 				Log.d("getItem", "+ item retrieved at position 0");
-				itemFragment = new JournalsOverviewContainer();
+				itemFragment = new JournalsListFragment();
 				break;
 				
 			case 1:	// Schedule
@@ -45,6 +46,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 			case 3:	// Analysis
 				Log.d("getItem", "+ item retrieved at position 3");
 				itemFragment = new AnalysisOverviewFragment();
+				break;
+				
+			case 4: // Finances
+				Log.d("getItem", "+ item retrieved at postion 4");
+				itemFragment = new FinancesOverviewFragment();
 				break;
 				
 		}

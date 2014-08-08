@@ -1,58 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent">
-
-	<RelativeLayout
-		android:id="@+id/llJournalList"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		style="@style/list_box_container_portrait"
-		android:layout_marginTop="30dp">
-
-	    <RelativeLayout
-	        android:id="@+id/relativeJournalTitleHeader"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        style="@style/list_box_header_strip"
-	        
-	        >
-	        
-		<TextView
-			android:id="@+id/textJournalTitle"
-			android:layout_height="30dp"
-			android:layout_width="wrap_content"
-			style="@style/nav_list_title"
-			android:text="Journals"
-			/>
-		
-	
-		<Button 
-		    android:id="@+id/buttonDeleteJournal"
-		    android:layout_width="wrap_content"
+	<FrameLayout
+			xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:id="@+id/list_frame_journals"
+		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:text="Delete Journal"
-		    style="@style/title_text"
-		    android:background="@drawable/button_background"
-		    android:layout_alignTop="@id/textJournalTitle"
-		    android:layout_alignBottom="@id/textJournalTitle"
-		    android:layout_alignParentRight="true"
-		    />
-		<Button 
-		    android:id="@+id/buttonAddJournal"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:text="Add Journal"
-		    style="@style/title_text"
-		    android:background="@drawable/button_background"
-		    android:layout_toLeftOf="@id/buttonDeleteJournal"
-		    android:layout_alignTop="@id/textJournalTitle"
-		    android:layout_alignBottom="@id/textJournalTitle"
 		    
 		    />
-		</RelativeLayout>
-		
+		<!--
 		<ListView
 			android:id="@android:id/list"
 			style="@style/list_box"
@@ -61,8 +15,5 @@
 			android:layout_below="@id/relativeJournalTitleHeader"
 			android:dividerHeight="0dp"
 			/>
-
-	</RelativeLayout>
-
-</RelativeLayout>
+  -->
 
